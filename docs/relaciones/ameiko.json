@@ -1,0 +1,511 @@
+{
+  "npc_id": "ameiko",
+  "nombre": "Ameiko",
+  "descripcion_larga": "Ameiko Kaijitsu, la propietaria del Dragón Oxidado y heredera del clan Kaijitsu.",
+  "nivel_maximo": 10,
+  "imagen_url": "/data/images/npc/ameiko.jpg",
+  "ventajas": [
+    {
+      "nombre": "Conexión profunda",
+      "descripcion_larga": "Una vez al día, puedes percibir el estado de Ameiko durante un minuto.",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "Secretos de Ameiko",
+      "descripcion_larga": "+2 por moral a cualquier prueba Social contra Ameiko. +2 DC de conjuros que lances sobre Ameiko",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "Confianza de la Heredera",
+      "descripcion_larga": "Una vez al día puedes repetir una tirada de Saber (Historia, Nobleza o Local)",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "Recital del Dragón Oxidado",
+      "descripcion_larga": "Obtienes un número de usos adicionales de inspiración de bárdica igual al nivel de relación.",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "Hechizos de Ameiko 1",
+      "descripcion_larga": "Escoge una clase lanzadora de conjuros que poseas y uno de los siguientes hechizos de nivel 1, obtienes acceso y conoces ese hechizo: Unseen Servant, Feather Step, Cure light wounds, Charm Person, Summon Instrument.",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "Estilo Utamono",
+      "descripcion_larga": "Diplomacia pasa a ser una habilidad clásea. Si ya lo fuese, recibes un +1.",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "Estilo Minyo",
+      "descripcion_larga": "Engañar pasa a ser una habilidad clásea. Si ya lo fuese, recibes un +1.",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "Estilo Katarimono",
+      "descripcion_larga": "Intimidar pasa a ser una habilidad clásea. Si ya lo fuese, recibes un +1.",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "Melodía resonante",
+      "descripcion_larga": "Como acción rápida, una vez la semana, durante un número de asaltos igual a tu nivel de relación con Ameiko, quedas bajo los efectos de su «Inspirar Coraje». Ameiko gasta un uso de Interpretación de bardo y no se puede activar si no tuviese usos restantes.",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "Estilo del Dragón Oxidado",
+      "descripcion_larga": "Interpretar pasa a ser una habilidad clásea. si ya lo fuese, recibes un +1. Selecciona un instrumento de los que dependen de esta recompensa. Lo obtienes automáticamente",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "Entrenamiento de guardián",
+      "descripcion_larga": "+1 CA contra ataques de oportunidad cuerpo a cuerpo",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "Arma vinculada",
+      "descripcion_larga": "Como acción rápida, durante 1 asalto tus armas ganan un bonificador al daño igual a la mitad de tu nivel de relación con Ameiko y son tratadas como mágicas a efectos de superar reducción de daño. (Bonificador por moral)",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "Entrenamiento Kaijitsu",
+      "descripcion_larga": "Trata las armas regionales de Tien-xia como su equivalente de Avistan",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "Combatiente sutil",
+      "descripcion_larga": "Escoge un arma regional de Tien Xia compatible con Sutileza con las Armas. Puedes utilizar tu Destreza en vez de tu Fuerza para atacar con este arma. Si ya tuvieses la dote Sutileza con las Armas, obtienes Soltura con un Arma (ese arma)",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "Presencia del legado",
+      "descripcion_larga": "Mientras seas capaz de percibir a Ameiko de alguna forma, puedes hacer cualquier acción como si ella se encontrase a 5' de ti.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "ameiko_conexion_profunda"
+      ]
+    },
+    {
+      "nombre": "Mirada de Ameiko",
+      "descripcion_larga": "Si Ameiko está presente, estás constantemente bajo los efectos de su Interpretación de Bardo (Infundir gran aptitud)",
+      "min_nivel_relacion": 2,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "Respeto de Ameiko",
+      "descripcion_larga": "+2 por moral a tiradas positivas con personajes que respeten positivamente a Ameiko",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "ameiko_secretos_de_ameiko"
+      ]
+    },
+    {
+      "nombre": "Recital Minyo",
+      "descripcion_larga": "Una vez al día, suma tu nivel de relación a una prueba de Saber",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "ameiko_recital_del_dragon_oxidado",
+        "ameiko_confianza_de_la_heredera"
+      ]
+    },
+    {
+      "nombre": "Hechizos de Ameiko 2",
+      "descripcion_larga": "Escoge una clase lanzadora de conjuros que poseas y uno de los siguientes hechizos de nivel 2, obtienes acceso y conoces ese hechizo: Calm Emotions, Bladed Dash, Glitterdust, Cure moderate wounds, Suggestion, Instant weapon",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "ameiko_hechizos_de_ameiko_1"
+      ]
+    },
+    {
+      "nombre": "Maestría Utamono",
+      "descripcion_larga": "Recibes un bonificador por moral a Diplomacia igual a la mitad del nivel de tu relación con Ameiko.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "ameiko_estilo_utamono"
+      ]
+    },
+    {
+      "nombre": "Maestría Minyo",
+      "descripcion_larga": "Recibes un bonificador por moral a Engañar igual a la mitad del nivel de tu relación con Ameiko.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "ameiko_estilo_minyo"
+      ]
+    },
+    {
+      "nombre": "Maestría Katarimono",
+      "descripcion_larga": "Recibes un bonificador por moral a Intimidar igual a la mitad del nivel de tu relación con Ameiko.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "ameiko_estilo_katarimono"
+      ]
+    },
+    {
+      "nombre": "Lección distante",
+      "descripcion_larga": "Cuando actives «Melodía resonante», puedes estar bajo los efectos de «Infundir gran aptitud» en vez de «Inspirar coraje»",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "ameiko_melodia_resonante"
+      ]
+    },
+    {
+      "nombre": "Nō",
+      "descripcion_larga": "Puedes utilizar tus rangos en Engañar o Disfrazarse como si fuesen rangos en Interpretar (actuación)",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "ameiko_estilo_del_dragon_oxidado"
+      ]
+    },
+    {
+      "nombre": "Shigin",
+      "descripcion_larga": "Puedes utilizar tus rangos en Engañar o Averiguar Intenciones como si fuesen rangos en Interpretar (canto)",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "ameiko_estilo_del_dragon_oxidado"
+      ]
+    },
+    {
+      "nombre": "Kyōgen",
+      "descripcion_larga": "Puedes utilizar tus rangos en Engañar o Intimidar como si fuesen rangos en Interpretar (comedia)",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "ameiko_estilo_del_dragon_oxidado"
+      ]
+    },
+    {
+      "nombre": "Buyō",
+      "descripcion_larga": "Puedes utilizar tus rangos en Acrobacias o Volar como si fuesen rangos en Interpretar (danza)",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "ameiko_estilo_del_dragon_oxidado"
+      ]
+    },
+    {
+      "nombre": "Rakugo",
+      "descripcion_larga": "Puedes utilizar tus rangos en Diplomacia o Averiguar Intenciones como si fuesen rangos en Interpretar (oratoria)",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "ameiko_estilo_del_dragon_oxidado"
+      ]
+    },
+    {
+      "nombre": "Shamisen",
+      "descripcion_larga": "Puedes utilizar tus rangos en Diplomacia o Engañar como si fuesen rangos en Interpretar (cuerda)",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "ameiko_estilo_del_dragon_oxidado"
+      ]
+    },
+    {
+      "nombre": "Taiko",
+      "descripcion_larga": "Puedes utilizar tus rangos en Trato con animales o Intimidar como si fuesen rangos en Interpretar (percusión)",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "ameiko_estilo_del_dragon_oxidado"
+      ]
+    },
+    {
+      "nombre": "Koto",
+      "descripcion_larga": "Puedes utilizar tus rangos en Diplomacia o Intimidar como si fuesen rangos en Interpretar (teclado)",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "ameiko_estilo_del_dragon_oxidado"
+      ]
+    },
+    {
+      "nombre": "Shakuhachi",
+      "descripcion_larga": "Puedes utilizar tus rangos en Diplomacia o Trato con animales como si fuesen rangos en Interpretar (viento)",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "ameiko_estilo_del_dragon_oxidado"
+      ]
+    },
+    {
+      "nombre": "Guardia personal",
+      "descripcion_larga": "Si Ameiko está presente, recibes +4 a las pruebas de iniciativa. Y +1 al Ataque si Ameiko ha sufrido daño en este combate",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "ameiko_entrenamiento_de_guardian"
+      ]
+    },
+    {
+      "nombre": "Entranemiento Hyoho",
+      "descripcion_larga": "Siempre que dediques 8 horas de entrenamiento, puedes escoger un arma regional de Tien Xia. Puedes cambiar cualquier dote, rasgo o beneficio adquirido en el que tuvieses que elegir un arma, por este nuevo arma, siempre que ese arma pudiese haber sido elegida en su momento.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "ameiko_entrenamiento_kaijitsu",
+        "ameiko_combatiente_sutil"
+      ]
+    },
+    {
+      "nombre": "Conexión empática",
+      "descripcion_larga": "Mientras «Conexión profunda» está activado, puedes comunicarte empáticamente con Ameiko. Debido a la naturaleza limitada del vínculo, sólo pueden compartirse emociones generales",
+      "min_nivel_relacion": 3,
+      "prerequisitos": [
+        "ameiko_conexion_profunda"
+      ]
+    },
+    {
+      "nombre": "Conexión del alma",
+      "descripcion_larga": "En vez de una vez al día, puedes usar «Conexión profunda» tantas veces como tu nivel de relación con Ameiko.",
+      "min_nivel_relacion": 3,
+      "prerequisitos": [
+        "ameiko_conexion_profunda"
+      ]
+    },
+    {
+      "nombre": "Sonrisa de Ameiko",
+      "descripcion_larga": "Mientras estás bajo los efectos de «Mirada de Ameiko», elige una habilidad. También recibes los beneficios de Interpretación de Bardo (Inspirar gran aptitud). Como acción de movimiento puedes cambiar la habilidad afectada por Inspirar gran aptitud",
+      "min_nivel_relacion": 3,
+      "prerequisitos": [
+        "ameiko_mirada_de_ameiko"
+      ]
+    },
+    {
+      "nombre": "Respaldado de Ameiko",
+      "descripcion_larga": "+2 por moral a tiradas sociales contra un personaje que conozca a Ameiko o su nombre",
+      "min_nivel_relacion": 3,
+      "prerequisitos": [
+        "ameiko_respeto_de_ameiko"
+      ]
+    },
+    {
+      "nombre": "Hechizos de Ameiko 3",
+      "descripcion_larga": "Escoge una clase lanzadora de conjuros que poseas y uno de los siguientes hechizos de nivel 3, obtienes acceso y conoces ese hechizo: See invisibility, Deep Slumber, Cure serious wounds, Charm Monster, Tonges Communal.",
+      "min_nivel_relacion": 3,
+      "prerequisitos": [
+        "ameiko_hechizos_de_ameiko_2"
+      ]
+    },
+    {
+      "nombre": "Caballero juramentado",
+      "descripcion_larga": "Recibes +1 CA, +1 Ataque y +1 al Daño por cada 10 puntos de daño que tenga Ameiko.",
+      "min_nivel_relacion": 3,
+      "prerequisitos": [
+        "ameiko_guardia_personal"
+      ]
+    },
+    {
+      "nombre": "Hoja mágica",
+      "descripcion_larga": "Cuando usas «Arma vinculada», puedes gastar un espacio de conjuro. Si lo haces, suma el nivel de ese espacio de conjuro al ataque y daño como bonificador de mejora mágico.",
+      "min_nivel_relacion": 3,
+      "prerequisitos": [
+        "ameiko_arma_vinculada"
+      ]
+    },
+    {
+      "nombre": "Hoja persistente",
+      "descripcion_larga": "Cuando usas «Arma vinculada», puedes gastar un espacio de conjuro. El bonificador de «Arma vinculada» persiste un número de asaltos adicional igual al nivel del conjuro utilizado.",
+      "min_nivel_relacion": 3,
+      "prerequisitos": [
+        "ameiko_arma_vinculada"
+      ]
+    },
+    {
+      "nombre": "Vínculo del legado",
+      "descripcion_larga": "+2 a Voluntad contra compulsiones contrarias a Ameiko",
+      "min_nivel_relacion": 4,
+      "prerequisitos": [
+        "ameiko_presencia_del_legado"
+      ]
+    },
+    {
+      "nombre": "Hechizos de Ameiko 4",
+      "descripcion_larga": "Escoge una clase lanzadora de conjuros que poseas y uno de los siguientes hechizos de nivel 4, obtienes acceso y conoces ese hechizo: Unseen Crew, Break Enchantment, Cure critical wounds, Charm Person (mass), Dance of hundred cuts.",
+      "min_nivel_relacion": 4,
+      "prerequisitos": [
+        "ameiko_hechizos_de_ameiko_3"
+      ]
+    },
+    {
+      "nombre": "Eco del recuerdo",
+      "descripcion_larga": "Obtiene un uso semanal adicional de «Melodía resonante».",
+      "min_nivel_relacion": 4,
+      "prerequisitos": [
+        "ameiko_melodia_resonante"
+      ]
+    },
+    {
+      "nombre": "Conexión vívida",
+      "descripcion_larga": "Mientras «Conexión profunda» está activado, puedes comunicarte telepáticamente con Ameiko",
+      "min_nivel_relacion": 5,
+      "prerequisitos": [
+        "ameiko_conexion_empatica"
+      ]
+    },
+    {
+      "nombre": "Honor del legado",
+      "descripcion_larga": "Siempre que fueses a realizar una acción (o inacción) contraria a los principios o intereses de Ameiko por culpa de una compulsión, realiza una nueva tirada de Voluntad para librarte de ella.",
+      "min_nivel_relacion": 5,
+      "prerequisitos": [
+        "ameiko_vinculo_del_legado"
+      ]
+    },
+    {
+      "nombre": "Susurro de los espíritus",
+      "descripcion_larga": "Una vez al día, antes de realizar una prueba de Voluntad, puedes activar esta habilidad para obtener un +5 a dicha prueba.",
+      "min_nivel_relacion": 5,
+      "prerequisitos": [
+        "ameiko_conexion_del_alma"
+      ]
+    },
+    {
+      "nombre": "Pasión de Ameiko",
+      "descripcion_larga": "Mientras estés bajo los efectos de «Mirada de Ameiko», Ameiko puede gastar usos de Interpretación de Bardo para afectarte con Infundir Grandeza",
+      "min_nivel_relacion": 5,
+      "prerequisitos": [
+        "ameiko_sonrisa_de_ameiko"
+      ]
+    },
+    {
+      "nombre": "Hechizos de Ameiko 5",
+      "descripcion_larga": "Escoge una clase lanzadora de conjuros que poseas y uno de los siguientes hechizos de nivel 5, obtienes acceso y conoces ese hechizo: Bard’s Escape, Bladed Dash (Greater), Phantasmal Web, Cure light wounds (Mass), Suggestion (Mass).",
+      "min_nivel_relacion": 5,
+      "prerequisitos": [
+        "ameiko_hechizos_de_ameiko_4"
+      ]
+    },
+    {
+      "nombre": "Coraje Grabado",
+      "descripcion_larga": "Cuando actives «Melodía resonante», puedes estar bajo los efectos de «Inspirar Grandeza» en vez de «Inspirar coraje»",
+      "min_nivel_relacion": 5,
+      "prerequisitos": [
+        "ameiko_leccion_distante"
+      ]
+    },
+    {
+      "nombre": "Hechizos de Ameiko 6",
+      "descripcion_larga": "Escoge una clase lanzadora de conjuros que poseas y uno de los siguientes hechizos de nivel 6, obtienes acceso y conoces ese hechizo: Heroes’ Feast, Dance of a Thousand Cuts, Cure moderate wounds (mass), Charm Monster (Mass), Brillant Inspiration.",
+      "min_nivel_relacion": 6,
+      "prerequisitos": [
+        "ameiko_hechizos_de_ameiko_5"
+      ]
+    },
+    {
+      "nombre": "Magia de Ameiko 1",
+      "descripcion_larga": "Obtienes un espacio adicional de conjuros de nivel 1 o un lanzamiento diario adicional de conjuros de nivel 1.",
+      "min_nivel_relacion": 6,
+      "prerequisitos": [
+        "ameiko_hechizos_de_ameiko_5"
+      ]
+    },
+    {
+      "nombre": "Inspiración en Ameiko",
+      "descripcion_larga": "Recibes un bonificador por moral a las pruebas de Interpretar igual al nivel tu relación con Ameiko.",
+      "min_nivel_relacion": 6,
+      "prerequisitos": [
+        "ameiko_maestria_utamono",
+        "ameiko_maestria_minyo",
+        "ameiko_maestria_katarimono"
+      ]
+    },
+    {
+      "nombre": "Favor de los espíritus",
+      "descripcion_larga": "+1 sagrado a las TS de Voluntad",
+      "min_nivel_relacion": 7,
+      "prerequisitos": [
+        "ameiko_susurro_de_los_espiritus"
+      ]
+    },
+    {
+      "nombre": "Confort de Ameiko",
+      "descripcion_larga": "Mientras estés bajo los efectos de «Mirada de Ameiko», Ameiko puede gastar usos de Interpretación de Bardo para afectarte con Interpretación Tranquilizadora",
+      "min_nivel_relacion": 7,
+      "prerequisitos": [
+        "ameiko_pasion_de_ameiko"
+      ]
+    },
+    {
+      "nombre": "Magia de Ameiko 2",
+      "descripcion_larga": "Obtienes un espacio adicional de conjuros de nivel 2 o un lanzamiento diario adicional de conjuros de nivel 2.",
+      "min_nivel_relacion": 7,
+      "prerequisitos": [
+        "ameiko_magia_de_ameiko_1"
+      ]
+    },
+    {
+      "nombre": "Himno reconfortante",
+      "descripcion_larga": "Cuando actives «Melodía resonante», puedes obtener curación rápida 5 y eliminar las condiciones fatigado, indispuesto y estremecido cada asalto, en vez de «Inspirar coraje»",
+      "min_nivel_relacion": 7,
+      "prerequisitos": [
+        "ameiko_coraje_grabado"
+      ]
+    },
+    {
+      "nombre": "Himno del destino",
+      "descripcion_larga": "Obtiene un uso semanal adicional de «Melodía resonante».",
+      "min_nivel_relacion": 7,
+      "prerequisitos": [
+        "ameiko_eco_del_recuerdo"
+      ]
+    },
+    {
+      "nombre": "Magia de Ameiko 3",
+      "descripcion_larga": "Obtienes un espacio adicional de conjuros de nivel 3 o un lanzamiento diario adicional de conjuros de nivel 3.",
+      "min_nivel_relacion": 8,
+      "prerequisitos": [
+        "ameiko_magia_de_ameiko_2"
+      ]
+    },
+    {
+      "nombre": "Bosque de los espíritus",
+      "descripcion_larga": "Esta habilidad puede activarse como acción estándar. Haz una prueba en Diplomacia. Durante un número de asaltos igual al resultado / 5, todos los aliados situados hasta a 15 pies de ti, reciben un +1 Sagrado a Voluntad",
+      "min_nivel_relacion": 9,
+      "prerequisitos": [
+        "ameiko_favor_de_los_espiritus"
+      ]
+    },
+    {
+      "nombre": "Devoción de Ameiko",
+      "descripcion_larga": "Mientras estés bajo los efectos de «Mirada de Ameiko», Ameiko puede gastar usos de Interpretación de Bardo para afectarte con Infundir Heroismo.",
+      "min_nivel_relacion": 9,
+      "prerequisitos": [
+        "ameiko_confort_de_ameiko"
+      ]
+    },
+    {
+      "nombre": "Magia de Ameiko 4",
+      "descripcion_larga": "Obtienes un espacio adicional de conjuros de nivel 4 o un lanzamiento diario adicional de conjuros de nivel 4.",
+      "min_nivel_relacion": 9,
+      "prerequisitos": [
+        "ameiko_magia_de_ameiko_3"
+      ]
+    },
+    {
+      "nombre": "Resonancia Ancestral",
+      "descripcion_larga": "Cuando actives «Melodía resonante», puedes estar bajo los efectos de «Inspirar heroísmo» en vez de «Inspirar coraje»",
+      "min_nivel_relacion": 9,
+      "prerequisitos": [
+        "ameiko_himno_reconfortante"
+      ]
+    },
+    {
+      "nombre": "Magia de Ameiko 5",
+      "descripcion_larga": "Obtienes un espacio adicional de conjuros de nivel 5 o un lanzamiento diario adicional de conjuros de nivel 5.",
+      "min_nivel_relacion": 10,
+      "prerequisitos": [
+        "ameiko_magia_de_ameiko_4"
+      ]
+    },
+    {
+      "nombre": "Canto del Espíritu Imperial",
+      "descripcion_larga": "Obtiene un uso semanal adicional de «Melodía resonante»..",
+      "min_nivel_relacion": 10,
+      "prerequisitos": [
+        "ameiko_himno_del_destino"
+      ]
+    }
+  ]
+}

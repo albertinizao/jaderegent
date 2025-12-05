@@ -3,6 +3,9 @@ package com.opipo.jaderegent.infrastructure.web.dto;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class PjDTO {
+    @JsonProperty("pj_id")
+    private java.util.UUID pjId;
+
     @JsonProperty("nombre_display")
     private String nombreDisplay;
 
@@ -15,7 +18,8 @@ public class PjDTO {
     public PjDTO() {
     }
 
-    public PjDTO(String nombreDisplay, String notaOpcional, String imagenUrl) {
+    public PjDTO(java.util.UUID pjId, String nombreDisplay, String notaOpcional, String imagenUrl) {
+        this.pjId = pjId;
         this.nombreDisplay = nombreDisplay;
         this.notaOpcional = notaOpcional;
         this.imagenUrl = imagenUrl;
@@ -23,6 +27,14 @@ public class PjDTO {
 
     public static PjDTOBuilder builder() {
         return new PjDTOBuilder();
+    }
+
+    public java.util.UUID getPjId() {
+        return pjId;
+    }
+
+    public void setPjId(java.util.UUID pjId) {
+        this.pjId = pjId;
     }
 
     public String getNombreDisplay() {
@@ -50,11 +62,17 @@ public class PjDTO {
     }
 
     public static class PjDTOBuilder {
+        private java.util.UUID pjId;
         private String nombreDisplay;
         private String notaOpcional;
         private String imagenUrl;
 
         PjDTOBuilder() {
+        }
+
+        public PjDTOBuilder pjId(java.util.UUID pjId) {
+            this.pjId = pjId;
+            return this;
         }
 
         public PjDTOBuilder nombreDisplay(String nombreDisplay) {
@@ -73,7 +91,7 @@ public class PjDTO {
         }
 
         public PjDTO build() {
-            return new PjDTO(nombreDisplay, notaOpcional, imagenUrl);
+            return new PjDTO(pjId, nombreDisplay, notaOpcional, imagenUrl);
         }
     }
 }

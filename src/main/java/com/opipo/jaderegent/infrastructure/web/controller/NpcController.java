@@ -3,10 +3,12 @@ package com.opipo.jaderegent.infrastructure.web.controller;
 import com.opipo.jaderegent.application.usecase.GetNpcsUseCase;
 import com.opipo.jaderegent.application.usecase.GetNpcDetailUseCase;
 import com.opipo.jaderegent.application.usecase.ImportNpcUseCase;
+import com.opipo.jaderegent.application.usecase.DeleteNpcUseCase;
 import com.opipo.jaderegent.domain.model.NPC;
 import com.opipo.jaderegent.infrastructure.web.dto.NpcDetailDTO;
 import java.util.List;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,12 +26,14 @@ public class NpcController {
     private final ImportNpcUseCase importNpcUseCase;
     private final GetNpcsUseCase getNpcsUseCase;
     private final GetNpcDetailUseCase getNpcDetailUseCase;
+    private final DeleteNpcUseCase deleteNpcUseCase;
 
     public NpcController(ImportNpcUseCase importNpcUseCase, GetNpcsUseCase getNpcsUseCase,
-            GetNpcDetailUseCase getNpcDetailUseCase) {
+            GetNpcDetailUseCase getNpcDetailUseCase, DeleteNpcUseCase deleteNpcUseCase) {
         this.importNpcUseCase = importNpcUseCase;
         this.getNpcsUseCase = getNpcsUseCase;
         this.getNpcDetailUseCase = getNpcDetailUseCase;
+        this.deleteNpcUseCase = deleteNpcUseCase;
     }
 
     @GetMapping
@@ -40,6 +44,12 @@ public class NpcController {
     @GetMapping("/{id}")
     public ResponseEntity<NpcDetailDTO> getNpcDetail(@PathVariable String id) {
         return ResponseEntity.ok(getNpcDetailUseCase.getNpcDetail(id));
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteNpc(@PathVariable String id) {
+        deleteNpcUseCase.deleteNpc(id);
+        return ResponseEntity.noContent().build();
     }
 
     @PostMapping("/import")

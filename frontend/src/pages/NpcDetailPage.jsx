@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import { npcService } from '../services/npcService';
+import { useMode } from '../context/ModeContext';
 
 function NpcDetailPage() {
   const { id } = useParams();
+  const navigate = useNavigate();
+  const { isMaster } = useMode();
   const [npcData, setNpcData] = useState(null);
   const [status, setStatus] = useState('loading');
 
@@ -19,6 +22,18 @@ function NpcDetailPage() {
     } catch (error) {
       console.error(error);
       setStatus('error');
+    }
+  };
+
+  const handleDelete = async () => {
+    if (window.confirm('¿Estás seguro de que quieres eliminar este NPC? Esta acción no se puede deshacer.')) {
+      try {
+        await npcService.delete(id);
+        navigate('/npcs');
+      } catch (error) {
+        console.error("Error al eliminar NPC", error);
+        alert("Error al eliminar NPC");
+      }
     }
   };
 
@@ -41,13 +56,24 @@ function NpcDetailPage() {
   return (
     <div className="min-h-screen bg-neutral-900 text-white p-4 md:p-8 font-sans">
       <div className="max-w-5xl mx-auto">
-        <header className="mb-8">
-            <Link to="/npcs" className="inline-flex items-center text-neutral-400 hover:text-white transition-colors mb-4">
+        <header className="mb-8 flex justify-between items-center">
+            <Link to="/npcs" className="inline-flex items-center text-neutral-400 hover:text-white transition-colors">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
                 </svg>
                 Volver
             </Link>
+            {isMaster && (
+              <button 
+                onClick={handleDelete}
+                className="bg-red-500/20 hover:bg-red-500/40 text-red-300 border border-red-500/50 px-4 py-2 rounded-lg transition-colors flex items-center gap-2"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                </svg>
+                Eliminar NPC
+              </button>
+            )}
         </header>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
