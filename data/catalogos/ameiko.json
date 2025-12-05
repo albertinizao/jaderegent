@@ -1,0 +1,26 @@
+{
+  "nombre": "Ameiko Kaijitsu",
+  "descripcion_larga": "Ameiko es una mujer de belleza exótica, con cabello negro y ojos almendrados. Es una barda talentosa y una aventurera experimentada. Propietaria del Dragón Oxidado.",
+  "nivel_maximo": 10,
+  "imagen_url": "/data/images/npc/ameiko.jpg",
+  "ventajas": [
+    {
+      "nombre": "Acceso al Dragón Oxidado",
+      "descripcion_larga": "Ameiko te permite dormir gratis en el Dragón Oxidado y te invita a las comidas.",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "Canción de Ánimo",
+      "descripcion_larga": "Una vez al día, puedes solicitar a Ameiko que te cante una canción antes de una aventura, otorgándote +1 moral a las tiradas de ataque y daño durante 1 hora.",
+      "min_nivel_relacion": 3,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "Liderazgo Inspirador",
+      "descripcion_larga": "Ameiko te enseña a liderar con el ejemplo. Obtienes el talento Liderazgo (o un beneficio similar si ya lo tienes) mientras Ameiko esté en el grupo.",
+      "min_nivel_relacion": 7,
+      "prerequisitos": ["ameiko_cancion_de_animo"]
+    }
+  ]
+}
