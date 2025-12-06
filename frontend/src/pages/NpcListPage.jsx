@@ -58,12 +58,12 @@ function NpcListPage() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {npcs.map((npc) => (
-            <Link key={npc.npcId} to={`/npcs/${npc.npcId}`}>
+            <Link key={npc.npc_id} to={`/npcs/${npc.npc_id}`}>
               <div className="bg-neutral-800 rounded-xl overflow-hidden border border-white/5 hover:border-purple-500/30 transition-all hover:transform hover:-translate-y-1 shadow-lg group h-full">
                 <div className="h-48 overflow-hidden bg-neutral-900 relative">
-                  {npc.imagenUrl ? (
+                  {npc.imagen_url ? (
                       <img 
-                        src={npc.imagenUrl} 
+                        src={npc.imagen_url} 
                         alt={npc.nombre} 
                         className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity"
                         onError={(e) => {
@@ -81,9 +81,9 @@ function NpcListPage() {
                 
                 <div className="p-6 relative">
                   <h3 className="text-xl font-bold text-white mb-1">{npc.nombre}</h3>
-                  <span className="text-xs font-semibold px-2 py-1 bg-purple-900/40 text-purple-300 rounded mb-3 inline-block">Nivel Max {npc.nivelMaximo}</span>
+                  <span className="text-xs font-semibold px-2 py-1 bg-purple-900/40 text-purple-300 rounded mb-3 inline-block">Nivel Max {npc.nivel_maximo}</span>
                   <p className="text-neutral-400 text-sm line-clamp-3">
-                      {npc.descripcionLarga || "Sin descripción."}
+                      {npc.descripcion_larga || "Sin descripción."}
                   </p>
                 </div>
               </div>

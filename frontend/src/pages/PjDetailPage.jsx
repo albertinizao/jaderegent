@@ -1,7 +1,9 @@
+
 import React, { useEffect, useState } from 'react';
 import { useParams, Link, useLocation, useNavigate } from 'react-router-dom';
 import { pjService } from '../services/pjService';
 import { relacionService } from '../services/relacionService';
+import { npcService } from '../services/npcService';
 import { useMode } from '../context/ModeContext';
 
 function PjDetailPage() {
@@ -17,6 +19,9 @@ function PjDetailPage() {
       nota_opcional: '',
       imagen_url: ''
   });
+  const [showAddRelacionModal, setShowAddRelacionModal] = useState(false);
+  const [availableNpcs, setAvailableNpcs] = useState([]);
+  const [selectedNpcId, setSelectedNpcId] = useState('');
 
   const handleEditClick = () => {
     setEditData({
@@ -94,6 +99,36 @@ function PjDetailPage() {
     }
   };
 
+  const handleOpenAddRelacion = async () => {
+    try {
+        const allNpcs = await npcService.getAll();
+        // Filter NPCs that already have a relationship
+        const existingNpcIds = new Set(pjData.relaciones.map(r => r.npc_id));
+        const filtered = allNpcs.filter(npc => !existingNpcIds.has(npc.npc_id));
+        
+        setAvailableNpcs(filtered);
+        setShowAddRelacionModal(true);
+    } catch (error) {
+        console.error("Error loading NPCs", error);
+        alert("Error al cargar lista de NPCs");
+    }
+  };
+
+  const handleAddRelacion = async (e) => {
+    e.preventDefault();
+    if (!selectedNpcId) return;
+    
+    try {
+        await relacionService.create(id, selectedNpcId);
+        setShowAddRelacionModal(false);
+        setSelectedNpcId('');
+        loadPjDetail(); // Refresh data
+    } catch(error) {
+        console.error("Error creating relationship", error);
+        alert("Error al crear relación");
+    }
+  };
+
   useEffect(() => {
     loadPjDetail();
   }, [id]);
@@ -136,6 +171,17 @@ function PjDetailPage() {
                 Volver a Personajes
             </Link>
             <div className="flex gap-3">
+                {isMaster && (
+                    <button
+                        onClick={handleOpenAddRelacion}
+                        className="bg-green-600 hover:bg-green-500 text-white font-bold px-4 py-2 rounded-lg transition-colors flex items-center gap-2 shadow-lg hover:shadow-green-500/20"
+                    >
+                         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+                        </svg>
+                        Añadir Relación
+                    </button>
+                )}
                 <button 
                     onClick={handleEditClick}
                     className="bg-blue-500/20 hover:bg-blue-500/40 text-blue-300 border border-blue-500/50 px-4 py-2 rounded-lg transition-colors flex items-center gap-2"
@@ -283,7 +329,7 @@ function PjDetailPage() {
                                             <span className="text-2xl text-neutral-500">?</span>
                                         </div>
                                     )}
-                                    <div className="flex-1">
+                                    <div className={`flex-1 ${isMaster ? 'pr-24' : ''}`}>
                                         <h3 className="text-lg font-bold text-white flex justify-between">
                                             {rel.npc_nombre}
                                             {rel.contador_interacciones !== 0 && (
@@ -358,6 +404,56 @@ function PjDetailPage() {
             </div>
         </div>
       </div>
+
+        {/* Add Relacion Modal */}
+        {showAddRelacionModal && (
+            <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4" onClick={() => setShowAddRelacionModal(false)}>
+                <div className="bg-neutral-800 rounded-2xl max-w-md w-full border border-white/10 shadow-2xl" onClick={(e) => e.stopPropagation()}>
+                    <div className="p-6 border-b border-white/10 flex justify-between items-start">
+                        <h3 className="text-xl font-bold text-white">Añadir Nueva Relación</h3>
+                        <button 
+                            onClick={() => setShowAddRelacionModal(false)}
+                            className="text-neutral-400 hover:text-white"
+                        >
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </button>
+                    </div>
+                    <form onSubmit={handleAddRelacion} className="p-6">
+                        <div className="mb-6">
+                            <label className="block text-sm font-semibold text-neutral-400 mb-2">Seleccionar NPC</label>
+                            {availableNpcs.length > 0 ? (
+                                <select
+                                    value={selectedNpcId}
+                                    onChange={(e) => setSelectedNpcId(e.target.value)}
+                                    className="w-full bg-neutral-700 text-white px-4 py-2 rounded-lg border border-neutral-600 focus:border-green-500 focus:outline-none"
+                                    required
+                                >
+                                    <option value="">-- Selecciona un NPC --</option>
+                                    {availableNpcs.map(npc => (
+                                        <option key={npc.npc_id} value={npc.npc_id}>
+                                            {npc.nombre}
+                                        </option>
+                                    ))}
+                                </select>
+                            ) : (
+                                <p className="text-yellow-400 text-sm">No hay NPCs disponibles para añadir (todos tienen relación ya).</p>
+                            )}
+                        </div>
+                        
+                        <button 
+                            type="submit"
+                            disabled={!selectedNpcId}
+                            className="w-full bg-green-600 hover:bg-green-700 disabled:bg-neutral-600 disabled:text-neutral-400 text-white font-bold py-2 px-4 rounded-lg transition-colors"
+                        >
+                            Crear Relación (Nivel 0)
+                        </button>
+                    </form>
+                </div>
+            </div>
+        )}
+
     </div>
   );
 }

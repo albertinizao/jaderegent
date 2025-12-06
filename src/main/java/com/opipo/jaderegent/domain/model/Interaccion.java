@@ -15,6 +15,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Data
@@ -32,6 +33,7 @@ public class Interaccion {
 
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JoinColumn(name = "relacion_id")
+    @JsonIgnore
     private Relacion relacion;
 
     @Enumerated(EnumType.STRING)
@@ -39,9 +41,9 @@ public class Interaccion {
 
     private Integer valor;
     private String nota;
-    
+
     @Builder.Default
     private LocalDateTime ts = LocalDateTime.now();
-    
+
     private String usuario;
 }

@@ -1,6 +1,22 @@
 const API_BASE = '/api/relaciones';
 
 export const relacionService = {
+  create: async (pjId, npcId) => {
+    const response = await fetch(`${API_BASE}`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ pj_id: pjId, npc_id: npcId }),
+    });
+
+    if (!response.ok) {
+        throw new Error(`Error creating Relacion: ${response.statusText}`);
+    }
+
+    return response.json();
+  },
+
   addInteraccion: async (relacionId, tipo, nota = '') => {
     const response = await fetch(`${API_BASE}/${relacionId}/interacciones`, {
       method: 'POST',

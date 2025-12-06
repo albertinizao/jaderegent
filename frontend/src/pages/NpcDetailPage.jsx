@@ -12,7 +12,7 @@ function NpcDetailPage() {
   const [selectedVentaja, setSelectedVentaja] = useState(null);
   const [showEditModal, setShowEditModal] = useState(false);
   const [showReimportModal, setShowReimportModal] = useState(false);
-  const [editForm, setEditForm] = useState({ nombre: '', descripcionLarga: '', imagenUrl: '' });
+  const [editForm, setEditForm] = useState({ nombre: '', descripcion_larga: '', imagen_url: '' });
   const [reimportFile, setReimportFile] = useState(null);
 
   useEffect(() => {
@@ -20,7 +20,7 @@ function NpcDetailPage() {
   }, [id]);
 
   const openVentajaModal = (ventajaId) => {
-    const ventaja = npcData.ventajas.find(v => v.ventajaId === ventajaId);
+    const ventaja = npcData.ventajas.find(v => v.ventaja_id === ventajaId);
     if (ventaja) {
       setSelectedVentaja(ventaja);
     }
@@ -56,8 +56,8 @@ function NpcDetailPage() {
   const openEditModal = () => {
     setEditForm({
       nombre: npcData.npc.nombre,
-      descripcionLarga: npcData.npc.descripcionLarga,
-      imagenUrl: npcData.npc.imagenUrl || ''
+      descripcion_larga: npcData.npc.descripcion_larga,
+      imagen_url: npcData.npc.imagen_url || ''
     });
     setShowEditModal(true);
   };
@@ -155,9 +155,9 @@ function NpcDetailPage() {
             <div className="lg:col-span-1">
                 <div className="bg-neutral-800 rounded-2xl overflow-hidden border border-white/5 sticky top-8">
                     <div className="h-64 sm:h-80 bg-neutral-900 relative">
-                        {npc.imagenUrl ? (
+                        {npc.imagen_url ? (
                             <img 
-                                src={npc.imagenUrl} 
+                                src={npc.imagen_url} 
                                 alt={npc.nombre} 
                                 className="w-full h-full object-cover"
                                 onError={(e) => { e.target.src = 'https://via.placeholder.com/400x500?text=Sin+Imagen'; }}
@@ -171,14 +171,14 @@ function NpcDetailPage() {
                          <div className="absolute bottom-4 left-4 right-4">
                              <h1 className="text-3xl font-bold text-white mb-1">{npc.nombre}</h1>
                              <div className="inline-block px-3 py-1 bg-purple-600 text-white text-xs font-bold rounded-full uppercase tracking-wider">
-                                Nivel Máximo: {npc.nivelMaximo}
+                                Nivel Máximo: {npc.nivel_maximo}
                              </div>
                          </div>
                     </div>
                     <div className="p-6">
                         <h3 className="text-neutral-400 text-sm font-bold uppercase tracking-wider mb-2">Descripción</h3>
                         <p className="text-neutral-300 leading-relaxed text-sm">
-                            {npc.descripcionLarga}
+                            {npc.descripcion_larga}
                         </p>
                     </div>
                 </div>
@@ -208,34 +208,34 @@ function NpcDetailPage() {
 
                 <div className="space-y-4">
                     {ventajas.map((v) => (
-                        <div key={v.ventajaId} className="bg-neutral-800/60 rounded-xl p-6 border border-white/5 hover:border-purple-500/20 transition-all">
+                        <div key={v.ventaja_id} className="bg-neutral-800/60 rounded-xl p-6 border border-white/5 hover:border-purple-500/20 transition-all">
                             <div className="flex justify-between items-start mb-2">
                                 <h3 className="text-lg font-bold text-white">{v.nombre}</h3>
                                 <div className="flex flex-col items-end">
                                     <span className={`text-xs font-bold px-2 py-1 rounded ${
-                                        v.minNivelRelacion <= 3 ? 'bg-green-900/40 text-green-300' : 
-                                        v.minNivelRelacion <= 6 ? 'bg-yellow-900/40 text-yellow-300' : 'bg-red-900/40 text-red-300'
+                                        v.min_nivel_relacion <= 3 ? 'bg-green-900/40 text-green-300' : 
+                                        v.min_nivel_relacion <= 6 ? 'bg-yellow-900/40 text-yellow-300' : 'bg-red-900/40 text-red-300'
                                     }`}>
-                                        Nivel {v.minNivelRelacion}
+                                        Nivel {v.min_nivel_relacion}
                                     </span>
                                 </div>
                             </div>
                             <p className="text-neutral-400 text-sm mb-4">
-                                {v.descripcionLarga}
+                                {v.descripcion_larga}
                             </p>
                             {v.prerequisitos && v.prerequisitos.length > 0 && (
                                 <div className="mt-4 pt-3 border-t border-white/5">
                                     <p className="text-xs text-neutral-500 mb-2 uppercase tracking-wide">
-                                        Prerrequisitos {(v.prerequisitosOperator || 'AND') === 'OR' ? 
+                                        Prerrequisitos {(v.prerequisitos_operator || 'AND') === 'OR' ? 
                                             <span className="text-amber-400 font-bold">(cualquiera)</span> : 
                                             <span className="text-purple-400 font-bold">(todos)</span>
                                         }
                                     </p>
                                     <div className="flex flex-wrap gap-2">
                                         {v.prerequisitos.map(pre => {
-                                            const prereqVentaja = ventajas.find(ventaja => ventaja.ventajaId === pre);
+                                            const prereqVentaja = ventajas.find(ventaja => ventaja.ventaja_id === pre);
                                             const displayName = prereqVentaja ? prereqVentaja.nombre : pre;
-                                            const isOrLogic = (v.prerequisitosOperator || 'AND') === 'OR';
+                                            const isOrLogic = (v.prerequisitos_operator || 'AND') === 'OR';
                                             return (
                                                 <button
                                                     key={pre}
@@ -273,10 +273,10 @@ function NpcDetailPage() {
                         <div>
                             <h3 className="text-2xl font-bold text-white mb-2">{selectedVentaja.nombre}</h3>
                             <span className={`text-xs font-bold px-3 py-1 rounded ${
-                                selectedVentaja.minNivelRelacion <= 3 ? 'bg-green-900/40 text-green-300' : 
-                                selectedVentaja.minNivelRelacion <= 6 ? 'bg-yellow-900/40 text-yellow-300' : 'bg-red-900/40 text-red-300'
+                                selectedVentaja.min_nivel_relacion <= 3 ? 'bg-green-900/40 text-green-300' : 
+                                selectedVentaja.min_nivel_relacion <= 6 ? 'bg-yellow-900/40 text-yellow-300' : 'bg-red-900/40 text-red-300'
                             }`}>
-                                Nivel {selectedVentaja.minNivelRelacion}
+                                Nivel {selectedVentaja.min_nivel_relacion}
                             </span>
                         </div>
                         <button 
@@ -292,22 +292,22 @@ function NpcDetailPage() {
                     <div className="p-6">
                         <div className="mb-6">
                             <h4 className="text-sm font-semibold text-neutral-400 uppercase tracking-wide mb-2">Descripción</h4>
-                            <p className="text-neutral-300">{selectedVentaja.descripcionLarga}</p>
+                            <p className="text-neutral-300">{selectedVentaja.descripcion_larga}</p>
                         </div>
                         
                         {selectedVentaja.prerequisitos && selectedVentaja.prerequisitos.length > 0 && (
                             <div>
                                 <h4 className="text-sm font-semibold text-neutral-400 uppercase tracking-wide mb-2">
-                                    Prerrequisitos {(selectedVentaja.prerequisitosOperator || 'AND') === 'OR' ? 
+                                    Prerrequisitos {(selectedVentaja.prerequisitos_operator || 'AND') === 'OR' ? 
                                         <span className="text-amber-400 font-bold">(cualquiera)</span> : 
                                         <span className="text-purple-400 font-bold">(todos)</span>
                                     }
                                 </h4>
                                 <div className="flex flex-wrap gap-2">
                                     {selectedVentaja.prerequisitos.map(prereqId => {
-                                        const prereqVentaja = ventajas.find(v => v.ventajaId === prereqId);
+                                        const prereqVentaja = ventajas.find(v => v.ventaja_id === prereqId);
                                         const displayName = prereqVentaja ? prereqVentaja.nombre : prereqId;
-                                        const isOrLogic = (selectedVentaja.prerequisitosOperator || 'AND') === 'OR';
+                                        const isOrLogic = (selectedVentaja.prerequisitos_operator || 'AND') === 'OR';
                                         
                                         return (
                                             <button
@@ -362,8 +362,8 @@ function NpcDetailPage() {
                             <div>
                                 <label className="block text-sm font-semibold text-neutral-400 mb-2">Descripción</label>
                                 <textarea 
-                                    value={editForm.descripcionLarga} 
-                                    onChange={(e) => setEditForm({...editForm, descripcionLarga: e.target.value})}
+                                    value={editForm.descripcion_larga} 
+                                    onChange={(e) => setEditForm({...editForm, descripcion_larga: e.target.value})}
                                     className="w-full bg-neutral-700 text-white px-4 py-2 rounded-lg border border-neutral-600 focus:border-blue-500 focus:outline-none h-32"
                                     required
                                 />
@@ -372,13 +372,14 @@ function NpcDetailPage() {
                                 <label className="block text-sm font-semibold text-neutral-400 mb-2">URL de la Imagen</label>
                                 <input 
                                     type="text" 
-                                    value={editForm.imagenUrl} 
-                                    onChange={(e) => setEditForm({...editForm, imagenUrl: e.target.value})}
+                                    value={editForm.imagen_url} 
+                                    onChange={(e) => setEditForm({...editForm, imagen_url: e.target.value})}
                                     className="w-full bg-neutral-700 text-white px-4 py-2 rounded-lg border border-neutral-600 focus:border-blue-500 focus:outline-none"
                                 />
                             </div>
                         </div>
                         <div className="flex gap-2 mt-6">
+
                             <button 
                                 type="submit"
                                 className="flex-1 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors font-semibold"
