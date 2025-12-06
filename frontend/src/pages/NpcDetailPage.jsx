@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, Link, useNavigate } from 'react-router-dom';
+import { useParams, Link, useNavigate, useLocation } from 'react-router-dom';
 import { npcService } from '../services/npcService';
 import { useMode } from '../context/ModeContext';
 
 function NpcDetailPage() {
   const { id } = useParams();
   const navigate = useNavigate();
+  const location = useLocation();
   const { isMaster } = useMode();
   const [npcData, setNpcData] = useState(null);
   const [status, setStatus] = useState('loading');
@@ -106,16 +107,18 @@ function NpcDetailPage() {
   }
 
   const { npc, ventajas } = npcData;
+  const backPath = location.state?.from || '/npcs';
+  const backLabel = location.state?.fromLabel || 'Volver';
 
   return (
     <div className="min-h-screen bg-neutral-900 text-white p-4 md:p-8 font-sans">
       <div className="max-w-5xl mx-auto">
         <header className="mb-8 flex justify-between items-center">
-            <Link to="/npcs" className="inline-flex items-center text-neutral-400 hover:text-white transition-colors">
+            <Link to={backPath} className="inline-flex items-center text-neutral-400 hover:text-white transition-colors">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
                 </svg>
-                Volver
+                {backLabel}
             </Link>
             {isMaster && (
               <div className="flex gap-2">
