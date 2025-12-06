@@ -10,6 +10,10 @@ function NpcDetailPage() {
   const [npcData, setNpcData] = useState(null);
   const [status, setStatus] = useState('loading');
   const [selectedVentaja, setSelectedVentaja] = useState(null);
+  const [showEditModal, setShowEditModal] = useState(false);
+  const [showReimportModal, setShowReimportModal] = useState(false);
+  const [editForm, setEditForm] = useState({ nombre: '', descripcionLarga: '', imagenUrl: '' });
+  const [reimportFile, setReimportFile] = useState(null);
 
   useEffect(() => {
     loadNpcDetail();
@@ -49,6 +53,44 @@ function NpcDetailPage() {
     }
   };
 
+  const openEditModal = () => {
+    setEditForm({
+      nombre: npcData.npc.nombre,
+      descripcionLarga: npcData.npc.descripcionLarga,
+      imagenUrl: npcData.npc.imagenUrl || ''
+    });
+    setShowEditModal(true);
+  };
+
+  const handleEdit = async (e) => {
+    e.preventDefault();
+    try {
+      await npcService.update(id, editForm);
+      setShowEditModal(false);
+      loadNpcDetail(); // Refresh data
+    } catch (error) {
+      console.error("Error al actualizar NPC", error);
+      alert("Error al actualizar NPC");
+    }
+  };
+
+  const handleReimport = async (e) => {
+    e.preventDefault();
+    if (!reimportFile) {
+      alert("Por favor selecciona un archivo");
+      return;
+    }
+    try {
+      await npcService.importNpc(reimportFile);
+      setShowReimportModal(false);
+      setReimportFile(null);
+      loadNpcDetail(); // Refresh data
+    } catch (error) {
+      console.error("Error al reimportar NPC", error);
+      alert("Error al reimportar NPC");
+    }
+  };
+
   if (status === 'loading') {
     return <div className="min-h-screen bg-neutral-900 text-white flex items-center justify-center">Cargando...</div>;
   }
@@ -76,15 +118,35 @@ function NpcDetailPage() {
                 Volver
             </Link>
             {isMaster && (
-              <button 
-                onClick={handleDelete}
-                className="bg-red-500/20 hover:bg-red-500/40 text-red-300 border border-red-500/50 px-4 py-2 rounded-lg transition-colors flex items-center gap-2"
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                </svg>
-                Eliminar NPC
-              </button>
+              <div className="flex gap-2">
+                <button 
+                  onClick={openEditModal}
+                  className="bg-blue-500/20 hover:bg-blue-500/40 text-blue-300 border border-blue-500/50 px-4 py-2 rounded-lg transition-colors flex items-center gap-2"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                  </svg>
+                  Editar
+                </button>
+                <button 
+                  onClick={() => setShowReimportModal(true)}
+                  className="bg-purple-500/20 hover:bg-purple-500/40 text-purple-300 border border-purple-500/50 px-4 py-2 rounded-lg transition-colors flex items-center gap-2"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
+                  </svg>
+                  Reimportar
+                </button>
+                <button 
+                  onClick={handleDelete}
+                  className="bg-red-500/20 hover:bg-red-500/40 text-red-300 border border-red-500/50 px-4 py-2 rounded-lg transition-colors flex items-center gap-2"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                  </svg>
+                  Eliminar
+                </button>
+              </div>
             )}
         </header>
 
@@ -124,14 +186,25 @@ function NpcDetailPage() {
 
             {/* Advantages List */}
             <div className="lg:col-span-2">
-                <h2 className="text-2xl font-bold mb-6 flex items-center">
-                    <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-300">
-                        Árbol de Ventajas
-                    </span>
-                    <span className="ml-3 px-2 py-1 bg-neutral-800 text-xs text-neutral-400 rounded-full border border-white/10">
-                        {ventajas.length}
-                    </span>
-                </h2>
+                <div className="flex justify-between items-center mb-6">
+                    <div className="flex items-center">
+                        <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-300 text-2xl font-bold">
+                            Árbol de Ventajas
+                        </span>
+                        <span className="ml-3 px-2 py-1 bg-neutral-800 text-xs text-neutral-400 rounded-full border border-white/10">
+                            {ventajas.length}
+                        </span>
+                    </div>
+                    <Link 
+                        to={`/npcs/${id}/advantages-tree`}
+                        className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-4 py-2 rounded-lg transition-all flex items-center gap-2 shadow-lg hover:shadow-purple-500/50"
+                    >
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+                        </svg>
+                        Ver Árbol Interactivo
+                    </Link>
+                </div>
 
                 <div className="space-y-4">
                     {ventajas.map((v) => (
@@ -254,6 +327,121 @@ function NpcDetailPage() {
                             </div>
                         )}
                     </div>
+                </div>
+            </div>
+        )}
+
+        {/* Edit Modal */}
+        {showEditModal && (
+            <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4" onClick={() => setShowEditModal(false)}>
+                <div className="bg-neutral-800 rounded-2xl max-w-2xl w-full border border-white/10 shadow-2xl" onClick={(e) => e.stopPropagation()}>
+                    <div className="p-6 border-b border-white/10 flex justify-between items-start">
+                        <h3 className="text-2xl font-bold text-white">Editar NPC</h3>
+                        <button 
+                            onClick={() => setShowEditModal(false)}
+                            className="text-neutral-400 hover:text-white transition-colors p-2 hover:bg-neutral-700 rounded-lg"
+                        >
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </button>
+                    </div>
+                    
+                    <form onSubmit={handleEdit} className="p-6">
+                        <div className="space-y-4">
+                            <div>
+                                <label className="block text-sm font-semibold text-neutral-400 mb-2">Nombre</label>
+                                <input 
+                                    type="text" 
+                                    value={editForm.nombre} 
+                                    onChange={(e) => setEditForm({...editForm, nombre: e.target.value})}
+                                    className="w-full bg-neutral-700 text-white px-4 py-2 rounded-lg border border-neutral-600 focus:border-blue-500 focus:outline-none"
+                                    required
+                                />
+                            </div>
+                            <div>
+                                <label className="block text-sm font-semibold text-neutral-400 mb-2">Descripción</label>
+                                <textarea 
+                                    value={editForm.descripcionLarga} 
+                                    onChange={(e) => setEditForm({...editForm, descripcionLarga: e.target.value})}
+                                    className="w-full bg-neutral-700 text-white px-4 py-2 rounded-lg border border-neutral-600 focus:border-blue-500 focus:outline-none h-32"
+                                    required
+                                />
+                            </div>
+                            <div>
+                                <label className="block text-sm font-semibold text-neutral-400 mb-2">URL de la Imagen</label>
+                                <input 
+                                    type="text" 
+                                    value={editForm.imagenUrl} 
+                                    onChange={(e) => setEditForm({...editForm, imagenUrl: e.target.value})}
+                                    className="w-full bg-neutral-700 text-white px-4 py-2 rounded-lg border border-neutral-600 focus:border-blue-500 focus:outline-none"
+                                />
+                            </div>
+                        </div>
+                        <div className="flex gap-2 mt-6">
+                            <button 
+                                type="submit"
+                                className="flex-1 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors font-semibold"
+                            >
+                                Guardar
+                            </button>
+                            <button 
+                                type="button"
+                                onClick={() => setShowEditModal(false)}
+                                className="flex-1 bg-neutral-700 hover:bg-neutral-600 text-neutral-300 px-4 py-2 rounded-lg transition-colors"
+                            >
+                                Cancelar
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        )}
+
+        {/* Reimport Modal */}
+        {showReimportModal && (
+            <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4" onClick={() => setShowReimportModal(false)}>
+                <div className="bg-neutral-800 rounded-2xl max-w-2xl w-full border border-white/10 shadow-2xl" onClick={(e) => e.stopPropagation()}>
+                    <div className="p-6 border-b border-white/10 flex justify-between items-start">
+                        <h3 className="text-2xl font-bold text-white">Reimportar NPC</h3>
+                        <button 
+                            onClick={() => setShowReimportModal(false)}
+                            className="text-neutral-400 hover:text-white transition-colors p-2 hover:bg-neutral-700 rounded-lg"
+                        >
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </button>
+                    </div>
+                    
+                    <form onSubmit={handleReimport} className="p-6">
+                        <div className="mb-4">
+                            <label className="block text-sm font-semibold text-neutral-400 mb-2">Archivo JSON</label>
+                            <input 
+                                type="file" 
+                                accept=".json"
+                                onChange={(e) => setReimportFile(e.target.files[0])}
+                                className="w-full bg-neutral-700 text-white px-4 py-2 rounded-lg border border-neutral-600 focus:border-purple-500 focus:outline-none file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:bg-purple-600 file:text-white hover:file:bg-purple-700 file:cursor-pointer"
+                                required
+                            />
+                            <p className="text-xs text-neutral-500 mt-2">Esto sobrescribirá todos los datos del NPC, incluyendo las ventajas.</p>
+                        </div>
+                        <div className="flex gap-2 mt-6">
+                            <button 
+                                type="submit"
+                                className="flex-1 bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg transition-colors font-semibold"
+                            >
+                                Importar
+                            </button>
+                            <button 
+                                type="button"
+                                onClick={() => setShowReimportModal(false)}
+                                className="flex-1 bg-neutral-700 hover:bg-neutral-600 text-neutral-300 px-4 py-2 rounded-lg transition-colors"
+                            >
+                                Cancelar
+                            </button>
+                        </div>
+                    </form>
                 </div>
             </div>
         )}

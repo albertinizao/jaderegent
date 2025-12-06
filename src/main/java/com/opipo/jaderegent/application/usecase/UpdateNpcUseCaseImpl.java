@@ -14,10 +14,13 @@ public class UpdateNpcUseCaseImpl implements UpdateNpcUseCase {
     }
 
     @Override
-    public NPC updateNpc(String npcId, String descripcionLarga, String imagenUrl) {
+    public NPC updateNpc(String npcId, String nombre, String descripcionLarga, String imagenUrl) {
         NPC npc = npcRepository.findById(npcId)
                 .orElseThrow(() -> new IllegalArgumentException("NPC no encontrado: " + npcId));
 
+        if (nombre != null && !nombre.trim().isEmpty()) {
+            npc.setNombre(nombre);
+        }
         if (descripcionLarga != null) {
             npc.setDescripcionLarga(descripcionLarga);
         }

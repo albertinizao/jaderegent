@@ -18,6 +18,9 @@ export const npcService = {
   getById: async (id) => {
     return axios.get(`${API_URL}/${id}`).then(res => res.data);
   },
+  update: async (id, data) => {
+    return axios.put(`${API_URL}/${id}`, data).then(res => res.data);
+  },
   delete: async (id) => {
     return axios.delete(`${API_URL}/${id}`);
   }

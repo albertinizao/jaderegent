@@ -4,14 +4,18 @@ import com.opipo.jaderegent.application.usecase.GetNpcsUseCase;
 import com.opipo.jaderegent.application.usecase.GetNpcDetailUseCase;
 import com.opipo.jaderegent.application.usecase.ImportNpcUseCase;
 import com.opipo.jaderegent.application.usecase.DeleteNpcUseCase;
+import com.opipo.jaderegent.application.usecase.UpdateNpcUseCase;
 import com.opipo.jaderegent.domain.model.NPC;
 import com.opipo.jaderegent.infrastructure.web.dto.NpcDetailDTO;
+import com.opipo.jaderegent.infrastructure.web.dto.UpdateNpcRequest;
 import java.util.List;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -27,13 +31,16 @@ public class NpcController {
     private final GetNpcsUseCase getNpcsUseCase;
     private final GetNpcDetailUseCase getNpcDetailUseCase;
     private final DeleteNpcUseCase deleteNpcUseCase;
+    private final UpdateNpcUseCase updateNpcUseCase;
 
     public NpcController(ImportNpcUseCase importNpcUseCase, GetNpcsUseCase getNpcsUseCase,
-            GetNpcDetailUseCase getNpcDetailUseCase, DeleteNpcUseCase deleteNpcUseCase) {
+            GetNpcDetailUseCase getNpcDetailUseCase, DeleteNpcUseCase deleteNpcUseCase,
+            UpdateNpcUseCase updateNpcUseCase) {
         this.importNpcUseCase = importNpcUseCase;
         this.getNpcsUseCase = getNpcsUseCase;
         this.getNpcDetailUseCase = getNpcDetailUseCase;
         this.deleteNpcUseCase = deleteNpcUseCase;
+        this.updateNpcUseCase = updateNpcUseCase;
     }
 
     @GetMapping
@@ -44,6 +51,16 @@ public class NpcController {
     @GetMapping("/{id}")
     public ResponseEntity<NpcDetailDTO> getNpcDetail(@PathVariable String id) {
         return ResponseEntity.ok(getNpcDetailUseCase.getNpcDetail(id));
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<NPC> updateNpc(@PathVariable String id, @RequestBody UpdateNpcRequest request) {
+        NPC updatedNpc = updateNpcUseCase.updateNpc(
+                id,
+                request.getNombre(),
+                request.getDescripcionLarga(),
+                request.getImagenUrl());
+        return ResponseEntity.ok(updatedNpc);
     }
 
     @DeleteMapping("/{id}")

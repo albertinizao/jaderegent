@@ -73,6 +73,8 @@ import ImportNpcPage from './pages/ImportNpcPage';
 
 import NpcListPage from './pages/NpcListPage';
 import NpcDetailPage from './pages/NpcDetailPage';
+import NpcAdvantagesTreePage from './pages/NpcAdvantagesTreePage';
+import PjDetailPage from './pages/PjDetailPage';
 
 function App() {
   return (
@@ -84,8 +86,10 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/create-pj" element={<CreatePjPage />} />
             <Route path="/pjs" element={<PjListPage />} />
+            <Route path="/pjs/:id" element={<PjDetailPage />} />
             <Route path="/npcs" element={<NpcListPage />} />
             <Route path="/npcs/:id" element={<NpcDetailPage />} />
+            <Route path="/npcs/:id/advantages-tree" element={<NpcAdvantagesTreePage />} />
             <Route path="/import-npc" element={<ImportNpcPage />} />
           </Routes>
         </div>
