@@ -79,7 +79,11 @@ function PjListPage() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {pjs.map((pj) => (
-            <div key={pj.pj_id} className="bg-neutral-800 rounded-xl overflow-hidden border border-white/5 hover:border-jade-500/30 transition-all hover:transform hover:-translate-y-1 shadow-lg group">
+            <Link 
+              key={pj.pj_id} 
+              to={`/pjs/${pj.pj_id}`}
+              className="bg-neutral-800 rounded-xl overflow-hidden border border-white/5 hover:border-jade-500/30 transition-all hover:transform hover:-translate-y-1 shadow-lg group block"
+            >
               <div className="h-48 overflow-hidden bg-neutral-900 relative">
                  {pj.imagen_url ? (
                     <img 
@@ -118,7 +122,7 @@ function PjListPage() {
                     {pj.nota_opcional || "Sin descripción."}
                  </p>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>
