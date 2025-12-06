@@ -31,17 +31,21 @@ public class Ventaja {
     @ElementCollection(fetch = FetchType.EAGER)
     private List<String> prerequisitos = new ArrayList<>();
 
+    @Column
+    private String prerequisitosOperator; // "AND" o "OR", por defecto "AND"
+
     public Ventaja() {
     }
 
     public Ventaja(String ventajaId, NPC npc, String nombre, String descripcionLarga, Integer minNivelRelacion,
-            List<String> prerequisitos) {
+            List<String> prerequisitos, String prerequisitosOperator) {
         this.ventajaId = ventajaId;
         this.npc = npc;
         this.nombre = nombre;
         this.descripcionLarga = descripcionLarga;
         this.minNivelRelacion = minNivelRelacion;
         this.prerequisitos = prerequisitos != null ? prerequisitos : new ArrayList<>();
+        this.prerequisitosOperator = prerequisitosOperator != null ? prerequisitosOperator : "AND";
     }
 
     public static VentajaBuilder builder() {
@@ -96,6 +100,14 @@ public class Ventaja {
         this.prerequisitos = prerequisitos;
     }
 
+    public String getPrerequisitosOperator() {
+        return prerequisitosOperator;
+    }
+
+    public void setPrerequisitosOperator(String prerequisitosOperator) {
+        this.prerequisitosOperator = prerequisitosOperator;
+    }
+
     public static class VentajaBuilder {
         private String ventajaId;
         private NPC npc;
@@ -103,6 +115,7 @@ public class Ventaja {
         private String descripcionLarga;
         private Integer minNivelRelacion;
         private List<String> prerequisitos;
+        private String prerequisitosOperator;
 
         VentajaBuilder() {
         }
@@ -137,8 +150,14 @@ public class Ventaja {
             return this;
         }
 
+        public VentajaBuilder prerequisitosOperator(String prerequisitosOperator) {
+            this.prerequisitosOperator = prerequisitosOperator;
+            return this;
+        }
+
         public Ventaja build() {
-            return new Ventaja(ventajaId, npc, nombre, descripcionLarga, minNivelRelacion, prerequisitos);
+            return new Ventaja(ventajaId, npc, nombre, descripcionLarga, minNivelRelacion, prerequisitos,
+                    prerequisitosOperator);
         }
     }
 }

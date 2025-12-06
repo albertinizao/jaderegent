@@ -89,6 +89,10 @@ public class ImportNpcUseCase {
             }
         }
 
+        String prerequisitosOperator = node.has("prerequisitos_operator")
+                ? node.get("prerequisitos_operator").asText()
+                : "AND";
+
         return Ventaja.builder()
                 .ventajaId(ventajaId)
                 .npc(npc)
@@ -96,6 +100,7 @@ public class ImportNpcUseCase {
                 .descripcionLarga(descripcionLarga)
                 .minNivelRelacion(minNivel)
                 .prerequisitos(prerequisitos)
+                .prerequisitosOperator(prerequisitosOperator)
                 .build();
     }
 

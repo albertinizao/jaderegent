@@ -9,10 +9,22 @@ function NpcDetailPage() {
   const { isMaster } = useMode();
   const [npcData, setNpcData] = useState(null);
   const [status, setStatus] = useState('loading');
+  const [selectedVentaja, setSelectedVentaja] = useState(null);
 
   useEffect(() => {
     loadNpcDetail();
   }, [id]);
+
+  const openVentajaModal = (ventajaId) => {
+    const ventaja = npcData.ventajas.find(v => v.ventajaId === ventajaId);
+    if (ventaja) {
+      setSelectedVentaja(ventaja);
+    }
+  };
+
+  const closeVentajaModal = () => {
+    setSelectedVentaja(null);
+  };
 
   const loadNpcDetail = async () => {
     try {
@@ -140,13 +152,31 @@ function NpcDetailPage() {
                             </p>
                             {v.prerequisitos && v.prerequisitos.length > 0 && (
                                 <div className="mt-4 pt-3 border-t border-white/5">
-                                    <p className="text-xs text-neutral-500 mb-2 uppercase tracking-wide">Prerrequisitos:</p>
+                                    <p className="text-xs text-neutral-500 mb-2 uppercase tracking-wide">
+                                        Prerrequisitos {(v.prerequisitosOperator || 'AND') === 'OR' ? 
+                                            <span className="text-amber-400 font-bold">(cualquiera)</span> : 
+                                            <span className="text-purple-400 font-bold">(todos)</span>
+                                        }
+                                    </p>
                                     <div className="flex flex-wrap gap-2">
-                                        {v.prerequisitos.map(pre => (
-                                            <span key={pre} className="text-xs text-purple-300 bg-purple-900/20 px-2 py-1 rounded border border-purple-500/10">
-                                                {pre}
-                                            </span>
-                                        ))}
+                                        {v.prerequisitos.map(pre => {
+                                            const prereqVentaja = ventajas.find(ventaja => ventaja.ventajaId === pre);
+                                            const displayName = prereqVentaja ? prereqVentaja.nombre : pre;
+                                            const isOrLogic = (v.prerequisitosOperator || 'AND') === 'OR';
+                                            return (
+                                                <button
+                                                    key={pre}
+                                                    onClick={() => openVentajaModal(pre)}
+                                                    className={`text-xs px-2 py-1 rounded border hover:scale-105 transition-all cursor-pointer ${
+                                                        isOrLogic 
+                                                            ? 'text-amber-300 bg-amber-900/20 border-amber-500/30 hover:bg-amber-900/40' 
+                                                            : 'text-purple-300 bg-purple-900/20 border-purple-500/30 hover:bg-purple-900/40'
+                                                    }`}
+                                                >
+                                                    {displayName}
+                                                </button>
+                                            );
+                                        })}
                                     </div>
                                 </div>
                             )}
@@ -161,6 +191,72 @@ function NpcDetailPage() {
                 </div>
             </div>
         </div>
+
+        {/* Modal for Ventaja Details */}
+        {selectedVentaja && (
+            <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4" onClick={closeVentajaModal}>
+                <div className="bg-neutral-800 rounded-2xl max-w-2xl w-full border border-white/10 shadow-2xl" onClick={(e) => e.stopPropagation()}>
+                    <div className="p-6 border-b border-white/10 flex justify-between items-start">
+                        <div>
+                            <h3 className="text-2xl font-bold text-white mb-2">{selectedVentaja.nombre}</h3>
+                            <span className={`text-xs font-bold px-3 py-1 rounded ${
+                                selectedVentaja.minNivelRelacion <= 3 ? 'bg-green-900/40 text-green-300' : 
+                                selectedVentaja.minNivelRelacion <= 6 ? 'bg-yellow-900/40 text-yellow-300' : 'bg-red-900/40 text-red-300'
+                            }`}>
+                                Nivel {selectedVentaja.minNivelRelacion}
+                            </span>
+                        </div>
+                        <button 
+                            onClick={closeVentajaModal}
+                            className="text-neutral-400 hover:text-white transition-colors p-2 hover:bg-neutral-700 rounded-lg"
+                        >
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </button>
+                    </div>
+                    
+                    <div className="p-6">
+                        <div className="mb-6">
+                            <h4 className="text-sm font-semibold text-neutral-400 uppercase tracking-wide mb-2">Descripción</h4>
+                            <p className="text-neutral-300">{selectedVentaja.descripcionLarga}</p>
+                        </div>
+                        
+                        {selectedVentaja.prerequisitos && selectedVentaja.prerequisitos.length > 0 && (
+                            <div>
+                                <h4 className="text-sm font-semibold text-neutral-400 uppercase tracking-wide mb-2">
+                                    Prerrequisitos {(selectedVentaja.prerequisitosOperator || 'AND') === 'OR' ? 
+                                        <span className="text-amber-400 font-bold">(cualquiera)</span> : 
+                                        <span className="text-purple-400 font-bold">(todos)</span>
+                                    }
+                                </h4>
+                                <div className="flex flex-wrap gap-2">
+                                    {selectedVentaja.prerequisitos.map(prereqId => {
+                                        const prereqVentaja = ventajas.find(v => v.ventajaId === prereqId);
+                                        const displayName = prereqVentaja ? prereqVentaja.nombre : prereqId;
+                                        const isOrLogic = (selectedVentaja.prerequisitosOperator || 'AND') === 'OR';
+                                        
+                                        return (
+                                            <button
+                                                key={prereqId}
+                                                onClick={() => openVentajaModal(prereqId)}
+                                                className={`text-xs px-2 py-1 rounded border cursor-pointer hover:scale-105 transition-transform ${
+                                                    isOrLogic 
+                                                        ? 'text-amber-300 bg-amber-900/20 border-amber-500/30 hover:bg-amber-900/40' 
+                                                        : 'text-purple-300 bg-purple-900/20 border-purple-500/30 hover:bg-purple-900/40'
+                                                }`}
+                                            >
+                                                {displayName}
+                                            </button>
+                                        );
+                                    })}
+                                </div>
+                            </div>
+                        )}
+                    </div>
+                </div>
+            </div>
+        )}
       </div>
     </div>
   );

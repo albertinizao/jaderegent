@@ -118,7 +118,8 @@
       "prerequisitos": [
         "ameiko_recital_del_dragon_oxidado",
         "ameiko_confianza_de_la_heredera"
-      ]
+      ],
+      "prerequisitos_operator": "OR"
     },
     {
       "nombre": "Hechizos de Ameiko 2",
@@ -247,7 +248,8 @@
       "prerequisitos": [
         "ameiko_entrenamiento_kaijitsu",
         "ameiko_combatiente_sutil"
-      ]
+      ],
+      "prerequisitos_operator": "OR"
     },
     {
       "nombre": "Conexión empática",
