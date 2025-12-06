@@ -17,6 +17,21 @@ export const relacionService = {
     return response.json();
   },
 
+  selectVentaja: async (relacionId, ventajaId) => {
+    const response = await fetch(`${API_BASE}/${relacionId}/ventajas/${ventajaId}`, {
+         method: 'POST',
+         headers: {
+             'Content-Type': 'application/json',
+         }
+     });
+
+     if (!response.ok) {
+         throw new Error(`Error selecting Ventaja: ${response.statusText}`);
+     }
+
+     return response.json();
+  },
+
   addInteraccion: async (relacionId, tipo, nota = '') => {
     const response = await fetch(`${API_BASE}/${relacionId}/interacciones`, {
       method: 'POST',

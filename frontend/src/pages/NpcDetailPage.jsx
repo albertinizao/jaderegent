@@ -16,9 +16,19 @@ function NpcDetailPage() {
   const [editForm, setEditForm] = useState({ nombre: '', descripcion_larga: '', imagen_url: '' });
   const [reimportFile, setReimportFile] = useState(null);
 
+  // Relationship Context from PjDetailPage
+  const [relacionContext, setRelacionContext] = useState(location.state?.relacionContext || null);
+
   useEffect(() => {
     loadNpcDetail();
   }, [id]);
+
+  // Update local context if location state changes (e.g. navigation)
+  useEffect(() => {
+      if (location.state?.relacionContext) {
+          setRelacionContext(location.state.relacionContext);
+      }
+  }, [location.state]);
 
   const openVentajaModal = (ventajaId) => {
     const ventaja = npcData.ventajas.find(v => v.ventaja_id === ventajaId);
@@ -41,8 +51,61 @@ function NpcDetailPage() {
       setStatus('error');
     }
   };
+  
+  const handleSelectVentaja = async (ventaja) => {
+      if (!relacionContext || !relacionContext.pendienteEleccion) return;
+      
+      if (!window.confirm(`¿Quieres seleccionar la ventaja "${ventaja.nombre}"?`)) return;
+
+      try {
+          await import('../services/relacionService').then(m => m.relacionService.selectVentaja(relacionContext.relacionId, ventaja.ventaja_id));
+          
+          // Update local state to reflect selection
+          setRelacionContext(prev => ({
+              ...prev,
+              pendienteEleccion: false,
+              ventajasObtenidasIds: [...prev.ventajasObtenidasIds, ventaja.ventaja_id]
+          }));
+          alert("Ventaja seleccionada correctamente");
+      } catch (error) {
+          console.error("Error al seleccionar ventaja", error);
+          alert("Error al seleccionar ventaja");
+      }
+  };
+
+  const checkEligibility = (ventaja) => {
+      if (!relacionContext) return { eligible: false, reason: 'No hay contexto de relación' };
+      
+      // Check if already obtained
+      if (relacionContext.ventajasObtenidasIds.includes(ventaja.ventaja_id)) {
+          return { eligible: false, obtained: true };
+      }
+
+      // Check level
+      if (relacionContext.nivelActual < ventaja.min_nivel_relacion) {
+          return { eligible: false, reason: 'Nivel insuficiente' };
+      }
+
+      // Check Prerequisites
+      if (ventaja.prerequisitos && ventaja.prerequisitos.length > 0) {
+          const isOr = (ventaja.prerequisitos_operator || 'AND') === 'OR';
+          const obtained = new Set(relacionContext.ventajasObtenidasIds);
+          
+          if (isOr) {
+              const anyMet = ventaja.prerequisitos.some(req => obtained.has(req));
+              if (!anyMet) return { eligible: false, reason: 'Falta prerequisito (cualquiera)' };
+          } else {
+              const allMet = ventaja.prerequisitos.every(req => obtained.has(req));
+              if (!allMet) return { eligible: false, reason: 'Faltan prerequisitos' };
+          }
+      }
+
+      return { eligible: true };
+  };
 
   const handleDelete = async () => {
+  // ... (rest of the file content)
+
     if (window.confirm('¿Estás seguro de que quieres eliminar este NPC? Esta acción no se puede deshacer.')) {
       try {
         await npcService.delete(id);
@@ -210,17 +273,32 @@ function NpcDetailPage() {
                 </div>
 
                 <div className="space-y-4">
-                    {ventajas.map((v) => (
-                        <div key={v.ventaja_id} className="bg-neutral-800/60 rounded-xl p-6 border border-white/5 hover:border-purple-500/20 transition-all">
+                    {ventajas.map((v) => {
+                        const { eligible, obtained, reason } = checkEligibility(v);
+                        
+                        return (
+                        <div key={v.ventaja_id} className={`bg-neutral-800/60 rounded-xl p-6 border transition-all ${
+                            obtained ? 'border-green-500/30 bg-green-900/10' : 
+                            eligible && relacionContext?.pendienteEleccion ? 'border-amber-500/50 bg-amber-900/10 hover:border-amber-400' :
+                            'border-white/5'
+                        }`}>
                             <div className="flex justify-between items-start mb-2">
                                 <h3 className="text-lg font-bold text-white">{v.nombre}</h3>
-                                <div className="flex flex-col items-end">
+                                <div className="flex flex-col items-end gap-2">
                                     <span className={`text-xs font-bold px-2 py-1 rounded ${
                                         v.min_nivel_relacion <= 3 ? 'bg-green-900/40 text-green-300' : 
                                         v.min_nivel_relacion <= 6 ? 'bg-yellow-900/40 text-yellow-300' : 'bg-red-900/40 text-red-300'
                                     }`}>
                                         Nivel {v.min_nivel_relacion}
                                     </span>
+                                    {obtained && (
+                                        <span className="text-xs font-bold px-2 py-1 rounded bg-green-500 text-white flex items-center gap-1">
+                                            <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3" viewBox="0 0 20 20" fill="currentColor">
+                                                <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                                            </svg>
+                                            Obtenida
+                                        </span>
+                                    )}
                                 </div>
                             </div>
                             <p className="text-neutral-400 text-sm mb-4">
@@ -239,25 +317,47 @@ function NpcDetailPage() {
                                             const prereqVentaja = ventajas.find(ventaja => ventaja.ventaja_id === pre);
                                             const displayName = prereqVentaja ? prereqVentaja.nombre : pre;
                                             const isOrLogic = (v.prerequisitos_operator || 'AND') === 'OR';
+                                            const isMet = relacionContext?.ventajasObtenidasIds?.includes(pre);
+
                                             return (
                                                 <button
                                                     key={pre}
                                                     onClick={() => openVentajaModal(pre)}
                                                     className={`text-xs px-2 py-1 rounded border hover:scale-105 transition-all cursor-pointer ${
+                                                        isMet ? 'bg-green-900/30 border-green-500/50 text-green-300' :
                                                         isOrLogic 
                                                             ? 'text-amber-300 bg-amber-900/20 border-amber-500/30 hover:bg-amber-900/40' 
                                                             : 'text-purple-300 bg-purple-900/20 border-purple-500/30 hover:bg-purple-900/40'
                                                     }`}
                                                 >
-                                                    {displayName}
+                                                    {displayName} {isMet && '✓'}
                                                 </button>
                                             );
                                         })}
                                     </div>
                                 </div>
                             )}
+
+                            {/* Select Button */}
+                            {eligible && relacionContext?.pendienteEleccion && (
+                                <button
+                                    onClick={() => handleSelectVentaja(v)}
+                                    className="mt-4 w-full bg-amber-600 hover:bg-amber-700 text-white font-bold py-2 px-4 rounded-lg transition-colors flex items-center justify-center gap-2 shadow-lg shadow-amber-900/20 animate-pulse"
+                                >
+                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                                    </svg>
+                                    Seleccionar Ventaja
+                                </button>
+                            )}
+                            {!eligible && !obtained && relacionContext?.pendienteEleccion && (
+                                <div className="mt-4 text-xs text-center text-neutral-500 italic">
+                                    No disponible: {reason}
+                                </div>
+                            )}
                         </div>
-                    ))}
+                    );
+                    })}
                     
                     {ventajas.length === 0 && (
                         <div className="text-center py-12 border-2 border-dashed border-neutral-800 rounded-xl">

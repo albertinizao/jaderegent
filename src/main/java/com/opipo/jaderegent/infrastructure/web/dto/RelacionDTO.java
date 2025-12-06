@@ -1,6 +1,7 @@
 package com.opipo.jaderegent.infrastructure.web.dto;
 
 import java.util.UUID;
+import java.util.List;
 
 public class RelacionDTO {
     private UUID relacionId;
@@ -12,13 +13,14 @@ public class RelacionDTO {
     private Boolean pendienteEleccion;
     private Boolean consistente;
     private Integer contadorInteracciones;
+    private List<String> ventajasObtenidasIds;
 
     public RelacionDTO() {
     }
 
     public RelacionDTO(UUID relacionId, String npcId, String npcNombre, String npcImagenUrl,
             Integer nivelActual, Integer nivelMaximo, Boolean pendienteEleccion, Boolean consistente,
-            Integer contadorInteracciones) {
+            Integer contadorInteracciones, List<String> ventajasObtenidasIds) {
         this.relacionId = relacionId;
         this.npcId = npcId;
         this.npcNombre = npcNombre;
@@ -28,6 +30,7 @@ public class RelacionDTO {
         this.pendienteEleccion = pendienteEleccion;
         this.consistente = consistente;
         this.contadorInteracciones = contadorInteracciones;
+        this.ventajasObtenidasIds = ventajasObtenidasIds;
     }
 
     public static RelacionDTOBuilder builder() {
@@ -106,6 +109,14 @@ public class RelacionDTO {
         this.contadorInteracciones = contadorInteracciones;
     }
 
+    public List<String> getVentajasObtenidasIds() {
+        return ventajasObtenidasIds;
+    }
+
+    public void setVentajasObtenidasIds(List<String> ventajasObtenidasIds) {
+        this.ventajasObtenidasIds = ventajasObtenidasIds;
+    }
+
     public static class RelacionDTOBuilder {
         private UUID relacionId;
         private String npcId;
@@ -116,6 +127,7 @@ public class RelacionDTO {
         private Boolean pendienteEleccion;
         private Boolean consistente;
         private Integer contadorInteracciones;
+        private List<String> ventajasObtenidasIds;
 
         RelacionDTOBuilder() {
         }
@@ -165,9 +177,14 @@ public class RelacionDTO {
             return this;
         }
 
+        public RelacionDTOBuilder ventajasObtenidasIds(List<String> ventajasObtenidasIds) {
+            this.ventajasObtenidasIds = ventajasObtenidasIds;
+            return this;
+        }
+
         public RelacionDTO build() {
             return new RelacionDTO(relacionId, npcId, npcNombre, npcImagenUrl, nivelActual, nivelMaximo,
-                    pendienteEleccion, consistente, contadorInteracciones);
+                    pendienteEleccion, consistente, contadorInteracciones, ventajasObtenidasIds);
         }
     }
 }

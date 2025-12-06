@@ -4,7 +4,11 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Lob;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.CascadeType;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class NPC {
@@ -21,17 +25,21 @@ public class NPC {
     private String imagenUrl;
     private LocalDateTime fechaImportacion;
 
+    @OneToMany(mappedBy = "npc", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Ventaja> ventajas = new ArrayList<>();
+
     public NPC() {
     }
 
     public NPC(String npcId, String nombre, String descripcionLarga, Integer nivelMaximo, String imagenUrl,
-            LocalDateTime fechaImportacion) {
+            LocalDateTime fechaImportacion, List<Ventaja> ventajas) {
         this.npcId = npcId;
         this.nombre = nombre;
         this.descripcionLarga = descripcionLarga;
         this.nivelMaximo = nivelMaximo;
         this.imagenUrl = imagenUrl;
         this.fechaImportacion = fechaImportacion;
+        this.ventajas = ventajas != null ? ventajas : new ArrayList<>();
     }
 
     public static NPCBuilder builder() {
@@ -86,6 +94,14 @@ public class NPC {
         this.fechaImportacion = fechaImportacion;
     }
 
+    public List<Ventaja> getVentajas() {
+        return ventajas;
+    }
+
+    public void setVentajas(List<Ventaja> ventajas) {
+        this.ventajas = ventajas;
+    }
+
     public static class NPCBuilder {
         private String npcId;
         private String nombre;
@@ -93,6 +109,7 @@ public class NPC {
         private Integer nivelMaximo;
         private String imagenUrl;
         private LocalDateTime fechaImportacion;
+        private List<Ventaja> ventajas;
 
         NPCBuilder() {
         }
@@ -128,7 +145,7 @@ public class NPC {
         }
 
         public NPC build() {
-            return new NPC(npcId, nombre, descripcionLarga, nivelMaximo, imagenUrl, fechaImportacion);
+            return new NPC(npcId, nombre, descripcionLarga, nivelMaximo, imagenUrl, fechaImportacion, ventajas);
         }
     }
 }

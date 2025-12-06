@@ -7,15 +7,19 @@ import com.opipo.jaderegent.domain.repository.RelacionRepository;
 import com.opipo.jaderegent.infrastructure.web.dto.CreateInteraccionRequest;
 import java.time.LocalDateTime;
 import java.util.UUID;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-@RequiredArgsConstructor
 public class RegisterInteraccionUseCaseImpl implements RegisterInteraccionUseCase {
     private final RelacionRepository relacionRepository;
     private final InteraccionRepository interaccionRepository;
+
+    public RegisterInteraccionUseCaseImpl(RelacionRepository relacionRepository,
+            InteraccionRepository interaccionRepository) {
+        this.relacionRepository = relacionRepository;
+        this.interaccionRepository = interaccionRepository;
+    }
 
     @Override
     @Transactional

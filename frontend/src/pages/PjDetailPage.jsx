@@ -312,7 +312,13 @@ function PjDetailPage() {
                                 to={`/npcs/${rel.npc_id}`}
                                 state={{ 
                                     from: location.pathname, 
-                                    fromLabel: `Volver a ${pj.nombre_display}` 
+                                    fromLabel: `Volver a ${pj.nombre_display}`,
+                                    relacionContext: {
+                                        relacionId: rel.relacion_id,
+                                        nivelActual: rel.nivel_actual,
+                                        pendienteEleccion: rel.pendiente_eleccion,
+                                        ventajasObtenidasIds: rel.ventajas_obtenidas_ids || []
+                                    }
                                 }}
                                 className="block bg-neutral-800/60 rounded-xl p-4 border border-white/5 hover:border-jade-500/30 transition-all hover:scale-[1.02] cursor-pointer"
                             >

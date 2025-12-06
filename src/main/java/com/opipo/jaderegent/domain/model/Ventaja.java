@@ -18,6 +18,7 @@ public class Ventaja {
 
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JoinColumn(name = "npc_id")
+    @com.fasterxml.jackson.annotation.JsonIgnore
     private NPC npc;
 
     @Column(nullable = false)

@@ -9,17 +9,23 @@ import com.opipo.jaderegent.domain.repository.RelacionRepository;
 import com.opipo.jaderegent.infrastructure.web.dto.CreateRelacionRequest;
 import java.time.LocalDateTime;
 import java.util.Optional;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-@RequiredArgsConstructor
 public class CreateRelacionUseCaseImpl implements CreateRelacionUseCase {
 
     private final PJRepository pjRepository;
     private final NPCRepository npcRepository;
     private final RelacionRepository relacionRepository;
+
+    public CreateRelacionUseCaseImpl(PJRepository pjRepository,
+            NPCRepository npcRepository,
+            RelacionRepository relacionRepository) {
+        this.pjRepository = pjRepository;
+        this.npcRepository = npcRepository;
+        this.relacionRepository = relacionRepository;
+    }
 
     @Override
     @Transactional

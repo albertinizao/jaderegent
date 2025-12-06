@@ -47,6 +47,9 @@ public class GetPjDetailUseCase {
                                                 .pendienteEleccion(rel.getPendienteEleccion())
                                                 .consistente(rel.getConsistente())
                                                 .contadorInteracciones(rel.getContadorInteracciones())
+                                                .ventajasObtenidasIds(rel.getVentajasObtenidas().stream()
+                                                                .map(v -> v.getVentajaId())
+                                                                .toList())
                                                 .build())
                                 .sorted((a, b) -> a.getNpcNombre().compareTo(b.getNpcNombre())) // Sort by NPC name
                                 .toList();
