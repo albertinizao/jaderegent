@@ -1,7 +1,7 @@
 package com.opipo.jaderegent.infrastructure.web.dto;
 
-import java.util.UUID;
 import java.util.List;
+import java.util.UUID;
 
 public class RelacionDTO {
     private UUID relacionId;
@@ -15,13 +15,17 @@ public class RelacionDTO {
     private Integer contadorInteracciones;
     private List<String> ventajasObtenidasIds;
     private List<SeleccionVentajaDTO> selecciones;
+    private UUID pjId;
+    private String pjNombre;
+    private String pjImagenUrl;
 
     public RelacionDTO() {
     }
 
     public RelacionDTO(UUID relacionId, String npcId, String npcNombre, String npcImagenUrl,
             Integer nivelActual, Integer nivelMaximo, Boolean pendienteEleccion, Boolean consistente,
-            Integer contadorInteracciones, List<String> ventajasObtenidasIds, List<SeleccionVentajaDTO> selecciones) {
+            Integer contadorInteracciones, List<String> ventajasObtenidasIds, List<SeleccionVentajaDTO> selecciones,
+            UUID pjId, String pjNombre, String pjImagenUrl) {
         this.relacionId = relacionId;
         this.npcId = npcId;
         this.npcNombre = npcNombre;
@@ -33,6 +37,9 @@ public class RelacionDTO {
         this.contadorInteracciones = contadorInteracciones;
         this.ventajasObtenidasIds = ventajasObtenidasIds;
         this.selecciones = selecciones;
+        this.pjId = pjId;
+        this.pjNombre = pjNombre;
+        this.pjImagenUrl = pjImagenUrl;
     }
 
     public static RelacionDTOBuilder builder() {
@@ -127,6 +134,30 @@ public class RelacionDTO {
         this.selecciones = selecciones;
     }
 
+    public UUID getPjId() {
+        return pjId;
+    }
+
+    public void setPjId(UUID pjId) {
+        this.pjId = pjId;
+    }
+
+    public String getPjNombre() {
+        return pjNombre;
+    }
+
+    public void setPjNombre(String pjNombre) {
+        this.pjNombre = pjNombre;
+    }
+
+    public String getPjImagenUrl() {
+        return pjImagenUrl;
+    }
+
+    public void setPjImagenUrl(String pjImagenUrl) {
+        this.pjImagenUrl = pjImagenUrl;
+    }
+
     public static class RelacionDTOBuilder {
         private UUID relacionId;
         private String npcId;
@@ -139,6 +170,9 @@ public class RelacionDTO {
         private Integer contadorInteracciones;
         private List<String> ventajasObtenidasIds;
         private List<SeleccionVentajaDTO> selecciones;
+        private UUID pjId;
+        private String pjNombre;
+        private String pjImagenUrl;
 
         RelacionDTOBuilder() {
         }
@@ -198,9 +232,25 @@ public class RelacionDTO {
             return this;
         }
 
+        public RelacionDTOBuilder pjId(UUID pjId) {
+            this.pjId = pjId;
+            return this;
+        }
+
+        public RelacionDTOBuilder pjNombre(String pjNombre) {
+            this.pjNombre = pjNombre;
+            return this;
+        }
+
+        public RelacionDTOBuilder pjImagenUrl(String pjImagenUrl) {
+            this.pjImagenUrl = pjImagenUrl;
+            return this;
+        }
+
         public RelacionDTO build() {
             return new RelacionDTO(relacionId, npcId, npcNombre, npcImagenUrl, nivelActual, nivelMaximo,
-                    pendienteEleccion, consistente, contadorInteracciones, ventajasObtenidasIds, selecciones);
+                    pendienteEleccion, consistente, contadorInteracciones, ventajasObtenidasIds, selecciones,
+                    pjId, pjNombre, pjImagenUrl);
         }
     }
 }

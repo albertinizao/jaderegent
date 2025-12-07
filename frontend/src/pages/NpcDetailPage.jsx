@@ -217,8 +217,8 @@ function NpcDetailPage() {
         </header>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {/* NPC Card / Basic Info */}
-            <div className="lg:col-span-1">
+            {/* Relationships List */}
+            <div className="lg:col-span-1 space-y-8">
                 <div className="bg-neutral-800 rounded-2xl overflow-hidden border border-white/5 sticky top-8">
                     <div className="h-64 sm:h-80 bg-neutral-900 relative">
                         {npc.imagen_url ? (
@@ -248,6 +248,77 @@ function NpcDetailPage() {
                         </p>
                     </div>
                 </div>
+
+                {/* Relationships Section */}
+                {isMaster && (
+                <div className="bg-neutral-800 rounded-2xl p-6 border border-white/5">
+                     <h3 className="text-xl font-bold mb-4 flex items-center">
+                        <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-300">
+                            Relaciones
+                        </span>
+                    </h3>
+                    
+                    {npcData.relaciones && npcData.relaciones.length > 0 ? (
+                        <div className="space-y-4">
+                            {npcData.relaciones.map(rel => (
+                                <div key={rel.relacion_id} className="bg-neutral-700/30 rounded-lg p-4 border border-white/5">
+                                    <div className="flex items-center gap-3 mb-3">
+                                        {rel.pj_imagen_url ? (
+                                             <img src={rel.pj_imagen_url} className="w-10 h-10 rounded-full object-cover border border-white/10" alt={rel.pj_nombre} />
+                                        ) : (
+                                            <div className="w-10 h-10 rounded-full bg-neutral-600 flex items-center justify-center text-white font-bold text-xs">
+                                                {rel.pj_nombre?.substring(0,2).toUpperCase()}
+                                            </div>
+                                        )}
+                                        <div>
+                                            <div className="font-bold text-white">{rel.pj_nombre}</div>
+                                            <div className="text-xs text-neutral-400">Nivel {rel.nivel_actual}</div>
+                                        </div>
+                                    </div>
+                                    
+                                    {isMaster && (
+                                        <div className="flex flex-col gap-2 border-t border-white/5 pt-3 mt-2">
+                                             <div className="flex justify-between items-center text-xs">
+                                                <span className="text-neutral-500 uppercase tracking-wider">Interacciones ({rel.contador_interacciones || 0})</span>
+                                                <div className="flex gap-1">
+                                                     <button 
+                                                        onClick={async () => {
+                                                            try {
+                                                                const { relacionService } = await import('../services/relacionService');
+                                                                await relacionService.registerInteraction(rel.relacion_id, false);
+                                                                loadNpcDetail(); 
+                                                            } catch (e) { 
+                                                                console.error("Interaction Error:", e);
+                                                                alert("Error al registrar interacción negativa: " + e.message); 
+                                                            }
+                                                        }}
+                                                        className="w-6 h-6 flex items-center justify-center bg-red-900/30 hover:bg-red-900/50 text-red-400 rounded border border-red-500/20"
+                                                     >-</button>
+                                                     <button 
+                                                       onClick={async () => {
+                                                            try {
+                                                                const { relacionService } = await import('../services/relacionService');
+                                                                await relacionService.registerInteraction(rel.relacion_id, true);
+                                                                loadNpcDetail(); 
+                                                            } catch (e) { 
+                                                                console.error("Interaction Error:", e);
+                                                                alert("Error al registrar interacción positiva: " + e.message); 
+                                                            }
+                                                        }}
+                                                        className="w-6 h-6 flex items-center justify-center bg-green-900/30 hover:bg-green-900/50 text-green-400 rounded border border-green-500/20"
+                                                     >+</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    )}
+                                </div>
+                            ))}
+                        </div>
+                    ) : (
+                         <p className="text-neutral-500 text-sm italic">No hay relaciones activas.</p>
+                    )}
+                </div>
+                )}
             </div>
 
             {/* Advantages List */}

@@ -7,10 +7,12 @@ import java.util.List;
 public class NpcDetailDTO {
     private NPC npc;
     private List<Ventaja> ventajas;
+    private List<RelacionDTO> relaciones;
 
-    public NpcDetailDTO(NPC npc, List<Ventaja> ventajas) {
+    public NpcDetailDTO(NPC npc, List<Ventaja> ventajas, List<RelacionDTO> relaciones) {
         this.npc = npc;
         this.ventajas = ventajas;
+        this.relaciones = relaciones;
     }
 
     public NPC getNpc() {
@@ -27,5 +29,13 @@ public class NpcDetailDTO {
 
     public void setVentajas(List<Ventaja> ventajas) {
         this.ventajas = ventajas;
+    }
+
+    public List<RelacionDTO> getRelaciones() {
+        return relaciones;
+    }
+
+    public void setRelaciones(List<RelacionDTO> relaciones) {
+        this.relaciones = relaciones;
     }
 }

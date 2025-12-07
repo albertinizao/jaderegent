@@ -62,5 +62,10 @@ export const relacionService = {
     }
 
     return response.json();
+  },
+
+  registerInteraction: async (relacionId, isPositive) => {
+      const tipo = isPositive ? 'POSITIVA' : 'NEGATIVA';
+      return relacionService.addInteraccion(relacionId, tipo, '');
   }
 };
