@@ -34,15 +34,24 @@ public class SelectVentajaUseCaseImpl implements SelectVentajaUseCase {
 
         validateRequirements(relacion, ventaja);
 
+        // Determine the level this selection corresponds to (backfilling if we jumped
+        // levels)
+        // e.g. if we are level 2 and have 0 selections, this is the selection for level
+        // 1.
+        int nivelAdquisicion = relacion.getSelecciones().size() + 1;
+
         com.opipo.jaderegent.domain.model.SeleccionVentaja seleccion = com.opipo.jaderegent.domain.model.SeleccionVentaja
                 .builder()
                 .relacion(relacion)
                 .ventaja(ventaja)
-                .nivelAdquisicion(relacion.getNivelActual())
+                .nivelAdquisicion(nivelAdquisicion)
                 .build();
 
         relacion.getSelecciones().add(seleccion);
-        relacion.setPendienteEleccion(false);
+
+        // Only clear pending status if we have caught up with the current level
+        boolean stillPending = relacion.getSelecciones().size() < relacion.getNivelActual();
+        relacion.setPendienteEleccion(stillPending);
 
         return relacionRepository.save(relacion);
     }

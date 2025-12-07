@@ -468,15 +468,34 @@ function PjDetailPage() {
                                             </h3>
                                             <div className="space-y-2">
                                                 {rel.selecciones
-                                                    .sort((a, b) => b.nivel_adquisicion - a.nivel_adquisicion)
+                                                    .sort((a, b) => a.nivel_adquisicion - b.nivel_adquisicion)
                                                     .map(sel => (
                                                     <div key={sel.ventaja_id} className="bg-neutral-700/30 rounded-lg p-3 border border-white/5 hover:bg-neutral-700/50 transition-colors">
                                                         <div className="flex justify-between items-start">
                                                             <span className="font-bold text-jade-300">{sel.nombre}</span>
                                                             <div className="flex flex-col items-end">
-                                                                <span className="text-xs bg-neutral-900 border border-neutral-700 text-neutral-400 px-1.5 py-0.5 rounded mb-1" title="Nivel de la ventaja">
-                                                                    Nvl {sel.nivel_ventaja || '?'}
-                                                                </span>
+                                                                {(() => {
+                                                                    const level = sel.nivel_ventaja || 1;
+                                                                    // Calculate hue: 120 (Green) -> 60 (Yellow) -> 0 (Red)
+                                                                    // Map level 1..10 to hue 120..0
+                                                                    const hue = Math.max(0, 120 - ((level - 1) * (120 / 9)));
+                                                                    
+                                                                    const dynamicStyle = {
+                                                                        color: `hsl(${hue}, 90%, 75%)`,
+                                                                        borderColor: `hsla(${hue}, 80%, 50%, 0.4)`,
+                                                                        backgroundColor: `hsla(${hue}, 80%, 50%, 0.1)`
+                                                                    };
+
+                                                                    return (
+                                                                        <span 
+                                                                            className="text-xs font-bold px-2 py-0.5 rounded mb-1 border"
+                                                                            style={dynamicStyle}
+                                                                            title="Nivel de la ventaja"
+                                                                        >
+                                                                            Nvl {sel.nivel_ventaja || '?'}
+                                                                        </span>
+                                                                    );
+                                                                })()}
                                                                 <span className="text-[10px] text-neutral-500" title="Nivel al que se adquirió">
                                                                     (Adq. {sel.nivel_adquisicion})
                                                                 </span>
