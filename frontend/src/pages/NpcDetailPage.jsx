@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useParams, Link, useNavigate, useLocation } from 'react-router-dom';
 import { npcService } from '../services/npcService';
 import { useMode } from '../context/ModeContext';
+import ConfirmationModal from '../components/ConfirmationModal';
+import NotificationModal from '../components/NotificationModal';
 
 function NpcDetailPage() {
   const { id } = useParams();
@@ -18,6 +20,34 @@ function NpcDetailPage() {
 
   // Relationship Context from PjDetailPage
   const [relacionContext, setRelacionContext] = useState(location.state?.relacionContext || null);
+
+  // Modal States
+  const [confirmModal, setConfirmModal] = useState({ 
+      isOpen: false, 
+      title: '', 
+      message: '', 
+      onConfirm: () => {},
+      isDanger: false
+  });
+  
+  const [notifyModal, setNotifyModal] = useState({ 
+      isOpen: false, 
+      title: '', 
+      message: '', 
+      type: 'info' 
+  });
+
+  const showNotification = (title, message, type = 'info') => {
+      setNotifyModal({ isOpen: true, title, message, type });
+  };
+   
+  const closeNotification = () => {
+      setNotifyModal(prev => ({ ...prev, isOpen: false }));
+  };
+
+  const closeConfirm = () => {
+      setConfirmModal(prev => ({ ...prev, isOpen: false }));
+  };
 
   useEffect(() => {
     loadNpcDetail();
@@ -52,25 +82,30 @@ function NpcDetailPage() {
     }
   };
   
-  const handleSelectVentaja = async (ventaja) => {
+  const handleSelectVentaja = (ventaja) => {
       if (!relacionContext || !relacionContext.pendienteEleccion) return;
       
-      if (!window.confirm(`¿Quieres seleccionar la ventaja "${ventaja.nombre}"?`)) return;
-
-      try {
-          await import('../services/relacionService').then(m => m.relacionService.selectVentaja(relacionContext.relacionId, ventaja.ventaja_id));
-          
-          // Update local state to reflect selection
-          setRelacionContext(prev => ({
-              ...prev,
-              pendienteEleccion: false,
-              ventajasObtenidasIds: [...prev.ventajasObtenidasIds, ventaja.ventaja_id]
-          }));
-          alert("Ventaja seleccionada correctamente");
-      } catch (error) {
-          console.error("Error al seleccionar ventaja", error);
-          alert("Error al seleccionar ventaja");
-      }
+      setConfirmModal({
+          isOpen: true,
+          title: 'Seleccionar Ventaja',
+          message: `¿Quieres seleccionar la ventaja "${ventaja.nombre}"?`,
+          onConfirm: async () => {
+              try {
+                  await import('../services/relacionService').then(m => m.relacionService.selectVentaja(relacionContext.relacionId, ventaja.ventaja_id));
+                  
+                  // Update local state to reflect selection
+                  setRelacionContext(prev => ({
+                      ...prev,
+                      pendienteEleccion: false,
+                      ventajasObtenidasIds: [...prev.ventajasObtenidasIds, ventaja.ventaja_id]
+                  }));
+                  showNotification("Éxito", "Ventaja seleccionada correctamente", 'success');
+              } catch (error) {
+                  console.error("Error al seleccionar ventaja", error);
+                  showNotification("Error", "Error al seleccionar la ventaja", 'error');
+              }
+          }
+      });
   };
 
   const checkEligibility = (ventaja) => {
@@ -103,18 +138,22 @@ function NpcDetailPage() {
       return { eligible: true };
   };
 
-  const handleDelete = async () => {
-  // ... (rest of the file content)
-
-    if (window.confirm('¿Estás seguro de que quieres eliminar este NPC? Esta acción no se puede deshacer.')) {
-      try {
-        await npcService.delete(id);
-        navigate('/npcs');
-      } catch (error) {
-        console.error("Error al eliminar NPC", error);
-        alert("Error al eliminar NPC");
-      }
-    }
+  const handleDelete = () => {
+    setConfirmModal({
+        isOpen: true,
+        title: 'Eliminar NPC',
+        message: '¿Estás seguro de que quieres eliminar este NPC? Esta acción no se puede deshacer.',
+        isDanger: true,
+        onConfirm: async () => {
+            try {
+                await npcService.delete(id);
+                navigate('/npcs');
+            } catch (error) {
+                console.error("Error al eliminar NPC", error);
+                showNotification("Error", "Error al eliminar el NPC", 'error');
+            }
+        }
+    });
   };
 
   const openEditModal = () => {
@@ -132,27 +171,39 @@ function NpcDetailPage() {
       await npcService.update(id, editForm);
       setShowEditModal(false);
       loadNpcDetail(); // Refresh data
+      showNotification("Éxito", "NPC actualizado correctamente", 'success');
     } catch (error) {
       console.error("Error al actualizar NPC", error);
-      alert("Error al actualizar NPC");
+      showNotification("Error", "Error al actualizar el NPC", 'error');
     }
   };
 
   const handleReimport = async (e) => {
     e.preventDefault();
     if (!reimportFile) {
-      alert("Por favor selecciona un archivo");
+      showNotification("Atención", "Por favor selecciona un archivo", 'info');
       return;
     }
-    try {
-      await npcService.importNpc(reimportFile);
-      setShowReimportModal(false);
-      setReimportFile(null);
-      loadNpcDetail(); // Refresh data
-    } catch (error) {
-      console.error("Error al reimportar NPC", error);
-      alert("Error al reimportar NPC");
-    }
+    
+    // We can use confirmation here too if we want to be extra safe about overwriting
+    setConfirmModal({
+        isOpen: true,
+        title: 'Confirmar Reimportación',
+        message: 'Esto sobrescribirá todos los datos del NPC. ¿Deseas continuar?',
+        isDanger: true,
+        onConfirm: async () => {
+             try {
+              await npcService.importNpc(reimportFile);
+              setShowReimportModal(false);
+              setReimportFile(null);
+              loadNpcDetail(); // Refresh data
+              showNotification("Éxito", "NPC reimportado correctamente", 'success');
+            } catch (error) {
+              console.error("Error al reimportar NPC", error);
+              showNotification("Error", "Error al reimportar el NPC", 'error');
+            }
+        }
+    });
   };
 
   if (status === 'loading') {
@@ -287,9 +338,10 @@ function NpcDetailPage() {
                                                                 const { relacionService } = await import('../services/relacionService');
                                                                 await relacionService.registerInteraction(rel.relacion_id, false);
                                                                 loadNpcDetail(); 
+                                                                showNotification("Registrado", "Interacción negativa registrada", 'success');
                                                             } catch (e) { 
                                                                 console.error("Interaction Error:", e);
-                                                                alert("Error al registrar interacción negativa: " + e.message); 
+                                                                showNotification("Error", "Error al registrar interacción: " + e.message, 'error');
                                                             }
                                                         }}
                                                         className="w-6 h-6 flex items-center justify-center bg-red-900/30 hover:bg-red-900/50 text-red-400 rounded border border-red-500/20"
@@ -300,9 +352,10 @@ function NpcDetailPage() {
                                                                 const { relacionService } = await import('../services/relacionService');
                                                                 await relacionService.registerInteraction(rel.relacion_id, true);
                                                                 loadNpcDetail(); 
+                                                                showNotification("Registrado", "Interacción positiva registrada", 'success');
                                                             } catch (e) { 
                                                                 console.error("Interaction Error:", e);
-                                                                alert("Error al registrar interacción positiva: " + e.message); 
+                                                                showNotification("Error", "Error al registrar interacción: " + e.message, 'error');
                                                             }
                                                         }}
                                                         className="w-6 h-6 flex items-center justify-center bg-green-900/30 hover:bg-green-900/50 text-green-400 rounded border border-green-500/20"
@@ -620,6 +673,23 @@ function NpcDetailPage() {
                 </div>
             </div>
         )}
+      
+            <ConfirmationModal 
+                isOpen={confirmModal.isOpen}
+                onClose={closeConfirm}
+                onConfirm={confirmModal.onConfirm}
+                title={confirmModal.title}
+                message={confirmModal.message}
+                isDanger={confirmModal.isDanger}
+            />
+
+            <NotificationModal
+                isOpen={notifyModal.isOpen}
+                onClose={closeNotification}
+                title={notifyModal.title}
+                message={notifyModal.message}
+                type={notifyModal.type}
+            />
       </div>
     </div>
   );
