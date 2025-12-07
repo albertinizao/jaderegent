@@ -1,0 +1,274 @@
+{
+  "npc_id": "spivey",
+  "nombre": "Spivey",
+  "descripcion_larga": "Spivey, azata guiada por las estrellas, cuya influencia concede magia, bendiciones lunares y vínculos estelares a quienes ganan su amistad.",
+  "nivel_maximo": 5,
+  "imagen_url": "/data/images/npc/spivey.png",
+  "ventajas": [
+    {
+      "nombre": "Vínculo Azata",
+      "descripcion_larga": "Una vez al día, puedes percibir el estado de Spivey durante un minuto.",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "Aliado del Elíseo",
+      "descripcion_larga": "Obtienes los beneficios de la dote \"Summon Good Monster\", pero solo para invocar criaturas caótico-buenas.",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "Sangre Azata",
+      "descripcion_larga": "Tu alineamiento se desplaza hasta quedar, como máximo, a un paso de Caótico-Bueno. Obtienes el subtipo Ajeno y +4 racial a TS contra petrificación.",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "Maestría del cuchillo estrella",
+      "descripcion_larga": "Obtienes competencia con el Cuchillo Estrella.",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "Música del Elíseo",
+      "descripcion_larga": "Una vez al día, una criatura que escuche tu interpretación durante 1 minuto puede recuperarse de estar exhausta o fatigada.",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "Magia Azata",
+      "descripcion_larga": "Elige un hechizo entre: luces danzantes, atontar, invocar instrumento o ventriloquía. Puedes lanzarlo 2 × tu nivel de relación veces al día. Puede adquirirse varias veces.",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "Sanación afortunada",
+      "descripcion_larga": "Una vez al día puedes repetir una tirada de puntos de golpe curados.",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "Acrobacias divertidas",
+      "descripcion_larga": "Acrobacias pasa a ser una habilidad clásea. Si ya lo fuese, recibes +1.",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "Vuelo Azata",
+      "descripcion_larga": "Volar pasa a ser una habilidad clásea. Si ya lo fuese, recibes +1.",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "Irretenible",
+      "descripcion_larga": "Escapismo pasa a ser una habilidad clásea. Si ya lo fuese, recibes +1.",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+
+    {
+      "nombre": "Proyección lunar",
+      "descripcion_larga": "Mientras seas capaz de percibir a Spivey, puedes realizar acciones como si ella estuviera a 5 pies de ti.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "spivey_vinculo_azata"
+      ]
+    },
+    {
+      "nombre": "Invocación estelar",
+      "descripcion_larga": "Una vez al día, puedes hacer que Spivey se teleporte a tu ubicación.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "spivey_vinculo_azata"
+      ]
+    },
+    {
+      "nombre": "Aliados interplanares",
+      "descripcion_larga": "Cuando invoques ajenos Caótico-Buenos, repite cualquier resultado de 1 hasta obtener otro resultado.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "spivey_aliado_del_eliseo"
+      ]
+    },
+    {
+      "nombre": "Sangre Azata 2",
+      "descripcion_larga": "Obtienes resistencia a electricidad 2, fuego 1 y frío 1. Puedes ser objetivo de hechizos para ajenos CB. Si fueses expulsado, quedas inconsciente.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "spivey_sangre_azata"
+      ]
+    },
+    {
+      "nombre": "Explosión estelar",
+      "descripcion_larga": "Cada 1d4 rondas puedes liberar una explosión estelar de 5 pies que hace 1d4 daño sagrado +1 por cada paso lejos del CB. TS Reflejos 10+DG+Relación niega.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "spivey_sangre_azata"
+      ]
+    },
+    {
+      "nombre": "Bendición del cuchillo",
+      "descripcion_larga": "Los cuchillos estrella que portes obtienen la cualidad \"retornante\".",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "spivey_maestria_del_cuchillo_estrella"
+      ]
+    },
+    {
+      "nombre": "Amistad con los viajeros",
+      "descripcion_larga": "Música del Elíseo afecta ahora a 1 criatura por nivel de relación.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "spivey_musica_del_eliseo"
+      ]
+    },
+    {
+      "nombre": "Magia Azata 2",
+      "descripcion_larga": "Elige un hechizo entre curar heridas leves, confusión menor o imagen silenciosa. Puedes lanzarlo 1 vez al día. Puede adquirirse varias veces.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "spivey_magia_azata"
+      ]
+    },
+    {
+      "nombre": "Libertad encarnada",
+      "descripcion_larga": "Obtienes a Escapismo un bonificador igual a tu nivel de relación con Spivey.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "spivey_irretenible"
+      ]
+    },
+
+    {
+      "nombre": "Conexión estelar",
+      "descripcion_larga": "Mientras miras las estrellas, tienes un vínculo empático con Spivey.",
+      "min_nivel_relacion": 3,
+      "prerequisitos": [
+        "spivey_vinculo_azata"
+      ]
+    },
+    {
+      "nombre": "Sanación a distancia",
+      "descripcion_larga": "Spivey puede canalizar energía positiva sobre ti como acción rápida sin importar la distancia.",
+      "min_nivel_relacion": 3,
+      "prerequisitos": [
+        "spivey_vinculo_azata"
+      ]
+    },
+    {
+      "nombre": "Sangre Azata 3",
+      "descripcion_larga": "Fuego y frío = nivel de relación. Electricidad = 4 × nivel de relación. Si fueses expulsado, quedas a –1 PG e inconsciente.",
+      "min_nivel_relacion": 3,
+      "prerequisitos": [
+        "spivey_sangre_azata_2"
+      ]
+    },
+    {
+      "nombre": "Explosión estelar avanzada",
+      "descripcion_larga": "Puedes usar Explosión estelar cada asalto.",
+      "min_nivel_relacion": 3,
+      "prerequisitos": [
+        "spivey_explosion_estelar"
+      ]
+    },
+    {
+      "nombre": "Peligrosidad estelar",
+      "descripcion_larga": "Puedes usar la mitad de tu Destreza al daño al lanzar un cuchillo estrella.",
+      "min_nivel_relacion": 3,
+      "prerequisitos": [
+        "spivey_bendicion_del_cuchillo"
+      ]
+    },
+    {
+      "nombre": "Alianza con los viajeros",
+      "descripcion_larga": "Música del Elíseo afecta ahora a 2 criaturas por nivel de relación.",
+      "min_nivel_relacion": 3,
+      "prerequisitos": [
+        "spivey_amistad_con_los_viajeros"
+      ]
+    },
+    {
+      "nombre": "Sanación predestinada",
+      "descripcion_larga": "Puedes usar Sanación afortunada tantas veces al día como nivel de relación.",
+      "min_nivel_relacion": 3,
+      "prerequisitos": [
+        "spivey_sanacion_afortunada"
+      ]
+    },
+    {
+      "nombre": "Piruetas Azata",
+      "descripcion_larga": "Puedes usar Acrobacias o Volar de forma intercambiable donde se requiera cualquiera de ambas.",
+      "min_nivel_relacion": 3,
+      "prerequisitos": [
+        "spivey_acrobacias_divertidas",
+        "spivey_vuelo_azata"
+      ]
+    },
+
+    {
+      "nombre": "Conversación estelar",
+      "descripcion_larga": "Mientras la estrella polar esté visible, una vez al día puedes comunicar telepáticamente a Spivey hasta 100 palabras (y ella responder).",
+      "min_nivel_relacion": 4,
+      "prerequisitos": [
+        "spivey_conexion_estelar"
+      ]
+    },
+    {
+      "nombre": "Sangre Azata 4",
+      "descripcion_larga": "Obtienes RD = relación/5 excepto contra hierro frío. También obtienes vulnerabilidad al hierro frío.",
+      "min_nivel_relacion": 4,
+      "prerequisitos": [
+        "spivey_sangre_azata_3"
+      ]
+    },
+    {
+      "nombre": "Libertad absoluta",
+      "descripcion_larga": "Una vez al día, acción estándar: Libertad de Movimiento durante relación asaltos.",
+      "min_nivel_relacion": 4,
+      "prerequisitos": [
+        "spivey_libertad_encarnada"
+      ]
+    },
+
+    {
+      "nombre": "Amistad estelar",
+      "descripcion_larga": "Puedes seleccionar a Spivey como familiar.",
+      "min_nivel_relacion": 5,
+      "prerequisitos": [
+        "spivey_conversacion_estelar"
+      ]
+    },
+    {
+      "nombre": "Vínculo estelar",
+      "descripcion_larga": "Puedes usar Invocación estelar a voluntad.",
+      "min_nivel_relacion": 5,
+      "prerequisitos": [
+        "spivey_invocacion_estelar"
+      ]
+    },
+    {
+      "nombre": "Sangre Azata 5",
+      "descripcion_larga": "Ganas alas de mariposa: vuelo 30' (maniobrabilidad media) o 20' (maniobrabilidad baja) con carga media o superior.",
+      "min_nivel_relacion": 5,
+      "prerequisitos": [
+        "spivey_sangre_azata_4"
+      ]
+    },
+    {
+      "nombre": "Cuchillo estelar",
+      "descripcion_larga": "Al impactar con el cuchillo estrella, el objetivo sufre los efectos de tu Explosión estelar (sin área).",
+      "min_nivel_relacion": 5,
+      "prerequisitos": [
+        "spivey_peligrosidad_estelar"
+      ]
+    },
+    {
+      "nombre": "Habla verdadera",
+      "descripcion_larga": "Una vez al día, durante 5 minutos, obtienes Habla Verdadera.",
+      "min_nivel_relacion": 5,
+      "prerequisitos": [
+        "spivey_conversacion_estelar"
+      ]
+    }
+  ]
+}

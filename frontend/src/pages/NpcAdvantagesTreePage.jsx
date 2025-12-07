@@ -22,9 +22,11 @@ const getLayoutedElements = (nodes, edges, direction = 'TB') => {
   const isHorizontal = direction === 'LR';
   dagreGraph.setGraph({ 
     rankdir: direction, 
-    nodesep: isHorizontal ? 100 : 80, 
-    ranksep: isHorizontal ? 150 : 120,
-    edgesep: 50,
+    nodesep: isHorizontal ? 200 : 150,  // Increased from 100/80
+    ranksep: isHorizontal ? 300 : 250,  // Increased from 150/120
+    edgesep: 100,  // Increased from 50
+    ranker: 'tight-tree',  // Use tight-tree ranker for better hierarchy
+    acyclicer: 'greedy',  // Better handling of cycles
   });
 
   nodes.forEach((node) => {

@@ -1,0 +1,633 @@
+{
+  "npc_id": "koya",
+  "nombre": "Koya",
+  "descripcion_larga": "Koya Mvashti, anciana clériga varisiana de Desna y consejera espiritual de la caravana.",
+  "nivel_maximo": 10,
+  "imagen_url": "/data/images/npc/koya.png",
+  "ventajas": [
+    {
+      "nombre": "Disfrutar el té",
+      "descripcion_larga": "Una vez al día, puedes dedicar 10 minutos a preparar un té y tomártelo. Emula los efectos de un hechizo de Augurio con un nivel de lanzador igual al doble de tu relación con Koya.",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "Madre Luna",
+      "descripcion_larga": "Una vez al día, puedes percibir el estado de Koya durante un minuto",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "Bendición curativa",
+      "descripcion_larga": "Añade un uso adicional a tu capacidad de canalizar energía positiva.",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "La Canción Estelar",
+      "descripcion_larga": "Saber (religión) pasa a ser una habilidad clásea. Si ya lo fuese, recibes un +1.",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "Arma deífica",
+      "descripcion_larga": "Obtienes competencia con el arma sagrada de tu deidad. Si ya fuese competente, obtienes Soltura con un arma (arma sagrada de tu deidad)",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "La Canción de las Esferas",
+      "descripcion_larga": "Escoge un dominio de Desna. Obtienes su poder de primer nivel como si fueses un clérigo de nivel igual al doble de tu relación con Koya.",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "La Gran Soñadora",
+      "descripcion_larga": "Obtienes el doble de curación natural por un descanso completo.",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "La Dama de la Suerte",
+      "descripcion_larga": "Al despertar cada mañana, si tienes una baraja de presagiar disponible, puedes robar una carta. Como acción inmediata, puedes descartar una carta de presagio robada de esta forma para afectar a una tirada en la que el atributo de la carta sea relevante. Se pueden usar según su alineamiento.\nLegal: Obtienes la tirada media (redondeando al alza).\nCaótico:Tira dos veces y te quedas el resultado que más te favorezca.\nBien: Afecta a ti o aliados.\nMal: Afecta a enemigos.\nNeutral absoluto: Roba dos cartas.",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "Reina de la Estrella Polar",
+      "descripcion_larga": "Saber (geografía) pasa a ser una habilidad clásea. Si ya lo fuese, recibes un +1.",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "Cartografía",
+      "descripcion_larga": "Artesanía (caligrafía) pasa a ser una habilidad clásea. Si ya lo fuese, recibes un +1.",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "Costumbres varisianas",
+      "descripcion_larga": "Obtienes competencia con el Fular con Cuchillas. Además, aprendes el idioma Varisiano.",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "Paso del tiempo",
+      "descripcion_larga": "Reduce en 1 el penalizador a cada atributo por avanzada edad.",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "Alquimia varisiana",
+      "descripcion_larga": "Artesanía (alquimia) pasa a ser una habilidad clásea. Si ya lo fuese, recibes un +1.",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "Proyección estelar",
+      "descripcion_larga": "",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "koya_madre_luna"
+      ]
+    },
+    {
+      "nombre": "Destino curativo",
+      "descripcion_larga": "Cuando hagas una tirada de dados para curar puntos de golpe, repite una vez cada dado con un 1.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "koya_bendicion_curativa"
+      ]
+    },
+    {
+      "nombre": "Conocimiento deífico 1",
+      "descripcion_larga": "Selecciona un hechizo de clérigo de nivel 1. Añade este hechizo a tu lista de hechizos conocidos o disponibles de ese nivel.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "koya_la_cancion_estelar"
+      ]
+    },
+    {
+      "nombre": "Mano guiada",
+      "descripcion_larga": "Obtienes la dote Guided Hand",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "koya_arma_deifica"
+      ]
+    },
+    {
+      "nombre": "Magia estelar 1",
+      "descripcion_larga": "Escoge una clase lanzadora de conjuros. Añade un espacio de conjuro de nivel 1 a tus espacios disponibles de ese nivel (cuando lo tengas disponible). Ese espacio solo puede utilizarse para el conjuro de ese nivel del dominio elegido con «La Canción de las Esferas» y puedes utilizarlo de esta forma aunque no esté en tu lista de conjuros.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "koya_la_cancion_de_las_esferas"
+      ]
+    },
+    {
+      "nombre": "Sueño rápido 1",
+      "descripcion_larga": "Necesitas dormir una hora menos al día para obtener los beneficios de un descanso completo.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "koya_la_gran_sonadora"
+      ]
+    },
+    {
+      "nombre": "Sueño reparador",
+      "descripcion_larga": ": Al finalizar un descanso completo, recibes los beneficios de una restauración menor.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "koya_la_gran_sonadora"
+      ]
+    },
+    {
+      "nombre": "Purificación nocturna",
+      "descripcion_larga": "Al finalizar un descanso completo, recibes los beneficios de Neutralizar Veneno con un nivel de lanzador igual al nivel de clérigo de Koya.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "koya_la_gran_sonadora"
+      ]
+    },
+    {
+      "nombre": "Martillo",
+      "descripcion_larga": "Una vez al día, cuando uses una carta de Fuerza, roba una nueva carta.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "koya_la_dama_de_la_suerte"
+      ]
+    },
+    {
+      "nombre": "Llave",
+      "descripcion_larga": "Una vez al día, cuando uses una carta de Destreza, roba una nueva carta.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "koya_la_dama_de_la_suerte"
+      ]
+    },
+    {
+      "nombre": "Escudo",
+      "descripcion_larga": "Una vez al día, cuando uses una carta de Constitución, roba una nueva carta.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "koya_la_dama_de_la_suerte"
+      ]
+    },
+    {
+      "nombre": "Tomo",
+      "descripcion_larga": "Una vez al día, cuando uses una carta de Inteligencia, roba una nueva carta.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "koya_la_dama_de_la_suerte"
+      ]
+    },
+    {
+      "nombre": "Estrella",
+      "descripcion_larga": "Una vez al día, cuando uses una carta de Sabiduría, roba una nueva carta.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "koya_la_dama_de_la_suerte"
+      ]
+    },
+    {
+      "nombre": "Corona",
+      "descripcion_larga": "Una vez al día, cuando uses una carta de Carisma, roba una nueva carta.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "koya_la_dama_de_la_suerte"
+      ]
+    },
+    {
+      "nombre": "Diosa de la Estrella Polar",
+      "descripcion_larga": "Si la Estrella Polar está visible, puedes elegir 20 en cualquier prueba para evitar perderte o para conocer tu localización.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "koya_reina_de_la_estrella_polar"
+      ]
+    },
+    {
+      "nombre": "Mapas exactos",
+      "descripcion_larga": "Siempre que vayas a dibujar un mapa, puedes hacerlo con una prueba de Saber (geografía)",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "koya_reina_de_la_estrella_polar",
+        "koya_cartografia"
+      ],
+      "prerequisitos_operator": "OR"
+    },
+    {
+      "nombre": "Experto dibujante",
+      "descripcion_larga": "Siempre que vayas a dibujar un mapa, añade tu nivel de relación con Koya como bonificador de moral.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "koya_cartografia"
+      ]
+    },
+    {
+      "nombre": "Derviche varisiano",
+      "descripcion_larga": "Puedes usar Destreza en vez de Fuerza cuando utilices el Fular con cuchillas. A efectos de ser aplicable para dotes o habilidades cláseas, cuenta como un arma ligera cortante de monje.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "koya_costumbres_varisianas"
+      ]
+    },
+    {
+      "nombre": "Maestría en té",
+      "descripcion_larga": "Siempre que hagas una prueba de Artesanía (alquimia), si Koya está presente recibes un +4 a dicha prueba.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "koya_alquimia_varisiana"
+      ]
+    },
+    {
+      "nombre": "Regalo alquímico 1",
+      "descripcion_larga": "Al comienzo de cada día, Koya puede facilitarte una poción de nivel 1 de forma gratuita. Esta poción no tiene valor de venta y pierde su efecto a los 5 días de ser fabricada.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "koya_alquimia_varisiana"
+      ]
+    },
+    {
+      "nombre": "Ceremonia del té",
+      "descripcion_larga": "Cuando usas «Disfrutar el té», puedes por cada dos minutos más de tiempo que utilices, puedes añadir a otra persona voluntaria y presente a la ceremonia. Cada participante además de ti, tiene derecho a realizar una pregunta con las mismas reglas que tú.",
+      "min_nivel_relacion": 3,
+      "prerequisitos": [
+        "koya_disfrutar_el_te"
+      ]
+    },
+    {
+      "nombre": "Conexión onírica",
+      "descripcion_larga": "Mientras duermes, tienes un vínculo empático con Koya en la que ambas partes podéis compartir información empática. Además, siempre que ambas partes estéis dormidas, tienes activada «Conexión predestinada».",
+      "min_nivel_relacion": 3,
+      "prerequisitos": [
+        "koya_madre_luna"
+      ]
+    },
+    {
+      "nombre": "Conexión espiritual",
+      "descripcion_larga": "En vez de una vez al día, puedes usar «Conexión predestinada» tantas veces como tu nivel de relación con Koya.",
+      "min_nivel_relacion": 3,
+      "prerequisitos": [
+        "koya_madre_luna"
+      ]
+    },
+    {
+      "nombre": "Conocimiento deífico 2",
+      "descripcion_larga": "Selecciona un hechizo de clérigo de nivel 2. Añade este hechizo a tu lista de hechizos conocidos o disponibles de ese nivel.",
+      "min_nivel_relacion": 3,
+      "prerequisitos": [
+        "koya_conocimiento_deifico_1"
+      ]
+    },
+    {
+      "nombre": "Magia estelar 2",
+      "descripcion_larga": "Escoge una clase lanzadora de conjuros. Añade un espacio de conjuro de nivel 2 a tus espacios disponibles de ese nivel (cuando lo tengas disponible). Ese espacio solo puede utilizarse para el conjuro de ese nivel del dominio elegido con «La Canción de las Esferas» y puedes utilizarlo de esta forma aunque no esté en tu lista de conjuros.",
+      "min_nivel_relacion": 3,
+      "prerequisitos": [
+        "koya_magia_estelar_1"
+      ]
+    },
+    {
+      "nombre": "Bendición del camino",
+      "descripcion_larga": "Obtienes la dote «Trailblazing Channel» aunque no cumplas sus requisitos",
+      "min_nivel_relacion": 3,
+      "prerequisitos": [
+        "koya_la_cancion_de_las_esferas"
+      ]
+    },
+    {
+      "nombre": "Sueño rápido 2",
+      "descripcion_larga": "Necesitas dormir una hora menos al día para obtener los beneficios de un descanso completo.",
+      "min_nivel_relacion": 3,
+      "prerequisitos": [
+        "koya_sueno_rapido_1"
+      ]
+    },
+    {
+      "nombre": "Bendición nocturna",
+      "descripcion_larga": "Al finalizar un descanso completo, recibes los beneficios de Quitar Maldición con un nivel de lanzador igual al nivel de clérigo de Koya.",
+      "min_nivel_relacion": 3,
+      "prerequisitos": [
+        "koya_la_gran_sonadora"
+      ]
+    },
+    {
+      "nombre": "Entrañable edad",
+      "descripcion_larga": "Reduce en 1 el penalizador a cada atributo por avanzada edad.",
+      "min_nivel_relacion": 3,
+      "prerequisitos": [
+        "koya_paso_del_tiempo"
+      ]
+    },
+    {
+      "nombre": "Laboratorio varisiano",
+      "descripcion_larga": "Si Koya está presente, fabricas pociones con Elaborar Poción un 50% más rápido.",
+      "min_nivel_relacion": 3,
+      "prerequisitos": [
+        "koya_maestria_en_te"
+      ]
+    },
+    {
+      "nombre": "Vínculo de libertad",
+      "descripcion_larga": "+2 a TS contra cualquier efectos de sueño o que restringa tu libertad física. (Inmovilización, restricción de movimiento...)",
+      "min_nivel_relacion": 4,
+      "prerequisitos": [
+        "koya_proyeccion_estelar"
+      ]
+    },
+    {
+      "nombre": "Dominio curativo",
+      "descripcion_larga": "Añade un uso adicional a tu capacidad de canalizar energía positiva a nivel 4, 7 y 10 de relación con Koya.",
+      "min_nivel_relacion": 4,
+      "prerequisitos": [
+        "koya_destino_curativo"
+      ]
+    },
+    {
+      "nombre": "Conocimiento deífico 3",
+      "descripcion_larga": "Selecciona un hechizo de clérigo de nivel 3. Añade este hechizo a tu lista de hechizos conocidos o disponibles de ese nivel.",
+      "min_nivel_relacion": 4,
+      "prerequisitos": [
+        "koya_conocimiento_deifico_2"
+      ]
+    },
+    {
+      "nombre": "Magia estelar 3",
+      "descripcion_larga": "Escoge una clase lanzadora de conjuros. Añade un espacio de conjuro de nivel 3 a tus espacios disponibles de ese nivel (cuando lo tengas disponible). Ese espacio solo puede utilizarse para el conjuro de ese nivel del dominio elegido con «La Canción de las Esferas» y puedes utilizarlo de esta forma aunque no esté en tu lista de conjuros.",
+      "min_nivel_relacion": 4,
+      "prerequisitos": [
+        "koya_magia_estelar_2"
+      ]
+    },
+    {
+      "nombre": "La Gran Soñadora",
+      "descripcion_larga": "Obtienes el segundo poder del dominio escogido en «La Canción de las Esferas». Debes cumplir sus requisitos para tener acceso a él.",
+      "min_nivel_relacion": 4,
+      "prerequisitos": [
+        "koya_la_cancion_de_las_esferas"
+      ]
+    },
+    {
+      "nombre": "Sueño revitalizante 1",
+      "descripcion_larga": "Al finalizar un descanso completo, recibes los beneficios de una restauración.",
+      "min_nivel_relacion": 4,
+      "prerequisitos": [
+        "koya_sueno_reparador"
+      ]
+    },
+    {
+      "nombre": "Maestría de presagio",
+      "descripcion_larga": "Siempre que robes una carta de presagio, roba una más. Debes dispones de, al menos un beneficio físico (Martillo, Llave o Escudo) y al menos otro beneficio mental (Tomo, Estrella, Corona)",
+      "min_nivel_relacion": 4,
+      "prerequisitos": [
+        "koya_martillo",
+        "koya_llave",
+        "koya_escudo",
+        "koya_tomo",
+        "koya_estrella",
+        "koya_corona"
+      ],
+      "prerequisitos_operator": "OR"
+    },
+    {
+      "nombre": "Bendición de la Estrella Polar",
+      "descripcion_larga": "Si la Estrella Polar está visible, obtienes +1 por suerte a todos los TS.",
+      "min_nivel_relacion": 4,
+      "prerequisitos": [
+        "koya_diosa_de_la_estrella_polar"
+      ]
+    },
+    {
+      "nombre": "Regalo alquímico 2",
+      "descripcion_larga": "Al comienzo del día, Koya puede facilitarte una poción extra de nivel 1. En vez de recibir dos pociones de nivel 1, puedes recibir una poción de nivel 2.",
+      "min_nivel_relacion": 4,
+      "prerequisitos": [
+        "koya_regalo_alquimico_1"
+      ]
+    },
+    {
+      "nombre": "Sueños vívidos",
+      "descripcion_larga": "Mientras Koya y tú estéis dormidos, podéis comunicaros telepáticamente de forma consciente.",
+      "min_nivel_relacion": 5,
+      "prerequisitos": [
+        "koya_conexion_onirica"
+      ]
+    },
+    {
+      "nombre": "Libertad profunda",
+      "descripcion_larga": "Siempre que no puedas realizar acciones, puedes hacer una nueva tirada de salvación contra el efecto que te restringe y eliminar dicho efecto si superas la salvación.",
+      "min_nivel_relacion": 5,
+      "prerequisitos": [
+        "koya_vinculo_de_libertad"
+      ]
+    },
+    {
+      "nombre": "Susurro de las estrellas",
+      "descripcion_larga": "Una vez al día, antes de realizar una prueba de Voluntad, puedes activar esta habilidad para obtener un +5 a dicha prueba.",
+      "min_nivel_relacion": 5,
+      "prerequisitos": [
+        "koya_conexion_espiritual"
+      ]
+    },
+    {
+      "nombre": "Conocimiento deífico 4",
+      "descripcion_larga": "Selecciona un hechizo de clérigo de nivel 4. Añade este hechizo a tu lista de hechizos conocidos o disponibles de ese nivel.",
+      "min_nivel_relacion": 5,
+      "prerequisitos": [
+        "koya_conocimiento_deifico_3"
+      ]
+    },
+    {
+      "nombre": "Magia estelar 4",
+      "descripcion_larga": "Escoge una clase lanzadora de conjuros. Añade un espacio de conjuro de nivel 4 a tus espacios disponibles de ese nivel (cuando lo tengas disponible). Ese espacio solo puede utilizarse para el conjuro de ese nivel del dominio elegido con «La Canción de las Esferas» y puedes utilizarlo de esta forma aunque no esté en tu lista de conjuros.",
+      "min_nivel_relacion": 5,
+      "prerequisitos": [
+        "koya_magia_estelar_3"
+      ]
+    },
+    {
+      "nombre": "Noche perfecta",
+      "descripcion_larga": "Siempre que tienes un descanso completo, te curas todos tus puntos de vida.",
+      "min_nivel_relacion": 5,
+      "prerequisitos": [
+        "koya_la_gran_sonadora"
+      ]
+    },
+    {
+      "nombre": "Purificación nocturna",
+      "descripcion_larga": "Superas automáticamente las pruebas de nivel de lanzador de «Bendición nocturna» y «Purificación nocturna».",
+      "min_nivel_relacion": 5,
+      "prerequisitos": [
+        "koya_bendicion_nocturna",
+        "koya_purificacion_nocturna"
+      ]
+    },
+    {
+      "nombre": "Sabiduría venerable",
+      "descripcion_larga": "Reduce en 1 el penalizador a cada atributo por avanzada edad.",
+      "min_nivel_relacion": 5,
+      "prerequisitos": [
+        "koya_entranable_edad"
+      ]
+    },
+    {
+      "nombre": "Conocimiento deífico 5",
+      "descripcion_larga": "Selecciona un hechizo de clérigo de nivel 5. Añade este hechizo a tu lista de hechizos conocidos o disponibles de ese nivel.",
+      "min_nivel_relacion": 6,
+      "prerequisitos": [
+        "koya_conocimiento_deifico_4"
+      ]
+    },
+    {
+      "nombre": "Magia estelar 5",
+      "descripcion_larga": "Escoge una clase lanzadora de conjuros. Añade un espacio de conjuro de nivel 5 a tus espacios disponibles de ese nivel (cuando lo tengas disponible). Ese espacio solo puede utilizarse para el conjuro de ese nivel del dominio elegido con «La Canción de las Esferas» y puedes utilizarlo de esta forma aunque no esté en tu lista de conjuros.",
+      "min_nivel_relacion": 6,
+      "prerequisitos": [
+        "koya_magia_estelar_4"
+      ]
+    },
+    {
+      "nombre": "Sueño rápido 3",
+      "descripcion_larga": "Necesitas dormir una hora menos al día para obtener los beneficios de un descanso completo.",
+      "min_nivel_relacion": 6,
+      "prerequisitos": [
+        "koya_sueno_rapido_2"
+      ]
+    },
+    {
+      "nombre": "Favor de las estrellas",
+      "descripcion_larga": "+1 sagrado a las TS de Voluntad",
+      "min_nivel_relacion": 7,
+      "prerequisitos": [
+        "koya_susurro_de_las_estrellas"
+      ]
+    },
+    {
+      "nombre": "Conocimiento deífico 6",
+      "descripcion_larga": "Selecciona un hechizo de clérigo de nivel 6. Añade este hechizo a tu lista de hechizos conocidos o disponibles de ese nivel.",
+      "min_nivel_relacion": 7,
+      "prerequisitos": [
+        "koya_conocimiento_deifico_5"
+      ]
+    },
+    {
+      "nombre": "Magia estelar 6",
+      "descripcion_larga": "Escoge una clase lanzadora de conjuros. Añade un espacio de conjuro de nivel 6 a tus espacios disponibles de ese nivel (cuando lo tengas disponible). Ese espacio solo puede utilizarse para el conjuro de ese nivel del dominio elegido con «La Canción de las Esferas» y puedes utilizarlo de esta forma aunque no esté en tu lista de conjuros.",
+      "min_nivel_relacion": 7,
+      "prerequisitos": [
+        "koya_magia_estelar_5"
+      ]
+    },
+    {
+      "nombre": "Sueño rápido 4",
+      "descripcion_larga": "Necesitas dormir una hora menos al día para obtener los beneficios de un descanso completo.",
+      "min_nivel_relacion": 7,
+      "prerequisitos": [
+        "koya_sueno_rapido_3"
+      ]
+    },
+    {
+      "nombre": "Sueño revitalizante 2",
+      "descripcion_larga": "Al finalizar un descanso completo, recibes los beneficios de una restauración mayor.",
+      "min_nivel_relacion": 7,
+      "prerequisitos": [
+        "koya_sueno_revitalizante_1"
+      ]
+    },
+    {
+      "nombre": "Regalo alquímico 3",
+      "descripcion_larga": "Al comienzo del día, Koya puede facilitarte dos pociones extra de nivel 1. En vez de recibir cuatro pociones de nivel 1, puedes recibir una poción de nivel 3.",
+      "min_nivel_relacion": 7,
+      "prerequisitos": [
+        "koya_regalo_alquimico_2"
+      ]
+    },
+    {
+      "nombre": "Conocimiento deífico 7",
+      "descripcion_larga": "Selecciona un hechizo de clérigo de nivel 7. Añade este hechizo a tu lista de hechizos conocidos o disponibles de ese nivel.",
+      "min_nivel_relacion": 8,
+      "prerequisitos": [
+        "koya_conocimiento_deifico_6"
+      ]
+    },
+    {
+      "nombre": "Magia estelar 7",
+      "descripcion_larga": "Escoge una clase lanzadora de conjuros. Añade un espacio de conjuro de nivel 7 a tus espacios disponibles de ese nivel (cuando lo tengas disponible). Ese espacio solo puede utilizarse para el conjuro de ese nivel del dominio elegido con «La Canción de las Esferas» y puedes utilizarlo de esta forma aunque no esté en tu lista de conjuros.",
+      "min_nivel_relacion": 8,
+      "prerequisitos": [
+        "koya_magia_estelar_6"
+      ]
+    },
+    {
+      "nombre": "Fortuna de la Estrella Polar",
+      "descripcion_larga": "Mientras la Estrella Polar esté visible. Duplica cualquier bonificador por suerte que recibas.",
+      "min_nivel_relacion": 8,
+      "prerequisitos": [
+        "koya_maestria_de_presagio",
+        "koya_bendicion_de_la_estrella_polar"
+      ]
+    },
+    {
+      "nombre": "Mar de estrellas",
+      "descripcion_larga": "Esta habilidad puede activarse como acción estándar. Haz una prueba en Diplomacia. Durante un número de asaltos igual al resultado / 5, todos los aliados situados hasta a 15 pies de ti, reciben un +1 Sagrado a Voluntad",
+      "min_nivel_relacion": 9,
+      "prerequisitos": [
+        "koya_favor_de_las_estrellas"
+      ]
+    },
+    {
+      "nombre": "Conocimiento deífico 8",
+      "descripcion_larga": "Selecciona un hechizo de clérigo de nivel 8. Añade este hechizo a tu lista de hechizos conocidos o disponibles de ese nivel.",
+      "min_nivel_relacion": 9,
+      "prerequisitos": [
+        "koya_conocimiento_deifico_7"
+      ]
+    },
+    {
+      "nombre": "Magia estelar 8",
+      "descripcion_larga": "Escoge una clase lanzadora de conjuros. Añade un espacio de conjuro de nivel 8 a tus espacios disponibles de ese nivel (cuando lo tengas disponible). Ese espacio solo puede utilizarse para el conjuro de ese nivel del dominio elegido con «La Canción de las Esferas» y puedes utilizarlo de esta forma aunque no esté en tu lista de conjuros.",
+      "min_nivel_relacion": 9,
+      "prerequisitos": [
+        "koya_magia_estelar_7"
+      ]
+    },
+    {
+      "nombre": "Sueño rápido 5",
+      "descripcion_larga": "Necesitas dormir una hora menos al día para obtener los beneficios de un descanso completo.",
+      "min_nivel_relacion": 9,
+      "prerequisitos": [
+        "koya_sueno_rapido_4"
+      ]
+    },
+    {
+      "nombre": "Conocimiento deífico 9",
+      "descripcion_larga": "Selecciona un hechizo de clérigo de nivel 9. Añade este hechizo a tu lista de hechizos conocidos o disponibles de ese nivel.",
+      "min_nivel_relacion": 10,
+      "prerequisitos": [
+        "koya_conocimiento_deifico_8"
+      ]
+    },
+    {
+      "nombre": "Magia estelar 9",
+      "descripcion_larga": "Escoge una clase lanzadora de conjuros. Añade un espacio de conjuro de nivel 9 a tus espacios disponibles de ese nivel (cuando lo tengas disponible). Ese espacio solo puede utilizarse para el conjuro de ese nivel del dominio elegido con «La Canción de las Esferas» y puedes utilizarlo de esta forma aunque no esté en tu lista de conjuros.",
+      "min_nivel_relacion": 10,
+      "prerequisitos": [
+        "koya_magia_estelar_8"
+      ]
+    },
+    {
+      "nombre": "Sueño rápido 6",
+      "descripcion_larga": "Necesitas dormir una hora menos al día para obtener los beneficios de un descanso completo.",
+      "min_nivel_relacion": 10,
+      "prerequisitos": [
+        "koya_sueno_rapido_5"
+      ]
+    },
+    {
+      "nombre": "Regalo alquímico 4",
+      "descripcion_larga": "Al comienzo del día, Koya puede facilitarte cuatro pociones extra de nivel 1. En vez de recibir ocho pociones de nivel 1, puedes recibir una poción de nivel 4.",
+      "min_nivel_relacion": 10,
+      "prerequisitos": [
+        "koya_regalo_alquimico_3"
+      ]
+    }
+  ]
+}

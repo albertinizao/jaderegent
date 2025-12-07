@@ -1,0 +1,75 @@
+{
+  "npc_id": "akane",
+  "nombre": "Akane",
+  "descripcion_larga": "Akane, bailarina y adivina especializada en danza tradicional, fortuna y magia de espionaje.",
+  "nivel_maximo": 3,
+  "imagen_url": "/data/images/npc/akane.png",
+  "ventajas": [
+    {
+      "nombre": "Clases de danza tradicional",
+      "descripcion_larga": "Interpretar (danza) pasa a ser una habilidad clásea. Si ya lo fuese, obtienes +1.",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "Lectura de fortuna",
+      "descripcion_larga": "Una vez al día puedes hacer un ritual que dura una hora para leer la fortuna a alguien. Lanza 1d20. Guarda esas tiradas. El objetivo puede usar una vez cada uno de esos resultados en vez de hacer una tirada de d20.",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "Magia de espionaje",
+      "descripcion_larga": "Los siguientes hechizos pasan a formar parte de tu lista de clase: 1.º—disguise self, 2.º—anonymous interaction, 3.º—nondetection.",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "Movimientos de danza",
+      "descripcion_larga": "Puedes usar Interpretar (danza) como si fuese Acrobacias para moverte por casillas amenazadas por enemigos sin provocar ataques de oportunidad.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "akane_clases_de_danza_tradicional"
+      ]
+    },
+    {
+      "nombre": "Suerte prolongada",
+      "descripcion_larga": "Cualquier efecto de suerte que te haga efecto dura un 25% más.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "akane_lectura_de_fortuna"
+      ]
+    },
+    {
+      "nombre": "Magia de espionaje 2",
+      "descripcion_larga": "Los siguientes hechizos pasan a formar parte de tu lista de clase: 4.º—zone of silence, 5.º—false vision, 6.º—mislead.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "akane_magia_de_espionaje"
+      ]
+    },
+    {
+      "nombre": "Kagura Odori",
+      "descripcion_larga": "Tienes disponible una dote llamada \"Kagura Odori\". Requisitos: Destreza 13, Sutileza con las armas, Interpretar (danza) 2 rangos. Cuando empuñas un arma de monje con una mano, puedes usar tu modificador de Destreza en lugar de tu modificador de Fuerza en las tiradas de ataque y daño cuerpo a cuerpo. No puedes usar esta dote si llevas un arma o escudo en la otra mano.",
+      "min_nivel_relacion": 3,
+      "prerequisitos": [
+        "akane_movimientos_de_danza"
+      ]
+    },
+    {
+      "nombre": "Suerte mejorada",
+      "descripcion_larga": "Lanza 3d20 en vez de 1d20 con Lectura de fortuna.",
+      "min_nivel_relacion": 3,
+      "prerequisitos": [
+        "akane_suerte_prolongada"
+      ]
+    },
+    {
+      "nombre": "Magia de espionaje 3",
+      "descripcion_larga": "Los siguientes hechizos pasan a formar parte de tu lista de clase: 7.º—screen, 8.º—mind blank, 9.º—time stop.",
+      "min_nivel_relacion": 3,
+      "prerequisitos": [
+        "akane_magia_de_espionaje_2"
+      ]
+    }
+  ]
+}

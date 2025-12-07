@@ -1,0 +1,654 @@
+{
+  "npc_id": "shalelu",
+  "nombre": "Shalelu",
+  "descripcion_larga": "Shalelu Andosana. Elfa exploradora y cazadora.",
+  "nivel_maximo": 10,
+  "imagen_url": "/data/images/npc/shalelu.png",
+  "ventajas": [
+    {
+      "nombre": "Vínculo natural",
+      "descripcion_larga": "Una vez al día, puedes percibir el estado de Shalelu durante un minuto",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "Monta básica",
+      "descripcion_larga": "Montar pasa a ser una habilidad clásea. Si ya lo fuese, recibes un +1.",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "Acechar",
+      "descripcion_larga": "Sigilo pasa a ser una habilidad clásea. Si ya lo fuese, recibes un +1.",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "Supervivencia obligatoria",
+      "descripcion_larga": "Supervivencia pasa a ser una habilidad clásea. Si ya lo fuese, recibes un +1.",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "Experiencia natural",
+      "descripcion_larga": "Saber (Naturaleza) pasa a ser una habilidad clásea. Si ya lo fuese, recibes un +1.",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "Sentidos élficos",
+      "descripcion_larga": "Percepción pasa a ser una habilidad clásea. Si ya lo fuese, recibes un +1.",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "Animalista",
+      "descripcion_larga": "Trato con Animales pasa a ser una habilidad clásea. Si ya lo fuese, recibes un +1.",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "Arquería experta",
+      "descripcion_larga": "Escoge un arma a distancia. Si es exótica, pasas a considerarla marcial. Si no es exótica, obtienes competencia y +1 al ataque con dicho arma (no se acumula con Soltura con un arma)",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "Adversario predilecto 1",
+      "descripcion_larga": "Escoge un tipo de criatura como si fuese Enemigo Predilecto y que no hayas seleccionado ya como enemigo predilecto. Obtienes un +1 a Engañar, Saber, Percepción, Averiguar Intenciones y Supervivencia contra criaturas de este tipo.",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "Presencia élfica",
+      "descripcion_larga": "Mientras seas capaz de percibir a Shalelu de alguna forma, puedes hacer cualquier acción como si él se encontrase a 5' de ti.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "shalelu_vinculo_natural"
+      ]
+    },
+    {
+      "nombre": "Jinete",
+      "descripcion_larga": "Obtienes tantos rangos en Monta como tu nivel de relación con Shalelu. No puedes superar tu número máximo de rangos para tu nivel.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "shalelu_monta_basica"
+      ]
+    },
+    {
+      "nombre": "Ataque sorpresa",
+      "descripcion_larga": "Cuando comience un combate, si ningún enemigo te había percibido, puedes sumar la mitad de tu nivel de relación con Shalelu a tu prueba de iniciativa.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "shalelu_acechar"
+      ]
+    },
+    {
+      "nombre": "Terreno favorito",
+      "descripcion_larga": "Selecciona un terreno de los posibles para la capacidad «Terreno Predilecto». Obtienes +2 a las pruebas de Iniciativa y a las pruebas de Saber (geografía), Percepción, Sigilo y Supervivencia cuando esté en ese tipo de terreno",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "shalelu_supervivencia_obligatoria"
+      ]
+    },
+    {
+      "nombre": "Acechador natural",
+      "descripcion_larga": "Cuando vayas a hacer una tirada en Sigilo en terreno natural, puedes tirar por Supervivencia en vez de Sigilo.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "shalelu_supervivencia_obligatoria"
+      ]
+    },
+    {
+      "nombre": "Rastreator",
+      "descripcion_larga": "Suma tu nivel de relación con Shalelu a tus pruebas de supervivencia para seguir rastros",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "shalelu_supervivencia_obligatoria"
+      ]
+    },
+    {
+      "nombre": "Alerta batidora",
+      "descripcion_larga": "Si hay un encuentro de caravana mientras estás ejerciendo el rol de batidor, te incorporas a dicho asalto 2 asaltos después.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "shalelu_supervivencia_obligatoria"
+      ]
+    },
+    {
+      "nombre": "Experiencia batidora 1",
+      "descripcion_larga": "Si ejerces el rol de batidor, aumenta en 1 las unidades de provisiones obtenidas si te centras en la caza.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "shalelu_supervivencia_obligatoria"
+      ]
+    },
+    {
+      "nombre": "Lenguaje del bosque",
+      "descripcion_larga": "Puedes usar un lenguaje de signos y sonidos naturales para comunicarte de forma básica con otros miembros de la caravana sin alertar enemigos.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "shalelu_supervivencia_obligatoria"
+      ]
+    },
+    {
+      "nombre": "Autosuficiente",
+      "descripcion_larga": "Reduce en 1 tu consumo en la caravana. Reduce a la mitad las raciones que consumes para alimentarte.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "shalelu_supervivencia_obligatoria"
+      ]
+    },
+    {
+      "nombre": "Caza",
+      "descripcion_larga": "Cuando superes una prueba de Saber (Naturaleza) para identificar a una criatura, durante un número de asaltos igual a la mitad de tu relación con Shalelu, tienes +1 al ataque contra este tipo de criatura.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "shalelu_experiencia_natural"
+      ]
+    },
+    {
+      "nombre": "Alerta élfica",
+      "descripcion_larga": "Obtienes un +3 a la percepción para detectar criaturas sigilosas",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "shalelu_sentidos_elficos"
+      ]
+    },
+    {
+      "nombre": "Cría de animales",
+      "descripcion_larga": "Obtienes un +1 a pruebas de Trato con Animales para enseñar trucos o domesticar.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "shalelu_animalista"
+      ]
+    },
+    {
+      "nombre": "Arquería coordinada",
+      "descripcion_larga": "Obtienes la dote Coordinated Shot. Tienes que cumplir sus requisitos para poderla usar.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "shalelu_arqueria_experta"
+      ]
+    },
+    {
+      "nombre": "Disparo único",
+      "descripcion_larga": "Puedes sumar +2 a la primera tirada de ataque a distancia que hagas este turno. Fallas todas las siguientes tiradas de ataque que hagas este turno.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "shalelu_arqueria_experta"
+      ]
+    },
+    {
+      "nombre": "Némesis predilecto 1",
+      "descripcion_larga": "Cuando ataques a la criatura seleccionada con Adversario predilecto 1, aumenta en 1 el daño que produces a este tipo de criaturas.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "shalelu_adversario_predilecto_1"
+      ]
+    },
+    {
+      "nombre": "Adversario predilecto 2",
+      "descripcion_larga": "Escoge un tipo de criatura como si fuese Enemigo Predilecto y que no hayas seleccionado ya como enemigo predilecto. Obtienes un +1 a Engañar, Saber, Percepción, Averiguar ntenciones y Supervivencia contra criaturas de este tipo.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "shalelu_adversario_predilecto_1"
+      ]
+    },
+    {
+      "nombre": "Mismo cielo",
+      "descripcion_larga": "Mientras «Vínculo natural» está activo, si estás al aire libre, Shalelu también puede percibir tu estado.",
+      "min_nivel_relacion": 3,
+      "prerequisitos": [
+        "shalelu_vinculo_natural"
+      ]
+    },
+    {
+      "nombre": "Amistad",
+      "descripcion_larga": "Puedes usar Vínculo natural una cantidad de veces al día igual a la mitad de tu nivel de relación con Shalelu.",
+      "min_nivel_relacion": 3,
+      "prerequisitos": [
+        "shalelu_vinculo_natural"
+      ]
+    },
+    {
+      "nombre": "Monta asegurada",
+      "descripcion_larga": "Puedes elegir 10 en cualquier prueba de Monta.",
+      "min_nivel_relacion": 3,
+      "prerequisitos": [
+        "shalelu_jinete"
+      ]
+    },
+    {
+      "nombre": "Un ojo en la caravana",
+      "descripcion_larga": "Reduces en 1 asalto el tiempo para entrar en acción gracias a Alerta batidora.",
+      "min_nivel_relacion": 3,
+      "prerequisitos": [
+        "shalelu_alerta_batidora"
+      ]
+    },
+    {
+      "nombre": "Experiencia batidora 2",
+      "descripcion_larga": "Si ejerces el rol de batidor, aumenta en 1 las unidades de provisiones obtenidas si te centras en la caza.",
+      "min_nivel_relacion": 3,
+      "prerequisitos": [
+        "shalelu_experiencia_batidora_1"
+      ]
+    },
+    {
+      "nombre": "Mensajeros naturales",
+      "descripcion_larga": "Puedes lanzar el hechizo ‘Animal Messenger’ 1/día con un nivel de lanzador igual a tu nivel de relación con Shalelu.",
+      "min_nivel_relacion": 3,
+      "prerequisitos": [
+        "shalelu_lenguaje_del_bosque"
+      ]
+    },
+    {
+      "nombre": "Autosuficiencia superior",
+      "descripcion_larga": "Sumas tu nivel de relación con Shalelu a las pruebas para ser autosuficiente en la naturaleza (si debido a este bonificador, aumentas los suministros como para alimentrar a cualquier otra criatura, no lo haces, solo sirve para alcanzar el resultado de ser autosuficiente).",
+      "min_nivel_relacion": 3,
+      "prerequisitos": [
+        "shalelu_autosuficiente"
+      ]
+    },
+    {
+      "nombre": "Magia salvaje 1",
+      "descripcion_larga": "Escoge un hechizo de Explorador de nivel 1. Añade este hechizo a tu lista de conjuros conocidos y disponibles",
+      "min_nivel_relacion": 3,
+      "prerequisitos": [
+        "shalelu_caza"
+      ]
+    },
+    {
+      "nombre": "Ojos nocturnos",
+      "descripcion_larga": "Obtienes visión en la penumbra. Si ya la tuvieses, obtienes +10' de visión en la oscuridad.",
+      "min_nivel_relacion": 3,
+      "prerequisitos": [
+        "shalelu_alerta_elfica"
+      ]
+    },
+    {
+      "nombre": "Doma experimentada",
+      "descripcion_larga": "Cuando ejerces el rol de Domador, reduces a la mitad el tiempo necesario para enseñar trucos o domesticar animales.",
+      "min_nivel_relacion": 3,
+      "prerequisitos": [
+        "shalelu_cria_de_animales"
+      ]
+    },
+    {
+      "nombre": "Aliado animal",
+      "descripcion_larga": "Obtienes un compañero animal si no lo tuvieses ya. Suma tu nivel de relación con Shalelu a tu nivel de druida. Como máximo, solo puedes sumar de este forma como máximo tus DG - 4.",
+      "min_nivel_relacion": 3,
+      "prerequisitos": [
+        "shalelu_cria_de_animales"
+      ]
+    },
+    {
+      "nombre": "Némesis predilecto 2",
+      "descripcion_larga": "Cuando ataques a la criatura seleccionada con Adversario predilecto 2, aumenta en 1 el daño que produces a este tipo de criaturas.",
+      "min_nivel_relacion": 3,
+      "prerequisitos": [
+        "shalelu_adversario_predilecto_2"
+      ]
+    },
+    {
+      "nombre": "Adversario predilecto 3",
+      "descripcion_larga": "Escoge un tipo de criatura como si fuese Enemigo Predilecto y que no hayas seleccionado ya como enemigo predilecto. Obtienes un +1 a Engañar, Saber, Percepción, Averiguar ntenciones y Supervivencia contra criaturas de este tipo.",
+      "min_nivel_relacion": 3,
+      "prerequisitos": [
+        "shalelu_adversario_predilecto_2"
+      ]
+    },
+    {
+      "nombre": "Resistencias élficas",
+      "descripcion_larga": "+2 a los TS contra efectos de sueño o encantamiento",
+      "min_nivel_relacion": 4,
+      "prerequisitos": [
+        "shalelu_presencia_elfica"
+      ]
+    },
+    {
+      "nombre": "Camuflaje natural",
+      "descripcion_larga": "Siempre que uses Sigilo en tu terreno favorito, sumas tu nivel de relación con Shalelu a dicha prueba.",
+      "min_nivel_relacion": 4,
+      "prerequisitos": [
+        "shalelu_ataque_sorpresa",
+        "shalelu_terreno_favorito"
+      ]
+    },
+    {
+      "nombre": "Siempre presente",
+      "descripcion_larga": "En caso de asalto a la caravana mientras ejerces el rol de batidor, puedes reducir tu Iniciativa en 10 para actuar con normalidad como si hubieses estado presente (aunque empiezas posicionado regresando)",
+      "min_nivel_relacion": 4,
+      "prerequisitos": [
+        "shalelu_un_ojo_en_la_caravana"
+      ]
+    },
+    {
+      "nombre": "Experiencia batidora 3",
+      "descripcion_larga": "Si ejerces el rol de batidor, aumentas en 1 las unidades de provisiones obtenidas si te centras en la caza.",
+      "min_nivel_relacion": 4,
+      "prerequisitos": [
+        "shalelu_experiencia_batidora_2"
+      ]
+    },
+    {
+      "nombre": "Autosuficiencia compartida",
+      "descripcion_larga": "Elimina la restricción de solo alimentarte a ti con Autosuficiencia superior.",
+      "min_nivel_relacion": 4,
+      "prerequisitos": [
+        "shalelu_autosuficiencia_superior"
+      ]
+    },
+    {
+      "nombre": "Magia salvaje 2",
+      "descripcion_larga": "Escoge un hechizo de Explorador de nivel 2. Añade este hechizo a tu lista de conjuros conocidos y disponibles",
+      "min_nivel_relacion": 4,
+      "prerequisitos": [
+        "shalelu_magia_salvaje_1"
+      ]
+    },
+    {
+      "nombre": "Especialización arquera",
+      "descripcion_larga": "Calificas como con un nivel de guerrero igual a tu nivel de relación con Shalelu de cara a dotes relacionadas con armas a distancia.",
+      "min_nivel_relacion": 4,
+      "prerequisitos": [
+        "shalelu_arqueria_experta"
+      ]
+    },
+    {
+      "nombre": "Tiro dañinio",
+      "descripcion_larga": "Cuando usas Disparo único, aumentas en +1d6 al daño de ese ataque.",
+      "min_nivel_relacion": 4,
+      "prerequisitos": [
+        "shalelu_disparo_unico"
+      ]
+    },
+    {
+      "nombre": "Némesis predilecto 3",
+      "descripcion_larga": "Cuando ataques a la criatura seleccionada con Adversario predilecto 3, aumenta en 1 el daño que produces a este tipo de criaturas.",
+      "min_nivel_relacion": 4,
+      "prerequisitos": [
+        "shalelu_adversario_predilecto_3"
+      ]
+    },
+    {
+      "nombre": "Adversario predilecto 4",
+      "descripcion_larga": "Escoge un tipo de criatura como si fuese Enemigo Predilecto y que no hayas seleccionado ya como enemigo predilecto. Obtienes un +1 a Engañar, Saber, Percepción, Averiguar ntenciones y Supervivencia contra criaturas de este tipo.",
+      "min_nivel_relacion": 4,
+      "prerequisitos": [
+        "shalelu_adversario_predilecto_3"
+      ]
+    },
+    {
+      "nombre": "Vínculo profundo",
+      "descripcion_larga": "Mientras «Vínculo natural» está activado, si estás al aire libre y en un espacio natural, puedes comunicarte empáticamente con Sandru. Debido a la naturaleza limitada del vínculo, sólo pueden compartirse emociones generales",
+      "min_nivel_relacion": 5,
+      "prerequisitos": [
+        "shalelu_mismo_cielo"
+      ]
+    },
+    {
+      "nombre": "Cuerpo a tierra",
+      "descripcion_larga": "Siempre que un aliado haga una tirada de reflejos, si tú no tuviste que hacer una tirada, hazla. Intercambiáis los resultados. Ambos sufrís los efectos, cada uno con la nueva tirada.",
+      "min_nivel_relacion": 5,
+      "prerequisitos": [
+        "shalelu_resistencias_elficas"
+      ]
+    },
+    {
+      "nombre": "Reflejos élficos",
+      "descripcion_larga": "Una vez al día, antes de realizar una prueba de reflejos, puedes activar esta habilidad para obtener un +5 a dicha prueba.",
+      "min_nivel_relacion": 5,
+      "prerequisitos": [
+        "shalelu_amistad"
+      ]
+    },
+    {
+      "nombre": "Experiencia batidora 4",
+      "descripcion_larga": "Si ejerces el rol de batidor, aumentas en 1 las unidades de provisiones obtenidas si te centras en la caza.",
+      "min_nivel_relacion": 5,
+      "prerequisitos": [
+        "shalelu_experiencia_batidora_3"
+      ]
+    },
+    {
+      "nombre": "Magia salvaje 3",
+      "descripcion_larga": "Escoge un hechizo de Explorador de nivel 3. Añade este hechizo a tu lista de conjuros conocidos y disponibles",
+      "min_nivel_relacion": 5,
+      "prerequisitos": [
+        "shalelu_magia_salvaje_2"
+      ]
+    },
+    {
+      "nombre": "Empatía bestial",
+      "descripcion_larga": "Obtiene la capacidad de explorador «Empatía salvaje». Suma tu nivel de relación con Shalelu a estas pruebas.",
+      "min_nivel_relacion": 5,
+      "prerequisitos": [
+        "shalelu_doma_experimentada",
+        "shalelu_aliado_animal"
+      ],
+      "prerequisitos_operator": "OR"      
+    },
+    {
+      "nombre": "Inteligencia básica",
+      "descripcion_larga": "Aumenta en 1 la inteligencia de tu compañero animal.",
+      "min_nivel_relacion": 5,
+      "prerequisitos": [
+        "shalelu_doma_experimentada",
+        "shalelu_aliado_animal"
+      ],
+      "prerequisitos_operator": "OR"  
+    },
+    {
+      "nombre": "Némesis predilecto 4",
+      "descripcion_larga": "Cuando ataques a la criatura seleccionada con Adversario predilecto 4, aumenta en 1 el daño que produces a este tipo de criaturas.",
+      "min_nivel_relacion": 5,
+      "prerequisitos": [
+        "shalelu_adversario_predilecto_4"
+      ]
+    },
+    {
+      "nombre": "Adversario predilecto 5",
+      "descripcion_larga": "Escoge un tipo de criatura como si fuese Enemigo Predilecto y que no hayas seleccionado ya como enemigo predilecto. Obtienes un +1 a Engañar, Saber, Percepción, Averiguar ntenciones y Supervivencia contra criaturas de este tipo.",
+      "min_nivel_relacion": 5,
+      "prerequisitos": [
+        "shalelu_adversario_predilecto_4"
+      ]
+    },
+    {
+      "nombre": "Experiencia batidora 5",
+      "descripcion_larga": "Si ejerces el rol de batidor, aumentas en 1 las unidades de provisiones obtenidas si te centras en la caza.",
+      "min_nivel_relacion": 6,
+      "prerequisitos": [
+        "shalelu_experiencia_batidora_4"
+      ]
+    },
+    {
+      "nombre": "Magia salvaje 4",
+      "descripcion_larga": "Escoge un hechizo de Explorador de nivel 4. Añade este hechizo a tu lista de conjuros conocidos y disponibles",
+      "min_nivel_relacion": 6,
+      "prerequisitos": [
+        "shalelu_magia_salvaje_3"
+      ]
+    },
+    {
+      "nombre": "Vínculo animal",
+      "descripcion_larga": "Suma de nuevo tu nivel de relación con Shalelu a tu nivel de druida.  Como máximo, solo puedes sumar de este forma como máximo tus DG - 4.",
+      "min_nivel_relacion": 6,
+      "prerequisitos": [
+        "shalelu_empatia_bestial"
+      ]
+    },
+    {
+      "nombre": "Némesis predilecto 5",
+      "descripcion_larga": "Cuando ataques a la criatura seleccionada con Adversario predilecto 5, aumenta en 1 el daño que produces a este tipo de criaturas.",
+      "min_nivel_relacion": 6,
+      "prerequisitos": [
+        "shalelu_adversario_predilecto_5"
+      ]
+    },
+    {
+      "nombre": "Adversario predilecto 6",
+      "descripcion_larga": "Escoge un tipo de criatura como si fuese Enemigo Predilecto y que no hayas seleccionado ya como enemigo predilecto. Obtienes un +1 a Engañar, Saber, Percepción, Averiguar ntenciones y Supervivencia contra criaturas de este tipo.",
+      "min_nivel_relacion": 6,
+      "prerequisitos": [
+        "shalelu_adversario_predilecto_5"
+      ]
+    },
+    {
+      "nombre": "Bendición de la naturaleza",
+      "descripcion_larga": "+1 sagrado a las TS de Fortaleza",
+      "min_nivel_relacion": 7,
+      "prerequisitos": [
+        "shalelu_reflejos_elficos"
+      ]
+    },
+    {
+      "nombre": "Experiencia batidora 6",
+      "descripcion_larga": "Si ejerces el rol de batidor, aumentas en 1 las unidades de provisiones obtenidas si te centras en la caza.",
+      "min_nivel_relacion": 7,
+      "prerequisitos": [
+        "shalelu_experiencia_batidora_5"
+      ]
+    },
+    {
+      "nombre": "Pequeño aliado natural",
+      "descripcion_larga": "Puedes tener un compañero animal adicional. Debes haberlo domesticado o entrenado previamente. Como máximo no puede superar 1/2 de tus DG.",
+      "min_nivel_relacion": 7,
+      "prerequisitos": [
+        "shalelu_vinculo_animal"
+      ]
+    },
+    {
+      "nombre": "Dedicación animal mejorada",
+      "descripcion_larga": "Suma +4 a tu nivel efectivo de Druida. No puede sobrepasar tus DG.",
+      "min_nivel_relacion": 7,
+      "prerequisitos": [
+        "shalelu_vinculo_animal"
+      ]
+    },
+    {
+      "nombre": "Maestría arquera",
+      "descripcion_larga": "Calificas como con un nivel de guerrero igual al doble de tu nivel de relación con Shalelu de cara a dotes relacionadas con armas a distancia.",
+      "min_nivel_relacion": 7,
+      "prerequisitos": [
+        "shalelu_especializacion_arquera"
+      ]
+    },
+    {
+      "nombre": "Némesis predilecto 6",
+      "descripcion_larga": "Cuando ataques a la criatura seleccionada con Adversario predilecto 6, aumenta en 1 el daño que produces a este tipo de criaturas.",
+      "min_nivel_relacion": 7,
+      "prerequisitos": [
+        "shalelu_adversario_predilecto_6"
+      ]
+    },
+    {
+      "nombre": "Adversario predilecto 7",
+      "descripcion_larga": "Escoge un tipo de criatura como si fuese Enemigo Predilecto y que no hayas seleccionado ya como enemigo predilecto. Obtienes un +1 a Engañar, Saber, Percepción, Averiguar ntenciones y Supervivencia contra criaturas de este tipo.",
+      "min_nivel_relacion": 7,
+      "prerequisitos": [
+        "shalelu_adversario_predilecto_6"
+      ]
+    },
+    {
+      "nombre": "Experiencia batidora 7",
+      "descripcion_larga": "Si ejerces el rol de batidor, aumentas en 1 las unidades de provisiones obtenidas si te centras en la caza.",
+      "min_nivel_relacion": 8,
+      "prerequisitos": [
+        "shalelu_experiencia_batidora_6"
+      ]
+    },
+    {
+      "nombre": "Pequeño amigo",
+      "descripcion_larga": "Puedes tener un compañero animal adicional. Debes haberlo domesticado o entrenado previamente. Como máximo no puede superar 1/2 de tus DG.",
+      "min_nivel_relacion": 8,
+      "prerequisitos": [
+        "shalelu_pequeno_aliado_natural",
+        "shalelu_dedicacion_animal_mejorada"
+      ],
+      "prerequisitos_operator": "OR"
+    },
+    {
+      "nombre": "Némesis predilecto 7",
+      "descripcion_larga": "Cuando ataques a la criatura seleccionada con Adversario predilecto 7, aumenta en 1 el daño que produces a este tipo de criaturas.",
+      "min_nivel_relacion": 8,
+      "prerequisitos": [
+        "shalelu_adversario_predilecto_7"
+      ]
+    },
+    {
+      "nombre": "Adversario predilecto 8",
+      "descripcion_larga": "Escoge un tipo de criatura como si fuese Enemigo Predilecto y que no hayas seleccionado ya como enemigo predilecto. Obtienes un +1 a Engañar, Saber, Percepción, Averiguar ntenciones y Supervivencia contra criaturas de este tipo.",
+      "min_nivel_relacion": 8,
+      "prerequisitos": [
+        "shalelu_adversario_predilecto_7"
+      ]
+    },
+    {
+      "nombre": "Experiencia batidora 8",
+      "descripcion_larga": "Si ejerces el rol de batidor, aumentas en 1 las unidades de provisiones obtenidas si te centras en la caza.",
+      "min_nivel_relacion": 9,
+      "prerequisitos": [
+        "shalelu_experiencia_batidora_7"
+      ]
+    },
+    {
+      "nombre": "Dedicación animal superior",
+      "descripcion_larga": "Elimina el -4 al límite de nivel efectivo de druida que puedes poseer gracias a Vinculo animal.",
+      "min_nivel_relacion": 9,
+      "prerequisitos": [
+        "shalelu_pequeno_amigo"
+      ]
+    },
+    {
+      "nombre": "Némesis predilecto 8",
+      "descripcion_larga": "Cuando ataques a la criatura seleccionada con Adversario predilecto 8, aumenta en 1 el daño que produces a este tipo de criaturas.",
+      "min_nivel_relacion": 9,
+      "prerequisitos": [
+        "shalelu_adversario_predilecto_8"
+      ]
+    },
+    {
+      "nombre": "Adversario predilecto 9",
+      "descripcion_larga": "Escoge un tipo de criatura como si fuese Enemigo Predilecto y que no hayas seleccionado ya como enemigo predilecto. Obtienes un +1 a Engañar, Saber, Percepción, Averiguar ntenciones y Supervivencia contra criaturas de este tipo.",
+      "min_nivel_relacion": 9,
+      "prerequisitos": [
+        "shalelu_adversario_predilecto_8"
+      ]
+    },
+    {
+      "nombre": "Experiencia batidora 9",
+      "descripcion_larga": "Si ejerces el rol de batidor, aumentas en 1 las unidades de provisiones obtenidas si te centras en la caza.",
+      "min_nivel_relacion": 10,
+      "prerequisitos": [
+        "shalelu_experiencia_batidora_8"
+      ]
+    },
+    {
+      "nombre": "Espíritu animal",
+      "descripcion_larga": "Por cada 5 niveles efectivos de druida que superen tus DG, selecciona una plantilla aprobada por tu director que aumente en +1 DG. Aplica esta plantilla a tu compañero animal.",
+      "min_nivel_relacion": 10,
+      "prerequisitos": [
+        "shalelu_dedicacion_animal_superior"
+      ]
+    },
+    {
+      "nombre": "Némesis predilecto 9",
+      "descripcion_larga": "Cuando ataques a la criatura seleccionada con Adversario predilecto 9, aumenta en 1 el daño que produces a este tipo de criaturas.",
+      "min_nivel_relacion": 10,
+      "prerequisitos": [
+        "shalelu_adversario_predilecto_9"
+      ]
+    },
+    {
+      "nombre": "Adversario predilecto 10",
+      "descripcion_larga": "Escoge un tipo de criatura como si fuese Enemigo Predilecto y que no hayas seleccionado ya como enemigo predilecto. Obtienes un +1 a Engañar, Saber, Percepción, Averiguar ntenciones y Supervivencia contra criaturas de este tipo.",
+      "min_nivel_relacion": 10,
+      "prerequisitos": [
+        "shalelu_adversario_predilecto_9"
+      ]
+    }
+  ]
+}

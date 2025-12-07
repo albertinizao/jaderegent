@@ -1,0 +1,303 @@
+{
+  "npc_id": "helgarval",
+  "nombre": "Helgarval",
+  "descripcion_larga": "Helgarval, ángel cassiano vinculado a un yelmo ulfen, cuya amistad concede poderes celestiales, memoria perfecta y formas angelicales a quien cultiva su relación.",
+  "nivel_maximo": 5,
+  "imagen_url": "/data/images/npc/helgarval.png",
+  "ventajas": [
+    {
+      "nombre": "Vínculo Angelical",
+      "descripcion_larga": "Una vez al día, puedes percibir el estado de Helgarval durante un minuto.",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "Aliado del Cielo",
+      "descripcion_larga": "Obtienes los beneficios de la dote \"Summon good monster\", pero solo para invocar criaturas buenas.",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "Vuelo angelical",
+      "descripcion_larga": "Volar pasa a ser una habilidad clásea. Si ya lo fuese, recibes un +1.",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "Memoria eidética",
+      "descripcion_larga": "Un número de veces al día igual a tu nivel de relación con Helgarval, puedes volver a tirar una prueba de Saber. Puedes usar varias veces este efecto en una misma tirada.",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "Recuerdos mágicos",
+      "descripcion_larga": "Una vez al día, puedes, como acción de movimiento, recuperar un conjuro preparado de nivel 1 que ya hayas lanzado.",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "Maestro de formas",
+      "descripcion_larga": "Si pudieses cambiar de forma por ti mismo (no por ningún objeto), como la forma salvaje de un druida o Forma cassiana, puedes hacerlo como acción rápida.",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "Enseñanzas religiosas",
+      "descripcion_larga": "Saber Religión pasa a ser una habilidad clásea. Si ya lo fuese, obtienes +1.",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+
+    {
+      "nombre": "Escucha angelical",
+      "descripcion_larga": "Mientras estés en contacto físico con Helgarval, una vez al día y durante una cantidad de minutos igual a tu nivel de relación con él, puedes entender cualquier idioma hablado.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "helgarval_vinculo_angelical"
+      ]
+    },
+    {
+      "nombre": "Proyección celestial",
+      "descripcion_larga": "Mientras seas capaz de percibir a Helgarval de alguna forma, puedes hacer cualquier acción como si él se encontrase a 5 pies de ti.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "helgarval_vinculo_angelical"
+      ]
+    },
+    {
+      "nombre": "Invocación celestial",
+      "descripcion_larga": "Una vez al día, puedes hacer que Helgarval se teleporte desde el plano material a tu ubicación actual.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "helgarval_vinculo_angelical"
+      ]
+    },
+    {
+      "nombre": "Aliados interplanares",
+      "descripcion_larga": "Siempre que lances un dado para ver cuántas criaturas ajenas buenas invocas, repite cualquier resultado de 1 hasta no obtenerlo.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "helgarval_aliado_del_cielo"
+      ]
+    },
+    {
+      "nombre": "Bendición alada",
+      "descripcion_larga": "Obtienes un bonificador a la habilidad Volar igual a tu nivel de relación con Helgarval.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "helgarval_vuelo_angelical"
+      ]
+    },
+    {
+      "nombre": "Borrar recuerdos",
+      "descripcion_larga": "Puedes decidir borrar tus propios recuerdos. Necesitas 1 minuto por cada hora de recuerdo a borrar.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "helgarval_memoria_eidetica"
+      ]
+    },
+    {
+      "nombre": "Recuerdos mágicos 2",
+      "descripcion_larga": "Una vez al día, puedes, como acción de movimiento, recuperar un conjuro preparado de nivel 2 que ya hayas lanzado.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "helgarval_recuerdos_magicos"
+      ]
+    },
+    {
+      "nombre": "Forma cassiana",
+      "descripcion_larga": "Elige una de las siguientes formas: paloma, perro o pez pequeño. Puedes adoptarla una vez al día por cada nivel de relación con Helgarval, como si fueses afectado por el conjuro polimorfar. Una vez adoptada una forma, esta es siempre igual.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "helgarval_maestro_de_formas"
+      ]
+    },
+    {
+      "nombre": "Destino sagrado",
+      "descripcion_larga": "Elige una clase entre las siguientes: Clérigo, Paladín, Inquisidor, Oráculo o Sacerdote de guerra. Helgarval gana un nivel en la clase elegida.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "helgarval_ensenanzas_religiosas"
+      ]
+    },
+
+    {
+      "nombre": "Habla angelical",
+      "descripcion_larga": "Cuando activas Escucha angelical, también puedes hablar.",
+      "min_nivel_relacion": 3,
+      "prerequisitos": [
+        "helgarval_escucha_angelical"
+      ]
+    },
+    {
+      "nombre": "Amistad celestial",
+      "descripcion_larga": "Helgarval pasa a ser tu familiar.",
+      "min_nivel_relacion": 3,
+      "prerequisitos": [
+        "helgarval_vinculo_angelical"
+      ]
+    },
+    {
+      "nombre": "Conexión celestial",
+      "descripcion_larga": "Mientras tu alineamiento sea bueno, durante un máximo de 1 minuto por nivel de relación, tienes un vínculo empático con Helgarval en el que ambas partes podéis compartir información empática.",
+      "min_nivel_relacion": 3,
+      "prerequisitos": [
+        "helgarval_vinculo_angelical"
+      ]
+    },
+    {
+      "nombre": "Proyección celestial",
+      "descripcion_larga": "Mientras seas capaz de percibir a Helgarval de alguna forma, puedes hacer cualquier acción como si él se encontrase a 5 pies de ti.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "helgarval_vinculo_angelical"
+      ]
+    },
+    {
+      "nombre": "Protección a distancia",
+      "descripcion_larga": "Helgarval puede usar su lesser protective aura a distancia en ti.",
+      "min_nivel_relacion": 3,
+      "prerequisitos": [
+        "helgarval_proyeccion_celestial"
+      ]
+    },
+    {
+      "nombre": "Alas angelicales",
+      "descripcion_larga": "Te crecen unas alas angelicales que permanecen mientras tu alineamiento sea bueno. Obtienes velocidad de vuelo 20 con maniobrabilidad torpe y un penalizador de –10 a pruebas de sigilo o de no llamar la atención. Cuentas como criatura de morfología extraña para portar armaduras y obtienes el tipo Ajeno bueno.",
+      "min_nivel_relacion": 3,
+      "prerequisitos": [
+        "helgarval_bendicion_alada"
+      ]
+    },
+    {
+      "nombre": "Memoria prodigiosa",
+      "descripcion_larga": "Duplica el número de usos de Memoria eidética.",
+      "min_nivel_relacion": 3,
+      "prerequisitos": [
+        "helgarval_borrar_recuerdos"
+      ]
+    },
+    {
+      "nombre": "Recuerdos mágicos 3",
+      "descripcion_larga": "Una vez al día, puedes, como acción de movimiento, recuperar un conjuro preparado de nivel 3 que ya hayas lanzado.",
+      "min_nivel_relacion": 3,
+      "prerequisitos": [
+        "helgarval_recuerdos_magicos_2"
+      ]
+    },
+    {
+      "nombre": "Forma cassiana extendida",
+      "descripcion_larga": "Añade otra forma que no hayas seleccionado aún con Forma cassiana.",
+      "min_nivel_relacion": 3,
+      "prerequisitos": [
+        "helgarval_forma_cassiana"
+      ]
+    },
+    {
+      "nombre": "Entrenamiento sagrado",
+      "descripcion_larga": "El nivel de Helgarval en la clase elegida pasa a ser igual a tus rangos en Saber Religión, no pudiendo superar tus dados de golpe divididos entre 4.",
+      "min_nivel_relacion": 3,
+      "prerequisitos": [
+        "helgarval_destino_sagrado"
+      ]
+    },
+
+    {
+      "nombre": "Conversación celestial",
+      "descripcion_larga": "Una única vez al día puedes comunicarte telepáticamente con Helgarval hasta 100 palabras. Él puede responder de igual forma.",
+      "min_nivel_relacion": 4,
+      "prerequisitos": [
+        "helgarval_conexion_celestial"
+      ]
+    },
+    {
+      "nombre": "Alas angelicales 2",
+      "descripcion_larga": "Tus alas te otorgan velocidad de vuelo 30 con maniobrabilidad mala.",
+      "min_nivel_relacion": 4,
+      "prerequisitos": [
+        "helgarval_alas_angelicales"
+      ]
+    },
+    {
+      "nombre": "Memoria casi perfecta",
+      "descripcion_larga": "Puedes elegir 10 en cualquier tirada de recordar algún conocimiento. Si ya pudieses elegir 10, puedes hacerlo después de saber el resultado de tu tirada en vez de antes.",
+      "min_nivel_relacion": 4,
+      "prerequisitos": [
+        "helgarval_memoria_prodigiosa"
+      ]
+    },
+    {
+      "nombre": "Recuerdos mágicos 4",
+      "descripcion_larga": "Una vez al día, puedes, como acción de movimiento, recuperar un conjuro preparado de nivel 4 que ya hayas lanzado.",
+      "min_nivel_relacion": 4,
+      "prerequisitos": [
+        "helgarval_recuerdos_magicos_3"
+      ]
+    },
+    {
+      "nombre": "Forma cassiana avanzada",
+      "descripcion_larga": "Añade otra forma que no hayas seleccionado aún con Forma cassiana.",
+      "min_nivel_relacion": 4,
+      "prerequisitos": [
+        "helgarval_forma_cassiana_extendida"
+      ]
+    },
+    {
+      "nombre": "Entrenamiento sagrado mejorado",
+      "descripcion_larga": "Aumenta el límite de Entrenamiento sagrado a tus dados de golpe divididos entre 2.",
+      "min_nivel_relacion": 4,
+      "prerequisitos": [
+        "helgarval_entrenamiento_sagrado"
+      ]
+    },
+
+    {
+      "nombre": "Habla duradera",
+      "descripcion_larga": "Mientras lleves a Helgarval como casco, Escucha angelical no tiene duración.",
+      "min_nivel_relacion": 5,
+      "prerequisitos": [
+        "helgarval_habla_angelical"
+      ]
+    },
+    {
+      "nombre": "Alas angelicales 3",
+      "descripcion_larga": "Tus alas te otorgan velocidad de vuelo 40 con maniobrabilidad media.",
+      "min_nivel_relacion": 5,
+      "prerequisitos": [
+        "helgarval_alas_angelicales_2"
+      ]
+    },
+    {
+      "nombre": "Memoria perfecta",
+      "descripcion_larga": "Obtienes un +1 a Inteligencia.",
+      "min_nivel_relacion": 5,
+      "prerequisitos": [
+        "helgarval_memoria_casi_perfecta"
+      ]
+    },
+    {
+      "nombre": "Recuerdos mágicos 5",
+      "descripcion_larga": "Una vez al día, puedes, como acción de movimiento, recuperar un conjuro preparado de nivel 5 que ya hayas lanzado.",
+      "min_nivel_relacion": 5,
+      "prerequisitos": [
+        "helgarval_recuerdos_magicos_4"
+      ]
+    },
+    {
+      "nombre": "Forma cassiana perfecta",
+      "descripcion_larga": "Duplica el número de veces que puedes usar Forma cassiana. Además, añade la forma de un humanoide alado angelical pequeño a las formas que puedes adoptar.",
+      "min_nivel_relacion": 5,
+      "prerequisitos": [
+        "helgarval_forma_cassiana_avanzada"
+      ]
+    },
+    {
+      "nombre": "Entrenamiento sagrado avanzado",
+      "descripcion_larga": "Aumenta el límite de Entrenamiento sagrado a tres cuartas partes de tus dados de golpe.",
+      "min_nivel_relacion": 5,
+      "prerequisitos": [
+        "helgarval_entrenamiento_sagrado_mejorado"
+      ]
+    }
+  ]
+}

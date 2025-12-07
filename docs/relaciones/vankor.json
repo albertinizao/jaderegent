@@ -1,0 +1,77 @@
+{
+  "npc_id": "vankor",
+  "nombre": "Vankor",
+  "descripcion_larga": "Vankor, veterano carretero y figura paternal de la caravana, experto en conducción, reparaciones y apoyo familiar.",
+  "nivel_maximo": 3,
+  "imagen_url": "/data/images/npc/vankor.png",
+  "ventajas": [
+    {
+      "nombre": "Conductor de caravana",
+      "descripcion_larga": "Profesión (carretero) pasa a ser una habilidad clásea. Si ya lo fuese, recibes un +1.",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "Reparaciones básicas",
+      "descripcion_larga": "Profesión (carrero) pasa a ser una habilidad clásea. Si ya lo fuese, recibes un +1.",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "Lazos familiares",
+      "descripcion_larga": "Escoge una habilidad clásea de un familiar que viaje contigo. Esta habilidad pasa a ser clásea para ti.",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+
+    {
+      "nombre": "Conductor de caravana avanzado",
+      "descripcion_larga": "Mientras no tengas rangos asignados en Profesión (carretero), cuentas como si tuvieses tantos rangos como niveles de relación con Vankor.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "vankor_conductor_de_caravana"
+      ]
+    },
+    {
+      "nombre": "Reparaciones avanzadas",
+      "descripcion_larga": "Mientras no tengas rangos asignados en Profesión (carrero), cuentas como si tuvieses tantos rangos como niveles de relación con Vankor.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "vankor_reparaciones_basicas"
+      ]
+    },
+    {
+      "nombre": "Ayuda familiar",
+      "descripcion_larga": "Puedes elegir 10 en cualquier prueba de ayudar o en una prueba hacia un familiar, sin importar las circunstancias.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "vankor_lazos_familiares"
+      ]
+    },
+
+    {
+      "nombre": "Conductor de caravana experto",
+      "descripcion_larga": "Obtienes tantos rangos extra en Profesión (carretero) como niveles de relación con Vankor.",
+      "min_nivel_relacion": 3,
+      "prerequisitos": [
+        "vankor_conductor_de_caravana_avanzado"
+      ]
+    },
+    {
+      "nombre": "Reparaciones expertas",
+      "descripcion_larga": "Obtienes tantos rangos extra en Profesión (carrero) como niveles de relación con Vankor.",
+      "min_nivel_relacion": 3,
+      "prerequisitos": [
+        "vankor_reparaciones_avanzadas"
+      ]
+    },
+    {
+      "nombre": "Vínculo familiar",
+      "descripcion_larga": "Puedes elegir 20 en cualquier prueba de ayudar o en una prueba hacia un familiar, sin importar las circunstancias.",
+      "min_nivel_relacion": 3,
+      "prerequisitos": [
+        "vankor_ayuda_familiar"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,97 @@
+{
+  "npc_id": "eilvarr",
+  "nombre": "Eilvarr",
+  "descripcion_larga": "Eilvarr, ilveranii mago de hielo",
+  "nivel_maximo": 3,
+  "imagen_url": "/data/images/npc/eilvarr.jpg",
+  "ventajas": [
+    {
+      "nombre": "Trucos helados",
+      "descripcion_larga": "Aprendes el truco Rayo de Escarcha. Usa tu nivel de personaje como nivel de lanzador, e Inteligencia como atributo.",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "Magia gélida 1",
+      "descripcion_larga": "Aumenta en 1 la CD de cualquier hechizo que laces con el subtipo «frío». Y obtienes +1 a los TS contra los mismos.",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "Armadura de copos",
+      "descripcion_larga": "Después de pasar al menos una hora en un clima frío sin los beneficios de esta ventaja. Obtienes un bonificador a la CA por armadura natural hasta que alguien falle un golpe contra ti debido a este bonificador. +1 en frío leve. +2 en frio grave. +3 en frío extremo.",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "Artesanía élfica",
+      "descripcion_larga": "Artesanía (a tu elección) pasa a ser una habilidad clásea. Si ya lo fuese, recibes un +1.",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "Potencia helada",
+      "descripcion_larga": "Escoge una dote metamágica que suba en 1 el nivel del hechizo. Obtienes esta dote, pero solo la puedes usar para hechizos con descriptor «frío».",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "eilvarr_trucos_helados"
+      ]
+    },
+    {
+      "nombre": "Magia gélida 2",
+      "descripcion_larga": "Aumenta en 1 la CD de cualquier hechizo que laces con el subtipo «frío». Y obtienes +1 a los TS contra los mismos.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "eilvarr_magia_gelida_1"
+      ]
+    },
+    {
+      "nombre": "Congelar el aire",
+      "descripcion_larga": "Como acción estándar puedes restar 5' de velocidad terrestre al objetivo a 30' por cada nivel de frío ambiental que haya. No puede reducirse a 0'.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "eilvarr_armadura_de_copos"
+      ]
+    },
+    {
+      "nombre": "Bendición de Findeladlara",
+      "descripcion_larga": "Reduce un 10% los costes de fabricación de objetos mágicos. 10 000 po como máximo.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "eilvarr_artesania_elfica"
+      ]
+    },
+    {
+      "nombre": "Potencia helada 2",
+      "descripcion_larga": "Escoge una dote metamágica que suba en 1 el nivel del hechizo. Obtienes esta dote, pero solo la puedes usar para hechizos con descriptor «frío».",
+      "min_nivel_relacion": 3,
+      "prerequisitos": [
+        "eilvarr_potencia_helada"
+      ]
+    },
+    {
+      "nombre": "Magia gélida 3",
+      "descripcion_larga": "Aumenta en 1 la CD de cualquier hechizo que laces con el subtipo «frío». Y obtienes +1 a los TS contra los mismos.",
+      "min_nivel_relacion": 3,
+      "prerequisitos": [
+        "eilvarr_magia_gelida_2"
+      ]
+    },
+    {
+      "nombre": "Escudo cristalino",
+      "descripcion_larga": "1 vez al día puedes lanzar el hechizo Escudo con tus DG como nivel de lanzador. En vez de un escudo de fuerza es un escudo helado.",
+      "min_nivel_relacion": 3,
+      "prerequisitos": [
+        "eilvarr_congelar_el_aire"
+      ]
+    },
+    {
+      "nombre": "La Mano Guía",
+      "descripcion_larga": "Reduce un 15% los costes de fabricación de objetos mágicos para objetos de hasta 100 000 po de coste de fabricación, y un 10% para el resto.",
+      "min_nivel_relacion": 3,
+      "prerequisitos": [
+        "eilvarr_bendicion_de_findeladlara"
+      ]
+    }
+  ]
+}

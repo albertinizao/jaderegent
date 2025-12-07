@@ -1,0 +1,77 @@
+{
+  "npc_id": "ralvio",
+  "nombre": "Ralvio",
+  "descripcion_larga": "Ralvio, campeón del Zanduismo y bebedor legendario, cuya fe, moral elevada y resistencia al alcohol fortalecen a quienes comparten su devoción.",
+  "nivel_maximo": 3,
+  "imagen_url": "/data/images/npc/ralvio.png",
+  "ventajas": [
+    {
+      "nombre": "Iniciado en el Zanduismo",
+      "descripcion_larga": "Obtienes la dote Obediencia Deífica (Cayden Cailean) aunque no cumplas sus requisitos.",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "Venirse arriba",
+      "descripcion_larga": "Por cada 10 asaltos afectados por un efecto positivo de moral, dicho efecto persiste 1 asalto adicional cuando fuese a terminar.",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "Hígado de alcohólico",
+      "descripcion_larga": "Puedes consumir un 50% más de alcohol sin sufrir efectos por consumo excesivo.",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+
+    {
+      "nombre": "Zanduita",
+      "descripcion_larga": "Cayden Cailean pasa a ser tu deidad patrona y Zandu su santo. Obtienes +1 al ataque y daño con estoques. Si tienes un tatuaje zanduita, puedes usarlo como símbolo sagrado. Cuando estés afectado por miedo, puedes usar una acción rápida (provoca AO) para beber alcohol que tengas disponible y repetir la TS contra miedo.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "ralvio_iniciado_en_el_zanduismo"
+      ]
+    },
+    {
+      "nombre": "Valentía duradera",
+      "descripcion_larga": "Un número de veces al día igual a tu nivel de relación con Ralvio, puedes aumentar un 50% la duración de un efecto de moral que recibas o generes. Debe usarse al inicio del efecto.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "ralvio_venirse_arriba"
+      ]
+    },
+    {
+      "nombre": "Estómago de alcohólico",
+      "descripcion_larga": "Obtienes un bonificador a las TS contra cualquier cosa ingerida igual a tu nivel de relación con Ralvio.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "ralvio_higado_de_alcoholico"
+      ]
+    },
+
+    {
+      "nombre": "Apóstol Zanduita",
+      "descripcion_larga": "A voluntad, como acción rápida, puedes embriagarte de valentía: +2 de moral a Fue y Con, +3 de moral al ataque y daño, +1 de moral a TS de Voluntad y –2 a la CA. Duplica todos los efectos de moral contra miedo que tengas. Mientras dure, no puedes actuar de forma cobarde ni huir por autoprotección. Dura toda la escena.",
+      "min_nivel_relacion": 3,
+      "prerequisitos": [
+        "ralvio_zanduita"
+      ]
+    },
+    {
+      "nombre": "¡Arriba Zandu!",
+      "descripcion_larga": "Como acción de movimiento, aumentas en 1 la duración de los efectos de moral positivos de todos los aliados a 30 pies.",
+      "min_nivel_relacion": 3,
+      "prerequisitos": [
+        "ralvio_valentia_duradera"
+      ]
+    },
+    {
+      "nombre": "Cerebro de alcohólico",
+      "descripcion_larga": "Eres adicto al alcohol. Mientras estás borracho, obtienes +1 a Fuerza y Constitución.",
+      "min_nivel_relacion": 3,
+      "prerequisitos": [
+        "ralvio_estomago_de_alcoholico"
+      ]
+    }
+  ]
+}

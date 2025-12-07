@@ -1,0 +1,256 @@
+{
+  "npc_id": "ulf",
+  "nombre": "Ulf",
+  "descripcion_larga": "Ulf Gormundr. Guía ulfen experto en la Corona del Mundo.",
+  "nivel_maximo": 5,
+  "imagen_url": "/data/images/npc/ulf.png",
+  "ventajas": [
+    {
+      "nombre": "Protección contra el frío",
+      "descripcion_larga": "Sumas 1 a cualquier tirada pare resistir bajas temperaturas.",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "Resistencia térmica 1",
+      "descripcion_larga": "Aumenta en 5º los Farenheit tu resistencia a climas fríos.",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "Experto en la corona del mundo 1",
+      "descripcion_larga": "Escoge una de las siguientes habilidades: saber (geografía), percepción, Sigilo o Supervivencia. Obtienes un +2 a las pruebas de esta habilidad mientras estés en terreno salvaje de la Corona del Mundo.",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "Paso firme",
+      "descripcion_larga": "Una vez al turno, ignora el penalizador por andar por una casilla helada / nevada",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "Lengua de invierno",
+      "descripcion_larga": "Elige un idioma entre escaldo, varki y tien. Aprendes este idioma.",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "Duro de pelar",
+      "descripcion_larga": "Obtienes la dote «Duro de pelar»",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "Maestro en supervivencia",
+      "descripcion_larga": "Obtienes la dote «Soltura con una habilidad (supervivencia)»",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "Lecciones de escudo",
+      "descripcion_larga": "Obtienes competencia con un tipo de escudo a tu elección (salvo paveses). Si ya la tuvieses, disminuye en 1 el penalizador por armadura de este.",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "Guía",
+      "descripcion_larga": "Supervivencia pasa a ser una habilidad clásea. Si ya lo fuese, recibes un +1. ",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "Alma del permafrost 1",
+      "descripcion_larga": "Obtienes Resistencia al frío 1",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "ulf_proteccion_contra_el_frío"
+      ]
+    },
+    {
+      "nombre": "Resistencia al frío",
+      "descripcion_larga": "Sumas tu nivel de relación con Ulf a cualquier tirada pare resistir bajas temperaturas. Sustituye a Protección contra el frío",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "ulf_proteccion_contra_el_frío"
+      ]
+    },
+    {
+      "nombre": "Resistencia térmica 2",
+      "descripcion_larga": "Aumenta en 5º los Farenheit tu resistencia a climas fríos.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "ulf_resistencia_termica_1"
+      ]
+    },
+    {
+      "nombre": "Experto en la corona del mundo 2",
+      "descripcion_larga": "Escoge una de las siguientes habilidades: saber (geografía), percepción, Sigilo o Supervivencia. Obtienes un +2 a las pruebas de esta habilidad mientras estés en terreno salvaje de la Corona del Mundo.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "ulf_experto_en_la_corona_del_mundo_1"
+      ]
+    },
+    {
+      "nombre": "Paso helado",
+      "descripcion_larga": "Un número de veces al día igual a tu nivel de relación con Ulf, ignora todas las casillas de terreno dificil por nieve o hielo durante un asalto.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "ulf_paso_firme"
+      ]
+    },
+    {
+      "nombre": "Lengua de invierno 2",
+      "descripcion_larga": "Elige un idioma entre escaldo, varki y tien. Aprendes este idioma.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "ulf_lengua_de_invierno_1"
+      ]
+    },
+    {
+      "nombre": "Combatiente con escudo",
+      "descripcion_larga": "Obtienes la dote «Two-Weapon Fighting», pero solo puedes utilizarla para combatir con un escudo en la mano torpe.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "ulf_lecciones_de_escudo"
+      ]
+    },
+    {
+      "nombre": "Localización invernal",
+      "descripcion_larga": "Suma el doble de tu nivel de relación con Ulf a pruebas para orientarte o no perderte en terreno helado o por ventiscas.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "ulf_guia"
+      ]
+    },
+    {
+      "nombre": "Resistencia al frío mejorada",
+      "descripcion_larga": "Sumas el doble del nivel de relación con Ulf a cualquier tirada pare resistir bajas temperaturas. Sustituye a Resistencia al frío.",
+      "min_nivel_relacion": 3,
+      "prerequisitos": [
+        "ulf_resistencia_al_frío"
+      ]
+    },
+    {
+      "nombre": "Resistencia térmica 3",
+      "descripcion_larga": "Aumenta en 5º los Farenheit tu resistencia a climas fríos.",
+      "min_nivel_relacion": 3,
+      "prerequisitos": [
+        "ulf_resistencia_termica_2"
+      ]
+    },
+    {
+      "nombre": "Experto en la corona del mundo 3",
+      "descripcion_larga": "Escoge una de las siguientes habilidades: saber (geografía), percepción, Sigilo o Supervivencia. Obtienes un +2 a las pruebas de esta habilidad mientras estés en terreno salvaje de la Corona del Mundo.",
+      "min_nivel_relacion": 3,
+      "prerequisitos": [
+        "ulf_experto_en_la_corona_del_mundo_2"
+      ]
+    },
+    {
+      "nombre": "Paso níveo",
+      "descripcion_larga": "Un número de veces al día igual a nivel de relación con Ulf, ignoras todas las casillas de terreno dificil por nieve o hielo durante un minuto.",
+      "min_nivel_relacion": 3,
+      "prerequisitos": [
+        "ulf_paso_helado"
+      ]
+    },
+    {
+      "nombre": "Lengua de invierno 3",
+      "descripcion_larga": "Elige un idioma entre escaldo, varki y tien. Aprendes este idioma.",
+      "min_nivel_relacion": 3,
+      "prerequisitos": [
+        "ulf_lengua_de_invierno_2"
+      ]
+    },
+    {
+      "nombre": "Dureza",
+      "descripcion_larga": "Obtienes la dote «Dureza»",
+      "min_nivel_relacion": 3,
+      "prerequisitos": [
+        "ulf_duro_de_pelar",
+        "ulf_maestro_en_supervivencia"
+      ]
+    },
+    {
+      "nombre": "Combatiente con escudo 2",
+      "descripcion_larga": "Obtienes la dote «Improved Two-Weapon Fighting», pero solo puedes utilizarla para combatir con un escudo en la mano torpe.",
+      "min_nivel_relacion": 3,
+      "prerequisitos": [
+        "ulf_combatiente_con_escudo"
+      ]
+    },
+    {
+      "nombre": "Guía invernal",
+      "descripcion_larga": "Suma tu nivel de relación con Ulf a las pruebas de Supervivencia en terreno frío.",
+      "min_nivel_relacion": 3,
+      "prerequisitos": [
+        "ulf_localizacion_invernal"
+      ]
+    },
+    {
+      "nombre": "Alma del permafrost 2",
+      "descripcion_larga": "Obtienes Resistencia al frío 5",
+      "min_nivel_relacion": 4,
+      "prerequisitos": [
+        "ulf_alma_del_permafrost_1"
+      ]
+    },
+    {
+      "nombre": "Resistencia al hielo",
+      "descripcion_larga": "Obtienes +1 a los TS contra efectos con descriptor «Frío»",
+      "min_nivel_relacion": 4,
+      "prerequisitos": [
+        "ulf_resistencia_al_frío_mejorada"
+      ]
+    },
+    {
+      "nombre": "Resistencia térmica 4",
+      "descripcion_larga": "Aumenta en 5º los Farenheit tu resistencia a climas fríos.",
+      "min_nivel_relacion": 4,
+      "prerequisitos": [
+        "ulf_resistencia_termica_3"
+      ]
+    },
+    {
+      "nombre": "Experto en la corona del mundo 4",
+      "descripcion_larga": "Escoge una de las siguientes habilidades: saber (geografía), percepción, Sigilo o Supervivencia. Obtienes un +2 a las pruebas de esta habilidad mientras estés en terreno salvaje de la Corona del Mundo.",
+      "min_nivel_relacion": 4,
+      "prerequisitos": [
+        "ulf_experto_en_la_corona_del_mundo_3"
+      ]
+    },
+    {
+      "nombre": "Combatiente con escudo 3",
+      "descripcion_larga": "Obtienes la dote «Greater Two-Weapon Fighting», pero solo puedes utilizarla para combatir con un escudo en la mano torpe.",
+      "min_nivel_relacion": 4,
+      "prerequisitos": [
+        "ulf_combatiente_con_escudo_2"
+      ]
+    },
+    {
+      "nombre": "Resistencia al hielo superior",
+      "descripcion_larga": "Obtienes otro +1 a los TS contra efectos con descriptor «Frío»",
+      "min_nivel_relacion": 5,
+      "prerequisitos": [
+        "ulf_resistencia_al_hielo"
+      ]
+    },
+    {
+      "nombre": "Resistencia térmica 5",
+      "descripcion_larga": "Aumenta en 5º los Farenheit tu resistencia a climas fríos.",
+      "min_nivel_relacion": 5,
+      "prerequisitos": [
+        "ulf_resistencia_termica_4"
+      ]
+    },
+    {
+      "nombre": "Experto en la corona del mundo 5",
+      "descripcion_larga": "Obtienes un +2 a las pruebas de iniciativa mientras estés en terreno salvaje de la Corona del Mundo.",
+      "min_nivel_relacion": 5,
+      "prerequisitos": [
+        "ulf_experto_en_la_corona_del_mundo_4"
+      ]
+    }
+  ]
+}

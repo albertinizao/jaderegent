@@ -1,0 +1,73 @@
+{
+  "npc_id": "erivo",
+  "nombre": "Erivo",
+  "descripcion_larga": "Erivo, un ser tocado por el Maelstrom cuya influencia caótica aumenta tu conexión con los planos, la magia proteana y las energías del caos.",
+  "nivel_maximo": 3,
+  "imagen_url": "/data/images/npc/erivo.png",
+  "ventajas": [
+    {
+      "nombre": "Conocimiento planar intuitivo",
+      "descripcion_larga": "Saber (Planos) pasa a ser una habilidad clásea. Si ya lo fuese, recibes un +1.",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "Hechizos proteanos 1",
+      "descripcion_larga": "Tienes acceso a uno de los siguientes conjuros a tu elección: entropic shield (1), blur (2), gaseous form (3).",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "Protección proteana",
+      "descripcion_larga": "Si eres caótico, obtienes RC 10 si no tuvieses RC. Además, obtienes +2 por nivel de relación con Erivo a TS frente a conjuros caóticos, incluso los beneficiosos.",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "Espíritu del Maelstrom",
+      "descripcion_larga": "Aumenta en un paso tu alineamiento hacia el Caos por cada nivel de relación con Erivo.",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "Conocimiento del Maelstrom",
+      "descripcion_larga": "Suma tu Carisma a las pruebas de Saber (Planos).",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "erivo_conocimiento_planar_intuitivo"
+      ]
+    },
+    {
+      "nombre": "Hechizos proteanos 2",
+      "descripcion_larga": "Tienes acceso a uno de los siguientes conjuros a tu elección: entropic shield (1), blur (2), gaseous form (3), confusion (4), major creation (5), disintegrate (6).",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "erivo_hechizos_proteanos_1"
+      ]
+    },
+    {
+      "nombre": "Magia proteana",
+      "descripcion_larga": "Si eres caótico, obtienes +2 al nivel de lanzador de hechizos caóticos y +2 a TS frente a hechizos caóticos.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "erivo_proteccion_proteana"
+      ]
+    },
+    {
+      "nombre": "Susurros del Maelstrom",
+      "descripcion_larga": "Suma tu Carisma a todas las pruebas de Saber, no solo a Saber (Planos).",
+      "min_nivel_relacion": 3,
+      "prerequisitos": [
+        "erivo_conocimiento_del_maelstrom"
+      ]
+    },
+    {
+      "nombre": "Hechizos proteanos 3",
+      "descripcion_larga": "Tienes acceso a uno de los siguientes conjuros a tu elección: entropic shield (1), blur (2), gaseous form (3), confusion (4), major creation (5), disintegrate (6), greater polymorph (7), polymorph any object (8), shapechange (9).",
+      "min_nivel_relacion": 3,
+      "prerequisitos": [
+        "erivo_hechizos_proteanos_2"
+      ]
+    }
+  ]
+}

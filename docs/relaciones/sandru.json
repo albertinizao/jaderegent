@@ -1,0 +1,564 @@
+{
+  "npc_id": "sandru",
+  "nombre": "Sandru",
+  "descripcion_larga": "Sandru Vhiski, caravanero experto y consejero de la caravana.",
+  "nivel_maximo": 10,
+  "imagen_url": "/data/images/npc/sandru.png",
+  "ventajas": [
+    {
+      "nombre": "Camaradería",
+      "descripcion_larga": "Una vez al día, puedes percibir el estado de Sandru durante un minuto.",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "Disposición en combate",
+      "descripcion_larga": "Si un aliado posee una dote cooperativa y tiene que comprobar si tu la tienes para aplicar sus efectos, cuenta como si la tuvieses.",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "Facilidad de palabra",
+      "descripcion_larga": "Diplomacia pasa a ser una habilidad clásea. Si ya lo fuese, recibes un +1.",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "Mercader experto",
+      "descripcion_larga": "Tasación pasa a ser una habilidad clásea. Si ya lo fuese, recibes un +1.",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "Estilo de sutilidad poderosa",
+      "descripcion_larga": "Sustituyes Fuerza por Destreza en los requisitos para la dote de Ataque Poderoso y de cualquier otra dote que requiera Ataque Poderoso",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "Piraña varisiana",
+      "descripcion_larga": "Si posees la dote Golpe de la Piraña, puedes usarla como si fuese Ataque Poderoso a la hora de cumplir requisitos de dotes o capacidades.",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "Combatiente varisiano",
+      "descripcion_larga": "Acrobacias pasa a ser una habilidad clásea. Si ya lo fuese, recibes un +1.",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "Nómada combativo",
+      "descripcion_larga": "Obtienes +2 a la CA por esquiva frente a ataques de oportunidad provocados por movimiento.",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "Entrenamiento marcial varisiano",
+      "descripcion_larga": "Selecciona un arma marcial o exótica. Si es marcial, obtienes competencia con este arma. Si en vez de un arma marcial seleccionas una exótica, pasas a considerar marcial ese arma.",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "Vida de caravanero",
+      "descripcion_larga": "Profesión (carretero) y Profesión (carrero) pasan a ser habilidades cláseas. Obtienes un +1 en ambas.",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "Alucinación alcohólica",
+      "descripcion_larga": "Mientras seas capaz de percibir a Sandru de alguna forma, puedes hacer cualquier acción como si él se encontrase a 5' de ti.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "sandru_camaraderia"
+      ]
+    },
+    {
+      "nombre": "Estilo cooperativo 1",
+      "descripcion_larga": "Selecciona una dote cooperativa que poseas. Para saber si puedes aplicarla o no, cuenta como si todos los miembros de la caravana la tuviesen.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "sandru_disposicion_en_combate"
+      ]
+    },
+    {
+      "nombre": "Enseñanza cooperativa 1",
+      "descripcion_larga": "Obtiene una dote cooperativa adicional. Debes cumplir el resto de sus requisitos para seleccionarla.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "sandru_disposicion_en_combate"
+      ]
+    },
+    {
+      "nombre": "Cerrar un trato",
+      "descripcion_larga": "Obtienes un +4 a las habilidades sociales en el contexto de firmar un contrato.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "sandru_facilidad_de_palabra"
+      ]
+    },
+    {
+      "nombre": "Ojo de Mercader",
+      "descripcion_larga": "Puedes usar Tasación en vez de Conocimiento de Conjuros para identificar objetos mágicos y no necesitas detectar magia si lo haces, pero requiere el doble de tiempo.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "sandru_mercader_experto"
+      ]
+    },
+    {
+      "nombre": "Combatiente móvil",
+      "descripcion_larga": "Si este turno has usado una acción de movimiento para moverte al menos 10', obtienes +2 a la CA por esquiva hasta final de turno.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "sandru_nomada_combativo"
+      ]
+    },
+    {
+      "nombre": "Entrenamiento acompañado",
+      "descripcion_larga": "Selecciona un arma simple y una marcial con las que seas competente. Obtienes +1 al ataque con estas armas. Este +1 no se acumula con la dote Soltura con un arma.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "sandru_entrenamiento_marcial_varisiano"
+      ]
+    },
+    {
+      "nombre": "Paliza extrema",
+      "descripcion_larga": "Ignoras el penalizador habitual por atacar de forma no letal.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "sandru_entrenamiento_marcial_varisiano"
+      ]
+    },
+    {
+      "nombre": "Disposición extra",
+      "descripcion_larga": "Escoge un rol de caravana. Duplica los bonificadores que aplicas a la caravana cuando ejerces dicho rol",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "sandru_vida_de_caravanero"
+      ]
+    },
+    {
+      "nombre": "Aprendiz",
+      "descripcion_larga": "Escoge una habilidad. Calificas como si tuvieses un rango en esa habilidad de cara a ejercer roles en la caravana.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "sandru_vida_de_caravanero"
+      ]
+    },
+    {
+      "nombre": "Espíritu de caravana 1",
+      "descripcion_larga": "Escoge una dote de caravana. Mientras que seas miembro de la caravana, la caravana tiene esa dote si no la tuviese ya. Si la caravana pudiese tener esa dote más de una vez, los efectos se apilan.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "sandru_vida_de_caravanero"
+      ]
+    },
+    {
+      "nombre": "Artesanía callejera",
+      "descripcion_larga": "Obtienes la dote Master Craftsman. Debes cumplir sus requisitos para poderla usar.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "sandru_vida_de_caravanero"
+      ]
+    },
+    {
+      "nombre": "Viajero artesano 1",
+      "descripcion_larga": "Mientras ejerces el rol de artesano en la caravana durante toda una jornada, aplica como 2 horas adicionales de trabajo efectivo.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "sandru_vida_de_caravanero"
+      ]
+    },
+    {
+      "nombre": "Artesano multifacético",
+      "descripcion_larga": "Mientras ejerces el rol de artesano, puedes reducir al 50% el tiempo efectivo de trabajo para poder ejercer un rol adicional.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "sandru_vida_de_caravanero"
+      ]
+    },
+    {
+      "nombre": "Ojo de viajero",
+      "descripcion_larga": "Siempre actúas en la primera ronda de un asalto a la caravana a menos que estés durmiendo.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "sandru_vida_de_caravanero"
+      ]
+    },
+    {
+      "nombre": "Experiencia básica",
+      "descripcion_larga": "Recibes un rango en Profesión (carretero) y en Profesión (carrero) por cada nivel de relación con Sandru.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "sandru_vida_de_caravanero"
+      ]
+    },
+    {
+      "nombre": "Viajero ejemplar",
+      "descripcion_larga": "Recibes un rango en Profesión (carretero) y en Profesión (carrero) por cada nivel de relación con Sandru.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "sandru_vida_de_caravanero"
+      ]
+    },
+    {
+      "nombre": "Colegas de taberna",
+      "descripcion_larga": "Mientras «Camaradería» está activo, si estás bebiendo alcohol, Sandru también puede percibir tu estado.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "sandru_camaraderia"
+      ]
+    },
+    {
+      "nombre": "Brindis",
+      "descripcion_larga": "Una vez al día, si haces un brindis en honor a Sandru, puedes volver a activar Camaradería.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "sandru_camaraderia"
+      ]
+    },
+    {
+      "nombre": "Estilo cooperativo 2",
+      "descripcion_larga": "Selecciona una dote cooperativa que poseas. Para saber si puedes aplicarla o no, cuenta como si todos los miembros de la caravana la tuviesen.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "sandru_estilo_cooperativo_1"
+      ]
+    },
+    {
+      "nombre": "Seguro de Mercader",
+      "descripcion_larga": "Cuando hagas una prueba en Tasación, puedes elegir 10.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "sandru_ojo_de_mercader"
+      ]
+    },
+    {
+      "nombre": "Golpe por la espalda",
+      "descripcion_larga": "Si atacas a un enemigo flanqueado o desprevenido, aumenta en 2 el daño que realizas.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "sandru_estilo_de_sutilidad_poderosa",
+        "sandru_pirana_varisiana"
+      ],
+      "prerequisitos_operator": "OR"
+    },
+    {
+      "nombre": "Sueño ligero",
+      "descripcion_larga": "Siempre que al menos un viajero pueda actuar en la primera ronda de asalto a la caravana, tú también.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "sandru_ojo_de_viajero"
+      ]
+    },
+    {
+      "nombre": "Respeto de la caravana",
+      "descripcion_larga": "Obtienes un +3 a todas las pruebas sociales con integrantes de la caravana. Obtienes un +5 a Averiguar Intenciones con todos los miembros de la caravana.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "sandru_viajero_ejemplar"
+      ]
+    },
+    {
+      "nombre": "Líder de caravana",
+      "descripcion_larga": "Calificas como si tuvieses la dote de Liderazgo pese a no tenerla.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "sandru_viajero_ejemplar"
+      ]
+    },
+    {
+      "nombre": "Líder viajero",
+      "descripcion_larga": "Obtienes la dote Practiced Leadership si cumplieses sus requisitos. Se considera la caravana como una organización que se mantiene estable.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "sandru_viajero_ejemplar"
+      ]
+    },
+    {
+      "nombre": "Referente ofensivo",
+      "descripcion_larga": "Mientras formes parte de una caravana, suma 1 a su atributo de Ofensiva. Esta ventaja puede escogerse más de una vez y sus efectos se apilan.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "sandru_viajero_ejemplar"
+      ]
+    },
+    {
+      "nombre": "Referente defensivo",
+      "descripcion_larga": "Mientras formes parte de una caravana, suma 1 a su atributo de Defensiva. Esta ventaja puede escogerse más de una vez y sus efectos se apilan.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "sandru_viajero_ejemplar"
+      ]
+    },
+    {
+      "nombre": "Referente en movilidad",
+      "descripcion_larga": "Mientras formes parte de una caravana, suma 1 a su atributo de Movilidad. Esta ventaja puede escogerse más de una vez y sus efectos se apilan.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "sandru_viajero_ejemplar"
+      ]
+    },
+    {
+      "nombre": "Referente social",
+      "descripcion_larga": "Mientras formes parte de una caravana, suma 1 a su atributo de Moral. Esta ventaja puede escogerse más de una vez y sus efectos se apilan.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "sandru_viajero_ejemplar"
+      ]
+    },
+    {
+      "nombre": "Estómago a prueba de balas",
+      "descripcion_larga": "+4 a TS de Fortaleza contra cualquier efecto de veneno ingerido o por ingerir algún alimento.",
+      "min_nivel_relacion": 4,
+      "prerequisitos": [
+        "sandru_alucinacion_alcoholica"
+      ]
+    },
+    {
+      "nombre": "Estilo cooperativo 3",
+      "descripcion_larga": "Selecciona una dote cooperativa que poseas. Para saber si puedes aplicarla o no, cuenta como si todos los miembros de la caravana la tuviesen.",
+      "min_nivel_relacion": 4,
+      "prerequisitos": [
+        "sandru_estilo_cooperativo_2"
+      ]
+    },
+    {
+      "nombre": "Enseñanza cooperativa 2",
+      "descripcion_larga": " Obtiene una dote cooperativa adicional. Debes cumplir el resto de sus requisitos para seleccionarla.",
+      "min_nivel_relacion": 4,
+      "prerequisitos": [
+        "sandru_ensenanza_cooperativa_1"
+      ]
+    },
+    {
+      "nombre": "Diente de Mercader",
+      "descripcion_larga": "Cuando hagas una prueba en Tasación para tasar algo, puedes elegir 20.",
+      "min_nivel_relacion": 4,
+      "prerequisitos": [
+        "sandru_seguro_de_mercader"
+      ]
+    },
+    {
+      "nombre": "Nunca quieto",
+      "descripcion_larga": "Siempre que realices una prueba de Acrobacias para atravesar el espacio de un enemigo o evitar generar ataques de oportunidad, suma +2 por moral a dicha prueba.",
+      "min_nivel_relacion": 4,
+      "prerequisitos": [
+        "sandru_combatiente_varisiano",
+        "sandru_combatiente_movil"
+      ]
+    },
+    {
+      "nombre": "Espíritu de caravana 2",
+      "descripcion_larga": "Escoge una dote de caravana. Mientras que seas miembro de la caravana, la caravana tiene esa dote si no la tuviese ya. Si la caravana pudiese tener esa dote más de una vez, los efectos se apilan.",
+      "min_nivel_relacion": 4,
+      "prerequisitos": [
+        "sandru_espiritu_de_caravana_1"
+      ]
+    },
+    {
+      "nombre": "Viajero artesano 2",
+      "descripcion_larga": "Mientras ejerces el rol de artesano en la caravana durante toda una jornada, aplica como 2 horas adicionales de trabajo efectivo.",
+      "min_nivel_relacion": 4,
+      "prerequisitos": [
+        "sandru_viajero_artesano_1"
+      ]
+    },
+    {
+      "nombre": "Sueño alerta",
+      "descripcion_larga": "Aunque estés durmiendo, actúas en el primer asalto en caso de asalto a la caravana.",
+      "min_nivel_relacion": 4,
+      "prerequisitos": [
+        "sandru_sueno_ligero"
+      ]
+    },
+    {
+      "nombre": "Carro dedicado",
+      "descripcion_larga": "Puedes disponer de un carro personal que no cuenta dentro del límite de carros de la caravana. Reduce en 2 el consumo de dicho carro hasta un mínimo de 1. Debes viajar en este carro. Mientras cumplas estas limitaciones, puede ser cualquier tipo de carro y no hay ninguna restricción adicional sobre su uso o sus viajeros.",
+      "min_nivel_relacion": 4,
+      "prerequisitos": [
+        "sandru_respeto_de_la_caravana"
+      ]
+    },
+    {
+      "nombre": "Palabras de calma",
+      "descripcion_larga": "Una vez a la semana puedes realizar una prueba de Diplomacia CD (20  + Descontento) para reducir en 1 el descontento.",
+      "min_nivel_relacion": 4,
+      "prerequisitos": [
+        "sandru_respeto_de_la_caravana"
+      ]
+    },
+    {
+      "nombre": "Experiencia de liderazgo",
+      "descripcion_larga": "Suma tu nivel de relación con Sandru a tu actual puntuación de liderazgo.",
+      "min_nivel_relacion": 4,
+      "prerequisitos": [
+        "sandru_lider_viajero"
+      ]
+    },
+    {
+      "nombre": "Héroe de la caravana",
+      "descripcion_larga": "",
+      "min_nivel_relacion": 4,
+      "prerequisitos": [
+        "sandru_referente_ofensivo",
+        "sandru_referente_defensivo",
+        "sandru_referente_en_movilidad",
+        "sandru_referente_social"
+      ]
+    },
+    {
+      "nombre": "Vínculo de alcohol",
+      "descripcion_larga": "«Camaradería» está activado, si estás bebiendo alcohol, puedes comunicarte empáticamente con Sandru. Debido a la naturaleza limitada del vínculo, sólo pueden compartirse emociones generales",
+      "min_nivel_relacion": 5,
+      "prerequisitos": [
+        "sandru_colegas_de_taberna"
+      ]
+    },
+    {
+      "nombre": "Conciencia leal",
+      "descripcion_larga": "Siempre que dañes a un aliado por culpa de alguna compulsión, puedes hacer una nueva salvación contra este efecto para liberarte.",
+      "min_nivel_relacion": 5,
+      "prerequisitos": [
+        "sandru_estomago_a_prueba_de_balas"
+      ]
+    },
+    {
+      "nombre": "Inspiración del líder de caravana",
+      "descripcion_larga": "Una vez al día, antes de realizar una prueba social, puedes activar esta habilidad para obtener un +5 a dicha prueba.",
+      "min_nivel_relacion": 5,
+      "prerequisitos": [
+        "sandru_brindis"
+      ]
+    },
+    {
+      "nombre": "Estilo cooperativo 4",
+      "descripcion_larga": "Selecciona una dote cooperativa que poseas. Para saber si puedes aplicarla o no, cuenta como si todos los miembros de la caravana la tuviesen.",
+      "min_nivel_relacion": 5,
+      "prerequisitos": [
+        "sandru_estilo_cooperativo_3"
+      ]
+    },
+    {
+      "nombre": "Estilo cooperativo 5",
+      "descripcion_larga": "Selecciona una dote cooperativa que poseas. Para saber si puedes aplicarla o no, cuenta como si todos los miembros de la caravana la tuviesen.",
+      "min_nivel_relacion": 6,
+      "prerequisitos": [
+        "sandru_estilo_cooperativo_4"
+      ]
+    },
+    {
+      "nombre": "Enseñanza cooperativa 3",
+      "descripcion_larga": "Obtiene una dote cooperativa adicional. Debes cumplir el resto de sus requisitos para seleccionarla.",
+      "min_nivel_relacion": 6,
+      "prerequisitos": [
+        "sandru_ensenanza_cooperativa_2"
+      ]
+    },
+    {
+      "nombre": "Espíritu de caravana 3",
+      "descripcion_larga": "Escoge una dote de caravana. Mientras que seas miembro de la caravana, la caravana tiene esa dote si no la tuviese ya. Si la caravana pudiese tener esa dote más de una vez, los efectos se apilan.",
+      "min_nivel_relacion": 6,
+      "prerequisitos": [
+        "sandru_espiritu_de_caravana_2"
+      ]
+    },
+    {
+      "nombre": "Viajero artesano 3",
+      "descripcion_larga": "Mientras ejerces el rol de artesano en la caravana durante toda una jornada, aplica como 2 horas adicionales de trabajo efectivo.",
+      "min_nivel_relacion": 6,
+      "prerequisitos": [
+        "sandru_viajero_artesano_2"
+      ]
+    },
+    {
+      "nombre": "Vida consagrada de caravana",
+      "descripcion_larga": "+1 sagrado a las TS de Voluntad",
+      "min_nivel_relacion": 7,
+      "prerequisitos": [
+        "sandru_inspiracion_del_lider_de_caravana"
+      ]
+    },
+    {
+      "nombre": "Estilo cooperativo 6",
+      "descripcion_larga": "Selecciona una dote cooperativa que poseas. Para saber si puedes aplicarla o no, cuenta como si todos los miembros de la caravana la tuviesen.",
+      "min_nivel_relacion": 7,
+      "prerequisitos": [
+        "sandru_estilo_cooperativo_5"
+      ]
+    },
+    {
+      "nombre": "Ataque en salto",
+      "descripcion_larga": "Siempre que hagas una prueba de Acrobacias para atravesar el espacio de un enemigo o evitar un ataque de oportunidad, recibes un +2 al ataque y al daño cuerpo a cuerpo hasta final de turno.",
+      "min_nivel_relacion": 7,
+      "prerequisitos": [
+        "sandru_golpe_por_la_espalda",
+        "sandru_nunca_quieto"
+      ]
+    },
+    {
+      "nombre": "Estilo cooperativo 7",
+      "descripcion_larga": "Selecciona una dote cooperativa que poseas. Para saber si puedes aplicarla o no, cuenta como si todos los miembros de la caravana la tuviesen.",
+      "min_nivel_relacion": 8,
+      "prerequisitos": [
+        "sandru_estilo_cooperativo_6"
+      ]
+    },
+    {
+      "nombre": "Enseñanza cooperativa 4",
+      "descripcion_larga": "Obtiene una dote cooperativa adicional. Debes cumplir el resto de sus requisitos para seleccionarla.",
+      "min_nivel_relacion": 8,
+      "prerequisitos": [
+        "sandru_ensenanza_cooperativa_3"
+      ]
+    },
+    {
+      "nombre": "Espíritu de caravana 4",
+      "descripcion_larga": "Escoge una dote de caravana. Mientras que seas miembro de la caravana, la caravana tiene esa dote si no la tuviese ya. Si la caravana pudiese tener esa dote más de una vez, los efectos se apilan.",
+      "min_nivel_relacion": 8,
+      "prerequisitos": [
+        "sandru_espiritu_de_caravana_3"
+      ]
+    },
+    {
+      "nombre": "¡Por la caravana!",
+      "descripcion_larga": "Esta habilidad puede activarse una vez al día como acción estándar. Haz una prueba en Diplomacia. Durante un número de asaltos igual al resultado / 5, todos los aliados situados hasta a 15 pies de ti, reciben un +1 Sagrado a ataque y daño",
+      "min_nivel_relacion": 9,
+      "prerequisitos": [
+        "sandru_vida_consagrada_de_caravana"
+      ]
+    },
+    {
+      "nombre": "Estilo cooperativo 8",
+      "descripcion_larga": "Selecciona una dote cooperativa que poseas. Para saber si puedes aplicarla o no, cuenta como si todos los miembros de la caravana la tuviesen.",
+      "min_nivel_relacion": 9,
+      "prerequisitos": [
+        "sandru_estilo_cooperativo_7"
+      ]
+    },
+    {
+      "nombre": "Estilo cooperativo 9",
+      "descripcion_larga": "Selecciona una dote cooperativa que poseas. Para saber si puedes aplicarla o no, cuenta como si todos los miembros de la caravana la tuviesen.",
+      "min_nivel_relacion": 10,
+      "prerequisitos": [
+        "sandru_estilo_cooperativo_8"
+      ]
+    },
+    {
+      "nombre": "Enseñanza cooperativa 5",
+      "descripcion_larga": "Obtiene una dote cooperativa adicional. Debes cumplir el resto de sus requisitos para seleccionarla.",
+      "min_nivel_relacion": 10,
+      "prerequisitos": [
+        "sandru_ensenanza_cooperativa_4"
+      ]
+    },
+    {
+      "nombre": "Espíritu de caravana 5",
+      "descripcion_larga": "Escoge una dote de caravana. Mientras que seas miembro de la caravana, la caravana tiene esa dote si no la tuviese ya. Si la caravana pudiese tener esa dote más de una vez, los efectos se apilan.",
+      "min_nivel_relacion": 10,
+      "prerequisitos": [
+        "sandru_espiritu_de_caravana_4"
+      ]
+    }
+  ]
+}

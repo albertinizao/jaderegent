@@ -1,0 +1,75 @@
+{
+  "npc_id": "devoramundos",
+  "nombre": "Devoramundos",
+  "descripcion_larga": "Devoramundos, una rata extraordinaria cuya capacidad para escribir pergaminos y manipular enjambres crece según tu relación con ella.",
+  "nivel_maximo": 3,
+  "imagen_url": "/data/images/npc/devoramundos.png",
+  "ventajas": [
+    {
+      "nombre": "Entusiasmo escrito",
+      "descripcion_larga": "Devoramundos y tú obtenéis la dote Inscribir Pergamino.",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "Campaña de reeducación",
+      "descripcion_larga": "Por cada nivel de relación que tengas con Devoramundos, cambia su alineamiento un paso para alcanzar el tuyo.",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "Amiga de las ratas",
+      "descripcion_larga": "A voluntad, puedes lanzar el hechizo \"Hablar con los animales\" pero solo para hablar con ratas. Tu nivel de lanzador es tu nivel de relación con Devoramundos.",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "Optimización escrita",
+      "descripcion_larga": "Devoramundos reduce a la mitad el coste de fabricación de un pergamino mágico. El coste de sus componentes materiales se mantiene.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "devoramundos_entusiasmo_escrito"
+      ]
+    },
+    {
+      "nombre": "Campaña de adopción",
+      "descripcion_larga": "Si vuestros alineamientos coinciden, Devoramundos pasa a ser tu familiar.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "devoramundos_campana_de_reeducacion"
+      ]
+    },
+    {
+      "nombre": "Aliada de las ratas",
+      "descripcion_larga": "Una vez al día puedes lanzar Invocar Enjambre con un nivel de lanzador igual a tus dados de golpe. Solo puedes invocar ratas de esta forma.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "devoramundos_amiga_de_las_ratas"
+      ]
+    },
+    {
+      "nombre": "Maestría escritora",
+      "descripcion_larga": "Reduce a la mitad tu coste de fabricación de pergaminos mágicos. Devoramundos lo reduce a un cuarto. El coste de sus componentes materiales se mantiene.",
+      "min_nivel_relacion": 3,
+      "prerequisitos": [
+        "devoramundos_optimizacion_escrita"
+      ]
+    },
+    {
+      "nombre": "Campaña de escritura",
+      "descripcion_larga": "Devoramundos obtiene la capacidad de escribir pergaminos especiales que solo él puede utilizar. Para poder escribir un pergamino, debes lanzar un total de 10 veces el mismo conjuro (sin hacer ningún efecto). Estos lanzamientos no tienen por qué ser consecutivos.",
+      "min_nivel_relacion": 3,
+      "prerequisitos": [
+        "devoramundos_campana_de_adopcion"
+      ]
+    },
+    {
+      "nombre": "Señora de las ratas",
+      "descripcion_larga": "Añades a tu lista de conjuros conocidos Convocar Monstruo (de todos los niveles), pero solo puedes invocar ratas monstruosas con este hechizo. Estos conjuros están prolongados automáticamente.",
+      "min_nivel_relacion": 3,
+      "prerequisitos": [
+        "devoramundos_aliada_de_las_ratas"
+      ]
+    }
+  ]
+}

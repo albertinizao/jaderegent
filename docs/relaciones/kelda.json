@@ -1,0 +1,227 @@
+{
+  "npc_id": "kelda",
+  "nombre": "Kelda",
+  "descripcion_larga": "Kelda, guerrera ulfen cuya furia, resistencia y tradición norteña inspiran a quienes viajan a su lado.",
+  "nivel_maximo": 5,
+  "imagen_url": "/data/images/npc/kelda.png",
+  "ventajas": [
+    {
+      "nombre": "Furia compartida",
+      "descripcion_larga": "Siempre que Kelda entre en furia, como acción inmediata puedes adherirte tú también a su furia. Si no lo haces, debes superar una prueba de Voluntad (DC 10 + nivel de relación x2) o quedarte en furia involuntariamente. Tu furia dura lo mismo que la suya y no consume usos. No puedes cancelarla voluntariamente.",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "Furia Norteña",
+      "descripcion_larga": "Una vez al día, como acción rápida, puedes entrar en furia durante un número de asaltos igual a tu nivel de relación con Kelda. No puedes cancelarla voluntariamente.",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "Drakar",
+      "descripcion_larga": "Profesión (marinero) pasa a ser una habilidad clásea. Si ya lo fuese, recibes +1. Mientras no tengas rangos asignados, cuentas como si tuvieses tantos rangos como niveles de relación con Kelda.",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "Grito de saqueador",
+      "descripcion_larga": "Intimidar pasa a ser una habilidad clásea. Si ya lo fuese, recibes +1.",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "Aguante ulfen",
+      "descripcion_larga": "Suma tu nivel de relación con Kelda a tus pruebas para estabilizarte o para sobrevivir a una acción de rematar.",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "Hoja del norte",
+      "descripcion_larga": "Selecciona un arma cuerpo a cuerpo. Si es exótica, la consideras marcial; si es marcial, obtienes competencia con ella.",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "Escudo del norte",
+      "descripcion_larga": "Obtienes competencia con escudo ligero. Si ya la tuvieses, con escudo pesado. Si ya la tuvieses, reduces en 1 el penalizador de armadura del escudo. Puede obtenerse varias veces.",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "Carga del saqueador",
+      "descripcion_larga": "Calificas como si tuvieses tanta Fuerza adicional como tu nivel de relación con Kelda de cara a la carga máxima.",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "Experiencia lanzadora",
+      "descripcion_larga": "Todas las armas arrojadizas que utilices se consideran de gran calidad.",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+
+    {
+      "nombre": "Poder furioso",
+      "descripcion_larga": "Selecciona un poder de furia que tenga Kelda. Puedes beneficiarte de él cuando usas Furia compartida.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "kelda_furia_compartida"
+      ]
+    },
+    {
+      "nombre": "Sangre norteña",
+      "descripcion_larga": "Mientras estás en furia, cuando un golpe tuyo haga que una criatura con al menos 6 DG menos que tú caiga bajo 0 PG, recibes 2 turnos adicionales de furia.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "kelda_furia_nortena"
+      ]
+    },
+    {
+      "nombre": "Barco de ruedas",
+      "descripcion_larga": "Puedes usar Profesión (marinero) como si fuese Profesión (carrero) o Profesión (carretero).",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "kelda_drakar"
+      ]
+    },
+    {
+      "nombre": "Fuerza intimidatoria",
+      "descripcion_larga": "Una vez al día, puedes sumar tu Fuerza a una tirada de Intimidar en vez de tu Carisma.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "kelda_grito_de_saqueador"
+      ]
+    },
+    {
+      "nombre": "Supervivencia ulfen",
+      "descripcion_larga": "Suma tu nivel de relación con Kelda a las pruebas para evitar quedar fatigado por causas mundanas.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "kelda_aguante_ulfen"
+      ]
+    },
+    {
+      "nombre": "Musculos entrenados",
+      "descripcion_larga": "Calificas como si tuvieses Fuerza adicional igual a tu nivel de relación con Kelda para cumplir requisitos. No afecta a tiradas.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "kelda_carga_del_saqueador"
+      ]
+    },
+    {
+      "nombre": "Lanzamiento de hachas",
+      "descripcion_larga": "Ignora el primer penalizador por incremento de distancia con armas arrojadizas.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "kelda_experiencia_lanzadora"
+      ]
+    },
+    {
+      "nombre": "Costumbre lanzadora",
+      "descripcion_larga": "Selecciona un arma con la que seas competente. La consideras como si tuviese el rasgo arrojadiza.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "kelda_experiencia_lanzadora"
+      ]
+    },
+
+    {
+      "nombre": "Poder furioso 2",
+      "descripcion_larga": "Selecciona un poder de furia que tenga Kelda. Puedes beneficiarte de él cuando usas Furia compartida.",
+      "min_nivel_relacion": 3,
+      "prerequisitos": [
+        "kelda_poder_furioso"
+      ]
+    },
+    {
+      "nombre": "Masoquismo norteño",
+      "descripcion_larga": "Si estando en furia un solo ataque te hace perder al menos el 10% de tus PG, obtienes 2 asaltos adicionales de furia.",
+      "min_nivel_relacion": 3,
+      "prerequisitos": [
+        "kelda_sangre_nortena"
+      ]
+    },
+    {
+      "nombre": "Furia intimidatoria",
+      "descripcion_larga": "Puedes usar Fuerza intimidatoria un número de veces al día igual a tu nivel de relación con Kelda.",
+      "min_nivel_relacion": 3,
+      "prerequisitos": [
+        "kelda_fuerza_intimidatoria"
+      ]
+    },
+    {
+      "nombre": "Resistencia ulfen",
+      "descripcion_larga": "Suma tu nivel de relación con Kelda a cualquier tirada para evitar daño no letal por causas mundanas.",
+      "min_nivel_relacion": 3,
+      "prerequisitos": [
+        "kelda_supervivencia_ulfen"
+      ]
+    },
+    {
+      "nombre": "Ofensiva ulfen",
+      "descripcion_larga": "Si este asalto usaste Ataque Poderoso e hiciste daño, obtienes +1 al daño con Ataque Poderoso hasta tu siguiente turno.",
+      "min_nivel_relacion": 3,
+      "prerequisitos": [
+        "kelda_musculos_entrenados"
+      ]
+    },
+
+    {
+      "nombre": "Poder furioso 3",
+      "descripcion_larga": "Selecciona un poder de furia que tenga Kelda.",
+      "min_nivel_relacion": 4,
+      "prerequisitos": [
+        "kelda_poder_furioso_2"
+      ]
+    },
+    {
+      "nombre": "Extender batalla",
+      "descripcion_larga": "Cuando tu furia termina y aún hay enemigos a la vista, puedes hacer una tirada de Voluntad (DC 15) para extender la furia 2 turnos más. Cada éxito impone un -3 acumulativo a la siguiente tirada. Un fallo te deja exhausto.",
+      "min_nivel_relacion": 4,
+      "prerequisitos": [
+        "kelda_masoquismo_norteno"
+      ]
+    },
+    {
+      "nombre": "Inmortalidad ulfen",
+      "descripcion_larga": "Suma el doble de tu nivel de relación con Kelda a la cantidad de PG negativos que puedes tener antes de morir.",
+      "min_nivel_relacion": 4,
+      "prerequisitos": [
+        "kelda_resistencia_ulfen"
+      ]
+    },
+    {
+      "nombre": "Masacre ulfen",
+      "descripcion_larga": "Los bonificadores de Ofensiva ulfen se mantienen y apilan hasta que pases un asalto sin hacer daño con Ataque Poderoso.",
+      "min_nivel_relacion": 4,
+      "prerequisitos": [
+        "kelda_ofensiva_ulfen"
+      ]
+    },
+
+    {
+      "nombre": "Poder furioso 4",
+      "descripcion_larga": "Selecciona un poder de furia que tenga Kelda.",
+      "min_nivel_relacion": 5,
+      "prerequisitos": [
+        "kelda_poder_furioso_3"
+      ]
+    },
+    {
+      "nombre": "Batallas constantes",
+      "descripcion_larga": "Puedes usar Furia Norteña una vez cada 1d4 horas en vez de una vez al día.",
+      "min_nivel_relacion": 5,
+      "prerequisitos": [
+        "kelda_extender_batalla"
+      ]
+    },
+    {
+      "nombre": "Banquete eterno",
+      "descripcion_larga": "Si vuelves a la vida, lo haces con todas tus facultades recuperadas al máximo.",
+      "min_nivel_relacion": 5,
+      "prerequisitos": [
+        "kelda_inmortalidad_ulfen"
+      ]
+    }
+  ]
+}
