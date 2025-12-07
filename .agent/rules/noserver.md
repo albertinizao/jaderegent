@@ -1,6 +1,5 @@
 ---
 trigger: always_on
-glob:
-description:
 ---
 
+* No arranques servidores ni los pares (ni backend ni frontend)

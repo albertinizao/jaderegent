@@ -129,6 +129,19 @@ function PjDetailPage() {
     }
   };
 
+  const handleLevelUpdate = async (e, relId, increment) => {
+    e.preventDefault();
+    e.stopPropagation();
+    
+    try {
+        await relacionService.updateLevel(relId, increment);
+        loadPjDetail(); // Refresh data to see new level and status
+    } catch (error) {
+        console.error("Error updating level", error);
+        alert("Error al actualizar nivel");
+    }
+  };
+
   useEffect(() => {
     loadPjDetail();
   }, [id]);
@@ -338,7 +351,7 @@ function PjDetailPage() {
                                     <div className={`flex-1 ${isMaster ? 'pr-24' : ''}`}>
                                         <h3 className="text-lg font-bold text-white flex justify-between">
                                             {rel.npc_nombre}
-                                            {rel.contador_interacciones !== 0 && (
+                                            {isMaster && rel.contador_interacciones !== 0 && (
                                                 <span className={`text-xs ml-2 px-2 py-0.5 rounded-full ${rel.contador_interacciones > 0 ? 'bg-green-900/50 text-green-300' : 'bg-red-900/50 text-red-300'}`}>
                                                     {rel.contador_interacciones > 0 ? '+' : ''}{rel.contador_interacciones}
                                                 </span>
@@ -351,13 +364,34 @@ function PjDetailPage() {
                                 </div>
 
                                 {/* Progress Bar */}
-                                <div className="mb-2">
-                                    <div className="w-full bg-neutral-700 rounded-full h-2">
+                                {/* Progress Bar & Level Controls */}
+                                <div className="mb-2 flex items-center gap-2">
+                                    <div className="flex-1 bg-neutral-700 rounded-full h-2">
                                         <div 
                                             className="bg-gradient-to-r from-jade-600 to-teal-500 h-2 rounded-full transition-all"
                                             style={{ width: `${(rel.nivel_actual / rel.nivel_maximo) * 100}%` }}
                                         ></div>
                                     </div>
+                                    {isMaster && (
+                                        <div className="flex gap-1 z-20">
+                                            <button
+                                                onClick={(e) => handleLevelUpdate(e, rel.relacion_id, false)}
+                                                className="w-6 h-6 rounded bg-neutral-700 hover:bg-neutral-600 text-white flex items-center justify-center text-xs ml-1 disabled:opacity-50"
+                                                disabled={rel.nivel_actual <= 0}
+                                                title="-1 Nivel"
+                                            >
+                                                -
+                                            </button>
+                                            <button
+                                                onClick={(e) => handleLevelUpdate(e, rel.relacion_id, true)}
+                                                className="w-6 h-6 rounded bg-purple-600 hover:bg-purple-500 text-white flex items-center justify-center text-xs disabled:opacity-50"
+                                                disabled={rel.nivel_actual >= rel.nivel_maximo}
+                                                title="+1 Nivel"
+                                            >
+                                                +
+                                            </button>
+                                        </div>
+                                    )}
                                 </div>
 
                                 {/* Status Indicators */}
@@ -400,6 +434,31 @@ function PjDetailPage() {
                             )}
                         </div>
                     ))}
+                            
+                            {/* Master Controls for Interactions */}
+                            {isMaster && (
+                                <div className="absolute top-4 right-4 flex gap-1 z-10">
+                                    <button
+                                        onClick={(e) => handleInteraction(e, rel.relacion_id, 'NEGATIVA')}
+                                        className="w-8 h-8 rounded-full bg-red-500/20 hover:bg-red-500/40 text-red-300 flex items-center justify-center border border-red-500/40 transition-colors"
+                                        title="Registrar interacción negativa"
+                                    >
+                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 12H4" />
+                                        </svg>
+                                    </button>
+                                    <button
+                                        onClick={(e) => handleInteraction(e, rel.relacion_id, 'POSITIVA')}
+                                        className="w-8 h-8 rounded-full bg-green-500/20 hover:bg-green-500/40 text-green-300 flex items-center justify-center border border-green-500/40 transition-colors"
+                                        title="Registrar interacción positiva"
+                                    >
+                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+                                        </svg>
+                                    </button>
+                                </div>
+                            )}
+                        </div>
                 </div>
 
                 {relaciones.length === 0 && (
@@ -407,58 +466,58 @@ function PjDetailPage() {
                         <p className="text-neutral-500">Este personaje no tiene relaciones con NPCs.</p>
                     </div>
                 )}
+
             </div>
         </div>
-      </div>
 
-        {/* Add Relacion Modal */}
-        {showAddRelacionModal && (
-            <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4" onClick={() => setShowAddRelacionModal(false)}>
-                <div className="bg-neutral-800 rounded-2xl max-w-md w-full border border-white/10 shadow-2xl" onClick={(e) => e.stopPropagation()}>
-                    <div className="p-6 border-b border-white/10 flex justify-between items-start">
-                        <h3 className="text-xl font-bold text-white">Añadir Nueva Relación</h3>
-                        <button 
-                            onClick={() => setShowAddRelacionModal(false)}
-                            className="text-neutral-400 hover:text-white"
-                        >
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                            </svg>
-                        </button>
-                    </div>
-                    <form onSubmit={handleAddRelacion} className="p-6">
-                        <div className="mb-6">
-                            <label className="block text-sm font-semibold text-neutral-400 mb-2">Seleccionar NPC</label>
-                            {availableNpcs.length > 0 ? (
-                                <select
-                                    value={selectedNpcId}
-                                    onChange={(e) => setSelectedNpcId(e.target.value)}
-                                    className="w-full bg-neutral-700 text-white px-4 py-2 rounded-lg border border-neutral-600 focus:border-green-500 focus:outline-none"
-                                    required
-                                >
-                                    <option value="">-- Selecciona un NPC --</option>
-                                    {availableNpcs.map(npc => (
-                                        <option key={npc.npc_id} value={npc.npc_id}>
-                                            {npc.nombre}
-                                        </option>
-                                    ))}
-                                </select>
-                            ) : (
-                                <p className="text-yellow-400 text-sm">No hay NPCs disponibles para añadir (todos tienen relación ya).</p>
-                            )}
-                        </div>
-                        
-                        <button 
-                            type="submit"
-                            disabled={!selectedNpcId}
-                            className="w-full bg-green-600 hover:bg-green-700 disabled:bg-neutral-600 disabled:text-neutral-400 text-white font-bold py-2 px-4 rounded-lg transition-colors"
-                        >
-                            Crear Relación (Nivel 0)
-                        </button>
-                    </form>
+       {/* Add Relacion Modal */}
+       {showAddRelacionModal && (
+        <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4" onClick={() => setShowAddRelacionModal(false)}>
+            <div className="bg-neutral-800 rounded-2xl max-w-md w-full border border-white/10 shadow-2xl" onClick={(e) => e.stopPropagation()}>
+                <div className="p-6 border-b border-white/10 flex justify-between items-start">
+                    <h3 className="text-xl font-bold text-white">Añadir Nueva Relación</h3>
+                    <button 
+                        onClick={() => setShowAddRelacionModal(false)}
+                        className="text-neutral-400 hover:text-white"
+                    >
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
                 </div>
+                <form onSubmit={handleAddRelacion} className="p-6">
+                    <div className="mb-6">
+                        <label className="block text-sm font-semibold text-neutral-400 mb-2">Seleccionar NPC</label>
+                        {availableNpcs.length > 0 ? (
+                            <select
+                                value={selectedNpcId}
+                                onChange={(e) => setSelectedNpcId(e.target.value)}
+                                className="w-full bg-neutral-700 text-white px-4 py-2 rounded-lg border border-neutral-600 focus:border-green-500 focus:outline-none"
+                                required
+                            >
+                                <option value="">-- Selecciona un NPC --</option>
+                                {availableNpcs.map(npc => (
+                                    <option key={npc.npc_id} value={npc.npc_id}>
+                                        {npc.nombre}
+                                    </option>
+                                ))}
+                            </select>
+                        ) : (
+                            <p className="text-yellow-400 text-sm">No hay NPCs disponibles para añadir (todos tienen relación ya).</p>
+                        )}
+                    </div>
+                    
+                    <button 
+                        type="submit"
+                        disabled={!selectedNpcId}
+                        className="w-full bg-green-600 hover:bg-green-700 disabled:bg-neutral-600 disabled:text-neutral-400 text-white font-bold py-2 px-4 rounded-lg transition-colors"
+                    >
+                        Crear Relación (Nivel 0)
+                    </button>
+                </form>
             </div>
-        )}
+        </div>
+      )}
 
     </div>
   );

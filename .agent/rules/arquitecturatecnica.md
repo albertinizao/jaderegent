@@ -1,6 +1,5 @@
 ---
-trigger: always_on
-glob:
-description:
+trigger: model_decision
+description: Explicación de la arquitectura del proyecto
 ---
 

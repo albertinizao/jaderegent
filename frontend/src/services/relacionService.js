@@ -47,5 +47,20 @@ export const relacionService = {
     }
 
     return response.json();
+  },
+
+  updateLevel: async (relacionId, increment) => {
+    const response = await fetch(`${API_BASE}/${relacionId}/nivel?increment=${increment}`, {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    });
+
+    if (!response.ok) {
+        throw new Error(`Error updating Level: ${response.statusText}`);
+    }
+
+    return response.json();
   }
 };
