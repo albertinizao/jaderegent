@@ -200,6 +200,17 @@ function PjDetailPage() {
             )}
             <div className="flex gap-3">
                 {isMaster && (
+                    <Link
+                        to="/dashboard"
+                        className="bg-neutral-800 hover:bg-neutral-700 text-neutral-400 hover:text-white p-2 rounded-lg transition-colors border border-neutral-700"
+                        title="Ir al Dashboard"
+                    >
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                        </svg>
+                    </Link>
+                )}
+                {isMaster && (
                     <button
                         onClick={handleOpenAddRelacion}
                         className="bg-green-600 hover:bg-green-500 text-white font-bold px-4 py-2 rounded-lg transition-colors flex items-center gap-2 shadow-lg hover:shadow-green-500/20"
