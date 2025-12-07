@@ -1,33 +1,34 @@
 package com.opipo.jaderegent.infrastructure.web.dto;
 
-import com.opipo.jaderegent.domain.model.NPC;
-import com.opipo.jaderegent.domain.model.Ventaja;
 import java.util.List;
 
 public class NpcDetailDTO {
-    private NPC npc;
-    private List<Ventaja> ventajas;
+    private NpcDTO npc;
+    private List<VentajaDTO> ventajas;
     private List<RelacionDTO> relaciones;
 
-    public NpcDetailDTO(NPC npc, List<Ventaja> ventajas, List<RelacionDTO> relaciones) {
+    public NpcDetailDTO() {
+    }
+
+    public NpcDetailDTO(NpcDTO npc, List<VentajaDTO> ventajas, List<RelacionDTO> relaciones) {
         this.npc = npc;
         this.ventajas = ventajas;
         this.relaciones = relaciones;
     }
 
-    public NPC getNpc() {
+    public NpcDTO getNpc() {
         return npc;
     }
 
-    public void setNpc(NPC npc) {
+    public void setNpc(NpcDTO npc) {
         this.npc = npc;
     }
 
-    public List<Ventaja> getVentajas() {
+    public List<VentajaDTO> getVentajas() {
         return ventajas;
     }
 
-    public void setVentajas(List<Ventaja> ventajas) {
+    public void setVentajas(List<VentajaDTO> ventajas) {
         this.ventajas = ventajas;
     }
 

@@ -30,6 +30,8 @@ public class UpdateLevelUseCaseImpl implements UpdateLevelUseCase {
                 newLevel++;
                 // Trigger advantage selection only if leveling up
                 relacion.setPendienteEleccion(true);
+                // Reset interaction counter when leveling up
+                relacion.setContadorInteracciones(0);
             }
         } else {
             if (currentLevel > 0) {
@@ -46,3 +48,7 @@ public class UpdateLevelUseCaseImpl implements UpdateLevelUseCase {
         return relacionRepository.save(relacion);
     }
 }
+
+
+
+

@@ -346,8 +346,7 @@ function NpcDetailPage() {
                                                             try {
                                                                 const { relacionService } = await import('../services/relacionService');
                                                                 await relacionService.registerInteraction(rel.relacion_id, false);
-                                                                loadNpcDetail(); 
-                                                                showNotification("Registrado", "Interacción negativa registrada", 'success');
+                                                                loadNpcDetail();
                                                             } catch (e) { 
                                                                 console.error("Interaction Error:", e);
                                                                 showNotification("Error", "Error al registrar interacción: " + e.message, 'error');
@@ -360,8 +359,7 @@ function NpcDetailPage() {
                                                             try {
                                                                 const { relacionService } = await import('../services/relacionService');
                                                                 await relacionService.registerInteraction(rel.relacion_id, true);
-                                                                loadNpcDetail(); 
-                                                                showNotification("Registrado", "Interacción positiva registrada", 'success');
+                                                                loadNpcDetail();
                                                             } catch (e) { 
                                                                 console.error("Interaction Error:", e);
                                                                 showNotification("Error", "Error al registrar interacción: " + e.message, 'error');
@@ -407,7 +405,25 @@ function NpcDetailPage() {
                 </div>
 
                 <div className="space-y-4">
-                    {ventajas.map((v) => {
+                    {[...ventajas]
+                        .sort((a, b) => {
+                            const eligibilityA = checkEligibility(a);
+                            const eligibilityB = checkEligibility(b);
+                            
+                            // Both selectable or both not selectable
+                            if (eligibilityA.eligible === eligibilityB.eligible) {
+                                // If both are selectable, sort by level descending (higher level first)
+                                if (eligibilityA.eligible) {
+                                    return b.min_nivel_relacion - a.min_nivel_relacion;
+                                }
+                                // If both are not selectable, sort by level ascending (lower level first)
+                                return a.min_nivel_relacion - b.min_nivel_relacion;
+                            }
+                            
+                            // Selectable advantages come first
+                            return eligibilityB.eligible ? 1 : -1;
+                        })
+                        .map((v) => {
                         const { eligible, obtained, reason } = checkEligibility(v);
                         
                         return (
