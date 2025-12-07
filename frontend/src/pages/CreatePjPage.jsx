@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { pjService } from '../services/pjService';
+import { useMode } from '../context/ModeContext';
 
 function CreatePjPage() {
   const navigate = useNavigate();
+  const { isMaster } = useMode();
   const [formData, setFormData] = useState({
     nombre_display: '',
     nota_opcional: '',
@@ -39,7 +41,7 @@ function CreatePjPage() {
             <h2 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-jade-400 to-teal-200">
             Crear Nuevo PJ
             </h2>
-            <Link to="/" className="text-neutral-400 hover:text-white transition-colors">
+            <Link to={isMaster ? "/dashboard" : "/"} className="text-neutral-400 hover:text-white transition-colors">
                 ✕
             </Link>
         </div>

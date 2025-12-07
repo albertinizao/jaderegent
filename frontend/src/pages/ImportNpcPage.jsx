@@ -53,7 +53,7 @@ function ImportNpcPage() {
             <h2 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-200">
             Importar NPC
             </h2>
-            <Link to="/" className="text-neutral-400 hover:text-white transition-colors">
+            <Link to="/dashboard" className="text-neutral-400 hover:text-white transition-colors">
                 ✕
             </Link>
         </div>

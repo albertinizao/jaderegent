@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { pjService } from '../services/pjService';
 import { useMode } from '../context/ModeContext';
 
@@ -7,10 +7,18 @@ function PjListPage() {
   const [pjs, setPjs] = useState([]);
   const [status, setStatus] = useState('loading');
   const { isMaster } = useMode();
+  const navigate = useNavigate();
 
   useEffect(() => {
+    if (!isMaster) {
+        const lockedPjId = localStorage.getItem('jade_regent_player_pj_id');
+        if (lockedPjId) {
+            navigate(`/pjs/${lockedPjId}`, { replace: true });
+            return;
+        }
+    }
     loadPjs();
-  }, []);
+  }, [isMaster, navigate]);
 
   const loadPjs = async () => {
     try {
@@ -24,7 +32,10 @@ function PjListPage() {
   };
 
   const handleDelete = async (e, pjId) => {
-    e.preventDefault(); // Prevent navigation
+    e.stopPropagation(); // Prevent navigation
+    e.preventDefault();
+    
+    // We can use a custom modal here later, keeping confirmation for now or using the new one
     if (window.confirm('¿Eliminar personaje?')) {
         try {
             await pjService.delete(pjId);
@@ -35,12 +46,21 @@ function PjListPage() {
     }
   };
 
+  const handlePjClick = (pjId) => {
+      if (!isMaster) {
+          localStorage.setItem('jade_regent_player_pj_id', pjId);
+          navigate(`/pjs/${pjId}`, { replace: true });
+      } else {
+          navigate(`/pjs/${pjId}`);
+      }
+  };
+
   return (
     <div className="min-h-screen bg-neutral-900 text-white p-8 font-sans">
       <div className="max-w-6xl mx-auto">
         <header className="flex justify-between items-center mb-8">
           <div className="flex items-center gap-4">
-            <Link to="/" className="bg-neutral-800 hover:bg-neutral-700 text-neutral-400 hover:text-white p-2 rounded-lg transition-colors border border-white/5">
+            <Link to={isMaster ? "/dashboard" : "/"} className="bg-neutral-800 hover:bg-neutral-700 text-neutral-400 hover:text-white p-2 rounded-lg transition-colors border border-white/5">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
                 </svg>
@@ -79,10 +99,10 @@ function PjListPage() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {pjs.map((pj) => (
-            <Link 
+            <div 
               key={pj.pj_id} 
-              to={`/pjs/${pj.pj_id}`}
-              className="bg-neutral-800 rounded-xl overflow-hidden border border-white/5 hover:border-jade-500/30 transition-all hover:transform hover:-translate-y-1 shadow-lg group block"
+              onClick={() => handlePjClick(pj.pj_id)}
+              className="bg-neutral-800 rounded-xl overflow-hidden border border-white/5 hover:border-jade-500/30 transition-all hover:transform hover:-translate-y-1 shadow-lg group block cursor-pointer"
             >
               <div className="h-48 overflow-hidden bg-neutral-900 relative">
                  {pj.imagen_url ? (
@@ -122,7 +142,7 @@ function PjListPage() {
                     {pj.nota_opcional || "Sin descripción."}
                  </p>
               </div>
-            </Link>
+            </div>
           ))}
         </div>
       </div>

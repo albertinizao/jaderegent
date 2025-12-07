@@ -177,12 +177,27 @@ function PjDetailPage() {
     <div className="min-h-screen bg-neutral-900 text-white p-4 md:p-8 font-sans">
       <div className="max-w-6xl mx-auto">
         <header className="mb-8 flex justify-between items-center">
-            <Link to="/pjs" className="inline-flex items-center text-neutral-400 hover:text-white transition-colors">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-                </svg>
-                Volver a Personajes
-            </Link>
+            {(!isMaster && localStorage.getItem('jade_regent_player_pj_id')) ? (
+                 <button 
+                    onClick={() => {
+                        localStorage.removeItem('jade_regent_player_pj_id');
+                        navigate('/');
+                    }}
+                    className="inline-flex items-center text-red-400 hover:text-red-300 transition-colors font-bold"
+                 >
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                    </svg>
+                    Salir
+                 </button>
+            ) : (
+                <Link to="/pjs" className="inline-flex items-center text-neutral-400 hover:text-white transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                    </svg>
+                    Volver a Personajes
+                </Link>
+            )}
             <div className="flex gap-3">
                 {isMaster && (
                     <button
