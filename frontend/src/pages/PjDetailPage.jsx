@@ -307,165 +307,201 @@ function PjDetailPage() {
                 </div>
             </div>
 
-            {/* Relaciones List */}
-            <div className="lg:col-span-2">
-                <h2 className="text-2xl font-bold mb-6 flex items-center">
-                    <span className="bg-clip-text text-transparent bg-gradient-to-r from-jade-400 to-teal-200">
-                        Relaciones con NPCs
-                    </span>
-                    <span className="ml-3 px-2 py-1 bg-neutral-800 text-xs text-neutral-400 rounded-full border border-white/10">
-                        {relaciones.length}
-                    </span>
-                </h2>
+            {/* Right Column: Relations & Advantages */}
+            <div className="lg:col-span-2 space-y-8">
+                
+                {/* Relaciones List */}
+                <div>
+                    <h2 className="text-2xl font-bold mb-6 flex items-center">
+                        <span className="bg-clip-text text-transparent bg-gradient-to-r from-jade-400 to-teal-200">
+                            Relaciones con NPCs
+                        </span>
+                        <span className="ml-3 px-2 py-1 bg-neutral-800 text-xs text-neutral-400 rounded-full border border-white/10">
+                            {relaciones.length}
+                        </span>
+                    </h2>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    {relaciones.map((rel) => (
-                        <div key={rel.relacion_id} className="relative group">
-                            <Link 
-                                to={`/npcs/${rel.npc_id}`}
-                                state={{ 
-                                    from: location.pathname, 
-                                    fromLabel: `Volver a ${pj.nombre_display}`,
-                                    relacionContext: {
-                                        relacionId: rel.relacion_id,
-                                        nivelActual: rel.nivel_actual,
-                                        pendienteEleccion: rel.pendiente_eleccion,
-                                        ventajasObtenidasIds: rel.ventajas_obtenidas_ids || []
-                                    }
-                                }}
-                                className="block bg-neutral-800/60 rounded-xl p-4 border border-white/5 hover:border-jade-500/30 transition-all hover:scale-[1.02] cursor-pointer"
-                            >
-                                <div className="flex items-center gap-4 mb-3">
-                                    {rel.npc_imagen_url ? (
-                                        <img 
-                                            src={rel.npc_imagen_url} 
-                                            alt={rel.npc_nombre}
-                                            className="w-16 h-16 rounded-lg object-cover"
-                                            onError={(e) => { e.target.style.display = 'none'; }}
-                                        />
-                                    ) : (
-                                        <div className="w-16 h-16 rounded-lg bg-neutral-700 flex items-center justify-center">
-                                            <span className="text-2xl text-neutral-500">?</span>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        {relaciones.map((rel) => (
+                            <div key={rel.relacion_id} className="relative group">
+                                <Link 
+                                    to={`/npcs/${rel.npc_id}`}
+                                    state={{ 
+                                        from: location.pathname, 
+                                        fromLabel: `Volver a ${pj.nombre_display}`,
+                                        relacionContext: {
+                                            relacionId: rel.relacion_id,
+                                            nivelActual: rel.nivel_actual,
+                                            pendienteEleccion: rel.pendiente_eleccion,
+                                            ventajasObtenidasIds: rel.ventajas_obtenidas_ids || []
+                                        }
+                                    }}
+                                    className="block bg-neutral-800/60 rounded-xl p-4 border border-white/5 hover:border-jade-500/30 transition-all hover:scale-[1.02] cursor-pointer"
+                                >
+                                    <div className="flex items-center gap-4 mb-3">
+                                        {rel.npc_imagen_url ? (
+                                            <img 
+                                                src={rel.npc_imagen_url} 
+                                                alt={rel.npc_nombre}
+                                                className="w-16 h-16 rounded-lg object-cover"
+                                                onError={(e) => { e.target.style.display = 'none'; }}
+                                            />
+                                        ) : (
+                                            <div className="w-16 h-16 rounded-lg bg-neutral-700 flex items-center justify-center">
+                                                <span className="text-2xl text-neutral-500">?</span>
+                                            </div>
+                                        )}
+                                        <div className={`flex-1 ${isMaster ? 'pr-24' : ''}`}>
+                                            <h3 className="text-lg font-bold text-white flex justify-between">
+                                                {rel.npc_nombre}
+                                                {isMaster && rel.contador_interacciones !== 0 && (
+                                                    <span className={`text-xs ml-2 px-2 py-0.5 rounded-full ${rel.contador_interacciones > 0 ? 'bg-green-900/50 text-green-300' : 'bg-red-900/50 text-red-300'}`}>
+                                                        {rel.contador_interacciones > 0 ? '+' : ''}{rel.contador_interacciones}
+                                                    </span>
+                                                )}
+                                            </h3>
+                                            <p className="text-sm text-neutral-400">
+                                                Nivel {rel.nivel_actual} / {rel.nivel_maximo}
+                                            </p>
                                         </div>
-                                    )}
-                                    <div className={`flex-1 ${isMaster ? 'pr-24' : ''}`}>
-                                        <h3 className="text-lg font-bold text-white flex justify-between">
-                                            {rel.npc_nombre}
-                                            {isMaster && rel.contador_interacciones !== 0 && (
-                                                <span className={`text-xs ml-2 px-2 py-0.5 rounded-full ${rel.contador_interacciones > 0 ? 'bg-green-900/50 text-green-300' : 'bg-red-900/50 text-red-300'}`}>
-                                                    {rel.contador_interacciones > 0 ? '+' : ''}{rel.contador_interacciones}
-                                                </span>
-                                            )}
-                                        </h3>
-                                        <p className="text-sm text-neutral-400">
-                                            Nivel {rel.nivel_actual} / {rel.nivel_maximo}
-                                        </p>
                                     </div>
-                                </div>
 
-                                {/* Progress Bar */}
-                                {/* Progress Bar & Level Controls */}
-                                <div className="mb-2 flex items-center gap-2">
-                                    <div className="flex-1 bg-neutral-700 rounded-full h-2">
-                                        <div 
-                                            className="bg-gradient-to-r from-jade-600 to-teal-500 h-2 rounded-full transition-all"
-                                            style={{ width: `${(rel.nivel_actual / rel.nivel_maximo) * 100}%` }}
-                                        ></div>
-                                    </div>
-                                    {isMaster && (
-                                        <div className="flex gap-1 z-20">
-                                            <button
-                                                onClick={(e) => handleLevelUpdate(e, rel.relacion_id, false)}
-                                                className="w-6 h-6 rounded bg-neutral-700 hover:bg-neutral-600 text-white flex items-center justify-center text-xs ml-1 disabled:opacity-50"
-                                                disabled={rel.nivel_actual <= 0}
-                                                title="-1 Nivel"
-                                            >
-                                                -
-                                            </button>
-                                            <button
-                                                onClick={(e) => handleLevelUpdate(e, rel.relacion_id, true)}
-                                                className="w-6 h-6 rounded bg-purple-600 hover:bg-purple-500 text-white flex items-center justify-center text-xs disabled:opacity-50"
-                                                disabled={rel.nivel_actual >= rel.nivel_maximo}
-                                                title="+1 Nivel"
-                                            >
-                                                +
-                                            </button>
+                                    {/* Progress Bar & Level Controls */}
+                                    <div className="mb-2 flex items-center gap-2">
+                                        <div className="flex-1 bg-neutral-700 rounded-full h-2">
+                                            <div 
+                                                className="bg-gradient-to-r from-jade-600 to-teal-500 h-2 rounded-full transition-all"
+                                                style={{ width: `${(rel.nivel_actual / rel.nivel_maximo) * 100}%` }}
+                                            ></div>
                                         </div>
-                                    )}
-                                </div>
+                                        {isMaster && (
+                                            <div className="flex gap-1 z-20">
+                                                <button
+                                                    onClick={(e) => handleLevelUpdate(e, rel.relacion_id, false)}
+                                                    className="w-6 h-6 rounded bg-neutral-700 hover:bg-neutral-600 text-white flex items-center justify-center text-xs ml-1 disabled:opacity-50"
+                                                    disabled={rel.nivel_actual <= 0}
+                                                    title="-1 Nivel"
+                                                >
+                                                    -
+                                                </button>
+                                                <button
+                                                    onClick={(e) => handleLevelUpdate(e, rel.relacion_id, true)}
+                                                    className="w-6 h-6 rounded bg-purple-600 hover:bg-purple-500 text-white flex items-center justify-center text-xs disabled:opacity-50"
+                                                    disabled={rel.nivel_actual >= rel.nivel_maximo}
+                                                    title="+1 Nivel"
+                                                >
+                                                    +
+                                                </button>
+                                            </div>
+                                        )}
+                                    </div>
 
-                                {/* Status Indicators */}
-                                <div className="flex gap-2 flex-wrap">
-                                    {rel.pendiente_eleccion && (
-                                        <span className="text-xs bg-amber-900/20 text-amber-300 px-2 py-1 rounded border border-amber-500/10">
-                                            ⚠️ Pendiente elección
-                                        </span>
-                                    )}
-                                    {!rel.consistente && (
-                                        <span className="text-xs bg-red-900/20 text-red-300 px-2 py-1 rounded border border-red-500/10">
-                                            ❌ Inconsistente
-                                        </span>
-                                    )}
-                                </div>
-                            </Link>
-                            
-                            {/* Master Controls for Interactions */}
-                            {isMaster && (
-                                <div className="absolute top-4 right-4 flex gap-1 z-10">
-                                    <button
-                                        onClick={(e) => handleInteraction(e, rel.relacion_id, 'NEGATIVA')}
-                                        className="w-8 h-8 rounded-full bg-red-500/20 hover:bg-red-500/40 text-red-300 flex items-center justify-center border border-red-500/40 transition-colors"
-                                        title="Registrar interacción negativa"
-                                    >
-                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 12H4" />
-                                        </svg>
-                                    </button>
-                                    <button
-                                        onClick={(e) => handleInteraction(e, rel.relacion_id, 'POSITIVA')}
-                                        className="w-8 h-8 rounded-full bg-green-500/20 hover:bg-green-500/40 text-green-300 flex items-center justify-center border border-green-500/40 transition-colors"
-                                        title="Registrar interacción positiva"
-                                    >
-                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
-                                        </svg>
-                                    </button>
-                                </div>
-                            )}
+                                    {/* Status Indicators */}
+                                    <div className="flex gap-2 flex-wrap">
+                                        {rel.pendiente_eleccion && (
+                                            <span className="text-xs bg-amber-900/20 text-amber-300 px-2 py-1 rounded border border-amber-500/10">
+                                                ⚠️ Pendiente elección
+                                            </span>
+                                        )}
+                                        {!rel.consistente && (
+                                            <span className="text-xs bg-red-900/20 text-red-300 px-2 py-1 rounded border border-red-500/10">
+                                                ❌ Inconsistente
+                                            </span>
+                                        )}
+                                    </div>
+                                </Link>
+                                
+                                {/* Master Controls for Interactions */}
+                                {isMaster && (
+                                    <div className="absolute top-4 right-4 flex gap-1 z-10">
+                                        <button
+                                            onClick={(e) => handleInteraction(e, rel.relacion_id, 'NEGATIVA')}
+                                            className="w-8 h-8 rounded-full bg-red-500/20 hover:bg-red-500/40 text-red-300 flex items-center justify-center border border-red-500/40 transition-colors"
+                                            title="Registrar interacción negativa"
+                                        >
+                                            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 12H4" />
+                                            </svg>
+                                        </button>
+                                        <button
+                                            onClick={(e) => handleInteraction(e, rel.relacion_id, 'POSITIVA')}
+                                            className="w-8 h-8 rounded-full bg-green-500/20 hover:bg-green-500/40 text-green-300 flex items-center justify-center border border-green-500/40 transition-colors"
+                                            title="Registrar interacción positiva"
+                                        >
+                                            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+                                            </svg>
+                                        </button>
+                                    </div>
+                                )}
+                            </div>
+                        ))}
+                    </div>
+
+                    {relaciones.length === 0 && (
+                        <div className="text-center py-12 border-2 border-dashed border-neutral-800 rounded-xl">
+                            <p className="text-neutral-500">Este personaje no tiene relaciones con NPCs.</p>
                         </div>
-                    ))}
-                            
-                            {/* Master Controls for Interactions */}
-                            {isMaster && (
-                                <div className="absolute top-4 right-4 flex gap-1 z-10">
-                                    <button
-                                        onClick={(e) => handleInteraction(e, rel.relacion_id, 'NEGATIVA')}
-                                        className="w-8 h-8 rounded-full bg-red-500/20 hover:bg-red-500/40 text-red-300 flex items-center justify-center border border-red-500/40 transition-colors"
-                                        title="Registrar interacción negativa"
-                                    >
-                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 12H4" />
-                                        </svg>
-                                    </button>
-                                    <button
-                                        onClick={(e) => handleInteraction(e, rel.relacion_id, 'POSITIVA')}
-                                        className="w-8 h-8 rounded-full bg-green-500/20 hover:bg-green-500/40 text-green-300 flex items-center justify-center border border-green-500/40 transition-colors"
-                                        title="Registrar interacción positiva"
-                                    >
-                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
-                                        </svg>
-                                    </button>
-                                </div>
-                            )}
-                        </div>
+                    )}
                 </div>
 
-                {relaciones.length === 0 && (
-                    <div className="text-center py-12 border-2 border-dashed border-neutral-800 rounded-xl">
-                        <p className="text-neutral-500">Este personaje no tiene relaciones con NPCs.</p>
+                {/* Selected Advantages Block */}
+                <div>
+                    <div className="bg-neutral-800 rounded-2xl p-6 border border-white/5">
+                        <h2 className="text-xl font-bold mb-4 flex items-center">
+                            <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-300">
+                                Ventajas Seleccionadas
+                            </span>
+                        </h2>
+                        
+                        {pjData.relaciones.some(r => r.selecciones && r.selecciones.length > 0) ? (
+                            <div className="space-y-6">
+                                {pjData.relaciones
+                                    .filter(r => r.selecciones && r.selecciones.length > 0)
+                                    .map(rel => (
+                                        <div key={rel.npc_id}>
+                                            <h3 className="text-sm font-bold text-neutral-400 uppercase tracking-wider mb-2 flex items-center gap-2">
+                                                {rel.npc_imagen_url && (
+                                                    <img src={rel.npc_imagen_url} className="w-5 h-5 rounded-full object-cover" alt="" />
+                                                )}
+                                                {rel.npc_nombre}
+                                            </h3>
+                                            <div className="space-y-2">
+                                                {rel.selecciones
+                                                    .sort((a, b) => b.nivel_adquisicion - a.nivel_adquisicion)
+                                                    .map(sel => (
+                                                    <div key={sel.ventaja_id} className="bg-neutral-700/30 rounded-lg p-3 border border-white/5 hover:bg-neutral-700/50 transition-colors">
+                                                        <div className="flex justify-between items-start">
+                                                            <span className="font-bold text-jade-300">{sel.nombre}</span>
+                                                            <div className="flex flex-col items-end">
+                                                                <span className="text-xs bg-neutral-900 border border-neutral-700 text-neutral-400 px-1.5 py-0.5 rounded mb-1" title="Nivel de la ventaja">
+                                                                    Nvl {sel.nivel_ventaja || '?'}
+                                                                </span>
+                                                                <span className="text-[10px] text-neutral-500" title="Nivel al que se adquirió">
+                                                                    (Adq. {sel.nivel_adquisicion})
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                        {sel.descripcion && (
+                                                            <p className="text-xs text-neutral-400 mt-1 line-clamp-2" title={sel.descripcion}>
+                                                                {sel.descripcion}
+                                                            </p>
+                                                        )}
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    ))
+                                }
+                            </div>
+                        ) : (
+                            <p className="text-neutral-500 text-sm italic py-4 text-center">
+                                No hay ventajas seleccionadas.
+                            </p>
+                        )}
                     </div>
-                )}
+                </div>
+                </div>
 
             </div>
         </div>

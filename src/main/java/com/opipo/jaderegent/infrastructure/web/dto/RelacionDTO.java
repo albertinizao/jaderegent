@@ -14,13 +14,14 @@ public class RelacionDTO {
     private Boolean consistente;
     private Integer contadorInteracciones;
     private List<String> ventajasObtenidasIds;
+    private List<SeleccionVentajaDTO> selecciones;
 
     public RelacionDTO() {
     }
 
     public RelacionDTO(UUID relacionId, String npcId, String npcNombre, String npcImagenUrl,
             Integer nivelActual, Integer nivelMaximo, Boolean pendienteEleccion, Boolean consistente,
-            Integer contadorInteracciones, List<String> ventajasObtenidasIds) {
+            Integer contadorInteracciones, List<String> ventajasObtenidasIds, List<SeleccionVentajaDTO> selecciones) {
         this.relacionId = relacionId;
         this.npcId = npcId;
         this.npcNombre = npcNombre;
@@ -31,6 +32,7 @@ public class RelacionDTO {
         this.consistente = consistente;
         this.contadorInteracciones = contadorInteracciones;
         this.ventajasObtenidasIds = ventajasObtenidasIds;
+        this.selecciones = selecciones;
     }
 
     public static RelacionDTOBuilder builder() {
@@ -117,6 +119,14 @@ public class RelacionDTO {
         this.ventajasObtenidasIds = ventajasObtenidasIds;
     }
 
+    public List<SeleccionVentajaDTO> getSelecciones() {
+        return selecciones;
+    }
+
+    public void setSelecciones(List<SeleccionVentajaDTO> selecciones) {
+        this.selecciones = selecciones;
+    }
+
     public static class RelacionDTOBuilder {
         private UUID relacionId;
         private String npcId;
@@ -128,6 +138,7 @@ public class RelacionDTO {
         private Boolean consistente;
         private Integer contadorInteracciones;
         private List<String> ventajasObtenidasIds;
+        private List<SeleccionVentajaDTO> selecciones;
 
         RelacionDTOBuilder() {
         }
@@ -182,9 +193,14 @@ public class RelacionDTO {
             return this;
         }
 
+        public RelacionDTOBuilder selecciones(List<SeleccionVentajaDTO> selecciones) {
+            this.selecciones = selecciones;
+            return this;
+        }
+
         public RelacionDTO build() {
             return new RelacionDTO(relacionId, npcId, npcNombre, npcImagenUrl, nivelActual, nivelMaximo,
-                    pendienteEleccion, consistente, contadorInteracciones, ventajasObtenidasIds);
+                    pendienteEleccion, consistente, contadorInteracciones, ventajasObtenidasIds, selecciones);
         }
     }
 }

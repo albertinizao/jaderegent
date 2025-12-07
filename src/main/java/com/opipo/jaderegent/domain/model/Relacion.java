@@ -7,12 +7,9 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.JoinTable;
+import jakarta.persistence.OneToMany;
 import java.time.LocalDateTime;
 import java.util.UUID;
-import java.util.Set;
-import java.util.HashSet;
 
 @Entity
 public class Relacion {
@@ -33,9 +30,14 @@ public class Relacion {
     private Boolean consistente;
     private Integer contadorInteracciones;
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "relacion_ventajas", joinColumns = @JoinColumn(name = "relacion_id"), inverseJoinColumns = @JoinColumn(name = "ventaja_id"))
-    private Set<Ventaja> ventajasObtenidas = new HashSet<>();
+    @OneToMany(mappedBy = "relacion", cascade = jakarta.persistence.CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    private java.util.List<SeleccionVentaja> selecciones = new java.util.ArrayList<>();
+
+    // Helper to maintain backward compatibility with some logic, or useful for DTO
+    // mapping
+    public java.util.Set<Ventaja> getVentajasObtenidas() {
+        return selecciones.stream().map(SeleccionVentaja::getVentaja).collect(java.util.stream.Collectors.toSet());
+    }
 
     private LocalDateTime ultimaActualizacionTs = LocalDateTime.now();
 
@@ -43,7 +45,7 @@ public class Relacion {
     }
 
     public Relacion(UUID relacionId, PJ pj, NPC npc, Integer nivelActual, Boolean pendienteEleccion,
-            Boolean consistente, Integer contadorInteracciones, Set<Ventaja> ventajasObtenidas,
+            Boolean consistente, Integer contadorInteracciones, java.util.List<SeleccionVentaja> selecciones,
             LocalDateTime ultimaActualizacionTs) {
         this.relacionId = relacionId;
         this.pj = pj;
@@ -52,7 +54,7 @@ public class Relacion {
         this.pendienteEleccion = pendienteEleccion;
         this.consistente = consistente;
         this.contadorInteracciones = contadorInteracciones;
-        this.ventajasObtenidas = ventajasObtenidas != null ? ventajasObtenidas : new HashSet<>();
+        this.selecciones = selecciones != null ? selecciones : new java.util.ArrayList<>();
         this.ultimaActualizacionTs = ultimaActualizacionTs;
     }
 
@@ -124,12 +126,12 @@ public class Relacion {
         this.ultimaActualizacionTs = ultimaActualizacionTs;
     }
 
-    public Set<Ventaja> getVentajasObtenidas() {
-        return ventajasObtenidas;
+    public java.util.List<SeleccionVentaja> getSelecciones() {
+        return selecciones;
     }
 
-    public void setVentajasObtenidas(Set<Ventaja> ventajasObtenidas) {
-        this.ventajasObtenidas = ventajasObtenidas;
+    public void setSelecciones(java.util.List<SeleccionVentaja> selecciones) {
+        this.selecciones = selecciones;
     }
 
     public static class RelacionBuilder {
@@ -140,7 +142,7 @@ public class Relacion {
         private Boolean pendienteEleccion;
         private Boolean consistente;
         private Integer contadorInteracciones;
-        private Set<Ventaja> ventajasObtenidas;
+        private java.util.List<SeleccionVentaja> selecciones;
         private LocalDateTime ultimaActualizacionTs = LocalDateTime.now();
 
         RelacionBuilder() {
@@ -176,8 +178,8 @@ public class Relacion {
             return this;
         }
 
-        public RelacionBuilder ventajasObtenidas(Set<Ventaja> ventajasObtenidas) {
-            this.ventajasObtenidas = ventajasObtenidas;
+        public RelacionBuilder selecciones(java.util.List<SeleccionVentaja> selecciones) {
+            this.selecciones = selecciones;
             return this;
         }
 
@@ -188,7 +190,7 @@ public class Relacion {
 
         public Relacion build() {
             return new Relacion(relacionId, pj, npc, nivelActual, pendienteEleccion, consistente, contadorInteracciones,
-                    ventajasObtenidas, ultimaActualizacionTs);
+                    selecciones, ultimaActualizacionTs);
         }
     }
 }

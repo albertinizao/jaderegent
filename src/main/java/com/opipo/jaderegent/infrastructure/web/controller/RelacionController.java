@@ -6,6 +6,7 @@ import com.opipo.jaderegent.domain.model.Interaccion;
 import com.opipo.jaderegent.domain.model.Relacion;
 import com.opipo.jaderegent.infrastructure.web.dto.CreateInteraccionRequest;
 import com.opipo.jaderegent.infrastructure.web.dto.RelacionDTO;
+import com.opipo.jaderegent.infrastructure.web.dto.SeleccionVentajaDTO;
 import java.util.UUID;
 import java.util.stream.Collectors;
 import org.springframework.http.ResponseEntity;
@@ -81,6 +82,14 @@ public class RelacionController {
                 .contadorInteracciones(relacion.getContadorInteracciones())
                 .ventajasObtenidasIds(relacion.getVentajasObtenidas().stream()
                         .map(com.opipo.jaderegent.domain.model.Ventaja::getVentajaId)
+                        .collect(Collectors.toList()))
+                .selecciones(relacion.getSelecciones().stream()
+                        .map(s -> SeleccionVentajaDTO.builder()
+                                .ventajaId(s.getVentaja().getVentajaId())
+                                .nombre(s.getVentaja().getNombre())
+                                .nivelAdquisicion(s.getNivelAdquisicion())
+                                .descripcion(s.getVentaja().getDescripcionLarga())
+                                .build())
                         .collect(Collectors.toList()))
                 .build();
     }

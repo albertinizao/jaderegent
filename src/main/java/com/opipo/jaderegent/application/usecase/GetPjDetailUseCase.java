@@ -50,6 +50,20 @@ public class GetPjDetailUseCase {
                                                 .ventajasObtenidasIds(rel.getVentajasObtenidas().stream()
                                                                 .map(v -> v.getVentajaId())
                                                                 .toList())
+                                                .selecciones(rel.getSelecciones().stream()
+                                                                .map(s -> com.opipo.jaderegent.infrastructure.web.dto.SeleccionVentajaDTO
+                                                                                .builder()
+                                                                                .ventajaId(s.getVentaja()
+                                                                                                .getVentajaId())
+                                                                                .nombre(s.getVentaja().getNombre())
+                                                                                .nivelAdquisicion(
+                                                                                                s.getNivelAdquisicion())
+                                                                                .nivelVentaja(s.getVentaja()
+                                                                                                .getMinNivelRelacion())
+                                                                                .descripcion(s.getVentaja()
+                                                                                                .getDescripcionLarga())
+                                                                                .build())
+                                                                .toList())
                                                 .build())
                                 .sorted((a, b) -> a.getNpcNombre().compareTo(b.getNpcNombre())) // Sort by NPC name
                                 .toList();

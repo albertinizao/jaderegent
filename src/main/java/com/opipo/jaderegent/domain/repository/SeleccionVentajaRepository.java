@@ -7,6 +7,7 @@ import java.util.UUID;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface SeleccionVentajaRepository extends JpaRepository<SeleccionVentaja, UUID> {
-    Optional<SeleccionVentaja> findByRelacionRelacionIdAndNivelRelacion(UUID relacionId, Integer nivelRelacion);
+    Optional<SeleccionVentaja> findByRelacionRelacionIdAndNivelAdquisicion(UUID relacionId, Integer nivelAdquisicion);
+
     List<SeleccionVentaja> findByRelacionRelacionId(UUID relacionId);
 }

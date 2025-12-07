@@ -34,7 +34,14 @@ public class SelectVentajaUseCaseImpl implements SelectVentajaUseCase {
 
         validateRequirements(relacion, ventaja);
 
-        relacion.getVentajasObtenidas().add(ventaja);
+        com.opipo.jaderegent.domain.model.SeleccionVentaja seleccion = com.opipo.jaderegent.domain.model.SeleccionVentaja
+                .builder()
+                .relacion(relacion)
+                .ventaja(ventaja)
+                .nivelAdquisicion(relacion.getNivelActual())
+                .build();
+
+        relacion.getSelecciones().add(seleccion);
         relacion.setPendienteEleccion(false);
 
         return relacionRepository.save(relacion);

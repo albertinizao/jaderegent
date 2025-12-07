@@ -101,7 +101,9 @@
       "nombre": "Mirada de Ameiko",
       "descripcion_larga": "Si Ameiko está presente, estás constantemente bajo los efectos de su Interpretación de Bardo (Infundir gran aptitud)",
       "min_nivel_relacion": 2,
-      "prerequisitos": []
+      "prerequisitos": [
+        "ameiko_conexion_profunda"
+      ]
     },
     {
       "nombre": "Respeto de Ameiko",
