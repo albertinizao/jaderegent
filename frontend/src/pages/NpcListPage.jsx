@@ -16,7 +16,14 @@ function NpcListPage() {
   const loadNpcs = async () => {
     try {
       const data = await npcService.getAll();
-      setNpcs(data);
+      // Ordenar por nivel_maximo descendente, y luego alfabéticamente por nombre
+      const sortedData = data.sort((a, b) => {
+        if (b.nivel_maximo !== a.nivel_maximo) {
+          return b.nivel_maximo - a.nivel_maximo;
+        }
+        return a.nombre.localeCompare(b.nombre);
+      });
+      setNpcs(sortedData);
       setStatus('success');
     } catch (error) {
       console.error(error);

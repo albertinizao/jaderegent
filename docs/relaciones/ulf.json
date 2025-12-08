@@ -3,7 +3,7 @@
   "nombre": "Ulf",
   "descripcion_larga": "Ulf Gormundr. Guía ulfen experto en la Corona del Mundo.",
   "nivel_maximo": 5,
-  "imagen_url": "/data/images/npc/ulf.png",
+  "imagen_url": "/data/images/npc/ulf.jpg",
   "ventajas": [
     {
       "nombre": "Protección contra el frío",
@@ -30,7 +30,7 @@
       "prerequisitos": []
     },
     {
-      "nombre": "Lengua de invierno",
+      "nombre": "Lengua de invierno 1",
       "descripcion_larga": "Elige un idioma entre escaldo, varki y tien. Aprendes este idioma.",
       "min_nivel_relacion": 1,
       "prerequisitos": []
@@ -64,7 +64,7 @@
       "descripcion_larga": "Obtienes Resistencia al frío 1",
       "min_nivel_relacion": 2,
       "prerequisitos": [
-        "ulf_proteccion_contra_el_frío"
+        "ulf_proteccion_contra_el_frio"
       ]
     },
     {
@@ -72,7 +72,7 @@
       "descripcion_larga": "Sumas tu nivel de relación con Ulf a cualquier tirada pare resistir bajas temperaturas. Sustituye a Protección contra el frío",
       "min_nivel_relacion": 2,
       "prerequisitos": [
-        "ulf_proteccion_contra_el_frío"
+        "ulf_proteccion_contra_el_frio"
       ]
     },
     {
@@ -128,7 +128,7 @@
       "descripcion_larga": "Sumas el doble del nivel de relación con Ulf a cualquier tirada pare resistir bajas temperaturas. Sustituye a Resistencia al frío.",
       "min_nivel_relacion": 3,
       "prerequisitos": [
-        "ulf_resistencia_al_frío"
+        "ulf_resistencia_al_frio"
       ]
     },
     {
@@ -201,7 +201,7 @@
       "descripcion_larga": "Obtienes +1 a los TS contra efectos con descriptor «Frío»",
       "min_nivel_relacion": 4,
       "prerequisitos": [
-        "ulf_resistencia_al_frío_mejorada"
+        "ulf_resistencia_al_frio_mejorada"
       ]
     },
     {

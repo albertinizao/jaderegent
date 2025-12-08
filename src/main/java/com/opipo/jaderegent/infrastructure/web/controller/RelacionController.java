@@ -23,15 +23,18 @@ public class RelacionController {
     private final CreateRelacionUseCase createRelacionUseCase;
     private final com.opipo.jaderegent.application.usecase.SelectVentajaUseCase selectVentajaUseCase;
     private final com.opipo.jaderegent.application.usecase.UpdateLevelUseCase updateLevelUseCase;
+    private final com.opipo.jaderegent.application.usecase.DeleteRelacionUseCase deleteRelacionUseCase;
 
     public RelacionController(RegisterInteraccionUseCase registerInteraccionUseCase,
             CreateRelacionUseCase createRelacionUseCase,
             com.opipo.jaderegent.application.usecase.SelectVentajaUseCase selectVentajaUseCase,
-            com.opipo.jaderegent.application.usecase.UpdateLevelUseCase updateLevelUseCase) {
+            com.opipo.jaderegent.application.usecase.UpdateLevelUseCase updateLevelUseCase,
+            com.opipo.jaderegent.application.usecase.DeleteRelacionUseCase deleteRelacionUseCase) {
         this.registerInteraccionUseCase = registerInteraccionUseCase;
         this.createRelacionUseCase = createRelacionUseCase;
         this.selectVentajaUseCase = selectVentajaUseCase;
         this.updateLevelUseCase = updateLevelUseCase;
+        this.deleteRelacionUseCase = deleteRelacionUseCase;
     }
 
     @PostMapping
@@ -67,6 +70,12 @@ public class RelacionController {
             @org.springframework.web.bind.annotation.RequestParam boolean increment) {
         Relacion relacion = updateLevelUseCase.updateLevel(relacionId, increment);
         return ResponseEntity.ok(toDTO(relacion));
+    }
+
+    @org.springframework.web.bind.annotation.DeleteMapping("/{relacionId}")
+    public ResponseEntity<Void> deleteRelacion(@PathVariable UUID relacionId) {
+        deleteRelacionUseCase.delete(relacionId);
+        return ResponseEntity.noContent().build();
     }
 
     private RelacionDTO toDTO(Relacion relacion) {

@@ -142,6 +142,23 @@ function PjDetailPage() {
     }
   };
 
+  const handleDeleteRelacion = async (e, relId, npcNombre) => {
+    e.preventDefault();
+    e.stopPropagation();
+    
+    if (!window.confirm(`¿Estás seguro de que quieres eliminar la relación con ${npcNombre}?`)) {
+        return;
+    }
+    
+    try {
+        await relacionService.delete(relId);
+        loadPjDetail(); // Refresh data
+    } catch (error) {
+        console.error("Error deleting relacion", error);
+        alert("Error al eliminar la relación: " + error.message);
+    }
+  };
+
   useEffect(() => {
     loadPjDetail();
   }, [id]);
@@ -171,7 +188,26 @@ function PjDetailPage() {
     );
   }
 
-  const { pj, relaciones } = pjData;
+  const { pj, relaciones: relacionesRaw } = pjData;
+  
+  // Filtrar relaciones de nivel 0 para jugadores (solo máster las ve)
+  const relacionesFiltradas = isMaster 
+    ? relacionesRaw 
+    : relacionesRaw.filter(r => r.nivel_actual > 0);
+  
+  // Ordenar relaciones: 1) nivel_maximo desc, 2) nivel_actual desc, 3) alfabético
+  const relaciones = [...relacionesFiltradas].sort((a, b) => {
+    // Primero por nivel_maximo descendente
+    if (b.nivel_maximo !== a.nivel_maximo) {
+      return b.nivel_maximo - a.nivel_maximo;
+    }
+    // Luego por nivel_actual descendente
+    if (b.nivel_actual !== a.nivel_actual) {
+      return b.nivel_actual - a.nivel_actual;
+    }
+    // Finalmente alfabéticamente por nombre del NPC
+    return a.npc_nombre.localeCompare(b.npc_nombre);
+  });
 
   return (
     <div className="min-h-screen bg-neutral-900 text-white p-4 md:p-8 font-sans">
@@ -440,6 +476,18 @@ function PjDetailPage() {
                                 {/* Master Controls for Interactions */}
                                 {isMaster && (
                                     <div className="absolute top-4 right-4 flex gap-1 z-10">
+                                        {/* Delete button - only for level 0 and no interactions */}
+                                        {rel.nivel_actual === 0 && rel.contador_interacciones === 0 && (
+                                            <button
+                                                onClick={(e) => handleDeleteRelacion(e, rel.relacion_id, rel.npc_nombre)}
+                                                className="w-8 h-8 rounded-full bg-neutral-700/80 hover:bg-red-600 text-neutral-400 hover:text-white flex items-center justify-center border border-neutral-600 hover:border-red-500 transition-colors"
+                                                title="Eliminar relación (solo nivel 0 sin interacciones)"
+                                            >
+                                                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                                </svg>
+                                            </button>
+                                        )}
                                         <button
                                             onClick={(e) => handleInteraction(e, rel.relacion_id, 'NEGATIVA')}
                                             className="w-8 h-8 rounded-full bg-red-500/20 hover:bg-red-500/40 text-red-300 flex items-center justify-center border border-red-500/40 transition-colors"

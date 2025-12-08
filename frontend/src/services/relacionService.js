@@ -67,5 +67,17 @@ export const relacionService = {
   registerInteraction: async (relacionId, isPositive) => {
       const tipo = isPositive ? 'POSITIVA' : 'NEGATIVA';
       return relacionService.addInteraccion(relacionId, tipo, '');
+  },
+
+  delete: async (relacionId) => {
+    const response = await fetch(`${API_BASE}/${relacionId}`, {
+      method: 'DELETE',
+    });
+
+    if (!response.ok) {
+      throw new Error(`Error deleting Relacion: ${response.statusText}`);
+    }
+
+    return;
   }
 };

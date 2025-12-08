@@ -24,7 +24,7 @@
       "prerequisitos": []
     },
     {
-      "nombre": "Meteroróloga",
+      "nombre": "Meteoróloga",
       "descripcion_larga": "No cuentas para el límite del rol Meteorólogo y percibir el clima a otras 24h de margen.",
       "min_nivel_relacion": 2,
       "prerequisitos": [
@@ -52,7 +52,7 @@
       "descripcion_larga": "Puedes ejercer el rol de Metorólogo aunque estés ejerciendo otro rol. Siempre que nadie más lo esté ejerciendo.",
       "min_nivel_relacion": 3,
       "prerequisitos": [
-        "uksahkka_meterologa"
+        "uksahkka_meteorologa"
       ]
     },
     {

@@ -31,21 +31,6 @@ function PjListPage() {
     }
   };
 
-  const handleDelete = async (e, pjId) => {
-    e.stopPropagation(); // Prevent navigation
-    e.preventDefault();
-    
-    // We can use a custom modal here later, keeping confirmation for now or using the new one
-    if (window.confirm('¿Eliminar personaje?')) {
-        try {
-            await pjService.delete(pjId);
-            loadPjs(); // Reload list
-        } catch (error) {
-            console.error("Error al eliminar", error);
-        }
-    }
-  };
-
   const handlePjClick = (pjId) => {
       if (!isMaster) {
           localStorage.setItem('jade_regent_player_pj_id', pjId);
@@ -124,20 +109,7 @@ function PjListPage() {
               </div>
               
               <div className="p-6 relative">
-                 <div className="flex justify-between items-start mb-2">
-                    <h3 className="text-xl font-bold text-white mb-0">{pj.nombre_display}</h3>
-                    {isMaster && (
-                        <button 
-                            onClick={(e) => handleDelete(e, pj.pj_id)}
-                            className="text-red-400 hover:text-red-300 p-1 hover:bg-red-900/30 rounded z-10 relative"
-                            title="Eliminar"
-                        >
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                            </svg>
-                        </button>
-                    )}
-                 </div>
+                 <h3 className="text-xl font-bold text-white mb-2">{pj.nombre_display}</h3>
                  <p className="text-neutral-400 text-sm line-clamp-3">
                     {pj.nota_opcional || "Sin descripción."}
                  </p>
