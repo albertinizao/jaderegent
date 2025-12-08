@@ -1,7 +1,7 @@
 {
   "npc_id": "erivo",
   "nombre": "Erivo",
-  "descripcion_larga": "Erivo, un ser tocado por el Maelstrom cuya influencia caótica aumenta tu conexión con los planos, la magia proteana y las energías del caos.",
+  "descripcion_larga": "Erivo, una semiorca tocada por el Maelstrom cuya influencia caótica aumenta tu conexión con los planos, la magia proteana y las energías del caos.",
   "nivel_maximo": 3,
   "imagen_url": "/data/images/npc/erivo.png",
   "ventajas": [

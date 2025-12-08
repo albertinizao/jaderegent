@@ -247,6 +247,17 @@ function PjDetailPage() {
                     </Link>
                 )}
                 {isMaster && (
+                    <Link
+                        to="/relations-matrix"
+                        className="bg-pink-900/30 hover:bg-pink-900/50 text-pink-400 hover:text-pink-300 p-2 rounded-lg transition-colors border border-pink-500/30"
+                        title="Matriz de Relaciones"
+                    >
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h18M3 14h18m-9-4v8m-7-9l-2 2 2 2m0-8l-2 2 2 2m12-8l2 2-2 2m0-8l2 2-2 2" />
+                        </svg>
+                    </Link>
+                )}
+                {isMaster && (
                     <button
                         onClick={handleOpenAddRelacion}
                         className="bg-green-600 hover:bg-green-500 text-white font-bold px-4 py-2 rounded-lg transition-colors flex items-center gap-2 shadow-lg hover:shadow-green-500/20"

@@ -44,6 +44,20 @@ public class GetNpcDetailUseCase {
                                 .build();
 
                 // Convert Ventajas to DTOs
+                // First, build a map of ventaja_id -> List of PJ names that have selected it
+                List<com.opipo.jaderegent.domain.model.Relacion> allRelaciones = relacionRepository
+                                .findByNpcNpcId(npcId);
+                java.util.Map<String, List<String>> ventajaToPjsMap = new java.util.HashMap<>();
+
+                for (com.opipo.jaderegent.domain.model.Relacion rel : allRelaciones) {
+                        for (com.opipo.jaderegent.domain.model.SeleccionVentaja sel : rel.getSelecciones()) {
+                                String ventajaId = sel.getVentaja().getVentajaId();
+                                String pjNombre = rel.getPj().getNombreDisplay();
+                                ventajaToPjsMap.computeIfAbsent(ventajaId, k -> new java.util.ArrayList<>())
+                                                .add(pjNombre);
+                        }
+                }
+
                 List<VentajaDTO> ventajaDTOs = ventajas.stream()
                                 .map(v -> VentajaDTO.builder()
                                                 .ventajaId(v.getVentajaId())
@@ -52,6 +66,8 @@ public class GetNpcDetailUseCase {
                                                 .minNivelRelacion(v.getMinNivelRelacion())
                                                 .prerequisitos(v.getPrerequisitos())
                                                 .prerequisitosOperator(v.getPrerequisitosOperator())
+                                                .pjsConVentaja(ventajaToPjsMap.getOrDefault(v.getVentajaId(),
+                                                                java.util.Collections.emptyList()))
                                                 .build())
                                 .collect(Collectors.toList());
 

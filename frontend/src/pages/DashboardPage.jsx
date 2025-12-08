@@ -125,6 +125,12 @@ function DashboardPage() {
                   <p className="text-neutral-400 text-sm">Carga nuevos personajes desde archivos JSON.</p>
                </Link>
            )}
+           {isMaster && (
+               <Link to="/relations-matrix" className="p-6 rounded-2xl bg-neutral-800/50 hover:bg-neutral-800/80 transition-colors border-2 border-pink-500/20 hover:border-pink-500/50 backdrop-blur-sm group block">
+                  <h3 className="text-lg font-semibold text-pink-300 mb-2 group-hover:translate-x-1 transition-transform">Tabla de Relaciones</h3>
+                  <p className="text-neutral-400 text-sm">Vista matricial de todas las relaciones PJ-NPC.</p>
+               </Link>
+           )}
         </div>
       </main>
 

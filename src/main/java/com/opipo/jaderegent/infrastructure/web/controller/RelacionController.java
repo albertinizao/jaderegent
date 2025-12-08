@@ -2,14 +2,17 @@ package com.opipo.jaderegent.infrastructure.web.controller;
 
 import com.opipo.jaderegent.application.usecase.CreateRelacionUseCase;
 import com.opipo.jaderegent.application.usecase.RegisterInteraccionUseCase;
+import com.opipo.jaderegent.application.usecase.GetRelationsMatrixUseCase;
 import com.opipo.jaderegent.domain.model.Interaccion;
 import com.opipo.jaderegent.domain.model.Relacion;
 import com.opipo.jaderegent.infrastructure.web.dto.CreateInteraccionRequest;
 import com.opipo.jaderegent.infrastructure.web.dto.RelacionDTO;
+import com.opipo.jaderegent.infrastructure.web.dto.RelationsMatrixDTO;
 import com.opipo.jaderegent.infrastructure.web.dto.SeleccionVentajaDTO;
 import java.util.UUID;
 import java.util.stream.Collectors;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -24,17 +27,25 @@ public class RelacionController {
     private final com.opipo.jaderegent.application.usecase.SelectVentajaUseCase selectVentajaUseCase;
     private final com.opipo.jaderegent.application.usecase.UpdateLevelUseCase updateLevelUseCase;
     private final com.opipo.jaderegent.application.usecase.DeleteRelacionUseCase deleteRelacionUseCase;
+    private final GetRelationsMatrixUseCase getRelationsMatrixUseCase;
 
     public RelacionController(RegisterInteraccionUseCase registerInteraccionUseCase,
             CreateRelacionUseCase createRelacionUseCase,
             com.opipo.jaderegent.application.usecase.SelectVentajaUseCase selectVentajaUseCase,
             com.opipo.jaderegent.application.usecase.UpdateLevelUseCase updateLevelUseCase,
-            com.opipo.jaderegent.application.usecase.DeleteRelacionUseCase deleteRelacionUseCase) {
+            com.opipo.jaderegent.application.usecase.DeleteRelacionUseCase deleteRelacionUseCase,
+            GetRelationsMatrixUseCase getRelationsMatrixUseCase) {
         this.registerInteraccionUseCase = registerInteraccionUseCase;
         this.createRelacionUseCase = createRelacionUseCase;
         this.selectVentajaUseCase = selectVentajaUseCase;
         this.updateLevelUseCase = updateLevelUseCase;
         this.deleteRelacionUseCase = deleteRelacionUseCase;
+        this.getRelationsMatrixUseCase = getRelationsMatrixUseCase;
+    }
+
+    @GetMapping("/matrix")
+    public ResponseEntity<RelationsMatrixDTO> getRelationsMatrix() {
+        return ResponseEntity.ok(getRelationsMatrixUseCase.getMatrix());
     }
 
     @PostMapping

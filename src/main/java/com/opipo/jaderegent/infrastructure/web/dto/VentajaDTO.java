@@ -22,17 +22,21 @@ public class VentajaDTO {
     @JsonProperty("prerequisitos_operator")
     private String prerequisitosOperator;
 
+    @JsonProperty("pjs_con_ventaja")
+    private List<String> pjsConVentaja;
+
     public VentajaDTO() {
     }
 
     public VentajaDTO(String ventajaId, String nombre, String descripcionLarga, Integer minNivelRelacion,
-            List<String> prerequisitos, String prerequisitosOperator) {
+            List<String> prerequisitos, String prerequisitosOperator, List<String> pjsConVentaja) {
         this.ventajaId = ventajaId;
         this.nombre = nombre;
         this.descripcionLarga = descripcionLarga;
         this.minNivelRelacion = minNivelRelacion;
         this.prerequisitos = prerequisitos;
         this.prerequisitosOperator = prerequisitosOperator;
+        this.pjsConVentaja = pjsConVentaja;
     }
 
     public static VentajaDTOBuilder builder() {
@@ -87,6 +91,14 @@ public class VentajaDTO {
         this.prerequisitosOperator = prerequisitosOperator;
     }
 
+    public List<String> getPjsConVentaja() {
+        return pjsConVentaja;
+    }
+
+    public void setPjsConVentaja(List<String> pjsConVentaja) {
+        this.pjsConVentaja = pjsConVentaja;
+    }
+
     public static class VentajaDTOBuilder {
         private String ventajaId;
         private String nombre;
@@ -94,6 +106,7 @@ public class VentajaDTO {
         private Integer minNivelRelacion;
         private List<String> prerequisitos;
         private String prerequisitosOperator;
+        private List<String> pjsConVentaja;
 
         VentajaDTOBuilder() {
         }
@@ -128,9 +141,14 @@ public class VentajaDTO {
             return this;
         }
 
+        public VentajaDTOBuilder pjsConVentaja(List<String> pjsConVentaja) {
+            this.pjsConVentaja = pjsConVentaja;
+            return this;
+        }
+
         public VentajaDTO build() {
             return new VentajaDTO(ventajaId, nombre, descripcionLarga, minNivelRelacion, prerequisitos,
-                    prerequisitosOperator);
+                    prerequisitosOperator, pjsConVentaja);
         }
     }
 }

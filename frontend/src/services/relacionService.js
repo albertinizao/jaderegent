@@ -79,5 +79,17 @@ export const relacionService = {
     }
 
     return;
+  },
+
+  getMatrix: async () => {
+    const response = await fetch(`${API_BASE}/matrix`, {
+      method: 'GET',
+    });
+
+    if (!response.ok) {
+      throw new Error(`Error fetching relations matrix: ${response.statusText}`);
+    }
+
+    return response.json();
   }
 };

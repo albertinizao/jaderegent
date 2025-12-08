@@ -20,6 +20,7 @@ import NpcListPage from './pages/NpcListPage';
 import NpcDetailPage from './pages/NpcDetailPage';
 import NpcAdvantagesTreePage from './pages/NpcAdvantagesTreePage';
 import PjDetailPage from './pages/PjDetailPage';
+import RelationsMatrixPage from './pages/RelationsMatrixPage';
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
             <Route path="/npcs/:id" element={<NpcDetailPage />} />
             <Route path="/npcs/:id/advantages-tree" element={<NpcAdvantagesTreePage />} />
             <Route path="/import-npc" element={<ImportNpcPage />} />
+            <Route path="/relations-matrix" element={<RelationsMatrixPage />} />
           </Routes>
         </div>
       </Router>

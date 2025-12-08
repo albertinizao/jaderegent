@@ -245,6 +245,15 @@ function NpcDetailPage() {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
                     </svg>
                 </Link>
+                <Link
+                    to="/relations-matrix"
+                    className="bg-pink-900/30 hover:bg-pink-900/50 text-pink-400 hover:text-pink-300 p-2 rounded-lg transition-colors border border-pink-500/30"
+                    title="Matriz de Relaciones"
+                >
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h18M3 14h18m-9-4v8m-7-9l-2 2 2 2m0-8l-2 2 2 2m12-8l2 2-2 2m0-8l2 2-2 2" />
+                    </svg>
+                </Link>
                 <button 
                   onClick={openEditModal}
                   className="bg-blue-500/20 hover:bg-blue-500/40 text-blue-300 border border-blue-500/50 px-4 py-2 rounded-lg transition-colors flex items-center gap-2"
@@ -454,6 +463,29 @@ function NpcDetailPage() {
                             <p className="text-neutral-400 text-sm mb-4">
                                 {v.descripcion_larga}
                             </p>
+                            
+                            {/* Mostrar PJs que tienen esta ventaja (solo para máster) */}
+                            {isMaster && v.pjs_con_ventaja && v.pjs_con_ventaja.length > 0 && (
+                                <div className="mb-4 pb-3 border-b border-white/5">
+                                    <p className="text-xs text-emerald-400 font-semibold mb-2 uppercase tracking-wide flex items-center gap-1">
+                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3" viewBox="0 0 20 20" fill="currentColor">
+                                            <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z" />
+                                        </svg>
+                                        PJs con esta ventaja ({v.pjs_con_ventaja.length})
+                                    </p>
+                                    <div className="flex flex-wrap gap-2">
+                                        {v.pjs_con_ventaja.map(pjNombre => (
+                                            <span 
+                                                key={pjNombre}
+                                                className="text-xs px-2 py-1 rounded bg-emerald-900/30 border border-emerald-500/40 text-emerald-200"
+                                            >
+                                                {pjNombre}
+                                            </span>
+                                        ))}
+                                    </div>
+                                </div>
+                            )}
+                            
                             {v.prerequisitos && v.prerequisitos.length > 0 && (
                                 <div className="mt-4 pt-3 border-t border-white/5">
                                     <p className="text-xs text-neutral-500 mb-2 uppercase tracking-wide">
