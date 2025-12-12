@@ -57,5 +57,13 @@ export const pjService = {
     if (!response.ok) {
       throw new Error(`Error deleting PJ: ${response.statusText}`);
     }
+  },
+
+  getPrintableAdvantages: async (id) => {
+    const response = await fetch(`${API_BASE}/pj/${id}/printable-advantages`);
+    if (!response.ok) {
+      throw new Error(`Error fetching printable advantages: ${response.statusText}`);
+    }
+    return response.json();
   }
 };

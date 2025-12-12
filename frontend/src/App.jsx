@@ -21,6 +21,7 @@ import NpcDetailPage from './pages/NpcDetailPage';
 import NpcAdvantagesTreePage from './pages/NpcAdvantagesTreePage';
 import PjDetailPage from './pages/PjDetailPage';
 import RelationsMatrixPage from './pages/RelationsMatrixPage';
+import PrintAdvantagesPage from './pages/PrintAdvantagesPage';
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
             <Route path="/create-pj" element={<CreatePjPage />} />
             <Route path="/pjs" element={<PjListPage />} />
             <Route path="/pjs/:id" element={<PjDetailPage />} />
+            <Route path="/pjs/:id/print" element={<PrintAdvantagesPage />} />
             <Route path="/npcs" element={<NpcListPage />} />
             <Route path="/npcs/:id" element={<NpcDetailPage />} />
             <Route path="/npcs/:id/advantages-tree" element={<NpcAdvantagesTreePage />} />

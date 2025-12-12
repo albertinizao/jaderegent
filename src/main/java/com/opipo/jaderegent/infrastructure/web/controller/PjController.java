@@ -5,9 +5,11 @@ import com.opipo.jaderegent.application.usecase.GetPjsUseCase;
 import com.opipo.jaderegent.application.usecase.GetPjDetailUseCase;
 import com.opipo.jaderegent.application.usecase.DeletePjUseCase;
 import com.opipo.jaderegent.application.usecase.UpdatePjUseCase;
+import com.opipo.jaderegent.application.usecase.GetPjPrintableAdvantagesUseCase;
 import com.opipo.jaderegent.domain.model.PJ;
 import com.opipo.jaderegent.infrastructure.web.dto.PjDTO;
 import com.opipo.jaderegent.infrastructure.web.dto.PjDetailDTO;
+import com.opipo.jaderegent.infrastructure.web.dto.PjPrintableAdvantagesDTO;
 import java.net.URI;
 import java.util.List;
 import java.util.UUID;
@@ -31,15 +33,18 @@ public class PjController {
         private final DeletePjUseCase deletePjUseCase;
         private final GetPjDetailUseCase getPjDetailUseCase;
         private final UpdatePjUseCase updatePjUseCase;
+        private final GetPjPrintableAdvantagesUseCase getPjPrintableAdvantagesUseCase;
 
         public PjController(CreatePjUseCase createPjUseCase, GetPjsUseCase getPjsUseCase,
                         DeletePjUseCase deletePjUseCase, GetPjDetailUseCase getPjDetailUseCase,
-                        UpdatePjUseCase updatePjUseCase) {
+                        UpdatePjUseCase updatePjUseCase,
+                        GetPjPrintableAdvantagesUseCase getPjPrintableAdvantagesUseCase) {
                 this.createPjUseCase = createPjUseCase;
                 this.getPjsUseCase = getPjsUseCase;
                 this.deletePjUseCase = deletePjUseCase;
                 this.getPjDetailUseCase = getPjDetailUseCase;
                 this.updatePjUseCase = updatePjUseCase;
+                this.getPjPrintableAdvantagesUseCase = getPjPrintableAdvantagesUseCase;
         }
 
         @GetMapping
@@ -97,5 +102,10 @@ public class PjController {
                                                 .notaOpcional(created.getNotaOpcional())
                                                 .imagenUrl(created.getImagenUrl())
                                                 .build());
+        }
+
+        @GetMapping("/{id}/printable-advantages")
+        public ResponseEntity<PjPrintableAdvantagesDTO> getPjPrintableAdvantages(@PathVariable UUID id) {
+                return ResponseEntity.ok(getPjPrintableAdvantagesUseCase.execute(id));
         }
 }

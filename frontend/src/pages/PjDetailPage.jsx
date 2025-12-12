@@ -268,6 +268,16 @@ function PjDetailPage() {
                         Añadir Relación
                     </button>
                 )}
+                <Link
+                    to={`/pjs/${id}/print`}
+                    className="bg-neutral-800 hover:bg-neutral-700 text-neutral-300 border border-neutral-600 px-4 py-2 rounded-lg transition-colors flex items-center gap-2"
+                    target="_blank"
+                >
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
+                    </svg>
+                    Imprimir Ventajas
+                </Link>
                 <button 
                     onClick={handleEditClick}
                     className="bg-blue-500/20 hover:bg-blue-500/40 text-blue-300 border border-blue-500/50 px-4 py-2 rounded-lg transition-colors flex items-center gap-2"
