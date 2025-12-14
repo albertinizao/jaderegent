@@ -59,11 +59,8 @@ const PrintAdvantagesPage = () => {
 
             {/* Printable Content */}
             <div className="max-w-4xl mx-auto print:w-full">
-                <header className="mb-8 border-b-2 border-black pb-4 flex items-end justify-between">
-                    <div>
-                        <h1 className="text-4xl font-bold mb-2">{data.pj_nombre}</h1>
-                        <p className="text-lg text-neutral-600 italic">Hoja de Ventajas Obtenidas - Jade Regent</p>
-                    </div>
+                <header className="mb-4 flex items-end justify-between">
+                    <h1 className="text-3xl font-bold mb-0">{data.pj_nombre}</h1>
                     {/* Optional: Add image if needed, but keeping it text-heavy for print is safer */}
                 </header>
 
@@ -72,21 +69,21 @@ const PrintAdvantagesPage = () => {
                         <p className="italic text-neutral-500 text-xl">Este personaje aún no ha obtenido ventajas de sus relaciones.</p>
                     </div>
                 ) : (
-                    <div className="space-y-8">
+                    <div className="space-y-4">
                         {data.npcs.map((npc, idx) => (
                             <div key={idx} className="break-inside-avoid">
-                                <div className="flex items-center gap-3 border-b border-neutral-300 mb-4 pb-2">
-                                    <h3 className="text-2xl font-bold">
+                                <div className="flex items-center gap-2 mb-1">
+                                    <h3 className="text-xl font-bold">
                                         {npc.npc_nombre}
                                     </h3>
                                     <span className="text-sm bg-neutral-200 px-2 py-0.5 rounded-full print:border print:border-neutral-400">NPC</span>
                                 </div>
                                 
-                                <div className="grid grid-cols-1 gap-6 ml-4">
+                                <div className="grid grid-cols-1 gap-1 ml-4">
                                     {npc.ventajas.map((ventaja, vIdx) => (
-                                        <div key={vIdx} className="mb-2 relative pl-4 border-l-2 border-neutral-300">
-                                            <div className="font-bold text-lg mb-1">{ventaja.nombre}</div>
-                                            <div className="text-neutral-800 text-sm whitespace-pre-wrap leading-relaxed text-justify">
+                                        <div key={vIdx} className="relative pl-3 border-l-2 border-neutral-300">
+                                            <div className="font-bold text-base leading-tight">{ventaja.nombre}</div>
+                                            <div className="text-neutral-800 text-sm whitespace-pre-wrap leading-tight text-justify">
                                                 {ventaja.descripcion}
                                             </div>
                                         </div>
