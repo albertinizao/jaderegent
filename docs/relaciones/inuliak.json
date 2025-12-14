@@ -1,0 +1,351 @@
+{
+  "npc_id": "inuliak",
+  "nombre": "Inuliak",
+  "descripcion_larga": "Inuliak es un guardia silencioso y reservado de la caravana, de modales austeros y mirada severa, experto en combate defensivo y en mantener la calma cuando la situación se vuelve peligrosa.",
+  "nivel_maximo": 5,
+  "imagen_url": "/data/images/npc/inuliak.jpg",
+  "ventajas": [
+    {
+      "nombre": "Hoja y magia",
+      "descripcion_larga": "Obtienes la dote «Arcane Strike» usando tu nivel de relación con Inuliak en vez de tu nivel de lanzador.",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "Palabras ocultas",
+      "descripcion_larga": "Engañar pasa a ser habilidad clásea. Si ya lo fuese, obtienes un +1 a disfrazarse",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "Rostro oculto",
+      "descripcion_larga": "Disfrazarse pasa a ser habilidad clásea. Si ya lo fuese, obtienes un +1 a disfrazarse",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "Aguante espiritual",
+      "descripcion_larga": "Obtienes la dote «Aguante»",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "Guadaña de Oni",
+      "descripcion_larga": "Obtienes un +5 para confirmar críticos contra criaturas del subtipo Oni.",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "Conocedor Oni",
+      "descripcion_larga": "Obtienes un +2 a cualquier prueba de Saber para reconocer un Oni o sus capacidades.",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "Resistencia a energía espiritual",
+      "descripcion_larga": "Obtienes +1 a Voluntad contra hechizos con alineamiento.",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "Enseñanza magus 1",
+      "descripcion_larga": "Escoge un hechizo de nivel 1 de la lista de Magus. Aprendes este hechizo como hechizo de nivel 1 aunque no estuviese en tu lista.",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "Maestría magus 1",
+      "descripcion_larga": "Escoge un hechizo que conozcas de la lista de nivel 1 de magus. La primera vez al día que lo lances, no se consume.",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "Presencia de Tobun Rei",
+      "descripcion_larga": "+2 a Percepción y Averiguar Intenciones para cualquier asunto relacionado con niños.",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "Iniciación del estilo Hira",
+      "descripcion_larga": "Obtienes la facultad «Arcane Pool» del magus si no la tuvieses, pero con 0 usos al día. Obtienes un punto adicional para tu «Arcane Pool»",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "inuliak_hoja_y_magia"
+      ]
+    },
+    {
+      "nombre": "Resistencia espiritual",
+      "descripcion_larga": "Aumenta los puntos de vida negativo que puedes aguantar antes de morir en una cantidad igual al doble de tu nivel de relación con Inuliak.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "inuliak_aguante_espiritual"
+      ]
+    },
+    {
+      "nombre": "Aguante espiritual mejorado",
+      "descripcion_larga": "Puedes dormir con armadura pesada sin quedar fatigado",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "inuliak_aguante_espiritual"
+      ]
+    },
+    {
+      "nombre": "Resistencia a magia espiritual",
+      "descripcion_larga": "«Resistencia a energía espiritual» también se aplica a cualquier hechizo lanzado por una criatura del subtipo «Ajeno»",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "inuliak_resistencia_a_energia_espiritual"
+      ]
+    },
+    {
+      "nombre": "Enseñanza magus 2",
+      "descripcion_larga": "Escoge un hechizo de nivel 2 de la lista de Magus. Aprendes este hechizo como hechizo de nivel 2 aunque no estuviese en tu lista.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "inuliak_ensenanza_magus_1"
+      ]
+    },
+    {
+      "nombre": "Maestría magus 2",
+      "descripcion_larga": "Escoge un hechizo que conozcas de la lista de nivel 2 de magus. La primera vez al día que lo lances, no se consume.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "inuliak_maestria_magus_1"
+      ]
+    },
+    {
+      "nombre": "Recuerdos de Tobun Rei",
+      "descripcion_larga": "Mientras estés en presencia de Inuliak, recibes un +2 a cualquier prueba de Saber para recordar algo.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "inuliak_presencia_de_tobun_rei"
+      ]
+    },
+    {
+      "nombre": "Iniciado del estilo Hira",
+      "descripcion_larga": "«Iniciación del estilo Hira» ahora otorga una cantidad de puntos para tu «Arcane Pool» igual a tu nivel de relación con Inuliak.",
+      "min_nivel_relacion": 3,
+      "prerequisitos": [
+        "inuliak_iniciacion_del_estilo_hira"
+      ]
+    },
+    {
+      "nombre": "Los dos rostros",
+      "descripcion_larga": "Elige una forma humanoide.Puedes lanzar una vez al día «Alter Self» para adoptar esa forma, usando tus DG como nivel de lanzador.",
+      "min_nivel_relacion": 3,
+      "prerequisitos": [
+        "inuliak_palabras_ocultas",
+        "inuliak_rostro_oculto"
+      ]
+    },
+    {
+      "nombre": "Resilencia espiritual",
+      "descripcion_larga": "Obtienes la dote «Duro de pelar»",
+      "min_nivel_relacion": 3,
+      "prerequisitos": [
+        "inuliak_resistencia_espiritual"
+      ]
+    },
+    {
+      "nombre": "Cazador de Oni",
+      "descripcion_larga": "Obtienes la facultad «Enemigo predilecto (Oni)» si no la tuvieses. Pero con un bono de +1. Si ya la tuvieses, aumenta en 1 el bono. El beneficio de «Enemigo predilecto (Oni)» también aplica para superar la SR de una criatura del subtipo Oni.",
+      "min_nivel_relacion": 3,
+      "prerequisitos": [
+        "inuliak_guadana_de_oni",
+        "inuliak_conocedor_oni"
+      ]
+    },
+    {
+      "nombre": "Protección espiritual",
+      "descripcion_larga": "El bonificador de «Resistencia a energía espiritual» pasa a ser igual a tu nivel de relación con Inuliak.",
+      "min_nivel_relacion": 3,
+      "prerequisitos": [
+        "inuliak_resistencia_a_magia_espiritual"
+      ]
+    },
+    {
+      "nombre": "Enseñanza magus 3",
+      "descripcion_larga": "Escoge un hechizo de nivel 3 de la lista de Magus. Aprendes este hechizo como hechizo de nivel 3 aunque no estuviese en tu lista.",
+      "min_nivel_relacion": 3,
+      "prerequisitos": [
+        "inuliak_ensenanza_magus_2"
+      ]
+    },
+    {
+      "nombre": "Maestría magus 3",
+      "descripcion_larga": "Escoge un hechizo que conozcas de la lista de nivel 3 de magus. La primera vez al día que lo lances, no se consume.",
+      "min_nivel_relacion": 3,
+      "prerequisitos": [
+        "inuliak_maestria_magus_2"
+      ]
+    },
+    {
+      "nombre": "Protección de Tobun Rei",
+      "descripcion_larga": "Recibes 1 de CA por esquiva si estás desprevenido. Este bono se aplica aún estando desprevenido.",
+      "min_nivel_relacion": 3,
+      "prerequisitos": [
+        "inuliak_recuerdos_de_tobun_rei"
+      ]
+    },
+    {
+      "nombre": "Cazador del estilo Hira",
+      "descripcion_larga": "Obtienes la dote «Dispelling Critical».",
+      "min_nivel_relacion": 4,
+      "prerequisitos": [
+        "inuliak_iniciado_del_estilo_hira"
+      ]
+    },
+    {
+      "nombre": "Estilo Hira",
+      "descripcion_larga": "Obtienes la dote «Extra arcana» aunque no cumplas los requisitos. Sí debes cumplir los requisitos del arcana seleccionado.",
+      "min_nivel_relacion": 4,
+      "prerequisitos": [
+        "inuliak_iniciado_del_estilo_hira"
+      ]
+    },
+    {
+      "nombre": "Los tres rostros",
+      "descripcion_larga": "Elige una nueva forma, esta vez de tamaño Grande. Añade esta forma a «Los dos rostros» y funciona como el hechizo «Forma de gigante». Puedes usar «Los dos rostros» un número de veces al día igual al doble de tu nivel de relación con Inunliak.",
+      "min_nivel_relacion": 4,
+      "prerequisitos": [
+        "inuliak_los_dos_rostros"
+      ]
+    },
+    {
+      "nombre": "Sanación espiritual",
+      "descripcion_larga": "Una vez al día, si quedas por debajo de 0 de vida, te estabilizas automáticamente y obtienes regeneración 2 (fuego o ácido) durante un número de rondas igual al doble de tu nivel de relación con Inuliak.",
+      "min_nivel_relacion": 4,
+      "prerequisitos": [
+        "inuliak_resilencia_espiritual"
+      ]
+    },
+    {
+      "nombre": "Curador rápido",
+      "descripcion_larga": "Obtienes la dote «Fast Healer» aunque no cumplas sus requisitos.",
+      "min_nivel_relacion": 4,
+      "prerequisitos": [
+        "inuliak_resilencia_espiritual"
+      ]
+    },
+    {
+      "nombre": "Asesino de Oni",
+      "descripcion_larga": "Aumenta a 2 el bono de «Cazador de Oni»",
+      "min_nivel_relacion": 4,
+      "prerequisitos": [
+        "inuliak_cazador_de_oni"
+      ]
+    },
+    {
+      "nombre": "Resistencia a lo espiritual",
+      "descripcion_larga": "Como acción estándar puedes, una vez al día, obtener SR igual a 10 + 1/2 DG durante 1 minuto.",
+      "min_nivel_relacion": 4,
+      "prerequisitos": [
+        "inuliak_proteccion_espiritual"
+      ]
+    },
+    {
+      "nombre": "Enseñanza magus 4",
+      "descripcion_larga": "Escoge un hechizo de nivel 4 de la lista de Magus. Aprendes este hechizo como hechizo de nivel 4 aunque no estuviese en tu lista.",
+      "min_nivel_relacion": 4,
+      "prerequisitos": [
+        "inuliak_ensenanza_magus_3"
+      ]
+    },
+    {
+      "nombre": "Maestría magus 4",
+      "descripcion_larga": "Escoge un hechizo que conozcas de la lista de nivel 4 de magus. La primera vez al día que lo lances, no se consume.",
+      "min_nivel_relacion": 4,
+      "prerequisitos": [
+        "inuliak_maestria_magus_3"
+      ]
+    },
+    {
+      "nombre": "Influencia de Tobun Rei",
+      "descripcion_larga": "Desplazas tu alineamiento un paso hacia Caótico Bueno. mientras tengas ese alineamiento, recibes +1 Sagrado a Voluntad.",
+      "min_nivel_relacion": 4,
+      "prerequisitos": [
+        "inuliak_proteccion_de_tobun_rei"
+      ]
+    },
+    {
+      "nombre": "Maestría cazadora del estilo Hira",
+      "descripcion_larga": "Cada día tienes preparado automáticamente 5 veces el hechizo Disipar, pero solo puede usarse con «Cazador del estilo Hira».",
+      "min_nivel_relacion": 5,
+      "prerequisitos": [
+        "inuliak_cazador_del_estilo_hira"
+      ]
+    },
+    {
+      "nombre": "Maestría del Estilo Hira",
+      "descripcion_larga": "Obtienes la dote «Extra arcana» aunque no cumplas los requisitos. Sí debes cumplir los requisitos del arcana seleccionado.",
+      "min_nivel_relacion": 5,
+      "prerequisitos": [
+        "inuliak_estilo_hira"
+      ]
+    },
+    {
+      "nombre": "Un rostro",
+      "descripcion_larga": "Puedes usar «Los dos rostros» a voluntad y sin duración.",
+      "min_nivel_relacion": 5,
+      "prerequisitos": [
+        "inuliak_los_tres_rostros"
+      ]
+    },
+    {
+      "nombre": "Regeneración espiritual",
+      "descripcion_larga": "Una vez al día puedes, como acción estándar, obtener curación rápida 5 (fuego o ácido) durante 1 minuto.",
+      "min_nivel_relacion": 5,
+      "prerequisitos": [
+        "inuliak_sanacion_espiritual"
+      ]
+    },
+    {
+      "nombre": "Curador rápido mejorado",
+      "descripcion_larga": "Duplica los efectos de la dote «Fast Healer».",
+      "min_nivel_relacion": 5,
+      "prerequisitos": [
+        "inuliak_curador_rapido"
+      ]
+    },
+    {
+      "nombre": "Azote de Oni",
+      "descripcion_larga": "Una vez al día, como acción de movimiento, puedes hacer que todos tus ataques tengan la facultad «Azote de Oni» durante un minuto.",
+      "min_nivel_relacion": 5,
+      "prerequisitos": [
+        "inuliak_asesino_de_oni"
+      ]
+    },
+    {
+      "nombre": "Espíritu resistente",
+      "descripcion_larga": "Resistencia espiritual está activo constantemente.",
+      "min_nivel_relacion": 5,
+      "prerequisitos": [
+        "inuliak_resistencia_a_lo_espiritual"
+      ]
+    },
+    {
+      "nombre": "Enseñanza magus 5",
+      "descripcion_larga": "Escoge un hechizo de nivel 5 de la lista de Magus. Aprendes este hechizo como hechizo de nivel 5 aunque no estuviese en tu lista.",
+      "min_nivel_relacion": 5,
+      "prerequisitos": [
+        "inuliak_ensenanza_magus_4"
+      ]
+    },
+    {
+      "nombre": "Maestría magus 5",
+      "descripcion_larga": "Escoge un hechizo que conozcas de la lista de nivel 5 de magus. La primera vez al día que lo lances, no se consume.",
+      "min_nivel_relacion": 5,
+      "prerequisitos": [
+        "inuliak_maestria_magus_4"
+      ]
+    },
+    {
+      "nombre": "Amistad de Tobun Rei",
+      "descripcion_larga": "Desplazas tu alineamiento un paso hacia Caótico Bueno. mientras tengas ese alineamiento, recibes +1 Sagrado adicional a todos los TS.",
+      "min_nivel_relacion": 5,
+      "prerequisitos": [
+        "inuliak_influencia_de_tobun_rei"
+      ]
+    }
+  ]
+}
