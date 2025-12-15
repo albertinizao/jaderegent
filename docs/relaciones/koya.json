@@ -358,7 +358,7 @@
       ]
     },
     {
-      "nombre": "La Gran Soñadora",
+      "nombre": "La Gran Soñadora Deífica",
       "descripcion_larga": "Obtienes el segundo poder del dominio escogido en «La Canción de las Esferas». Debes cumplir sus requisitos para tener acceso a él.",
       "min_nivel_relacion": 4,
       "prerequisitos": [
@@ -452,7 +452,7 @@
       ]
     },
     {
-      "nombre": "Purificación nocturna",
+      "nombre": "Purificación nocturna mayor",
       "descripcion_larga": "Superas automáticamente las pruebas de nivel de lanzador de «Bendición nocturna» y «Purificación nocturna».",
       "min_nivel_relacion": 5,
       "prerequisitos": [
