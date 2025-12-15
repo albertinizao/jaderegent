@@ -2,7 +2,9 @@ import React from 'react';
 import { useMode } from '../context/ModeContext';
 
 const MasterToggle = () => {
-  const { isMaster, toggleMode } = useMode();
+  const { isMaster, toggleMode, hasMasterPrivileges } = useMode();
+
+  if (!hasMasterPrivileges) return null;
 
   return (
     <button

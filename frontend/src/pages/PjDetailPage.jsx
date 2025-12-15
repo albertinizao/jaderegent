@@ -168,9 +168,16 @@ function PjDetailPage() {
       const data = await pjService.getById(id);
       setPjData(data);
       setStatus('success');
+      // Save for auto-login
+      if (!isMaster) {
+          localStorage.setItem('jade_regent_player_pj_id', id);
+      }
     } catch (error) {
       console.error(error);
       setStatus('error');
+      if (!isMaster) {
+          localStorage.removeItem('jade_regent_player_pj_id');
+      }
     }
   };
 

@@ -12,12 +12,21 @@ export const ModeProvider = ({ children }) => {
     localStorage.setItem('isMaster', isMaster);
   }, [isMaster]);
 
+  const [hasMasterPrivileges, setHasMasterPrivileges] = useState(() => {
+    const savedPrivileges = localStorage.getItem('hasMasterPrivileges');
+    return savedPrivileges === 'true';
+  });
+
+  useEffect(() => {
+    localStorage.setItem('hasMasterPrivileges', hasMasterPrivileges);
+  }, [hasMasterPrivileges]);
+
   const toggleMode = () => {
     setIsMaster(prev => !prev);
   };
 
   return (
-    <ModeContext.Provider value={{ isMaster, toggleMode, setIsMaster }}>
+    <ModeContext.Provider value={{ isMaster, toggleMode, setIsMaster, hasMasterPrivileges, setHasMasterPrivileges }}>
       {children}
     </ModeContext.Provider>
   );

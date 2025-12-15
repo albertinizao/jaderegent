@@ -91,15 +91,20 @@ function NpcDetailPage() {
           message: `¿Quieres seleccionar la ventaja "${ventaja.nombre}"?`,
           onConfirm: async () => {
               try {
-                  await import('../services/relacionService').then(m => m.relacionService.selectVentaja(relacionContext.relacionId, ventaja.ventaja_id));
+                  const updatedRelacion = await import('../services/relacionService').then(m => m.relacionService.selectVentaja(relacionContext.relacionId, ventaja.ventaja_id));
                   
-                  // Update local state to reflect selection
+                  // Update local state to reflect selection from backend
                   setRelacionContext(prev => ({
                       ...prev,
-                      pendienteEleccion: false,
-                      ventajasObtenidasIds: [...prev.ventajasObtenidasIds, ventaja.ventaja_id]
+                      pendienteEleccion: updatedRelacion.pendiente_eleccion,
+                      ventajasObtenidasIds: updatedRelacion.ventajas_obtenidas_ids
                   }));
-                  showNotification("Éxito", "Ventaja seleccionada correctamente", 'success');
+
+                  if (updatedRelacion.pendiente_eleccion) {
+                      showNotification("Éxito", "Ventaja seleccionada. Tienes más opciones pendientes.", 'info');
+                  } else {
+                      showNotification("Éxito", "Todas las ventajas seleccionadas", 'success');
+                  }
               } catch (error) {
                   console.error("Error al seleccionar ventaja", error);
                   showNotification("Error", "Error al seleccionar la ventaja", 'error');

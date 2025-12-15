@@ -4,18 +4,35 @@ import { useMode } from '../context/ModeContext';
 
 function RoleSelectionPage() {
   const navigate = useNavigate();
-  const { setIsMaster } = useMode();
+  const { setIsMaster, setHasMasterPrivileges } = useMode();
+
+  React.useEffect(() => {
+    const lastPjId = localStorage.getItem('jade_regent_player_pj_id');
+    if (lastPjId) {
+        setIsMaster(false);
+        setHasMasterPrivileges(false);
+        navigate(`/pjs/${lastPjId}`);
+    }
+  }, [navigate, setIsMaster, setHasMasterPrivileges]);
 
   const handleSelectMaster = () => {
     localStorage.removeItem('jade_regent_player_pj_id');
     setIsMaster(true);
+    setHasMasterPrivileges(true);
     navigate('/dashboard');
   };
 
   const handleSelectPlayer = () => {
-    localStorage.removeItem('jade_regent_player_pj_id');
-    setIsMaster(false);
-    navigate('/pjs');
+    const lastPjId = localStorage.getItem('jade_regent_player_pj_id');
+    if (lastPjId) {
+      setIsMaster(false);
+      setHasMasterPrivileges(false);
+      navigate(`/pjs/${lastPjId}`);
+    } else {
+      setIsMaster(false);
+      setHasMasterPrivileges(false);
+      navigate('/pjs');
+    }
   };
 
   return (
