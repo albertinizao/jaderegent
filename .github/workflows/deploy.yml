@@ -1,0 +1,33 @@
+name: Deploy (Scaffold)
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: "Target environment"
+        required: true
+        type: choice
+        options:
+          - staging
+          - production
+
+permissions:
+  contents: read
+
+env:
+  TARGET_ENVIRONMENT: ${{ inputs.environment }}
+
+jobs:
+  deploy:
+    name: Deploy (${{ inputs.environment }})
+    runs-on: ubuntu-latest
+    environment: ${{ inputs.environment }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Deployment scaffold notice
+        run: |
+          echo "Deployment target is not explicitly defined in this repository."
+          echo "TODO: Add build + deploy steps for ${TARGET_ENVIRONMENT}."
+          echo "TODO: Use environment-scoped secrets and protection rules."
