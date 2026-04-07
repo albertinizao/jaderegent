@@ -1,0 +1,25 @@
+# Replace these placeholders with real GitHub usernames or teams before enforcing CODEOWNERS.
+# Example: @your-org/platform-team
+
+# Backend source + build/tooling
+/src/ @REPLACE_WITH_BACKEND_OWNER
+/pom.xml @REPLACE_WITH_BACKEND_OWNER
+/mvnw @REPLACE_WITH_BACKEND_OWNER
+/mvnw.cmd @REPLACE_WITH_BACKEND_OWNER
+/.mvn/ @REPLACE_WITH_BACKEND_OWNER
+/build.gradle @REPLACE_WITH_BACKEND_OWNER
+/build.gradle.kts @REPLACE_WITH_BACKEND_OWNER
+/settings.gradle @REPLACE_WITH_BACKEND_OWNER
+/settings.gradle.kts @REPLACE_WITH_BACKEND_OWNER
+/gradlew @REPLACE_WITH_BACKEND_OWNER
+/gradlew.bat @REPLACE_WITH_BACKEND_OWNER
+/gradle/ @REPLACE_WITH_BACKEND_OWNER
+
+# Frontend
+/frontend/ @REPLACE_WITH_FRONTEND_OWNER
+
+# CI/CD and governance
+/.github/workflows/ @REPLACE_WITH_DEVOPS_OWNER
+/.github/dependabot.yml @REPLACE_WITH_DEVOPS_OWNER
+/.github/CODEOWNERS @REPLACE_WITH_DEVOPS_OWNER
+/docs/github-cicd-setup.md @REPLACE_WITH_DEVOPS_OWNER
