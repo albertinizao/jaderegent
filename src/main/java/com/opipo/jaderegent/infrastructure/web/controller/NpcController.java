@@ -11,6 +11,7 @@ import com.opipo.jaderegent.infrastructure.web.dto.UpdateNpcRequest;
 import java.util.List;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.util.HtmlUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -76,7 +77,7 @@ public class NpcController {
         }
         try {
             importNpcUseCase.importNpc(file.getInputStream(), file.getOriginalFilename());
-            return ResponseEntity.ok("NPC importado correctamente: " + file.getOriginalFilename());
+            return ResponseEntity.ok("NPC importado correctamente: " + HtmlUtils.htmlEscape(file.getOriginalFilename()));
         } catch (IOException e) {
             return ResponseEntity.internalServerError().body("Error al procesar el fichero JSON: " + e.getMessage());
         }
