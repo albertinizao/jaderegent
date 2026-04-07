@@ -22,7 +22,7 @@ jobs:
       frontend_changed: ${{ steps.diff.outputs.frontend_changed }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
 
@@ -80,7 +80,7 @@ jobs:
 
       - name: Checkout
         if: needs.detect-changes.outputs.backend_changed == 'true'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Set up Java 21
         if: needs.detect-changes.outputs.backend_changed == 'true'
@@ -130,7 +130,7 @@ jobs:
 
       - name: Checkout
         if: needs.detect-changes.outputs.frontend_changed == 'true'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Set up Node.js 20.10.0
         if: needs.detect-changes.outputs.frontend_changed == 'true'
