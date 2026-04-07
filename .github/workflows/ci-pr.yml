@@ -120,9 +120,6 @@ jobs:
     name: Frontend CI
     needs: detect-changes
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: frontend
     steps:
       - name: Frontend unchanged
         if: needs.detect-changes.outputs.frontend_changed != 'true'
@@ -142,10 +139,12 @@ jobs:
 
       - name: Install dependencies
         if: needs.detect-changes.outputs.frontend_changed == 'true'
+        working-directory: frontend
         run: npm ci
 
       - name: Detect available npm scripts
         if: needs.detect-changes.outputs.frontend_changed == 'true'
+        working-directory: frontend
         id: scripts
         shell: bash
         run: |
@@ -166,6 +165,7 @@ jobs:
 
       - name: Run lint
         if: needs.detect-changes.outputs.frontend_changed == 'true' && steps.scripts.outputs.has_lint == 'true' && steps.scripts.outputs.has_lint_config == 'true'
+        working-directory: frontend
         run: npm run lint
 
       - name: Skip lint (script missing)
@@ -178,6 +178,7 @@ jobs:
 
       - name: Run tests
         if: needs.detect-changes.outputs.frontend_changed == 'true' && steps.scripts.outputs.has_test == 'true'
+        working-directory: frontend
         run: npm test
 
       - name: Skip tests (script missing)
@@ -186,6 +187,7 @@ jobs:
 
       - name: Run build
         if: needs.detect-changes.outputs.frontend_changed == 'true' && steps.scripts.outputs.has_build == 'true'
+        working-directory: frontend
         run: npm run build
 
       - name: Skip build (script missing)
