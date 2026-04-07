@@ -1,0 +1,191 @@
+name: CI (PR)
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+concurrency:
+  group: ci-pr-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  detect-changes:
+    name: Detect changes
+    runs-on: ubuntu-latest
+    outputs:
+      backend_changed: ${{ steps.diff.outputs.backend_changed }}
+      frontend_changed: ${{ steps.diff.outputs.frontend_changed }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Compute changed paths
+        id: diff
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          if [[ "${{ github.event_name }}" == "pull_request" ]]; then
+            BASE_SHA="${{ github.event.pull_request.base.sha }}"
+            HEAD_SHA="${{ github.event.pull_request.head.sha }}"
+          else
+            BASE_SHA="${{ github.event.before }}"
+            HEAD_SHA="${{ github.sha }}"
+          fi
+
+          if [[ "$BASE_SHA" == "0000000000000000000000000000000000000000" ]]; then
+            BASE_SHA="$(git rev-list --max-parents=0 "$HEAD_SHA" | tail -n 1)"
+          fi
+
+          CHANGED_FILES="$(git diff --name-only "$BASE_SHA" "$HEAD_SHA")"
+
+          backend_changed=false
+          frontend_changed=false
+
+          while IFS= read -r file; do
+            [[ -z "$file" ]] && continue
+
+            if [[ "$file" == .github/workflows/* ]]; then
+              backend_changed=true
+              frontend_changed=true
+            fi
+
+            if [[ "$file" == src/* || "$file" == pom.xml || "$file" == mvnw || "$file" == mvnw.cmd || "$file" == .mvn/* || "$file" == build.gradle || "$file" == build.gradle.kts || "$file" == settings.gradle || "$file" == settings.gradle.kts || "$file" == gradlew || "$file" == gradlew.bat || "$file" == gradle/* ]]; then
+              backend_changed=true
+            fi
+
+            if [[ "$file" == frontend/* ]]; then
+              frontend_changed=true
+            fi
+          done <<< "$CHANGED_FILES"
+
+          echo "backend_changed=$backend_changed" >> "$GITHUB_OUTPUT"
+          echo "frontend_changed=$frontend_changed" >> "$GITHUB_OUTPUT"
+
+  backend-ci:
+    name: Backend CI
+    needs: detect-changes
+    runs-on: ubuntu-latest
+    steps:
+      - name: Backend unchanged
+        if: needs.detect-changes.outputs.backend_changed != 'true'
+        run: echo "No backend-relevant changes detected; backend checks skipped."
+
+      - name: Checkout
+        if: needs.detect-changes.outputs.backend_changed == 'true'
+        uses: actions/checkout@v4
+
+      - name: Set up Java 21
+        if: needs.detect-changes.outputs.backend_changed == 'true'
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: maven
+
+      - name: Build and test backend
+        if: needs.detect-changes.outputs.backend_changed == 'true'
+        run: bash ./mvnw -B verify
+
+      - name: Upload Maven test reports
+        if: always() && needs.detect-changes.outputs.backend_changed == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: backend-test-reports
+          retention-days: 7
+          path: |
+            target/surefire-reports/**
+            target/failsafe-reports/**
+          if-no-files-found: ignore
+
+      - name: Upload backend build artifacts
+        if: always() && needs.detect-changes.outputs.backend_changed == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: backend-build-artifacts
+          retention-days: 7
+          path: |
+            target/*.jar
+            target/*.war
+          if-no-files-found: ignore
+
+  frontend-ci:
+    name: Frontend CI
+    needs: detect-changes
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: frontend
+    steps:
+      - name: Frontend unchanged
+        if: needs.detect-changes.outputs.frontend_changed != 'true'
+        run: echo "No frontend-relevant changes detected; frontend checks skipped."
+
+      - name: Checkout
+        if: needs.detect-changes.outputs.frontend_changed == 'true'
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js 20.10.0
+        if: needs.detect-changes.outputs.frontend_changed == 'true'
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.10.0'
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+
+      - name: Install dependencies
+        if: needs.detect-changes.outputs.frontend_changed == 'true'
+        run: npm ci
+
+      - name: Detect available npm scripts
+        if: needs.detect-changes.outputs.frontend_changed == 'true'
+        id: scripts
+        shell: bash
+        run: |
+          set -euo pipefail
+          has_lint=$(node -e "const p=require('./package.json'); process.stdout.write(p.scripts?.lint ? 'true' : 'false')")
+          has_test=$(node -e "const p=require('./package.json'); process.stdout.write(p.scripts?.test ? 'true' : 'false')")
+          has_build=$(node -e "const p=require('./package.json'); process.stdout.write(p.scripts?.build ? 'true' : 'false')")
+          echo "has_lint=$has_lint" >> "$GITHUB_OUTPUT"
+          echo "has_test=$has_test" >> "$GITHUB_OUTPUT"
+          echo "has_build=$has_build" >> "$GITHUB_OUTPUT"
+
+      - name: Run lint
+        if: needs.detect-changes.outputs.frontend_changed == 'true' && steps.scripts.outputs.has_lint == 'true'
+        run: npm run lint
+
+      - name: Skip lint (script missing)
+        if: needs.detect-changes.outputs.frontend_changed == 'true' && steps.scripts.outputs.has_lint != 'true'
+        run: echo "No lint script found in frontend/package.json; skipping lint."
+
+      - name: Run tests
+        if: needs.detect-changes.outputs.frontend_changed == 'true' && steps.scripts.outputs.has_test == 'true'
+        run: npm test
+
+      - name: Skip tests (script missing)
+        if: needs.detect-changes.outputs.frontend_changed == 'true' && steps.scripts.outputs.has_test != 'true'
+        run: echo "No test script found in frontend/package.json; skipping tests."
+
+      - name: Run build
+        if: needs.detect-changes.outputs.frontend_changed == 'true' && steps.scripts.outputs.has_build == 'true'
+        run: npm run build
+
+      - name: Skip build (script missing)
+        if: needs.detect-changes.outputs.frontend_changed == 'true' && steps.scripts.outputs.has_build != 'true'
+        run: echo "No build script found in frontend/package.json; skipping build."
+
+      - name: Upload frontend build artifacts
+        if: always() && needs.detect-changes.outputs.frontend_changed == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: frontend-build-artifacts
+          retention-days: 7
+          path: frontend/dist/**
+          if-no-files-found: ignore
