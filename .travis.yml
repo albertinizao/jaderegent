@@ -1,0 +1,14 @@
+dist: jammy
+language: java
+jdk:
+  - openjdk21
+
+cache:
+  directories:
+    - $HOME/.m2
+
+before_install:
+  - chmod +x mvnw
+
+script:
+  - ./mvnw test
