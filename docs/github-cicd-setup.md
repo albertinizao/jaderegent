@@ -11,7 +11,7 @@ Detected from this repository:
 - **Java version:** 21 (`<java.version>21</java.version>` in `pom.xml`).
 - **Node version:** 20.10.0 (in `frontend-maven-plugin` config in `pom.xml`; no `.nvmrc`/`.node-version` detected).
 - **Frontend scripts detected in `frontend/package.json`:**
-  - `lint`: present
+  - `lint`: present *(but ESLint config file is currently missing)*
   - `test`: missing
   - `build`: present
 
@@ -38,7 +38,7 @@ Detected from this repository:
     - Node 20.10.0 setup
     - npm cache
     - `npm ci`
-    - runs `lint` only if script exists
+    - runs `lint` only if script exists and ESLint config is present
     - runs `test` only if script exists (currently skipped because missing)
     - runs `build` only if script exists
     - uploads frontend build artifacts when available

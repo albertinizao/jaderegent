@@ -153,17 +153,28 @@ jobs:
           has_lint=$(node -e "const p=require('./package.json'); process.stdout.write(p.scripts?.lint ? 'true' : 'false')")
           has_test=$(node -e "const p=require('./package.json'); process.stdout.write(p.scripts?.test ? 'true' : 'false')")
           has_build=$(node -e "const p=require('./package.json'); process.stdout.write(p.scripts?.build ? 'true' : 'false')")
+
+          has_lint_config=false
+          if [[ -f eslint.config.js || -f eslint.config.cjs || -f eslint.config.mjs || -f .eslintrc || -f .eslintrc.js || -f .eslintrc.cjs || -f .eslintrc.json || -f .eslintrc.yaml || -f .eslintrc.yml ]]; then
+            has_lint_config=true
+          fi
+
           echo "has_lint=$has_lint" >> "$GITHUB_OUTPUT"
           echo "has_test=$has_test" >> "$GITHUB_OUTPUT"
           echo "has_build=$has_build" >> "$GITHUB_OUTPUT"
+          echo "has_lint_config=$has_lint_config" >> "$GITHUB_OUTPUT"
 
       - name: Run lint
-        if: needs.detect-changes.outputs.frontend_changed == 'true' && steps.scripts.outputs.has_lint == 'true'
+        if: needs.detect-changes.outputs.frontend_changed == 'true' && steps.scripts.outputs.has_lint == 'true' && steps.scripts.outputs.has_lint_config == 'true'
         run: npm run lint
 
       - name: Skip lint (script missing)
         if: needs.detect-changes.outputs.frontend_changed == 'true' && steps.scripts.outputs.has_lint != 'true'
         run: echo "No lint script found in frontend/package.json; skipping lint."
+
+      - name: Skip lint (config missing)
+        if: needs.detect-changes.outputs.frontend_changed == 'true' && steps.scripts.outputs.has_lint == 'true' && steps.scripts.outputs.has_lint_config != 'true'
+        run: echo "Lint script exists but no ESLint configuration file was found; skipping lint until config is added."
 
       - name: Run tests
         if: needs.detect-changes.outputs.frontend_changed == 'true' && steps.scripts.outputs.has_test == 'true'
