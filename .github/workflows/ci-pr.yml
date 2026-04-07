@@ -96,7 +96,7 @@ jobs:
 
       - name: Upload Maven test reports
         if: always() && needs.detect-changes.outputs.backend_changed == 'true'
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: backend-test-reports
           retention-days: 7
@@ -107,7 +107,7 @@ jobs:
 
       - name: Upload backend build artifacts
         if: always() && needs.detect-changes.outputs.backend_changed == 'true'
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: backend-build-artifacts
           retention-days: 7
@@ -194,7 +194,7 @@ jobs:
 
       - name: Upload frontend build artifacts
         if: always() && needs.detect-changes.outputs.frontend_changed == 'true'
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: frontend-build-artifacts
           retention-days: 7
