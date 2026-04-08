@@ -129,11 +129,11 @@ jobs:
         if: needs.detect-changes.outputs.frontend_changed == 'true'
         uses: actions/checkout@v4
 
-      - name: Set up Node.js 20.10.0
+      - name: Set up Node.js 20.19.0
         if: needs.detect-changes.outputs.frontend_changed == 'true'
         uses: actions/setup-node@v4
         with:
-          node-version: '20.10.0'
+          node-version: '20.19.0'
           cache: npm
           cache-dependency-path: frontend/package-lock.json
 
