@@ -23,10 +23,14 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @RestController
 @RequestMapping("/api/npc")
 public class NpcController {
+
+    private static final Logger logger = LoggerFactory.getLogger(NpcController.class);
 
     private final ImportNpcUseCase importNpcUseCase;
     private final GetNpcsUseCase getNpcsUseCase;
@@ -79,7 +83,8 @@ public class NpcController {
             importNpcUseCase.importNpc(file.getInputStream(), file.getOriginalFilename());
             return ResponseEntity.ok("NPC importado correctamente: " + HtmlUtils.htmlEscape(file.getOriginalFilename()));
         } catch (IOException e) {
-            return ResponseEntity.internalServerError().body("Error al procesar el fichero JSON: " + e.getMessage());
+            logger.error("Error al procesar el fichero JSON", e);
+            return ResponseEntity.internalServerError().body("Error al procesar el fichero JSON");
         }
     }
 }
