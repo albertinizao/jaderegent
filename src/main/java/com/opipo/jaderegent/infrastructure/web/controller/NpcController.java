@@ -83,7 +83,7 @@ public class NpcController {
             return ResponseEntity.ok("NPC importado correctamente: " + file.getOriginalFilename());
         } catch (IOException e) {
             logger.error("Error al procesar el fichero JSON durante la importación de NPCs", e);
-            return ResponseEntity.internalServerError().body("Error al procesar el fichero JSON");
+            return ResponseEntity.internalServerError().body("Error al procesar el fichero JSON: " + e.getMessage());
         }
     }
 }
