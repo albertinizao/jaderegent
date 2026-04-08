@@ -76,7 +76,7 @@ class NpcControllerTest {
 
         ResponseEntity<String> errorResponse = controller.importNpc(file);
         assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, errorResponse.getStatusCode());
-        assertEquals("Error al procesar el fichero JSON: fallo", errorResponse.getBody());
+        assertEquals("Error al procesar el fichero JSON", errorResponse.getBody());
     }
 
     @Test
