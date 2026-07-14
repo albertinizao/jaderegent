@@ -1,0 +1,77 @@
+{
+  "npc_id": "troi",
+  "nombre": "Troi",
+  "descripcion_larga": "Skali es un troll de hielo pacifista que odia sufrir daño.",
+  "nivel_maximo": 3,
+  "imagen_url": "/data/images/npc/troi.jpg",
+  "ventajas": [
+    {
+      "nombre": "No mirar atrás",
+      "descripcion_larga": "Si usas la acción de huir, no provocas ataque de oportunidad en ninguna de las primeras tres casillas que abandones.",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "Presencia inquietante",
+      "descripcion_larga": "Intimidar pasa a ser habilidad clásea para ti. Si ya era una habilidad de clase, obtienes en su lugar un bonificador +1 a sus pruebas. Además, obtienes un bonificador adicional +2 a las pruebas de Intimidar realizadas para desmoralizar.",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "Empuñadura desmedida",
+      "descripcion_larga": "Ignoras 1 del penalizador por empuñar armas de un tamaño superior al apropiado para ti. Este efecto se apila con otros que reduzcan dicho penalizador.",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+
+    {
+      "nombre": "Buscar una salida",
+      "descripcion_larga": "Siempre que sufras al menos un daño igual o superior a un 25% de tu vida máxima, puedes, como acción inmediata, moverte 5' para alejarte de la fuente de dicho daño. Este movimiento no provoca ataque de oportunidad.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "troi_no_mirar_atras"  
+      ]
+    },
+    {
+      "nombre": "Amenaza corporal",
+      "descripcion_larga": "No sufres penalizador por tamaño a las pruebas de intimidar, ni las pruebas de intimidar tienen bonificador de tamaño hacia ti.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "troi_presencia_inquietante"
+      ]
+    },
+    {
+      "nombre": "Espalda de troll",
+      "descripcion_larga": "Ignoras 1 del penalizador por empuñar armas de un tamaño superior al apropiado para ti. Este efecto se apila con otros que reduzcan dicho penalizador.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "troi_empunadura_desmedida"
+      ]
+    },
+
+    {
+      "nombre": "Huir para seguir vivo",
+      "descripcion_larga": "Cuando usas la acción de huir, no provocas ataque de oportundiad por abandonar ninguna casilla. Siempre que recibas daño igual o superior a un 25% de tu vida máxima, puedes usar una acción inmediata para moverte hasta tu velocidad para alejarte de la fuente de dicho daño. No provocas ataques de oportunidad de la fuente del daño al hacerlo.",
+      "min_nivel_relacion": 3,
+      "prerequisitos": [
+        "krixit_ojos_tramperos"
+      ]
+    },
+    {
+      "nombre": "Parecer un monstruo",
+      "descripcion_larga": "Obtienes la dote Intimidating Prowess.",
+      "min_nivel_relacion": 3,
+      "prerequisitos": [
+        "troi_amenaza_corporal"
+      ]
+    },
+    {
+      "nombre": "Arma de troll",
+      "descripcion_larga": "Ignoras 1 del penalizador por empuñar armas de un tamaño superior al apropiado para ti. Este efecto se apila con otros que reduzcan dicho penalizador.",
+      "min_nivel_relacion": 3,
+      "prerequisitos": [
+        "troi_espalda_troll"
+      ]
+    }
+  ]
+}

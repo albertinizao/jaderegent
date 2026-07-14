@@ -1,0 +1,76 @@
+  {
+    "npc_id": "thriss",
+    "nombre": "Thriss",
+    "descripcion_larga": "**Thriss** es un **nycarr**, una criatura pequeña emparentada estéticamente con los linnorm, inteligente pero no hablante, encontrada devorando el cadáver reciente de un ice linnorm. Sobrevivió durante años siguiendo a uno adulto y aprovechando sus restos.",
+    "nivel_maximo": 3,
+    "imagen_url": "/data/images/npc/thriss.jpg",
+    "ventajas": [
+      {
+        "nombre": "Mano acostumbrada al colmillo",
+        "descripcion_larga": "Siempre que hayas pasado la noche en la caravana o descansando en presencia de Thriss, al terminar tu descanso obtienes una cantidad de dosis de su veneno igual a tu nivel de relación con Thriss. Esta dosis conserva su potencia hasta que descanses de nuevo y carece de valor comercial. Puedes extraer y manipular el veneno de Thriss sin riesgo de envenenarte accidentalmente. A efectos de su veneno, se considera que posees la aptitud Uso de venenos. Además, puedes aplicar una dosis de veneno de Thriss a un arma como acción de movimiento en lugar de como acción estándar.",
+        "min_nivel_relacion": 1,
+        "prerequisitos": []
+      },
+      {
+        "nombre": "Aura Linnorm",
+        "descripcion_larga": "Obtienes +3 a cualquier salvación para resistir un efecto de maldición.",
+        "min_nivel_relacion": 1,
+        "prerequisitos": []
+      },
+      {
+        "nombre": "Pacto preparado",
+        "descripcion_larga": "Percepción pasa a ser habilidad clásea. Si ya lo fuese, recibes +1 a la Percepción.",
+        "min_nivel_relacion": 1,
+        "prerequisitos": []
+      },
+      {
+        "nombre": "Cazador oportunista",
+        "descripcion_larga": "Obtienes un +1 al ataque contra objetivos envenenados, indispuestos, fatigados o exhaustos.",
+        "min_nivel_relacion": 2,
+        "prerequisitos": [
+          "thriss_mano_acostumbrada_al_colmillo"  
+        ]
+      },
+      {
+        "nombre": "Pacto Linnorn",
+        "descripcion_larga": "Obtienes la dote Eldrich Heritage. Solo puedes elegir el linaje de Linnorm.",
+        "min_nivel_relacion": 2,
+        "prerequisitos": [
+          "thriss_pacto_preparado"
+        ]
+      },
+      {
+        "nombre": "Linnorn personal",
+        "descripcion_larga": "Si tu alineamiento es caótico, obtienes Thriss como familiar aunque tu clase no lo permitiese.",
+        "min_nivel_relacion": 2,
+        "prerequisitos": [
+          "thriss_aura_linnorm"
+        ]
+      },
+
+      {
+        "nombre": "Veneno concentrado",
+        "descripcion_larga": "La CD de salvación del veneno que obtienes de Thriss mediante Suministro regular aumenta en 3. Siempre que extraigas veneno de Thriss, extraes 3 dosis.",
+        "min_nivel_relacion": 3,
+        "prerequisitos": [
+          "thriss_cazador_oportunista"
+        ]
+      },
+      {
+        "nombre": "Maldición Linnorm",
+        "descripcion_larga": "Tres veces al día puedes usar Bestow Curse usando tu nivel de personaje como nivel de lanzador y Carisma como atributo lanzador. Si falleces, quien te haya matado debe superar Voluntad 22 o quedar maldito y no poder recibir curación de ninguna forma.",
+        "min_nivel_relacion": 3,
+        "prerequisitos": [
+          "thriss_aura_linnorm"
+        ]
+      },
+      {
+        "nombre": "Linaje Linnorm",
+        "descripcion_larga": "Obtienes la dote Improved Eldritch Heritage.",
+        "min_nivel_relacion": 3,
+        "prerequisitos": [
+          "thriss_pacto_linnorm"
+        ]
+      }
+    ]
+  }

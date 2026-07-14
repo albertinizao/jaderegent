@@ -1,0 +1,75 @@
+  {
+    "npc_id": "ramaso",
+    "nombre": "Ramaso Panor",
+    "descripcion_larga": "Artista emprendedor y carismático que quiere viajar con la caravana para explorar nuevas tierras, disfrutar de su belleza y, en secreto, probar el hielo puro de la Corona del Mundo. Cuando habla de sí mismo, afirma venir de Castrovel y tener novecientos años cósmicos.",
+    "nivel_maximo": 3,
+    "imagen_url": "/data/images/npc/ramaso.jpg",
+    "ventajas": [
+      {
+        "nombre": "Esnifando vida",
+        "descripcion_larga": "Obtienes un bonificador de moral igual a tu nivel de relación con Ramaso Panor a cualquier prueba en fortaleza contra cualquier efecto inhalado o cualquier veneno. Una vez al mes puedes respirar bajo el agua curante 1 asalto.",
+        "min_nivel_relacion": 1,
+        "prerequisitos": []
+      },
+      {
+        "nombre": "Lluvia",
+        "descripcion_larga": "Puedes usar Interpretar(canto) como si, a todos los efectos, fuese la habilidad de Diplomacia. Cuando hagas una tirada de diplomacia así, cantarás.",
+        "min_nivel_relacion": 1,
+        "prerequisitos": []
+      },
+      {
+        "nombre": "Planazo",
+        "descripcion_larga": "Una vez al día, si tienes todos tus puntos de golpe, puedes repetir una tirada de salvación de Voluntad para revertir un efecto de miedo, emoción o enajenador que acabes de fallar. A cambio quedas deslumbrado durante toda la duración del efecto original.",  
+        "min_nivel_relacion": 1,
+        "prerequisitos": []
+      },
+      {
+        "nombre": "Ramaso Geisho",
+        "descripcion_larga": "Disfrazarse pasa a ser habilidad clásea para ti. Si ya lo fuese, recibes un +1 a Disfrazarse.",
+        "min_nivel_relacion": 2,
+        "prerequisitos": [
+          "ramaso_esnifando_vida"
+        ]
+      },
+      {
+        "nombre": "de Amor",
+        "descripcion_larga": "Siempre que hagas una prueba basada en carisma para afectar socialmente a un objetivo que se pueda sentir atraido sexualmente por ti, puedes actuar de forma seductora para obteners un bonificador igual a tu nivel de relación con Ramaso.",
+        "min_nivel_relacion": 2,
+        "prerequisitos": [
+          "ramaso_lluvia"
+        ]
+      },
+      {
+        "nombre": "Seguir tu corazón",
+        "descripcion_larga": "Obtienes un bonificador de moral igual a tu carisma para resistir efectos de compulsión.",
+        "min_nivel_relacion": 2,
+        "prerequisitos": [
+          "ramaso_planazo"
+        ]
+      },
+      {
+        "nombre": "Novecientos años cósmicos",
+        "descripcion_larga": "Una vez al día, puedes realizar una prueba de Saber como si estuvieras entrenado, aunque no poseas rangos en la habilidad. En lugar de tu modificador habitual, añades a la tirada la mitad de tu nivel de personaje y tu modificador de Carisma. La explicación obtenida puede llegar mediante intuiciones, asociaciones improbables o recuerdos que no estás completamente seguro de haber vivido, pero la información útil revelada por la prueba es verdadera.",
+        "min_nivel_relacion": 3,
+        "prerequisitos": [
+          "ramaso_seguir_tu_corazon"
+        ]
+      },
+      {
+        "nombre": "Rey de tu amor",
+        "descripcion_larga": "Cualquier criatura enamorada de ti obtiene un bonificador igual a tu bonificador de Carisma para emprender cualquier efecto de compulsión.",
+        "min_nivel_relacion": 3,
+        "prerequisitos": [
+          "ramaso_de_amor"
+        ]
+      },
+      {
+        "nombre": "Héroe de Castrovel",
+        "descripcion_larga": "Obtienes +1 a tu puntuación de Carisma.",
+        "min_nivel_relacion": 3,
+        "prerequisitos": [
+          "ramaso_ramaso_geisho"
+        ]
+      }
+    ]
+  }

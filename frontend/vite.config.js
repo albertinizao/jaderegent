@@ -7,14 +7,15 @@ export default defineConfig({
   server: {
     host: '0.0.0.0',  // Listen on all network interfaces for LAN access
     port: 5173,
+    allowedHosts: ['PC-Alberto', 'pc-alberto'],
     proxy: {
       '/api': {
-        target: 'http://192.168.1.201:8080',
+        target: 'http://localhost:8080',
         changeOrigin: true,
         secure: false,
       },
       '/data': {
-        target: 'http://192.168.1.201:8080',
+        target: 'http://localhost:8080',
         changeOrigin: true,
         secure: false,
       }

@@ -1,0 +1,77 @@
+  {
+    "npc_id": "frinn_skora",
+    "nombre": "Frinn y Skøra",
+    "descripcion_larga": "Frinn y Skøra (8 y 10) son hermanos huérfanos que no quisieron quedarse con su tío en Kalsgard. Los dos tienen muy claro que están mejor juntos y que nadie los va a separar.",
+    "nivel_maximo": 3,
+    "imagen_url": "/data/images/npc/frinn_skora.jpg",
+    "ventajas": [
+      {
+        "nombre": "Modelo a elegir",
+        "descripcion_larga": "Escoge un personaje (PJ o NPC) con inteligencia 3 o más. Escoge una habilidad en la que posea más rangos que tú. Esa habilidad pasa a ser clásea para ti. Si ya lo fuese, obtienes un +1 a dicha habilidad.",
+        "min_nivel_relacion": 1,
+        "prerequisitos": []
+      },
+      {
+        "nombre": "Persona ancla",
+        "descripcion_larga": "Escoge un personaje (PJ o NPC) con inteligencia 3 o más. Mientras esa persona esté consciente y a 30 pies o menos, obtienes un bonificador de moral de +2 a las tiradas de salvación contra miedo.",
+        "min_nivel_relacion": 1,
+        "prerequisitos": []
+      },
+      {
+        "nombre": "Desafío de Frinn",
+        "descripcion_larga": "Obtienes un bonificador de circunstancia de +1 a tiradas de Intimidar. Si tienes éxito en una prueba de desmoralizar, obtienes un bonificador de +1 por circunstancia al ataque contra el objetivo mientras continúe desmoralizado.",
+        "min_nivel_relacion": 1,
+        "prerequisitos": []
+      },
+
+      {
+        "nombre": "Aprender observando",
+        "descripcion_larga": "Se considera que tienes una cantidad de rangos en la habilidad elegida por Modelo a elegir igual a la mitad de los rangos de tu modelo. Si tú tuvieses más rangos que la mitad de tu modelo pero menos que él, obtienes un +1 a dicha habilidad.",
+        "min_nivel_relacion": 2,
+        "prerequisitos": [
+          "frinn_skora_modelo_a_elegir"  
+        ]
+      },
+      {
+        "nombre": "No te dejo atrás",
+        "descripcion_larga": "Una vez al día, cuando tu persona ancla se encuentre a 30 pies o menos y quede inconsciente, moribunda, apresada, asustada o aterrada, puedes desplazarte hasta tu velocidad hacia ella como acción inmediata. Este movimiento debe terminar más cerca de tu persona ancla y provoca ataques de oportunidad con normalidad. Si terminas adyacente a ella y está moribunda, queda estabilizada automáticamente.",
+        "min_nivel_relacion": 2,
+        "prerequisitos": [
+          "frinn_skora_persona_ancla"
+        ]
+      },
+      {
+        "nombre": "Cautela de Skøra",
+        "descripcion_larga": "Obtrienes un bonificador de circunstancia de +1 a tiradas de Percepción. Como acción de movimiento puedes seleccionar un objetivo, obtienes +1 a la CA por esquiva contra dicho objetivo hasta el inicio de tu próximo turno.",
+        "min_nivel_relacion": 2,
+        "prerequisitos": [
+          "frinn_skora_desafio_de_frinn"
+        ]
+      },
+
+      {
+        "nombre": "Una segunda lección",
+        "descripcion_larga": "Escoge otra habilidad de tu modelo y aplica Aprender observando a esa nueva habilidad.",
+        "min_nivel_relacion": 3,
+        "prerequisitos": [
+          "frinn_skora_aprender_observando"
+        ]
+      },
+      {
+        "nombre": "Furia elegida",
+        "descripcion_larga": "Si tu persona ancla muere, durante 10 minutos o hasta que vuelva a la vida, puedes, una vez al turno, antes de hacer una tirada de 1d20, puedes tirar dos veces y elegir el resultado que prefieras.",
+        "min_nivel_relacion": 3,
+        "prerequisitos": [
+          "frinn_skora_no_te_dejo_atras"
+        ]
+      },
+      {
+        "nombre": "Equilibrio de Frinn y Skøra",
+        "descripcion_larga": "Añade +1 a la CA por esquiva al beneficio de Desafío de Frinn. Añade +1 al ataque por circunstanciaal beneficio de Cautela de Skøra.",
+        "min_nivel_relacion": 3,
+        "prerequisitos": [
+          "frinn_skora_cautela_de_skora"
+        ]
+      }
+    ]
+  }
