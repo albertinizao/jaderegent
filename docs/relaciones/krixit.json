@@ -1,0 +1,77 @@
+{
+  "npc_id": "krixit",
+  "nombre": "Krixit",
+  "descripcion_larga": "Kobol rojo antiguo esclavo que huyó de su amo. Ahora actúa siempre con un servilismo absoluto.",
+  "nivel_maximo": 3,
+  "imagen_url": "/data/images/npc/krixit.jpg",
+  "ventajas": [
+    {
+      "nombre": "Manos tramperas",
+      "descripcion_larga": "Artesanía (trampas) se convierte en una habilidad de clase para ti. Si ya era una habilidad de clase, obtienes en su lugar un bonificador +1 a sus pruebas. Además, obtienes un bonificador +2 a las pruebas de Artesanía (trampas).",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "Ayudante dispuesto",
+      "descripcion_larga": "Obtienes un bonificador +2 a las tiradas realizadas para utilizar la acción de ayudar a otro. Si el resultado total de la tirada es 15 o superior, el bonificador que concedes al aliado aumenta en 1.",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "Leer al amo",
+      "descripcion_larga": "Averiguar intenciones se convierte en una habilidad de clase para ti. Si ya era una habilidad de clase, obtienes en su lugar un bonificador +1 a sus pruebas. Además, obtienes un bonificador adicional +2 a las pruebas de Averiguar intenciones realizadas contra objetivos no amistosos.",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+
+    {
+      "nombre": "Ojos tramperos",
+      "descripcion_larga": "Obtienes un bonificador +3 a las pruebas de Percepción realizadas para detectar trampas.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "krixit_manos_tramperas"  
+      ]
+    },
+    {
+      "nombre": "Ayudante colaborativo",
+      "descripcion_larga": "Como acción rápida, puedes escoger una dote colaborativa que poseas y concedérsela a un número de aliados igual a tu modificador de Carisma, con un mínimo de 1 aliado. Los aliados deben encontrarse a 30 pies o menos, poder verte u oírte y cumplir todos los requisitos de la dote colaborativa escogida. Obtienen sus beneficios hasta el inicio de tu siguiente turno. Si utilizaste esta aptitud durante tu turno anterior, volver a activarla requiere una acción de movimiento en lugar de una acción rápida. Durante los viajes en caravana, siempre que no exista un peligro inmediato, tú y los viajeros asignados a la misma tarea compartís las dotes colaborativas que poseáis, siempre que cada personaje cumpla los requisitos de la dote correspondiente.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "krixit_ayudante_dispuesto"
+      ]
+    },
+    {
+      "nombre": "Temer al amo",
+      "descripcion_larga": "Siempre que fueras a adquirir una condición de miedo, sufres en su lugar la condición inmediatamente inferior. Si fueras a quedar spooked, no sufres ninguna condición de miedo. (Spooked → Shaken → Scared → Frightened → Panicked → Terrified)",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "krixit_leer_al_amo"
+      ]
+    },
+
+    {
+      "nombre": "Mente trampera",
+      "descripcion_larga": "Obtienes un bonificador +3 a las pruebas de Inutilizar mecanismo realizadas para desactivar trampas.",
+      "min_nivel_relacion": 3,
+      "prerequisitos": [
+        "krixit_ojos_tramperos"
+      ]
+    },
+    {
+      "nombre": "Espíritu colaborativo",
+      "descripcion_larga": "Obtienes una dote colaborativa adicional cuyos requisitos cumplas.",
+      "min_nivel_relacion": 3,
+      "prerequisitos": [
+        "krixit_ayudante_colaborativo"
+      ]
+    },
+    {
+      "nombre": "Sobrevivir al amo",
+      "descripcion_larga": "Al final de cada uno de tus turnos mientras sufras una condición de miedo causada por haber fallado una salvación de Voluntad, puedes repetir dicha salvación contra la misma CD. Si tienes éxito, reduces la condición de miedo en un paso. Puedes seguir realizando estas salvaciones hasta que elimines la condición o finalice el efecto que la provocó.",
+      "min_nivel_relacion": 3,
+      "prerequisitos": [
+        "krixit_temer_al_amo"
+      ]
+    }
+  ]
+}

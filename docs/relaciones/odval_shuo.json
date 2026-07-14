@@ -1,0 +1,77 @@
+  {
+    "npc_id": "odval_shuo",
+    "nombre": "Odval y Shuo",
+    "descripcion_larga": "Odval es una chica tian-la de unos quince años, robusta, tuerta del ojo izquierdo y de carácter orgulloso, seco y práctico. Forma parte del pequeño núcleo familiar adoptivo de Inuliak. Shuo es un chico tian-shu de unos doce años, con una cojera muy marcada, bastón para caminar, mucha necesidad de aprobación y una personalidad más verbal y reactiva que la de Odval.",
+    "nivel_maximo": 3,
+    "imagen_url": "/data/images/npc/odval_shuo.jpg",
+    "ventajas": [
+      {
+        "nombre": "Resistir la muerte",
+        "descripcion_larga": "Aumenta en tu nivel el número de puntos de vida negativos que puedes sufrir antes de morir.",
+        "min_nivel_relacion": 1,
+        "prerequisitos": []
+      },
+      {
+        "nombre": "Aprender a sobrevivir",
+        "descripcion_larga": "Supervivencia pasa a ser habilidad clásea para ti. Si ya lo fuese, obtienes +1 a Supervivencia. Además, obtienes un +2 adicional para cualquier tirada de Supervivencia mientras estés en solitario o solo acompañado de familiares.",
+        "min_nivel_relacion": 1,
+        "prerequisitos": []
+      },
+      {
+        "nombre": "Hermano elegido",
+        "descripcion_larga": "Eliges un personaje (PJ o NPC) con inteligencia 3 o más. Este personaje pasa a ser tu hermano a efectos de cualquier dote o efecto. Una vez al día, puedes percibir el estado de tu herman@ durante un minuto, como si hubieses usado el hechizo status",
+        "min_nivel_relacion": 1,
+        "prerequisitos": []
+      },
+
+      {
+        "nombre": "Coste de la supervivencia",
+        "descripcion_larga": "Una vez al día, si fueses a recibir un golpe crítico, puedes convertirlo en un golpe normal y perder una extremidad al azar.",
+        "min_nivel_relacion": 2,
+        "prerequisitos": [
+          "odval_shuo_resistir_la_muerte"  
+        ]
+      },
+      {
+        "nombre": "Preparado para lo que venga",
+        "descripcion_larga": "Tras descansar, elige una opción entre: clima, enfermedad, veneno o fatiga. Obtienes un +2 a las pruebas de fortaleza contre ese efecto hasta que cambies de opción elegida.",
+        "min_nivel_relacion": 2,
+        "prerequisitos": [
+          "odval_shuo_aprender_a_sobrevivir"
+        ]
+      },
+      {
+        "nombre": "Vínculo de hermanos",
+        "descripcion_larga": "Una vez al día, si tu herman@ está a 30' o menos de ti, puedes usar una acción inmediata para hacerle repetir una tirada de salvación fallida y usar tu modificar de Carisma en vez del modificador de característica pertiente de dicha salvación.",
+        "min_nivel_relacion": 2,
+        "prerequisitos": [
+          "odval_shuo_hermano_elegido"
+        ]
+      },
+
+      {
+        "nombre": "Aferrarse a la vida",
+        "descripcion_larga": "Una vez al día puedes superar automáticamente una tirada de salvación contra un efecto no mágico que implicase la muerte en caso de fallar.",
+        "min_nivel_relacion": 3,
+        "prerequisitos": [
+          "odval_shuo_coste_supervivencia"
+        ]
+      },
+      {
+        "nombre": "Supervivencia de última hora",
+        "descripcion_larga": "Una vez al día puedes cambiar, como acción inmediata, tu elección de Preparado para lo que venga.",
+        "min_nivel_relacion": 3,
+        "prerequisitos": [
+          "odval_shuo_preparado_para_lo_que_venga"
+        ]
+      },
+      {
+        "nombre": "Escudo de hermanos",
+        "descripcion_larga": "Una vez al día, si tu herman@ está a 30' o menos de ti, puedes usar una acción inmediata para reducir en la mitad el daño que este personaje recibe y recibir tú esa mitad en su lugar.",
+        "min_nivel_relacion": 3,
+        "prerequisitos": [
+          "odval_shuo_vinculo_de_hermanos"
+        ]
+      }
+    ]
+  }
