@@ -1,0 +1,75 @@
+{
+  "npc_id": "halvard_perrin",
+  "nombre": "Halvard y Perrin",
+  "descripcion_larga": "Una pareja homosexual de un ulfen antiguo huscarle y un mercader mediano varisiano que se cansaron de tener que ocultarse en Kalsgard.",
+  "nivel_maximo": 3,
+  "imagen_url": "/data/images/npc/halvard_perrin.png",
+  "ventajas": [
+    {
+      "nombre": "Guardia de oficio",
+      "descripcion_larga": "Obtienes los beneficios de la dote Guardaespaldas, aunque no cumplas sus prerrequisitos. Si ya la poseyereas, puedes utilizarla una vez adicional por asalto.",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "Fondo de baratijas",
+      "descripcion_larga": "Después de descansar y realizar tus preparativos diarios, puedes reservar una cantidad de dinero de hasta: 10 po × tu nivel de personaje. El dinero reservado sigue siendo tuyo, pero no puedes utilizarlo para otra cosa hasta tus siguientes preparativos diarios. Una vez al día, como acción de movimiento, puedes declarar que habías comprado y guardado un objeto. Reduce el fondo reservado en una cantidad igual al precio del objeto. El objeto pasa a ser real y permanece en tu posesión con normalidad. El dinero que quede sin utilizar deja de estar reservado durante tus siguientes preparativos.",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "Repartirse el peso",
+      "descripcion_larga": "Después de tus preparativos diarios, escoge a un aliado dispuesto con quien hayas compartido al menos 10 minutos de conversación, trabajo o descanso. Será tu compañero elegido hasta tus siguientes preparativos diarios. Cuando tú y tu compañero elegido utilicéis Ayudar a otro para ayudaros mutuamente, el bonificador concedido aumenta en 1.",
+      "min_nivel_relacion": 1,
+      "prerequisitos": []
+    },
+    {
+      "nombre": "Cerrar filas",
+      "descripcion_larga": "Cuando utilizas Guardia de oficio el bonificador concedido a la CA aumenta en +2, puedes dar un paso de 5 pies antes de proteger al aliado, siempre que termines adyacente a él y este movimiento no provoca ataques de oportunidad. Si el ataque impacta pese al bonificador, puedes utilizar una acción inmediata para repartir el daño final entre el aliado y tú. Cada uno recibe la mitad, redondeando el exceso hacia ti. El daño que recibes mediante esta ventaja no puede reducirse, redirigirse ni repartirse de nuevo.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "halvard_perrin_guardia_de_oficio"
+      ]
+    },
+    {
+      "nombre": "La mercancía adecuada",
+      "descripcion_larga": "Tu fondo aumenta a: 50 po × tu nivel de personaje. Puedes utilizar Fondo de baratijas dos veces al día, siempre que el coste total de los objetos no supere el dinero reservado.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "halvard_perrin_fondo_de_baratijas"
+      ]
+    },
+    {
+      "nombre": "Dame un silbidito",
+      "descripcion_larga": "Una vez al día, cuando tú o tu compañero elegido realicéis una tirada de ataque, habilidad o salvación, puedes utilizar una acción inmediata para conceder un bonificador +2 de circunstancia. Puedes decidirlo después de ver el resultado del dado, pero antes de conocer si la tirada ha tenido éxito. Debéis estar a 30 pies o menos y ser capaces de veros u oíros.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "halvard_perrin_repartirse_el_peso" 
+      ]
+    },
+    {
+      "nombre": "Muro del huscarle",
+      "descripcion_larga": "Una vez al día, como acción estandar, puedes adoptar una formación de huscarle durante 1 minuto. Mientras permanezca activa: puedes usar Guardia de oficio para proteger a cualquier aliado situado a 10 pies o menos, puedes desplazarte hasta 10 pies como parte de esa reacción, sin provocar ataques de oportunidad, siempre que termines adyacente al aliado, los aliados adyacentes a ti no pueden ser flanqueados y puedes utilizar Cerrar filas una vez por asalto sin gastar tu acción inmediata. Solo puedes repartir el daño de un ataque por asalto.",
+      "min_nivel_relacion": 3,
+      "prerequisitos": [
+        "halvard_perrin_cerrar_filas"
+      ]
+    },
+    {
+      "nombre": "No era una baratija",
+      "descripcion_larga": "Tu fondo aumenta a: 100 po × tu nivel de personaje. Puedes utilizar Fondo de baratijas tres veces al día, respetando el coste total reservado. Además, una vez al día, cuando utilices una poción, aceite o pergamino obtenido mediante esta rama, puedes activarlo como si el conjuro formase parte de tu lista de clase, sin realizar una prueba de Usar objeto mágico.",
+      "min_nivel_relacion": 3,
+      "prerequisitos": [
+        "halvard_perrin_la_mercancia_adecuada"
+      ]
+    },
+    {
+      "nombre": "Hogar elegido",
+      "descripcion_larga": "Una vez al día, cuando tú o tu compañero elegido falléis una tirada de ataque, habilidad o salvación, puedes utilizar una acción inmediata para permitir que la criatura afectada repita la tirada. Debe conservar el segundo resultado. Debéis estar conscientes, a 30 pies o menos y ser capaces de veros u oíros. Dame un silbidito y Hogar elegido no pueden utilizarse sobre la misma tirada.",
+      "min_nivel_relacion": 3,
+      "prerequisitos": [
+        "halvard_perrin_dame_un_silbidito"
+      ]
+    }
+  ]
+}
