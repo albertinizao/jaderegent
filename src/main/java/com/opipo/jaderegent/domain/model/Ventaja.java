@@ -25,6 +25,7 @@ public class Ventaja {
     private String nombre;
 
     @Lob
+    @Column(columnDefinition = "LONGTEXT")
     private String descripcionLarga;
 
     private Integer minNivelRelacion;

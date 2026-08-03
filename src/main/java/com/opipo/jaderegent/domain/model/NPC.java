@@ -19,6 +19,7 @@ public class NPC {
     private String nombre;
 
     @Lob
+    @Column(columnDefinition = "LONGTEXT")
     private String descripcionLarga;
 
     private Integer nivelMaximo;

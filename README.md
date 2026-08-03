@@ -2,7 +2,7 @@
 
 Aplicación full stack para gestionar relaciones entre **Personajes Jugadores (PJ)** y **NPCs** en una campaña de rol (en este caso, _El Regente de Jade_). El proyecto está dividido en:
 
-- **Backend** en Spring Boot (API REST + persistencia H2).
+- **Backend** en Spring Boot (API REST + persistencia MariaDB gestionada por Flyway).
 - **Frontend** en React + Vite + Tailwind.
 - **Datos estáticos** e imágenes en `data/`.
 
@@ -34,9 +34,11 @@ jaderegent/
 │   ├── application/usecase/ # Casos de uso
 │   └── infrastructure/      # REST, DTOs, configuración web
 ├── src/main/resources/
-│   └── application.properties
+│   ├── application.properties
+│   └── db/migration/          # Migraciones Flyway
+├── config/                    # Configuración local ignorada por Git
 ├── frontend/                # React + Vite + Tailwind
-├── data/                    # Base H2 en archivo, imágenes y catálogos JSON
+├── data/                    # Imágenes y catálogos JSON
 └── docs/                    # Documentación funcional y técnica
 ```
 
@@ -99,9 +101,11 @@ En Windows existe `dev.ps1` para invocar el Node local de `target/node`.
 El backend usa las propiedades de `src/main/resources/application.properties`:
 
 - Host y puerto: `0.0.0.0:8080`.
-- Base de datos: H2 en archivo `./data/database`.
-- Consola H2: `/h2-console`.
-- `spring.jpa.hibernate.ddl-auto=update`.
+- Base de datos: MariaDB. El perfil `local` se activa por defecto y carga sus credenciales
+  desde `config/application-local.properties` (ignorado por Git y externo al artefacto). En despliegues,
+  `SPRING_PROFILES_ACTIVE` (o una propiedad equivalente) puede activar otro perfil y sus
+  propiedades de conexión.
+- Migraciones: Flyway se ejecuta al arrancar; `spring.jpa.hibernate.ddl-auto=validate` valida el esquema.
 - JSON de salida en `snake_case`.
 
 Además, `/data/**` se sirve como recurso estático desde la carpeta local `data/` (imágenes de PJ/NPC).
@@ -160,9 +164,40 @@ Además, `/data/**` se sirve como recurso estático desde la carpeta local `data
 
 ## 8) Datos y persistencia
 
-- **Persistencia relacional:** H2 (archivo local en `data/`).
+- **Persistencia relacional:** MariaDB. El esquema inicial está en
+  `src/main/resources/db/migration/V1__initial_schema.sql`.
 - **Assets:** imágenes en `data/images/pj` y `data/images/npc`.
 - **Catálogos:** JSON de ejemplo en `data/catalogos/` y documentación de relaciones en `docs/relaciones/`.
+
+Variables de entorno de base de datos para perfiles no locales (no guardes contraseñas en el repositorio):
+
+| Variable | Ejemplo local | Descripción |
+| --- | --- | --- |
+| `DB_URL` | `jdbc:mariadb://localhost:3306/gestion_relaciones` | URL JDBC |
+| `DB_USERNAME` | `gestion_app` | Usuario de MariaDB |
+| `DB_PASSWORD` | *(obligatoria, definida fuera del repositorio)* | Contraseña |
+
+Para desarrollo local no es necesario exportar variables manualmente: `./mvnw spring-boot:run`
+usa el perfil `local` y `config/application-local.properties`. En despliegues que activen otro perfil,
+define `DB_URL`, `DB_USERNAME` y `DB_PASSWORD` mediante el gestor de secretos del entorno.
+
+### Preparación administrativa de MariaDB
+
+Ejecuta estas sentencias con una cuenta administrativa y sustituye los marcadores por valores
+gestionados fuera del repositorio:
+
+```sql
+CREATE DATABASE gestion_relaciones
+  CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+CREATE USER 'gestion_app'@'%' IDENTIFIED BY '<define-fuera-del-repositorio>';
+GRANT SELECT, INSERT, UPDATE, DELETE, CREATE, ALTER, INDEX, REFERENCES
+  ON gestion_relaciones.* TO 'gestion_app'@'%';
+FLUSH PRIVILEGES;
+```
+
+Configura después `DB_URL`, `DB_USERNAME=gestion_app` y la contraseña real en
+`DB_PASSWORD` mediante el gestor de secretos del entorno. Flyway creará y validará su tabla de
+historial y aplicará `V1__initial_schema.sql` durante el primer arranque.
 
 Recomendación: incluir `data/` en la estrategia de backup operativo del entorno donde se despliegue.
 
@@ -197,7 +232,7 @@ npm run build
 ## 11) Mejoras sugeridas (roadmap corto)
 
 - Añadir autenticación/autorización para distinguir jugador y máster en backend.
-- Añadir migraciones versionadas de base de datos.
+- Ampliar las migraciones Flyway con cambios de esquema futuros.
 - Añadir tests de integración REST con datos semilla.
 - Automatizar CI (test + lint + build) y release.
 
