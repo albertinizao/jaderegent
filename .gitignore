@@ -40,6 +40,7 @@ frontend/.vite/
 frontend/coverage/
 .env
 .env.local
+.env.docker
 /config/application-local.properties
 
 ### Logs ###

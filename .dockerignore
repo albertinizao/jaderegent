@@ -1,0 +1,6 @@
+# Send only the prebuilt artifact and immutable runtime data to Docker.
+**
+!target/
+!target/jaderegent-0.0.1-SNAPSHOT.jar
+!data/
+!data/**

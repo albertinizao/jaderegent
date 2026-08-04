@@ -59,40 +59,155 @@ El backend implementa un estilo hexagonal simplificado:
 
 ### Frontend
 
-- El proyecto puede usar Node local gestionado por `frontend-maven-plugin` (Node `v20.10.0`) o Node global.
+- El proyecto puede usar Node local gestionado por `frontend-maven-plugin` (Node `v20.19.0`) o Node global.
 
 ---
 
-## 4) Puesta en marcha (desarrollo)
+## 4) Puesta en marcha
 
-### Opción A — Backend + frontend por separado (recomendado para iterar UI)
+### 4.1. Desarrollo con recarga automática (dos procesos)
 
-1. Levantar backend:
+Este es el flujo recomendado para desarrollar la interfaz. Vite proporciona hot reload,
+por lo que se mantienen dos procesos separados.
 
-```bash
-./mvnw spring-boot:run
+**Terminal 1 — backend Spring Boot:**
+
+```powershell
+cd C:\Users\Alberto\workspace\jaderegent
+.\mvnw.cmd spring-boot:run
 ```
 
-2. En otra terminal, levantar frontend:
+**Terminal 2 — frontend Vite:**
 
-```bash
-cd frontend
-npm install
-npm run dev
+```powershell
+cd C:\Users\Alberto\workspace\jaderegent
+.\dev.ps1 npm run dev
 ```
 
-3. Abrir la URL de Vite (normalmente `http://localhost:5173`).
+Abrir `http://localhost:5173`. El proxy de Vite reenvía `/api/**` y `/data/**`
+al backend en `http://localhost:8080`.
 
-> El frontend llama a la API con rutas relativas `/api/...`; en desarrollo usa proxy configurado en Vite.
-
-### Opción B — Flujo Maven para instalar Node local
+En Linux/macOS, si se usa Node instalado globalmente:
 
 ```bash
-./mvnw frontend:install-node-and-npm
-./mvnw frontend:npm@install
+./mvnw spring-boot:run                 # terminal 1
+cd frontend && npm ci && npm run dev   # terminal 2
 ```
 
-En Windows existe `dev.ps1` para invocar el Node local de `target/node`.
+### 4.2. Producción o prueba del JAR (un único proceso)
+
+El build de Maven compila React/Vite y copia `frontend/dist` dentro del JAR de Spring Boot.
+Node, npm y Vite solo son necesarios durante la compilación; no son necesarios en runtime.
+
+Generar el artefacto:
+
+```powershell
+cd C:\Users\Alberto\workspace\jaderegent
+.\mvnw.cmd clean package
+```
+
+Arrancar únicamente Spring Boot, sin ejecutar Vite:
+
+```powershell
+java -jar target\jaderegent-0.0.1-SNAPSHOT.jar
+```
+
+Abrir `http://localhost:8080/`. La misma aplicación sirve la SPA, sus assets,
+`/api/**` y `/data/**`.
+
+En Linux/macOS:
+
+```bash
+./mvnw clean package
+java -jar target/jaderegent-0.0.1-SNAPSHOT.jar
+```
+
+Para usar configuración externa:
+
+```bash
+java -jar target/jaderegent-0.0.1-SNAPSHOT.jar \
+  --spring.config.additional-location=file:./config/
+```
+
+En este modo no se debe arrancar `npm run dev`, `vite preview` ni un segundo servidor frontend.
+
+### 4.3. Flujo Maven para gestionar Node local
+
+El `pom.xml` ejecuta automáticamente, durante `package`, estas fases:
+
+```text
+instalar Node/npm → npm ci → npm run build → copiar frontend/dist → empaquetar JAR
+```
+
+También se puede invocar el Node descargado en `target/node` mediante `dev.ps1`:
+
+```powershell
+.\dev.ps1 npm ci
+.\dev.ps1 npm run build
+```
+
+Para el flujo habitual no es necesario ejecutar estos comandos manualmente: `mvn package`
+los ejecuta en el orden correcto.
+
+### 4.4. Despliegue con Docker
+
+La imagen Docker es únicamente de runtime: ejecuta el JAR ya compilado con Java 21,
+sin Maven, Node ni Vite. El directorio `data/` se incluye dentro de la imagen, por lo
+que los cambios de imágenes o catálogos requieren reconstruirla.
+
+Primero genera el JAR:
+
+```powershell
+.\mvnw.cmd clean package
+```
+
+Construye la imagen desde la raíz del proyecto:
+
+```powershell
+docker build -t jaderegent:local .
+```
+
+#### MariaDB instalada en la máquina anfitriona
+
+En Docker Desktop para Windows, `localhost` dentro del contenedor apunta al propio
+contenedor. Para acceder a MariaDB instalada en Windows se debe utilizar
+`host.docker.internal`:
+
+```powershell
+docker run -d `
+  --name jaderegent `
+  -p 8080:8080 `
+  -e DB_URL="jdbc:mariadb://host.docker.internal:3306/gestion_relaciones" `
+  -e DB_USERNAME="gestion_app" `
+  -e DB_PASSWORD="<contraseña>" `
+  jaderegent:local
+```
+
+No se deben guardar contraseñas en el `Dockerfile` ni en el repositorio. También se
+puede utilizar un archivo de entorno fuera del repositorio:
+
+```powershell
+docker run -d `
+  --name jaderegent `
+  -p 8080:8080 `
+  --env-file .env.docker `
+  jaderegent:local
+```
+
+El archivo debe definir `DB_URL`, `DB_USERNAME` y `DB_PASSWORD`. Si MariaDB se ejecuta
+en otro contenedor, usa el nombre del servicio Docker en `DB_URL` (por ejemplo,
+`jdbc:mariadb://mariadb:3306/gestion_relaciones`) y conecta ambos contenedores a la
+misma red.
+
+#### Errores habituales
+
+- `UnknownHostException: host`: se ha usado literalmente `host` como hostname; debe
+  sustituirse por `host.docker.internal`, un nombre de servicio Docker o un DNS/IP real.
+- `Connection refused`: MariaDB no está escuchando en una interfaz accesible desde
+  Docker, el puerto 3306 está bloqueado por el firewall o el usuario no tiene permisos
+  para conexiones desde el origen del contenedor. Revisa `bind-address`, el firewall y
+  los permisos del usuario MariaDB.
+- `Picked up JAVA_TOOL_OPTIONS`: es un mensaje informativo de la JVM, no el error real.
 
 ---
 
