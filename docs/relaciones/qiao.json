@@ -1,0 +1,84 @@
+{
+  "npc_id": "qiao",
+  "nombre": "Qiao Ren",
+  "descripcion_larga": "Antiguo jefe de seguridad e inteligencia de un banco de Goka, superviviente de una caravana destruida en la Corona del Mundo.",
+  "nivel_maximo": 3,
+  "imagen_url": "/data/images/npc/qiao.png",
+  "ventajas": [
+    {
+      "nombre": "Doctrina compartida",
+      "descripcion_larga": "Para determinar los beneficios de las dotes de trabajo en equipo, cuentas como si poseyeras las dotes de trabajo en equipo de todos los demás personajes con al menos nivel 1 de relación con Qiao. Solo puedes beneficiarte de esas dotes junto a personajes que tengan al menos nivel 1 de relación con Qiao.",
+      "min_nivel_relacion": 1,
+      "prerequisitos": [],
+      "prerequisitos_operator": "AND"
+    },
+    {
+      "nombre": "Guardia abierta",
+      "descripcion_larga": "Una vez por asalto, cuando impactes a una criatura con un ataque realizado fuera de tu propio turno, elige a un aliado que la amenace y que tenga al menos 1 nivel de relación con Qiao. La criatura se considera desprevenida frente al siguiente ataque que ese aliado realice contra ella antes del inicio de tu siguiente turno.",
+      "min_nivel_relacion": 1,
+      "prerequisitos": [],
+      "prerequisitos_operator": "AND"
+    },
+    {
+      "nombre": "Célula secreta",
+      "descripcion_larga": "Obtienes Secret Language como dote adicional, aunque no cumplas sus prerrequisitos. Puedes seleccionar a un número de personajes igual al doble de tu nivel de relación con Qiao. A efectos de utilizar Secret Language contigo, los personajes seleccionados y tú, contáis entre vosotros como si todos tuvieseis esta dote aunque no cumplan prerequisitos. Puedes modificar esta selección después de dedicar 1 hora a enseñar y practicar el código con los nuevos personajes.",
+      "min_nivel_relacion": 1,
+      "prerequisitos": [],
+      "prerequisitos_operator": "AND"
+    },
+    {
+      "nombre": "Formación táctica 1",
+      "descripcion_larga": "Obtienes una dote de trabajo en equipo para la que cumplas los prerrequisitos.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "qiao_doctrina_compartida"
+      ],
+      "prerequisitos_operator": "AND"
+    },
+    {
+      "nombre": "Apertura crítica",
+      "descripcion_larga": "Una vez por asalto, cuando confirmes un impacto crítico contra una criatura, elige a otro personaje con al menos nivel 1 de relación con Qiao que se encuentre a 30 pies o menos y pueda percibirte. El personaje elegido puede emplear una acción inmediata para desplazarse hasta la mitad de su velocidad. Este movimiento no provoca ataques de oportunidad de la criatura a la que has infligido el crítico.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "qiao_guardia_abierta"
+      ],
+      "prerequisitos_operator": "AND"
+    },
+    {
+      "nombre": "Célula infiltrada",
+      "descripcion_larga": "Puedes dedicar una hora para seleccionar a un número de personajes igual al doble de tu nivel de relación con Qiao. Durante la siguiente hora, mientras un personaje seleccionado se encuentre a 30 pies o menos de ti y pueda percibir tus indicaciones, puede utilizar tu número de rangos en Sigilo en lugar del suyo. Continúa utilizando su propio modificador de Destreza, penalizador de armadura, modificador de tamaño y cualquier otro bonificador o penalizador aplicable a su prueba. Esta ventaja termina para un personaje si deja de poder percibir tus indicaciones, pero vuelve a aplicarse si recupera las condiciones necesarias antes de que termine su duración.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "qiao_celula_secreta"
+      ],
+      "prerequisitos_operator": "AND"
+    },
+    {
+      "nombre": "Formación táctica 2",
+      "descripcion_larga": "Obtienes otra dote de trabajo en equipo para la que cumplas los prerrequisitos.",
+      "min_nivel_relacion": 3,
+      "prerequisitos": [
+        "qiao_formacion_tactica_1"
+      ],
+      "prerequisitos_operator": "AND"
+    },
+    {
+      "nombre": "Romper la línea",
+      "descripcion_larga": "Una vez por asalto, cuando reduzcas a una criatura a 0 puntos de golpe o menos, o la dejes inconsciente, puedes realizar inmediatamente una prueba de Engañar. Cada otro personaje con al menos nivel 1 de relación con Qiao que se encuentre a 30 pies o menos y pueda percibirte puede emplear una acción inmediata para desplazarse hasta la mitad de su velocidad. Los aliados pueden usar la tirada de Engañar como si fuese una prueba de Acrobacias para no provocar ataques de oportunidad.",
+      "min_nivel_relacion": 3,
+      "prerequisitos": [
+        "qiao_apertura_critica"
+      ],
+      "prerequisitos_operator": "AND"
+    },
+    {
+      "nombre": "Célula asesina",
+      "descripcion_larga": "Cuando un miembro seleccionado con Célula secreta o Célula infiltrada impacte a una criatura que estuviera desprevenida frente a ese ataque, puede realizar inmediatamente y sin gastar una acción una prueba de Engañar para fintar contra ella. Si tiene éxito, la criatura queda desprevenida frente al siguiente ataque que realice contra ella otro miembro de la célula antes del inicio del siguiente turno de quien realizó la finta. Cada miembro de la célula solo puede intentar fintar una vez por asalto mediante esta ventaja.",
+      "min_nivel_relacion": 3,
+      "prerequisitos": [
+        "qiao_celula_infiltrada"
+      ],
+      "prerequisitos_operator": "AND"
+    }
+  ]
+}

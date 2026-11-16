@@ -1,0 +1,84 @@
+{
+  "npc_id": "hargorsson",
+  "nombre": "Familia Hargorsson",
+  "descripcion_larga": "Una familia ulfen sencilla que vivía en Kalsgard y quisieron huir de los abusos ulfen buscando mejor suerte en Tian Xia",
+  "nivel_maximo": 3,
+  "imagen_url": "/data/images/npc/hargorsson.png",
+  "ventajas": [
+    {
+      "nombre": "Un sitio en la mesa",
+      "descripcion_larga": "Elige hasta cuatro personajes voluntarios con Inteligencia 3 o más con los que hayas convivido o viajado durante al menos siete días. Estos personajes forman parte de tu hogar a efectos de las ventajas de esta rama. Puedes sustituir a uno de ellos después de convivir durante al menos siete días con el nuevo personaje. Mientras al menos un miembro de tu hogar esté consciente y a 30 pies o menos de ti, obtienes un bonificador de moral de +2 a las tiradas de salvación contra miedo y efectos de emoción.",
+      "min_nivel_relacion": 1,
+      "prerequisitos": [],
+      "prerequisitos_operator": "AND"
+    },
+    {
+      "nombre": "Manos que echan raíces",
+      "descripcion_larga": "Elige Profesión (agricultor) o Profesión (jardinero). La habilidad elegida pasa a ser habilidad clásea para ti. Si ya lo fuese, obtienes un bonificador de +1 a sus pruebas. Además, puedes ejercer el rol de Agricultor aunque no poseas rangos en la habilidad, siempre que estés asignado a un carro huerto.",
+      "min_nivel_relacion": 1,
+      "prerequisitos": [],
+      "prerequisitos_operator": "AND"
+    },
+    {
+      "nombre": "Echar una mano",
+      "descripcion_larga": "Cuando ejerces el rol de Sirviente, puedes aprender de la persona a la que ayudas. Elige una habilidad que esa persona utilice como requisito para el rol que está ejerciendo y en la que posea al menos un rango. Mientras continúes ayudándola, esa habilidad pasa a ser habilidad clásea para ti. Si ya lo fuese, obtienes un bonificador de circunstancia de +1 a sus pruebas. Solo puedes beneficiarte de una habilidad de esta manera al mismo tiempo.",
+      "min_nivel_relacion": 1,
+      "prerequisitos": [],
+      "prerequisitos_operator": "AND"
+    },
+    {
+      "nombre": "Cada cual sostiene una esquina",
+      "descripcion_larga": "Cuando tú o un miembro de tu hogar utilicéis Ayudar a otro para beneficiar a otro miembro del hogar, el bonificador concedido aumenta de +2 a +4. Una misma tirada solo puede beneficiarse una vez de esta mejora, aunque varios miembros intenten ayudar.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "hargorsson_un_sitio_en_la_mesa"
+      ],
+      "prerequisitos_operator": "AND"
+    },
+    {
+      "nombre": "Cosecha paciente",
+      "descripcion_larga": "Mientras ejerzas el rol de Agricultor, produces 1 unidad de suministros cada día, en lugar de una cada dos días.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "hargorsson_manos_que_echan_raices"
+      ],
+      "prerequisitos_operator": "AND"
+    },
+    {
+      "nombre": "Aprender el oficio",
+      "descripcion_larga": "Después de haber ayudado durante al menos siete días a un mismo personaje mientras ejerce un determinado rol de caravana, aprendes a ejercer ese rol. Puedes desempeñarlo aunque no cumplas sus requisitos, siempre que poseas al menos un rango en una de las habilidades utilizadas para aprenderlo. Para roles cuyo requisito no sea una habilidad, como Guarda, debes cumplir el requisito normalmente. Solo puedes tener un oficio aprendido mediante esta ventaja. Puedes cambiarlo después de ayudar durante otros siete días a alguien que ejerza un rol diferente.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "hargorsson_echar_una_mano"
+      ],
+      "prerequisitos_operator": "AND"
+    },
+    {
+      "nombre": "Todos a una",
+      "descripcion_larga": "Una vez al día, como acción rápida, puedes coordinar a los miembros de tu hogar durante 1 minuto. Mientras dure el efecto, tú y los miembros de tu hogar que se encuentren a 30 pies o menos podéis utilizar Ayudar a otro como acción inmediata, siempre que pudierais realizar normalmente esa ayuda. Cada personaje solo puede utilizar esta acción inmediata una vez por asalto y una misma tirada no puede recibir más de una ayuda mediante esta ventaja.",
+      "min_nivel_relacion": 3,
+      "prerequisitos": [
+        "hargorsson_cada_cual_sostiene_una_esquina"
+      ],
+      "prerequisitos_operator": "AND"
+    },
+    {
+      "nombre": "Dos pares de manos",
+      "descripcion_larga": "Puedes ejercer el rol de Agricultor al mismo tiempo que otro rol de caravana, siempre que haya al menos otro agricultor asignado al mismo carro huerto. El otro agricultor comparte contigo las labores diarias, permitiéndote atender también tu segunda responsabilidad. Si deja de haber otro agricultor en el carro, debes elegir cuál de los dos roles continúas ejerciendo.",
+      "min_nivel_relacion": 3,
+      "prerequisitos": [
+        "hargorsson_cosecha_paciente"
+      ],
+      "prerequisitos_operator": "AND"
+    },
+    {
+      "nombre": "Tu camino y nuestra casa",
+      "descripcion_larga": "Puedes ejercer simultáneamente el oficio aprendido mediante Aprender el oficio y el rol de Sirviente de otro personaje. El personaje al que ayudas debe ejercer un rol diferente al tuyo. El rol de Sirviente funciona con normalidad, pero no aumenta la efectividad de tu propio oficio.",
+      "min_nivel_relacion": 3,
+      "prerequisitos": [
+        "hargorsson_aprender_el_oficio"
+      ],
+      "prerequisitos_operator": "AND"
+    }
+  ]
+}

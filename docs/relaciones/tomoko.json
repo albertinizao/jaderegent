@@ -1,0 +1,84 @@
+{
+  "npc_id": "tomoko",
+  "nombre": "Familia Tomoko",
+  "descripcion_larga": "Familia tian que, tras liberarse de la esclavitud, quiso huir de Kalsgard. Hayashi, la madre esclavizada. Daichi, pequeño ratero buscavidas. Aiko, niña con terror a quedarse sola.",
+  "nivel_maximo": 3,
+  "imagen_url": "/data/images/npc/tomoko.png",
+  "ventajas": [
+    {
+      "nombre": "Juramento infantil",
+      "descripcion_larga": "Daichi te jura lealtad y obtiene un nivel en la clase samurái. Solo un personaje peude seleccionar esta ventaja.",
+      "min_nivel_relacion": 1,
+      "prerequisitos": [],
+      "prerequisitos_operator": "AND"
+    },
+    {
+      "nombre": "Reconocer la cadena",
+      "descripcion_larga": "Averiguar intenciones pasa a ser una habilidad clásea para ti. Si ya lo fuese, obtienes un bonificador de circunstancia de +1 a dicha habilidad. Duplica tus bonificadores de circunstancia y moral frente a intentos de coacción o desmoralización y frente a objetivos coaccionados o intimidados.",
+      "min_nivel_relacion": 1,
+      "prerequisitos": [],
+      "prerequisitos_operator": "AND"
+    },
+    {
+      "nombre": "Seguridad doméstica",
+      "descripcion_larga": "Puedes elegir 20 en cualquier prueba para montar campamento. Por cada hora que dediques a cuidar a los demás, todos los aliados que descansesn a 20' de ti (y no haya barreras físicas entre vosotros), descansan 1 hora más por cada 8 horas reales de descanso.",
+      "min_nivel_relacion": 1,
+      "prerequisitos": [],
+      "prerequisitos_operator": "AND"
+    },
+    {
+      "nombre": "Juramento entrenado",
+      "descripcion_larga": "El nivel máximo de samurái de Daichi pasa a ser igual a la mitad de tu nivel de personaje, redondeando hacia abajo.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "tomoko_juramento_infantil"
+      ],
+      "prerequisitos_operator": "AND"
+    },
+    {
+      "nombre": "Voluntad recuperada",
+      "descripcion_larga": "Aumenta en 5 la CD frente a pruebas de Intimidar par adesmoralizarte. Obtiene un bonificador de moral de +3 frente a efectos de miedo, hechizos o compulsión.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "tomoko_reconocer_la_cadena"
+      ],
+      "prerequisitos_operator": "AND"
+    },
+    {
+      "nombre": "Descanso de verdad",
+      "descripcion_larga": "Los aliados que descansen a 30' de ti duplican su curación natural. Y si tuviese que hacer una salvación para superar un efecto mundanio diario (como un veneno o enfermedad), puede repetir la tirada y quedarse con el segundo valor.",
+      "min_nivel_relacion": 2,
+      "prerequisitos": [
+        "tomoko_seguridad_domestica"
+      ],
+      "prerequisitos_operator": "AND"
+    },
+    {
+      "nombre": "Juramento de lealtad",
+      "descripcion_larga": "Daichi se convierte en tu allegado, como si poseyeras la dote Liderazgo. Si ya poseyeras la dote Liderazgo y seleccionas a Daichi como tu allegado, aumenta 1 su nivel máximo.",
+      "min_nivel_relacion": 3,
+      "prerequisitos": [
+        "tomoko_juramento_entrenado"
+      ],
+      "prerequisitos_operator": "AND"
+    },
+    {
+      "nombre": "Romper las cadenas",
+      "descripcion_larga": "Una vez al día, cuando tú o un aliado a 30 pies o menos falle una tirada de salvación contra un efecto de hechizo o compulsión, puedes usar una acción inmediata para permitirle repetirla. También puedes usar esta capacidad sobre una criatura que ya se encuentre bajo uno de esos efectos. En ese caso, empleas una acción estándar y le permites realizar inmediatamente una nueva tirada de salvación contra la CD original. Debe conservarse el segundo resultado, aunque sea peor. La criatura debe poder verte u oírte.",
+      "min_nivel_relacion": 3,
+      "prerequisitos": [
+        "tomoko_voluntad_recuperada"
+      ],
+      "prerequisitos_operator": "AND"
+    },
+    {
+      "nombre": "Siempre hay un lugar al que volver",
+      "descripcion_larga": "Una vez al día, puedes dedicar 30 minutos a ayudar a descansar hasta a 10 personajes a tu alcance. Eliminas la condición de fatigado y estremecido de estos aliados. Los aliados reciben los beneficios de 1/4 del descanso natural (recuperan 1/4 de los usos diarios, 1/4 de la curaicón natural...)",
+      "min_nivel_relacion": 3,
+      "prerequisitos": [
+        "tomoko_descanso_de_verdad"
+      ],
+      "prerequisitos_operator": "AND"
+    }
+  ]
+}
